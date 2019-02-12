@@ -1,0 +1,21 @@
+*.log
+*.out
+*.aux
+*.pls
+*.psm
+*.toc
+*.bbl
+*.blg
+*~
+*.swp
+.DS_Store
+
+# latexmk
+*.fdb_latexmk
+*.fls
+
+# minted
+_minted*
+
+# compiled files
+*.pdf

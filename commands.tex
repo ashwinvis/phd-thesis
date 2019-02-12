@@ -1,0 +1,67 @@
+% Insert HERE any additional commands
+
+
+% as examples here are some commands from the JFM template:
+%
+\newcommand\etal{\mbox{\textit{et al.}}}
+\newcommand\etc{etc.\ }
+\newcommand\eg{e.g.\ }
+
+\providecommand\bnabla{\boldsymbol{\nabla}}
+\providecommand\bcdot{\boldsymbol{\cdot}}
+
+\newcommand\Rey{\mbox{\textit{Re}}}  % Reynolds number
+\newcommand\Pran{\mbox{\textit{Pr}}} % Prandtl number, cf TeX's \Pr product
+\newcommand\Pen{\mbox{\textit{Pe}}}  % Peclet number
+
+
+% Commands used for chapter open science
+\newcommand{\fluidpack}[1]{\href{https://fluid#1.readthedocs.io}{%
+\codeinline{fluid#1}}}
+
+% \newcommand{\codeinline}[1]{\mintinline{python}{#1}}
+\newcommand{\codeinline}[1]{\texttt{#1}}
+
+\newcommand{\fluiddyn}{\fluidpack{dyn}\xspace}
+
+\newcommand{\Numpy}{\codeinline{Numpy}\xspace}
+\newcommand{\Scipy}{\codeinline{Scipy}\xspace}
+
+\newcommand{\pack}[1]{\codeinline{#1}\xspace}
+
+\newcommand{\mako}{\href{http://www.makotemplates.org/}{\pack{mako}}}
+
+\newcommand{\libpack}[2][]{%
+  \ifstrequal{#2}{FFTW}{%
+    \href{http://fftw.org}{#2}}{%
+  \ifstrequal{#2}{MKL}{%
+    \href{https://software.intel.com/en-us/mkl}{#2}}{%
+  \ifstrequal{#2}{PFFT}{%
+    \href{https://www-user.tu-chemnitz.de/~potts/workgroup/pippig/software.php.en}{#2}}{%
+  \ifstrequal{#2}{P3DFFT}{%
+    \href{http://p3dfft.net}{#2}}{%
+  \ifstrequal{#2}{2decomp\&FFT}{%
+    \href{http://www.2decomp.org}{#2}}{%
+  \ifstrequal{#2}{cuFFT}{%
+    \href{https://docs.nvidia.com/cuda/cufft/index.html}{#2}}{%
+  \ifstrequal{#2}{clFFT}{%
+    \href{https://clmathlibraries.github.io/clFFT/}{#2}}{%
+  \ifstrequal{#2}{FFTPACK}{%
+    \href{http://www.netlib.org/fftpack}{#2}}{%
+  \ifstrempty{#1}{%
+    #2
+  }{%
+    \href{#1}{#2}}
+  }}}}}}}}\xspace  % Close the if-else-if tree above!
+}
+
+
+% other
+\newcommand{\p}{\partial}
+
+% Wikipedia-style "citation needed" macro
+\newcommand{\citationneeded}[1][]{\textsuperscript{\color{blue} [citation needed: #1]}}
+
+% ！Undefined control sequence.
+% https://tex.stackexchange.com/questions/8361/latex-ieeetran-cls-use-titlesec-package
+% \newcommand{\tocsubparagraph}{}

@@ -1,0 +1,397 @@
+
+
+@article{fluiddyn,
+  author = "Pierre Augier and Ashwin Vishnu Mohanan and Cyrille Bonamy",
+  year = "2018",
+  title = "{FluidDyn}: a Python open-source framework for research and teaching
+                  in fluid dynamics",
+  journal = "J. Open Research Software",
+  volume = "(Submitted)",
+  pages = ""
+}
+
+@article{fluidfft,
+  author = "Ashwin Vishnu Mohanan and Cyrille Bonamy and Pierre Augier",
+  year = "2018",
+  title = "{FluidFFT}: common {API} ({C}++ and {P}ython) for {F}ast {F}ourier
+                  {T}ransform libraries",
+  journal = "J. Open Research Software",
+  volume = "(Submitted)",
+  pages = ""
+}
+
+@article{fluidsim,
+  author = "Ashwin Vishnu Mohanan and Cyrille Bonamy and Pierre Augier",
+  year = "2018",
+  title = "{FluidSim}: modular, object-oriented Python package for
+	  high-performance {CFD} simulations",
+  journal = "J. Open Research Software",
+  volume = "(Submitted)",
+  pages = ""
+}
+
+
+@article{LeclercqPartridgeAugierDalzielKerswell2016,
+author = "C. Leclercq and J. L. Partridge and P. Augier and S. B. Dalziel and R. R. Kerswell",
+title = {Using stratification to mitigate end effects in quasi-{K}eplerian
+	{Taylor–Couette} flow},
+journal = {J. Fluid Mech.},
+volume = {791},
+month = {3},
+year = {2016},
+pages = {608--630},
+doi = {10.1017/jfm.2016.44},
+}
+
+
+@INPROCEEDINGS{ISSF2016,
+author = {A. Campagne and H. Alfredsson and R. Chassagne and D. Micard and
+                  N. Mordant and A. Segalini and J. Sommeria and S. Viboud and
+                  A. Vishnu Mohanan and E. Lindborg and P. Augier},
+title = {First report of the {MILESTONE} experiment: strongly stratified
+                  turbulence and mixing efficiency in the Coriolis platform},
+year = 2016,
+address = {VIIIth International Symposium on Stratified Flows (ISSF, San Diego, USA)},
+}
+
+@article{LindborgMohanan2017,
+  title={A two-dimensional toy model for geophysical turbulence},
+  author={Lindborg, Erik and Mohanan, Ashwin Vishnu},
+  journal={Phys. Fluids},
+  volume={29},
+  number={11},
+  pages={111114},
+  year={2017},
+  doi = {10.1063/1.4985990}
+}
+
+
+@article{behnel_cython2011,
+	title = {Cython: {The} {Best} of {Both} {Worlds}},
+	volume = {13},
+	issn = {1521-9615},
+	shorttitle = {Cython},
+	doi = {10.1109/MCSE.2010.118},
+	number = {2},
+	urldate = {2018-01-30},
+	journal = {Computing in Science \& Engineering},
+	author = {Behnel, Stefan and Bradshaw, Robert and Citro, Craig and Dalcin, Lisandro and Seljebotn, Dag Sverre and Smith, Kurt},
+	month = mar,
+	year = {2011},
+	pages = {31--39},
+}
+
+
+@inproceedings{jasak_openfoam2007,
+	title = {{OpenFOAM}: {A} {C}++ library for complex physics simulations},
+	volume = {1000},
+	shorttitle = {{OpenFOAM}},
+	urldate = {2017-09-09},
+	booktitle = {International workshop on coupled methods in numerical dynamics},
+	publisher = {IUC Dubrovnik, Croatia},
+	author = {Jasak, Hrvoje and Jemcov, Aleksandar and Tukovic, Zeljko and {others}},
+	year = {2007},
+	pages = {1--20},
+}
+
+@inproceedings{guelton_pythran2013,
+	title = {Pythran: {Enabling} {Static} {Optimization} of {Scientific} {Python} {Programs}},
+	shorttitle = {Pythran},
+	urldate = {2017-09-23},
+	author = {Guelton, Serge and Brunet, Pierrick and Raynaud, Alan and Merlini, Adrien and Amini, Mehdi},
+	year = {2013},
+	pages = {46--52},
+}
+
+@article{guelton2018pythran,
+  title={{P}ythran: {C}rossing the {P}ython {F}rontier},
+  author={Guelton, Serge},
+  journal={Computing in Science \& Engineering},
+  volume={20},
+  number={2},
+  pages={83--89},
+  year={2018},
+  publisher={IEEE}
+}
+
+@article{pippig_pfft2013,
+	title = {{PFFT}: {An} extension of {FFTW} to massively parallel architectures},
+	volume = {35},
+	shorttitle = {{PFFT}},
+	number = {3},
+	journal = {SIAM Journal on Scientific Computing},
+	author = {Pippig, Michael},
+	year = {2013},
+	pages = {C213--C236},
+}
+
+@article{pekurovsky2012p3dfft,
+  title={{P3DFFT}: {A} framework for parallel computations of Fourier
+                  transforms in three dimensions},
+  author={Pekurovsky, Dmitry},
+  journal={SIAM Journal on Scientific Computing},
+  volume={34},
+  number={4},
+  pages={C192--C209},
+  year={2012},
+  publisher={SIAM}
+}
+
+@article{mortensen_spectraldns2016,
+	title = {High performance {Python} for direct numerical simulations of turbulent flows},
+	volume = {203},
+	issn = {0010-4655},
+	doi = {10.1016/j.cpc.2016.02.005},
+	abstract = {Direct Numerical Simulations (DNS) of the Navier Stokes equations is an invaluable research tool in fluid dynamics. Still, there are few publicly available research codes and, due to the heavy number crunching implied, available codes are usually written in low-level languages such as C/C++ or Fortran. In this paper we describe a pure scientific Python pseudo-spectral DNS code that nearly matches the performance of C++ for thousands of processors and billions of unknowns. We also describe a version optimized through Cython, that is found to match the speed of C++. The solvers are written from scratch in Python, both the mesh, the MPI domain decomposition, and the temporal integrators. The solvers have been verified and benchmarked on the Shaheen supercomputer at the KAUST supercomputing laboratory, and we are able to show very good scaling up to several thousand cores. A very important part of the implementation is the mesh decomposition (we implement both slab and pencil decompositions) and 3D parallel Fast Fourier Transforms (FFT). The mesh decomposition and FFT routines have been implemented in Python using serial FFT routines (either NumPy, pyFFTW or any other serial FFT module), NumPy array manipulations and with MPI communications handled by MPI for Python (mpi4py). We show how we are able to execute a 3D parallel FFT in Python for a slab mesh decomposition using 4 lines of compact Python code, for which the parallel performance on Shaheen is found to be slightly better than similar routines provided through the FFTW library. For a pencil mesh decomposition 7 lines of code is required to execute a transform.},
+	number = {Supplement C},
+	urldate = {2017-11-30},
+	journal = {Computer Physics Communications},
+	author = {Mortensen, Mikael and Langtangen, Hans Petter},
+	month = jun,
+	year = {2016},
+	keywords = {CFD, Python, Cython, DNS, FFT, MPI, Pencil, Slab, Computer Science - Distributed, Parallel, and Cluster Computing, Computer Science - Mathematical Software},
+	pages = {53--65},
+}
+
+
+@article{burns_dedalus,
+  title={Dedalus: A Flexible Pseudo-Spectral Framework for Solving Partial Differential Equations},
+  url={https://dedalus-project.org},
+  author={Burns, KJ and Vasil, GM and Oishi, JS and Lecoanet, D and Brown, BP and Quataert, E},
+  publisher={preparation}
+}
+
+
+@techreport{hooton_christopher_refreshing_2017,
+	title = {Refreshing {Our} {Understanding} of the {Internet} {Economy}},
+	abstract = {Internet Association's first economic white paper takes a closer look at the size of the internet economy, both in the U.S. and abroad.},
+	language = {en-US},
+	urldate = {2018-02-01},
+	author = {Hooton, Christopher},
+	month = jan,
+	year = {2017},
+}
+
+@article{wilson_best_2014,
+	title = {Best {Practices} for {Scientific} {Computing}},
+	volume = {12},
+	issn = {1545-7885},
+	doi = {10.1371/journal.pbio.1001745},
+	abstract = {We describe a set of best practices for scientific software development, based on research and experience, that will improve scientists' productivity and the reliability of their software.},
+	language = {en},
+	number = {1},
+	urldate = {2018-02-02},
+	journal = {PLOS Biology},
+	author = {Wilson, Greg and Aruliah, D. A. and Brown, C. Titus and Hong, Neil P. Chue and Davis, Matt and Guy, Richard T. and Haddock, Steven H. D. and Huff, Kathryn D. and Mitchell, Ian M. and Plumbley, Mark D. and Waugh, Ben and White, Ethan P. and Wilson, Paul},
+	month = jan,
+	year = {2014},
+	keywords = {Computer software, Computers, Open source software, Programming languages, Research validity, Scientists, Software development, Software tools},
+	pages = {1--7},
+}
+
+
+@inproceedings{nanz_comparative_2015,
+	title = {A {Comparative} {Study} of {Programming} {Languages} in {Rosetta} {Code}},
+	volume = {1},
+	doi = {10.1109/ICSE.2015.90},
+	abstract = {Sometimes debates on programming languages are more religious than scientific. Questions about which language is more succinct or efficient, or makes developers more productive are discussed with fervor, and their answers are too often based on anecdotes and unsubstantiated beliefs. In this study, we use the largely untapped research potential of Rosetta Code, a code repository of solutions to common programming tasks in various languages, which offers a large data set for analysis. Our study is based on 7'087 solution programs corresponding to 745 tasks in 8 widely used languages representing the major programming paradigms (procedural: C and Go, object-oriented: C\# and Java, functional: F\# and Haskell, scripting: Python and Ruby). Our statistical analysis reveals, most notably, that: functional and scripting languages are more concise than procedural and object-oriented languages, C is hard to beat when it comes to raw speed on large inputs, but performance differences over inputs of moderate size are less pronounced and allow even interpreted languages to be competitive, compiled strongly-typed languages, where more defects can be caught at compile time, are less prone to runtime failures than interpreted or weakly-typed languages. We discuss implications of these results for developers, language designers, and educators.},
+	booktitle = {2015 {IEEE}/{ACM} 37th {IEEE} {International} {Conference} on {Software} {Engineering}},
+	author = {Nanz, S. and Furia, C. A.},
+	month = may,
+	year = {2015},
+	keywords = {Python, authoring languages, Java, Runtime, C\#, code repository, F\#, functional language, functional languages, Go, Haskell, Indexes, language interpretation, object-oriented language, object-oriented programming, procedural language, program compilers, program interpreters, Programming, programming languages, Rosetta Code, Ruby, scripting language, Standards, statistical analysis, Statistical analysis, strongly-typed language compilation},
+	pages = {778--788},
+}
+
+
+@article{ousterhout_scripting_1998,
+	title = {Scripting: higher level programming for the 21st {Century}},
+	volume = {31},
+	issn = {0018-9162},
+	shorttitle = {Scripting},
+	doi = {10.1109/2.660187},
+	abstract = {A fundamental change is occurring in the way people write computer programs, away from system programming languages such as C or C++ to scripting languages such as Perl or Tcl. Although many people are participating in the change, few realize that the change is occurring and even fewer know why it is happening. This article explains why scripting languages will handle many of the programming tasks in the next century better than system programming languages. System programming languages were designed for building data structures and algorithms from scratch, starting from the most primitive computer elements. Scripting languages are designed for gluing. They assume the existence of a set of powerful components and are intended primarily for connecting components},
+	number = {3},
+	journal = {Computer},
+	author = {Ousterhout, J. K.},
+	month = mar,
+	year = {1998},
+	keywords = {21st Century, Algorithm design and analysis, Application software, Assembly systems, authoring languages, Automatic generation control, Buildings, C, C++, Computer aided instruction, Computer languages, data structures, higher level programming, Perl, Program processors, programming, Programming profession, Registers, scripting, scripting languages, software components, system programming languages, Tcl},
+	pages = {23--30},
+}
+
+@article{prechelt_empirical_2000,
+	title = {An empirical comparison of seven programming languages},
+	volume = {33},
+	issn = {0018-9162},
+	doi = {10.1109/2.876288},
+	abstract = {Often heated, debates regarding different programming languages' effectiveness remain inconclusive because of scarce data and a lack of direct comparisons. The author addresses that challenge, comparatively analyzing 80 implementations of the phone-code program in seven different languages (C, C++, Java, Perl, Python, Rexx and Tcl). Further, for each language, the author analyzes several separate implementations by different programmers. The comparison investigates several aspects of each language, including program length, programming effort, runtime efficiency, memory consumption, and reliability. The author uses comparisons to present insight into program language performance},
+	number = {10},
+	journal = {Computer},
+	author = {Prechelt, L.},
+	month = oct,
+	year = {2000},
+	keywords = {Python, authoring languages, C++, Computer languages, Perl, Program processors, programming, Programming profession, Tcl, C language, C++ language, Java, memory consumption, phone-code program, Production, program language performance, program length, programming language comparison, Read-write memory, Rexx, Runtime, runtime efficiency, software reliability, Statistics, Sun, Workstations},
+	pages = {23--29},
+}
+
+@misc{language_productivity_infographic,
+	title = {language\_productivity.pdf},
+	url = {http://www.connellybarnes.com/documents/language_productivity.pdf},
+	urldate = {2018-02-08},
+}
+
+
+@article{fitzgerald_transformation_2006,
+	title = {The {Transformation} of {Open} {Source} {Software}},
+	volume = {30},
+	issn = {0276-7783},
+	doi = {10.2307/25148740},
+	abstract = {A frequent characterization of open source software is the somewhat outdated, mythical one of a collective of supremely talented software hackers freely volunteering their services to produce uniformly high-quality software. I contend that the open source software phenomenon has metamorphosed into a more mainstream and commercially viable form, which I label as OSS 2.0. I illustrate this transformation using a framework of process and product factors, and discuss how the bazaar metaphor, which up to now has been associated with the open source development process, has actually shifted to become a metaphor better suited to the OSS 2.0 product delivery and support process. Overall the OSS 2.0 phenomenon is significantly different from its free software antecedent. Its emergence accentuates the fundamental alteration of the basic ground rules in the software landscape, signifying the end of the proprietary-driven model that has prevailed for the past 20 years or so. Thus, a clear understanding of the characteristics of the emergent OSS 2.0 phenomenon is required to address key challenges for research and practice.},
+	number = {3},
+	urldate = {2018-02-22},
+	journal = {MIS Quarterly},
+	author = {Fitzgerald, Brian},
+	year = {2006},
+	pages = {587--598},
+}
+
+@article{guelton2015pythran,
+  title={Pythran: {E}nabling static optimization of scientific python programs},
+  author={Guelton, Serge and Brunet, Pierrick and Amini, Mehdi and Merlini,
+                  Adrien and Corbillon, Xavier and Raynaud, Alan},
+  journal={Computational Science \& Discovery},
+  volume={8},
+  number={1},
+  pages={014001},
+  year={2015},
+  publisher={IOP Publishing}
+}
+
+@inproceedings{guelton2014exploring,
+  title={Exploring the vectorization of python constructs using pythran and
+                  boost {SIMD}},
+  author={Guelton, Serge and Falcou, Jo{\"e}l and Brunet, Pierrick},
+  booktitle={Proceedings of the 2014 Workshop on Programming models for
+                  {SIMD}/{V}ector processing},
+  pages={79--86},
+  year={2014},
+  organization={ACM}
+}
+
+@article{guelton2013compiling,
+  title={Compiling {P}ython modules to native parallel modules using {P}ythran
+                  and {O}pen{MP} annotations},
+  author={Guelton, Serge and Brunet, Pierrick and Amini, Mehdi},
+  journal={Python for High Performance and Scientific Computing},
+  volume={2013},
+  year={2013}
+}
+
+@article{salort2018,
+  title={A local sensor for joint temperature and velocity measurements in
+                  turbulent flows},
+  author={Salort, Julien and Rusaou{\"e}n, {\'E}l{\'e}onore and Robert, Laurent
+                  and Du Puits, Ronald and Loesch, Alice and Pirotte, Olivier
+                  and Roche, Philippe-E and Castaing, Bernard and Chill{\`a},
+                  Francesca},
+  journal={Review of Scientific Instruments},
+  volume={89},
+  number={1},
+  pages={015005},
+  year={2018}
+}
+
+@book{meyers2012effective,
+  title={Effective C++ Digital Collection: 140 Ways to Improve Your Programming},
+  author={Meyers, Scott},
+  year={2012},
+  pages={542--546},
+  url={https://n2t.net/ark:/13960/t2d86nb9s},
+  publisher={Addison-Wesley}
+}
+% url={https://archive.org/details/ScottMeyersEffectiveCDigitalCollection140WaysToImproveYourProgramming2018/page/n542},
+
+@article{DeloncleBillantChomaz2008,
+  title={Nonlinear evolution of the zigzag instability in stratified fluids: a
+                  shortcut on the route to dissipation},
+  author={Deloncle, Axel and Billant, Paul and Chomaz, Jean-Marc},
+  journal={Journal of Fluid Mechanics},
+  volume={599},
+  pages={229--239},
+  year={2008},
+  publisher={Cambridge University Press}
+}
+
+
+@article{frigo2005design,
+  title={The design and implementation of {FFTW3}},
+  author={Frigo, Matteo and Johnson, Steven G},
+  journal={Proceedings of the IEEE},
+  volume={93},
+  number={2},
+  pages={216--231},
+  year={2005},
+  publisher={IEEE}
+}
+
+@article{ascher1997implicit,
+  title={Implicit-explicit {Runge-Kutta} methods for time-dependent partial
+                  differential equations},
+  author={Ascher, Uri M and Ruuth, Steven J and Spiteri, Raymond J},
+  journal={Applied Numerical Mathematics},
+  volume={25},
+  number={2-3},
+  pages={151--167},
+  year={1997},
+  publisher={Elsevier}
+}
+
+
+@article{BillantDeloncleChomazOtheguy2010,
+  title={Zigzag instability of vortex pairs in stratified and rotating
+                  fluids. Part 2. Analytical and numerical analyses.},
+  volume={660},
+  DOI={10.1017/S002211201000282X},
+  journal={J. Fluid Mech.},
+  publisher={Cambridge University Press},
+  author={Billant, P. and Deloncle, A. and Chomaz, J.-M. and Otheguy, P.},
+  year={2010},
+  pages={396–429}
+}
+
+
+@article{cooley_tukey,
+  title = {An {Algorithm} for the {Machine} {Calculation} of {Complex} {Fourier} {Series}},
+  volume = {19},
+  number = {90},
+  journal = {Mathematics of Computation},
+  author = {Cooley, James W. and Tukey, John W.},
+  year = {1965},
+  pages = {297--301}
+}
+
+@incollection{canuto_algorithms_1988,
+	series = {Springer {Series} in {Computational} {Physics}},
+	title = {Some {Algorithms} for {Unsteady} {Navier}—{Stokes} {Equations}},
+	isbn = {978-3-540-52205-8 978-3-642-84108-8},
+	language = {en},
+	urldate = {2017-09-09},
+	booktitle = {Spectral {Methods} in {Fluid} {Dynamics}},
+	publisher = {Springer, Berlin, Heidelberg},
+	author = {Canuto, Claudio and Hussaini, M. Yousuff and Quarteroni, Alfio and Zang, Thomas A.},
+	year = {1988},
+	doi = {10.1007/978-3-642-84108-8_7},
+	pages = {201--239},
+}
+
+
+@InProceedings{ramachandran_pysph_2016,
+  author    = { {P}rabhu {R}amachandran },
+  title     = { {P}y{S}{P}{H}: a reproducible and high-performance framework for smoothed particle hydrodynamics },
+  booktitle = { {P}roceedings of the 15th {P}ython in {S}cience {C}onference },
+  pages     = { 122 - 129 },
+  year      = { 2016 },
+  editor    = { {S}ebastian {B}enthall and {S}cott {R}ostrup },
+  doi       = { 10.25080/Majora-629e541a-011 }
+}

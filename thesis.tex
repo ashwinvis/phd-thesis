@@ -1,0 +1,166 @@
+\documentclass{./templates/mechthesis/MechThesis}
+%
+% Default options:
+% [thesissizeG5,twoside,onecolumn,10pt,reqno,tbtags,globalpagenum,final]
+%
+%
+% Available options:
+% - size: [a4paper, letterpaper, thesissisze, thesissizeA4, thesissizeG5]
+% - printing: [twoside, oneside]
+% - columns: [onecolumn, twocolumns]
+% - font size: [8pt, 9pt, 10pt, 11pt, 12pt]
+% - position of equation numbers: [leqno, reqno]
+% - split-equations numbers: [tbtags, centertags]
+% - page numbers in papers: [globalpagenum, paperpagenum]
+% - editing: [final, draft, printA4, cropmarks]
+% - papers cover: [happyadvisor] (use it if you have more than 8 papers)
+%
+%
+% Packages
+%
+% insert in this file any additional package
+\input{packages}
+%
+%
+% Commands
+%
+% insert in this file any additional command
+\input{commands}
+
+
+%-------------------------------------------------------------------------------
+% Thesis information
+%-------------------------------------------------------------------------------
+%
+\title[\change{On the stability of a galaxy far, far away}]% Title used in the abstract (optional)
+{% Title of the thesis
+	\change{On the stability\\of a galaxy far, far away}
+}%
+
+\author{\change{Anakin Skywalker}}% Author
+
+\affiliation
+{%	Author's affiliation
+	Linn\'e FLOW Centre, KTH Royal Institute of Technology, Department of Mechanics\\
+	SE--100 44 Stockholm, Sweden%
+}%
+
+\titel
+{% Swedish title (for swedish abstract)
+	\change{P\r{a} stabiliteten i en galax l\r{a}ngt, l\r{a}ngt borta}
+}%
+
+\anslutning
+{% Author's swedish affiliation (for swedish abstract)
+	Linn\'e FLOW Centre, Kungliga Tekniska h\"ogskolan, Institutionen f\"or Mekanik\\
+	SE-100 44 Stockholm, Sverige%
+}%
+
+\date{Stockholm}{\change{February}}{\change{3641}}% City, Month, Year
+
+\info{% Defence information (in swedish)
+	Akademisk avhandling som med tillst\aa nd av Kungliga Tekniska H\"{o}gskolan
+	i Stockholm framl\"{a}gges till offentlig granskning f\"{o}r avl\"{a}ggande
+	av teknologie
+	\change{doktorsexamen} % doktorsexamen/licentiatsexamen
+	\change{s\"{o}ndagen den 30 februari 3641 kl 23:30} % day (no capital initials on days and month)
+	i sal \change{K47}, % room
+	Kungliga Tekniska H\"{o}gskolan, \change{Tatooinev\"agen 69, Coruscant}.% address
+	%
+	\\[\baselineskip]% Publishing info
+	%
+	TRITA-SCI-FOU \change{3641:01}\\ % you get from Stefan or Vivi or Daniel: skult@mech.kth.se - vivi@mech.kth.se - danse@kth.se
+	ISBN \change{978-91-7942-634-9} % you get from KTH library: https://www.kth.se/en/kthb/publicering/kths-publikationsdat/bestallning-av-isbn-1.535558
+	%
+	% there are no more ISSN nor ISRN
+	%
+	\\[\baselineskip]% Cover info (comment if no cover image is used)
+	%
+	{\it Cover:} \change{schematics of a thermal exhaust port of the Death Star}.
+	%
+	% In case you are interested
+	% the colour of the blue ribbon at the bottom of the page is:
+	% PANTONE 2935 U  https://www.pantone.com/color-finder/2935-U
+	% which corresponds to:
+	% RGB      27 95 170
+	% CMYK     98 52 0 0
+	% HEX/HTML 1B5FAA
+	%
+	% you can find more info about printing and the graphics at the following pages
+	% https://www.kth.se/en/kthb/publicering/kths-publikationsdat/for-forskare/spikningen-steg-for-steg-1.584638
+	% https://www.kth.se/en/student/program/examensarbete/avhandlingarochexamensarbeten/avhandlingar-och-examensarbeten-1.458230
+	% https://www.kth.se/polopoly_fs/1.477580!/KTH%20Inlaga_avhandling_stylesheet.pdf
+}%
+
+\printer{Universitetsservice US--AB, Stockholm}% Printer informations
+
+
+%===============================================================================
+%===============================================================================
+%                            BEGIN DOCUMENT
+%===============================================================================
+%===============================================================================
+
+%\includeonly{overview}
+
+\begin{document}
+
+
+%===============================================================================
+% Frontmatter
+%===============================================================================
+%
+\frontmatter
+
+\input{frontmatter}
+
+
+%===============================================================================
+% Part I: Overview and summary
+%===============================================================================
+%
+\mainmatter
+
+\part{Overview and summary}
+
+%-------------------------------------------------------------------------------
+% Overview and summary
+%
+\include{overview}
+
+%-------------------------------------------------------------------------------
+% Comment the following command if you do not want a separate page for Part II
+% in the table of contents
+%
+\tocpagebreak
+
+
+%===============================================================================
+% Part II: Papers
+%===============================================================================
+%
+\part{Papers}
+
+%-------------------------------------------------------------------------------
+% Summary of the papers
+%
+\makepapersummary
+\cleardoublepage
+
+%-------------------------------------------------------------------------------
+% Paper 1
+%
+%\include{paper1/paper}
+
+%-------------------------------------------------------------------------------
+% Paper 2
+%
+%\include{paper2/paper}
+
+
+%===============================================================================
+%===============================================================================
+%                            END DOCUMENT
+%===============================================================================
+%===============================================================================
+\end{document}

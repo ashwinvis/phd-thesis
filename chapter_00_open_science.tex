@@ -1,0 +1,1853 @@
+%% Journal of Open Research Software Latex template -- Created By Stephen
+%% Bonner and John Brennan, Durham Universtiy, UK.
+%% see http://openresearchsoftware.metajnl.com
+
+\chapter{Towards reproducible, open science through open research software}
+
+\section*{(1) Overview}
+
+\vspace{0.5cm}
+
+\section*{Title}
+
+% \textcolor{blue}{The title of the software paper should focus on the software,
+% e.g. “Text mining software from the X project”. If the software is closely
+% linked to a specific research paper, then “Software from Paper Title” is
+% appropriate. The title should be factual, relating to the functionality of the
+% software and the area it relates to rather than making claims about the
+% software, e.g. “Easy-to-use”.}
+
+% old title
+
+% FluidDyn: a Python open-source framework for research and teaching in fluid
+% dynamics
+
+% pa: this title may not be really good for this paper...
+% - "research and teaching" may not be very important in the title
+% - Recent progress in open-source software engineering and consequences on
+%   science
+
+% todo: find a better title!
+
+Taking advantage of recent advances in open-source software engineering to study
+fluid dynamics: the example of the FluidDyn project
+
+
+\section*{Abstract}
+
+% \textcolor{blue}{A short (ca. 100 word) summary of the software being
+% described: what problem the software addresses, how it was implemented and
+% architected, where it is stored, and its reuse potential.}
+
+\href{http://fluiddyn.readthedocs.io}{FluidDyn} is a project to foster
+open-science and open-source in the fluid dynamics community.  It is thought of
+as a research project to channel open-source dynamics, methods and tools to do
+better science.
+%
+We propose a set of Python packages forming a framework to study fluid dynamics
+with different methods, in particular laboratory experiments (package
+\fluidpack{lab}), simulations (packages \fluidpack{fft}, \fluidpack{sim} and
+\fluidpack{foam}) and data processing (package \fluidpack{image}).
+%
+In the present article, we review the recent advancements in web-based software
+development tools and Python which facilitated the execution of this project,
+and establish a picture of software engineering in fluid mechanics.
+%
+We give an overview of the specialized packages of the project and then
+focus on the base package called \fluidpack{dyn}, which contains common code
+used in the specialized packages.  Packages \fluidpack{fft} and \fluidpack{sim}
+are described with greater detail in two companion papers, \citet{fluidfft,
+fluidsim}.
+%
+With the project FluidDyn, we demonstrate that specialized scientific code can
+be written with methods and good practices of the open-source community. The
+Mercurial repositories are available in Bitbucket
+(\url{https://bitbucket.org/fluiddyn/}). All codes are documented using Sphinx
+and Read the Docs, and tested with continuous integration run on Bitbucket
+Pipelines and Travis.
+%
+To improve the reuse potential, the codes are as modular as possible, leveraging
+the simple object-oriented programming model of Python.
+%
+All codes are also written to be highly efficient, using C++, Cython and
+Pythran to speedup the performance of critical functions.
+
+\section*{Keywords}
+
+% \textcolor{blue}{keyword 1; keyword 2; etc. \\
+% Keywords should make it easy to identify who and what the software will be
+% useful for.}
+
+Fluid dynamics research with Python. Free and open-source software, modular,
+object-oriented, collaborative, efficient, tested, documented.
+
+\section*{Introduction}
+
+% \textcolor{blue}{An overview of the software, how it was produced, and the
+% research for which it has been used, including references to relevant research
+% articles. A short comparison with software which implements similar
+% functionality should be included in this section. }
+
+\subsection*{Science, software, open-source and the computer revolution}
+
+Science is mainly a collective activity.  We can go further only by
+\href{https://en.wikipedia.org/wiki/%
+Standing_on_the_shoulders_of_giants}{``standing on the shoulders of giants''}
+(and of a huge number of technicians and scientists).  Science is a lot about
+how to build new knowledge from the work of others and hence, the exchange
+of ideas is a fundamental aspect.
+%
+In the last decades, we have lived through a revolution on how people exchange
+ideas.
+%
+Computers of all kinds (from smartphones to HPC clusters) connected by a world
+wide web are used for human communication and also for many other applications.
+%
+It has become nearly effortless to reproduce and exchange ideas and data.
+%
+The set of intangibles that grows when shared and degrades when hoarded, such as
+knowledge and love, has been somehow extended.
+% Relevant quote: 
+% O Goddess Saraswati, your Treasure is unique in nature.  It increases when it
+% is freely spent and gets destroyed if it is hoarded (and not shared with
+% others).
+%
+The information technology revolution open doors to fantastic opportunities for
+human collaboration, and of course, for science.
+
+Web related activities alone account for at least 5\% of GDP in the USA and the
+European Union\footnote{See the report by Internet Association titled
+\href{https://internetassociation.org/reports/refreshing-understanding-internet-economy-ia-report/}
+{``Refreshing Our Understanding of the Internet Economy''}}.
+% \cite{hooton_christopher_refreshing_2017}.
+A huge amount of money (and work) is invested on the related technologies. We
+are familiar with the most prominent companies involved in this dynamics
+(Google, Facebook, etc.), but there are also several smaller and sometimes
+lesser known organizations.  Most of these companies base part of their work on
+the open-source paradigm contributing to open-source languages, libraries,
+software and operating systems, while also using them --- a win-win situation
+for both the corporations and the community.
+%
+This has lead to deep changes in software engineering, with a massive use of
+open-source methods and tools, for example
+\href{https://en.wikipedia.org/wiki/Distributed_version_control}{distributed
+version control systems (DVCS)} and web-based source development platforms.
+
+The computer performance continues to
+\href{https://en.wikipedia.org/wiki/Moore\%27s_law}{increase exponentially},
+now also with the help of Graphical Processing Units (GPU). This gave way to a
+big boom in practical uses of data science and machine learning, which drives a
+strong research on artificial intelligence.  This dynamics contributes to
+progresses in open-source software.
+
+These changes in our world also reflect in the way science is done.
+%
+Software and programming in science occupy a much bigger place than before.
+%
+% see http://sciencecodemanifesto.org/
+% http://lorenabarba.com/gallery/reproducibility-pi-manifesto/
+% https://www.numfocus.org/
+%
+The role of software in science has changed. In the past, coding was sometimes
+considered as an inferior activity by some scientists.  The focus was on the
+theory and the mathematical demonstration, which had to be elegant as it gets
+included in the articles.  In contrast, it was normal to write crude code
+% av: crappy = shitty!
+% alternatives: shabby, inelegant, amateurish, unpolished, clumsy
+% https://en.oxforddictionaries.com/thesaurus/amateurish
+and to just show the results. Nowadays, codes tend to be at the heart of
+research.
+
+``Open-science'' is a new trend taking advantage of these new facts.  Pioneering
+attempts are being made to do better science, improving reproducibility and
+collective efficiency, by using the open-source methods and tools for science
+and sharing and collaborating via the world wide web.
+
+% http://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261
+
+This paper presents FluidDyn, a project to foster open-science and open-source in
+fluid mechanics. This first section ``Overview'' is organized into two large
+parts.  A long introduction presents the context and describes our motivations and
+the concept behind the project FluidDyn.  It is organized as follows:
+\begin{itemize}
+\item A scientific project based on the collaboration through open-source, such
+as FluidDyn, is only possible thanks to the recent developments in methods and
+tools for open-source software engineering. We start by presenting these
+developments and discuss the implications for the scientists.
+
+\item FluidDyn is based on the language Python. Incidently, it is the defining
+characteristics of Python which make the eventual success of such a
+project realizable.
+
+Python is one of the most important tool in recent open-source dynamics and in
+particular in science.
+%
+Python in fluid mechanics is growing fast, but is yet to reach widespread
+adoption as the language of choice. Therefore, it is useful to present its
+characteristics for readers who are unacquainted with its nuances.
+
+\item We will discuss about the possible contradiction between productivity of
+individuals and productivity at the community level.
+
+\item We will establish a picture of software engineering in fluid mechanics
+and present some of the main tools commonly used.
+
+\item The introduction finally ends with a summary of the motivations for the
+project FluidDyn and a presentation of its principles.
+\end{itemize}
+
+The section ``Overview'' is completed by a second subsection called
+``Implementation and architecture'' devoted to present the organization of the
+packages of the project and to describe in more detail the base package
+\fluiddyn\footnote{We use FluidDyn (with capital letters) to name the project and
+\fluiddyn for the base package.}.
+
+\subsection*{Methods and tools for open-source software engineering}
+
+\paragraph{Free and Open-Source Software (FOSS).} The term \emph{free} in
+FOSS is a misnomer, as it actually stands for \emph{freedom} (to use, modify
+and distribute). The FOSS movement has dramatically decreased the cost of using
+computers, and is evident from the widespread use of GNU/Linux systems in
+desktops, computing clusters and web-servers in academia and beyond.
+%
+The beginnings of FOSS culture can be traced back to the success for scientific
+publication of the free type-setting standards \TeX\ (1977) and \LaTeX\ (1985).
+%
+Another founding moment for the FOSS movement was the launch of the GNU project
+in 1983 by \href{https://en.wikipedia.org/wiki/Richard_Stallman}{Richard
+Stallman}, to create a Unix-like computer operating system composed entirely of
+free software\footnote{For completeness, see also the work done on
+\href{https://www.levenez.com/unix/}{other Unix operating systems,
+for example BSD}.}.
+%
+GNU is today known for its compiler collection (GCC) and a multitude of tools
+which when combined with the Linux kernel (created by
+\href{https://en.wikipedia.org/wiki/Linus_Torvalds}{Linus Torvalds} in 1991)
+forms the GNU/Linux operating systems that we are familiar today.
+%
+FOSS movement has had huge successes in many frontiers --- Apache could be
+termed as the ``first killer-app of Linux'' and now with an ever-increasing
+suite of softwares including Firefox, LibreOffice, Gimp as solid alternatives
+to proprietary offerings.
+%
+Linux has become the most widely used kernel, being deployed on servers,
+personal computers, embedded devices, and also smart phones (with Android).
+
+% remark Julien Salort: not interesting. Nothing on BSD.
+% https://www.levenez.com/unix/
+
+Over the years, FOSS development has transitioned from an organic community of
+volunteers, towards an organized system with participation from industries,
+non-profit organizations and government institutions. This could be regarded as
+the second-age of FOSS movement~\cite{fitzgerald_transformation_2006}.
+
+%todo: DONE
+% Here, we have to add a paragraph on free and open-source (libre)
+% software:
+
+% The following facts can be mentioned:
+
+% - tex (started in 1977), latex (1985)
+
+% - GNU (started 1983), FSF in 1985, licence and philosophy...
+% first complete system (with the Linux kernel) in 1991
+
+% - 90s arrival of internet (soon mass market)
+
+% Some huge open-source successes : Apache ("first killer app of Linux"),
+% now Firefox, Open-office
+% av: https://www.reddit.com/r/AskReddit/comments/7x639l/what_free_software_is_so_good_you_cant_believe/du6pw11/
+
+% Linux kernel now widely used on servers, personal computers, embedded
+% devices, smarth phone (with Android).
+% https://en.wikipedia.org/wiki/Linux_kernel
+
+% Now, new period for open-source: 
+% see http://www.cepis.org/upgrade/files/full-2005-III.pdf
+
+% - "Libre Software Movement: The Next Evolution of The IT Production
+% Organization?"
+
+% - ``the composition of development teams was changing, from all-volunteer
+% teams to teams with paid participants from industry, government or
+% not-for-profit organizations.''
+
+% By the way, we also have to use the term "libre software" (?)
+% av: Libre-software is not so mainstream. Even Linux kernel is not libre with
+% binary blobs for drivers.
+
+% We may have to change the order of this list?
+% - git and mercurial 2005
+% - software repositories ~ 10 years before
+% so I would exchange the too paragraph...
+% av:That is probably because we did not mention patches and CVS, subversion
+% etc.
+
+
+\paragraph{Distributed Version Control Systems (DVCS) and web-based source
+development platforms.}  Collaboration was achieved in the early years of FOSS
+development through emailing ``patches'', and centralized VCS near the turn of
+the 21\textsuperscript{st} century.  The collective collaboration on
+development is today streamlined with the emergence of DVCS (especially, Git
+and Mercurial) and web-based source development platforms like GitHub,
+Bitbucket and more recently GitLab.
+%
+These tools are designed to work on any kind of text files, not just codes, so
+they could even be utilized to write scientific documents with multiple authors.
+%
+These tools are so useful for work, that using DVCS in science shall reap
+benefits in terms of productivity in the long run~\cite{wilson_best_2014}.
+
+Git has become the \textit{de facto} standard for source management. However,
+for the FluidDyn project, we prefer to use Mercurial because we consider it to
+be simpler for the beginners and just as powerful for expert users\footnote{See
+\href{https://www.mercurial-scm.org/wiki/GitConcepts}{``a detailed
+comparison''} on Mercurial website.}. Simplicity and lowering the learning
+barrier for scientists who are not experts in software development is crucial
+for our project.
+%
+Note that, it is now possible to use Mercurial to work with Git repositories,
+for example hosted in GitHub and GitLab\footnote{By using the Mercurial
+extension \href{http://hg-git.github.io/}{hg-git}.}.
+
+\paragraph{Package management and third-party software repositories.} Python
+as a medium for scientific computing owes its success to a rich ecosystem of
+third-party packages.  Smooth deployment of these packages requires a package
+manager and a supported repository. A credible hub to upload source codes as
+compressed archives or as pre-compiled binary packages was therefore
+indispensable. The use of repositories started with the conception of CPAN and
+CRAN repositories for the languages Perl and R in 1993 --- based on the
+Comprehensive TeX Archive Network (CTAN) model for \TeX\ packages. 
+
+Today, \href{https://pypi.org}{Python Package Index (PyPI)} and
+\href{https://anaconda.org}{Anaconda Cloud} are major repositories for
+delivering and downloading Python packages, assisted by package managers
+\pack{pip} and \pack{conda} respectively.
+% Almost all major 
+% languages\footnote{\href{https://stackoverflow.com/questions/1693529/%
+% list-of-top-repositories-by-programming-language}{https://stackoverflow.com/%
+% questions/1693529/list-of-top-repositories-by-programming-language}}
+% have similar repositories, with exceptions such as Fortran and Matlab.
+Specialized package managers have also emerged to install scientific
+libraries and compilers such as \pack{easybuild} and \pack{spack}.
+
+\paragraph{Continuous integration (CI).} The need for strong reliability of
+programs with increasing complexity has forced developers to use continuous
+integration.
+%
+In CI, firstly the code is \emph{built} against a known, repeatable emulation
+environment on a server. Thereafter, a set of \emph{unit tests} are run for each
+commit (modification of the code) to check that no bugs have been introduced. It
+is also important to analyse what portion of the source code is covered by these
+unit tests --- a method referred to as \emph{code coverage}. In FluidDyn project
+we stop at this level, but it is possible to further enhance it by adding code
+style checks by running linters alongside unit tests; and also to add
+\emph{continuous delivery} of documentation and package releases.
+
+Almost all CI platforms are free for open-source projects --- Travis CI,
+CircleCI and Appveyor % (sic) av: I have double checked the official names
+to name a few. Bitbucket and GitLab have built-in CI
+implementations.  Websites such as Codecov and Coveralls help to chart and
+analyse the code coverage history, viewable by anyone.
+
+When the code depends on a wide variety of external dependencies, CI is useful
+to avoid \href{https://en.wikipedia.org/wiki/Software\_rot}{software rot},
+i.e.\ to avoid becoming obsolete with newer versions of the compiler or its
+dependencies.  CI is specifically important for dynamical
+languages and open-source code since it allows open-source projects to welcome
+participation from many people while maintaining a high degree of reliability.
+
+\paragraph{Websites to share knowledge.} Mutual aid and knowledge sharing
+have been important aspects of the web since its inception and these practices
+are now of foremost importance for many human activities.
+%
+In particular, learning programming and computer science is now greatly aided
+by websites like the community driven encyclopedia
+\href{https://www.wikipedia.org/}{Wikipedia} or the community driven forum
+\href{https://stackoverflow.com/}{Stack Overflow}, where people write thousands
+of questions and answers on programming each week.
+% todo: remark from Julien Salort: it's old.
+% av: So are technologies like git and hg, but we are putting together what
+% characterizes our workflow, aren't we? We can emphasize that these forums
+% often work only when there is a "thriving community" like the Python
+% userbase.
+IRC protocol has continued to sustain the test of time. Instant messaging
+channels such as \codeinline{\#python} on Freenode facilitate interactive
+discussions and a form of community-level support system --- a role which used
+to be filled by mailing lists alone in the past. Alternatives such as Riot
+(Matrix protocol), Gitter, and Slack have gained traction offering different
+integrations solutions on top of instant messaging.
+%
+Through instant messaging a geographically separated team, as is the case with
+FluidDyn project, can achieve near real-time collaboration without the hassle
+of setting up video conferences or meetings.
+
+\paragraph{Automatic web documentations built on servers.}  Documentation
+generators such as Sphinx (for Python) and Doxygen (for many languages
+including C, C++, Fortran and Python) ``automagically'' convert in-line
+comments into documentations as PDF, HTML and more. Read the Docs has in the
+recent years become the main host for building and publishing documentation on
+servers as web pages, thus easing the process for developers and considerably
+improving access to information.
+
+% We need transitions and some words at the end of the subsections to help the
+% readers to understand why we present what we present and what is the link
+% with the FluidDyn project...
+
+We have presented new methods and tools used in software development.  Taken
+all together, they greatly improve our efficiency for collective work and open
+possibilities of interactions that were unthinkable only few years ago.
+%
+For example, the success of community-driven software like \pack{astropy} (a
+subject-area research library with \href{https://github.com/astropy/astropy}{more
+than 240 contributors}) and \pack{scikit-learn} (a machine learning toolkit with
+\href{https://github.com/scikit-learn/scikit-learn}{more than 1000 contributors})
+would not have been possible without these new software development methods.
+%
+% pa: done: we need to mention in this paragraph existing community-driven
+% subject-area research libraries (see the file
+% ./communitydriven_research_soft.md).
+%
+As a scientists, we can wonder how to fully exploit these new possibilities to do
+science.  The project FluidDyn is an attempt to help the fluid dynamics community
+to advance in this direction.
+
+
+
+\subsection*{Python, a programming language adapted for open-science}
+
+We now turn to the presentation of the
+\href{https://www.python.org/}{programming language Python}, another
+fundamental tool for the FluidDyn project.  Note that, this is not a detailed
+technical presentation: we focus on the ideas necessary to understand why the
+FluidDyn project is based on this language and on facts interesting for
+potential FluidDyn users and developers.
+
+Python community has thrived remarkably in the last few years, evident from the
+fact that by the end of 2017, Python became the second most popular language in
+terms of pull-requests in GitHub\footnote{See GitHub's annual report titled
+\href{https://octoverse.github.com/}{ ``The State of the Octoverse 2017''}.} and
+questions on StackOverflow\footnote{See
+\href{https://stackoverflow.blog/2017/09/06/incredible-growth-python/}{ ``The
+Incredible Growth of Python''}, a blog post by Stack Overflow.}.
+%
+TIOBE-index\footnote{\url{https://www.tiobe.com/tiobe-index}}, which assess the
+popularity of a language based on number of skilled users, courses and
+third-party vendors, ranks Python at number four. IEEE Spectrum\footnote{See
+the analysis titled \href{https://spectrum.ieee.org/computing/software/%
+the-2017-top-programming-languages}{``The 2017 Top Programming Languages''} on
+IEEE spectrum.} ranks Python as the most popular language in 2017 with a metric
+based on trends, demand by employers and users on open-source hubs.  All the
+rankings do agree that Python usage has been steadily growing and is here to
+stay.  Python largely outclasses languages like Fortran and Matlab according to
+these statistics, and is now clearly one of the mainstream languages with C,
+Java, C++ and Javascript.
+%
+Let us summarize some characteristics of the Python languages that have lead to
+such incredible success.
+
+% todo: DONE
+% We need an introductory paragraph on how big is Python today
+% + the fact that several scientists miss this fact.
+
+% See the file ./python-one-main-languages.rst
+
+The Python language has been designed to boost the communication of technical
+ideas between humans. The resulting code is as simple as possible due to the
+inherent emphasis on readability. Humans can focus on the ideas. Python differs
+from other mainstream languages for a variety of reasons:
+
+\begin{itemize}
+\item \textbf{Aesthetics.} The syntax is nice and elegant. Blocks of code are
+defined with the indentation.
+\item \textbf{Code style.} There are explicit guidelines
+(\href{https://www.python.org/dev/peps/pep-0008/}{PEP~8}) supporting the
+regularity (and thereby readability) of the code and tools
+(linters) to evaluate adherence to the style.
+\item \textbf{Dynamic typing.} The variables (the ``names'' in the code) are
+not attached for life to an object in memory\footnote{Opposite behavior
+compared to static languages as Fortran, C and C++.}. The types of the objects
+are inferred at run time from the code and the context, and in many situations,
+one does not need to declare them explicitly.
+%
+% Being a strongly typed language\footnote{In contrast to weakly typed languages,
+% such as JavaScript}, types of the objects are respected and implicit type
+% conversions are rarely performed.
+% av: "rarely / never"?
+% eg: 'hello' * 2 -> 'hellohello'; 1/3 -> 0.3333333
+%
+% pa: I think we can not cover such complicate notion in this document... It is
+% anyway not so important for our demonstration.
+\item \textbf{Automatic memory management.}  The user need not handle the
+memory allocation and deallocation by hand.  There are, of course, ways to
+control the memory usage of a program, though not as precisely as for low-level
+languages.
+\item \textbf{Interpreted.} The standard way\footnote{There are also tools to
+compile Python code (for example Cython and Pythran).} to run a Python code is
+to ``interpret'' it.  A program called the interpreter executes the code
+nearly\footnote{Actually, the execution of Python code is less simple and
+involves an Abstract Syntax Tree.}  instruction-by-instruction, with very few
+optimizations.
+%
+In contrast to other compiled languages such as Fortran, C or C++, there is no
+proper compilation step: the code is not translated to optimized machine
+instructions, but only to Python bytecode.
+%
+We will discuss shortly the disadvantages of this characteristic. Two evident
+advantages are rapid development cycle and the possibility of interactive
+workflow (usually with IPython or Jupyter notebooks).
+
+Note that there are many implementations of Python interpreters\footnote{We can
+cite CPython (written in C), Jython (Java), IronPython (C\#), PyPy (Rpython, a
+subset of Python) and MicroPython/CircuitPython (C, targeted to
+micro-controllers).}. The default and most widely used implementation is written
+in C and is called CPython.
+
+\item \textbf{Simple, yet powerful.}
+
+\begin{itemize}
+\item Python supports multiple programming paradigms, including imperative,
+object-oriented and functional.
+
+\item It is easy to interface with code written in other languages (in particular
+C, C++ and Fortran).
+
+\item Python comes with a large and high quality \href{https://docs.python.org%
+/3/library/index.html}{standard library}.
+
+\item Python can be deployed on many different machines with different operating
+systems (Linux, Windows, macOS, Android) and architectures (from a microcontroller
+--- with MicroPython or CircuitPython --- to a Blue Gene supercomputer).
+
+\end{itemize}
+\end{itemize}
+
+Thus, Python is one of the best ``glue'' languages for fast prototyping.
+Developing with Python is much faster and easier than with many other
+languages.  Less bugs are introduced by the developers simply because there are
+much less lines of code \cite{nanz_comparative_2015}.
+%
+Maintaining and modifying existing code is also eased by the very good code
+readability associated with the language.
+
+Another consequence of the apparent simplicity of Python is that the learning
+curve has a nice shape. Learning Python is very easy at the beginning and the
+complexity gradually increases as the level of the developer increases.
+%
+Therefore, Python is good for developers of all levels: very gentle for
+beginners and very powerful for advanced users.
+
+Python is an old language (first implementation in 1991!) but it continues to
+evolve.
+\begin{itemize}
+\item A hard and controversial decision was taken to clean up Python from its
+historical incoherences by having a new series of backwards-incompatible
+versions of the language, Python 3.  Python 3.0 was released in December 2008.
+After a long and difficult process, the transition from Python 2 to Python 3 is
+now (2018) behind us for nearly all important packages\footnote{Close to
+\href{https://python3wos.appspot.com/}{95\% of the most downloaded packages}
+are Python 3 compatible now.}.  Especially for scientific applications, we can
+now work only in Python 3. For instance, \href{https://github.com/%
+numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst}{future
+releases of \Numpy} and of \href{http://www.python3statement.org/}{the main
+scientific packages} will soon drop compatibility with Python 2. These changes
+open doors to very clean, coherent and potentially faster Python
+experience. Therefore, one should not use Python 2 for science anymore and
+instead, adopt the newer versions ($>=3.5$ in 2018).
+
+\item New versions of Python have nice new features to adapt to new usages and to
+recent trends in computer science.  For example, three new features were
+introduced in Python 3.5 (first released on September 2015): the \codeinline{@}
+operator for matrix multiplication, the new \codeinline{async} and
+\codeinline{await} keywords for concurrency and type hinting\footnote{See also our
+paragraph on the issue of type checking in the following.} (with the module
+\codeinline{typing} and an associated syntax presented in the
+\href{https://www.python.org/dev/peps/pep-0484/}{PEP~484}).
+\end{itemize}
+
+\subsubsection*{An incredible success}
+
+Being a very versatile language, Python is widely used for many different
+applications:
+\begin{itemize}
+\item Simple scripting.
+
+\item System, database and network administration.
+
+\item GNU/Linux distribution software.
+
+\item Python is now one of the main scripting languages to add programmability
+to applications (for example Paraview, Visit, QGIS, Blender, ...).
+
+\item Web servers.
+
+\item Web scraping and data analysis.
+
+\item Animation movies, game development and gaming.
+
+\item Education. Python has recently become one of the most popular language
+for teaching programming and computer science.
+
+\item Science!
+Python is now widely used in scientific applications. It has now a mature and
+powerful scientific ecosystem with well-established based packages (\Numpy for
+N-dimensional homogeneous arrays, \Scipy as the fundamental toolkit for
+scientific computing, \pack{Matplotlib} for plotting and \pack{Pandas} for data
+structures) and several more specialized packages (to name a few, \pack{h5py},
+\pack{mpi4py}, \pack{skimage}, \pack{sklearn}, ...). There are now great (and
+often shiny) tools for most of the applications. For example, the
+\href{https://github.com/rougier/python-visualization-landscape}{%
+landscape of visualization tools usable through Python} is impressive.
+%
+Python is one of the main languages for data science with packages such as
+\pack{Pandas}, \pack{statmodels}, \pack{sklearn}, \pack{Keras}, \pack{TensorFlow}
+and \pack{PyTorch}.
+
+There are now ready-to-use ``batteries-included'' Python installers
+(similar to Matlab), like in particular the
+\href{https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)}{%
+freemium open-source distribution Anaconda}, so it is very easy to start using
+Python for scientific purposes.
+
+There are now nice Python integrated development environments (IDE) adapted for
+scientists, for example \href{https://github.com/spyder-ide/spyder}{Spyder},
+\href{http://www.pyzo.org/}{Pyzo} and
+\href{https://jupyterlab.readthedocs.io}{Jupyterlab}.
+
+\end{itemize}
+
+Python has a very large and supportive community (see for example
+the \href{http://stackoverflow.com/tags}{Stack Overflow tags}).
+%
+But Python is also supported by companies using Python and the open-source
+dynamics.  Most of these companies that support Python are specialized in
+web technologies and data-driven research.  But, recently, companies basing
+their business
+% av: earlier "computer and web technologies". Computer is quite obvious, isn't
+% it?
+on Python for science have started to become quite powerful in terms of
+development. For example Anaconda Inc.\ is strongly implied in the development of
+tools like \pack{Numba} and \pack{dask}. Hardware giants such as Intel and Nvidia
+also contribute to the Python scientific ecosystem.
+
+
+\subsubsection*{Some Python issues}
+
+\paragraph{Since the standard Python interpreter does not do any proper
+compilation,} Python code in some CPU bounded cases can be too slow.  Thus, one
+has to use special tools to get optimized machine instructions to speedup
+performance-critical code.
+
+\textbf{Ahead Of Time compilation.}  Since Python is primarily a ``glue''
+language, a common solution is to use code written in C, C++ or Fortran.
+%
+% todo: DONE
+% add a reference to ctypes and cffi to call C with pure Python code
+%
+It is possible, without a compilation step, to call functions in C libraries
+through pure python code using \pack{ctypes} standard module or the \pack{cffi}
+package.
+%
+Libraries with Python bindings can also be used directly (for e.g., wrapped
+using SWIG or Boost.Python) or one has to write extensions, i.e.\ Python
+modules written in C or C++ using the CPython API that can be imported directly
+from Python like any Python module.
+%
+However, to rely on such techniques to call C libraries would inhibit
+development of extending functionalities, as they have a steeper learning
+curve compared to Python.
+%
+Nevertheless, this strategy has given rise to the base modules of the scientific
+Python stack, namely \Numpy, \Scipy and \pack{Matplotlib}.
+
+Python developers do not actually have to write the compiled extensions in C,
+C++ or Fortran, since there are tools to generate them automatically from
+Python code (Pythran) or from Cython code. Cython \citep{behnel_cython2011} is a
+smooth blend of two languages with possibility to add type declarations like in
+C/C++, but with a syntax similar to Python.
+
+Pythran \citep{guelton2015pythran, guelton2018pythran} is a quite recent Python
+compiler which gives impressive results. It creates compiled extensions from pure
+Python code with simple type annotations written as comments.
+%
+The resulting extensions are usually as fast as Fortran or C++ written by
+non-specialists \cite[see, for example, benchmarks for the packages
+\fluidpack{fft} and \fluidpack{sim},][]{fluidfft, fluidsim}.
+%
+They are created with a very interesting two-step compilations: first the code
+is optimized at the Python level and then an automatically produced C++ code is
+properly compiled.
+%
+This two-step compilation provides room for very clever optimizations as
+demonstrated, for example, in
+\href{http://serge-sans-paille.github.io/pythran-stories/%
+being-more-than-a-translator.html}{%
+this blog post by the main developer of Pythran}.
+%
+Pythran supports OpenMP pragma \citep{guelton2013compiling} and can use modern
+vectorization with SIMD instructions \citep{guelton2014exploring}. Pythran
+understands both Matlab-like vectorized code and C-like code with explicit loops
+\citep{guelton2018pythran}.
+
+We present in the two companion papers \citep{fluidfft, fluidsim} examples of
+highly efficient Python codes, optimized using a combination of Cython and
+Pythran extensions.
+
+\textbf{Just In Time (JIT) compilation.} Another way to obtain optimized
+machine instructions is by using JIT compilation, i.e.\ by compiling only the
+critical code at run time.
+%
+This strategy can yield good results with other languages as for example Matlab
+or Julia.
+%
+Pypy, an alternative interpreter written in Python, has a JIT compiler. However,
+Pypy is not widely used for scientific applications mainly because of
+compatibility problems with the extensions written for CPython.
+%
+However this could change since a recent version of Pypy (6.0) supports the main
+packages of the Python scientific stack (\Numpy, \Scipy, \pack{Matplotlib},
+\pack{Pandas}, etc.).
+
+Adding a JIT to the interpreter CPython has been notoriously difficult (see
+\href{https://faster-cpython.readthedocs.io/}{faster-cpython}). One of the
+problem seems to be the C API provided in CPython and used by many extensions.
+%
+Python being first a glue language, a faster CPython with a JIT is actually not
+so necessary for many purposes. Therefore, not as much money and work has been
+put in accelerating Python than for example for Java and JavaScript.
+
+Another strategy is to add a JIT to CPython through an external package
+(\pack{Numba}) and to only compile the critical functions.  Moreover,
+\pack{Numba} is particularly interesting because it can take advantage of the
+GPU\footnote{See for example
+\url{https://devblogs.nvidia.com/parallelforall/seven-things-numba/}}.
+
+
+\paragraph{No type-checking.} In contrast to languages using Ahead Of Time
+compilation, there is no type-checking in Python (and more generally in many
+dynamical languages).  Type-checking is useful since it can avoid simple bugs.
+However, it is not a good practice even with static languages to rely only on
+type-checking to look for bugs in a code.
+%
+It is known that a rigorous set of unit tests is also needed to obtain more
+reliable codes.
+%
+Dynamical languages rely a lot on unit tests so it is very important to put at
+least a little bit of time and energy to write a decent battery of tests.
+%
+We have to mention the young and promising project
+\href{http://mypy-lang.org/}{Mypy}\footnote{Guido van Rossum, the author and
+``Benevolent Dictator For Life'' of Python, is involved in the project Mypy.},
+which allows for Optional Static Typing and thus type-checking for
+Python\footnote{We plan to add type hitting in the most important FluidDyn modules
+to investigate how we can take advantage of type-checking with Mypy.}.
+
+\paragraph{A lively, huge and thus complicated ecosystem.} As already
+mentioned, Python is a versatile language. For many applications, the standard
+library is insufficient and one needs external packages.
+%
+% For most applications there are several projects usable through Python.
+Most of the time there are several Python packages for a certain application.
+A user/developer has to make choices regarding the tools to use.  Especially
+for the beginners who are not used to the open-source realm, it can be
+difficult to understand a ``landscape of projects'' for a particular
+application and to make good technological choices.
+
+It is important to get a good introduction on how to work with the open-source
+dynamics and the scientific Python ecosystem.  It can also be very useful to ask
+to more advanced users and attend Python courses or workshops\footnote{This could
+be regular academic courses, MOOCs or workshops like ones organized by
+\href{https://software-carpentry.org/}{Software Carpentry}.}.
+%
+Of course, such abundance of projects can also be seen as an advantage.
+
+\paragraph{Absence of multicore computational parallelism using threads.}
+Threads behave like light subprograms. In principle, they can use the different
+cores of the CPU at the same time but the CPython interpreter forbids that they
+interpret python code at the same time\footnote{See
+\href{https://opensource.com/article/17/4/grok-gil}{this blog article on ``How
+to grok the GIL''} and
+\href{https://faster-cpython.readthedocs.io/cpython37.html}{this technical
+presentation by a CPython core developer}.}.
+%
+This limitation comes from an important detail in the implementation of the
+CPython interpreter: a Global Interpreter Lock (GIL) to prevent race conditions
+that could corrupt data.
+%
+It seems that the GIL greatly simplies the implementation of CPython and that it
+is very difficult to remove it while keeping other nice technical properties of
+CPython intact\footnote{See \url{https://wiki.python.org/moin/GlobalInterpreterLock}.}.
+Note that Pypy also uses a GIL, while two other implementations of the Python
+language, Jython and IronPython, do not have this limitation.
+
+At any rate, threads using the interpreter do not use the CPU at the same time
+so it is not possible to use threads to do multicore computational parallelism
+with pure python code to accelerate CPU bounded tasks.
+%
+Note however, that threads can be (and are widely) used in Python for
+concurrency, i.e.\ to perform I/O tasks (which does not need CPU) concurrently.
+%
+To do proper computational parallelism for CPU bounded tasks with the GIL, one has
+to use other strategies: extensions (fine grain parallelism), multiprocessing
+(coarse grain parallelism) and inter-process communication, for example, with MPI
+(with mpi4py) or ZeroMQ.
+
+
+\subsubsection*{Rich landscape of open-source languages useful for science}
+
+So far, we have discussed in detail about Python. However, there are many
+interesting open-source languages that can be used for scientific applications.
+All have strengths and weaknesses.
+
+Fortran remains widely used for computing codes, at least in fluid mechanics.
+C++ is used in many recent developments. Its recent improvements (C++11, C++14)
+make it a modern and very useful language.
+%
+JavaScript, Java, Scala, Smalltalk, Haskell, R, Julia, Perl and Lua are used for
+some scientific codes. Go and Rust are quite young languages and are not (yet)
+widely used for scientific applications.
+
+It is of course very difficult to predict which technologies will be widely
+used in even the near future (10 or 20 years for example).
+%
+From what we see, it seems that the idea of ``one language to do everything for
+science'' will not succeed, at least soon.  This was maybe the project of Julia
+creators, but despite the qualities of this language, it also has
+limitations\footnote{For example C-like include instead of Python-like
+import. From our point of view, a Pythonic flavor of Julia would be very
+interesting.}.
+%
+It seems that a very important aspect in the future will be interoperability
+between coexisting tools\footnote{See for example the cross-language development
+platform \href{https://arrow.apache.org/}{Apache Arrow}.}.
+
+So what about Python?  As already mentioned, it is today the language with the
+strongest dynamics in science, data analysis and much more.  Several students
+learn and will learn it. Many scientists in the future would, hopefully, be
+able to appreciate these strengths and favour the Pythonic approaches.  With
+such dynamics today, we can anticipate that the Python world will be able to
+embrace new technological trends and to overcome some of its current
+limitations.
+%
+It is reasonable to predict that Python will continue to shine as a language
+(i) particularly good for human communication and to write ideas, (ii) for fast
+prototyping and (iii) for interoperability with code written in other languages
+(see for example the recent projects \href{https://cppyy.readthedocs.io}{cppyy}
+and \href{https://github.com/pybind/pybind11/}{pybind11}, or
+\href{https://github.com/PyO3}{the possibility to interact with Rust code}).
+
+\subsubsection*{Summary: Python, a versatile Swiss Army Knife for the
+scientists}
+
+Python has become a great versatile tool for scientists.  The scientific
+ecosystem of Python is nowadays really impressive.  The scientific Python
+community is strong and quickly growing.
+%
+A scientist with good skills in Python can do most of what she/he needs to do in
+programming (which does not mean that Python is the best language to do
+anything!).
+%
+In contrast, no skill in Python is a real disadvantage for many tasks and for
+employability.
+%
+Therefore, in most fields today, if a scientist has to acquire good skills in
+one language, it is in Python.
+
+Considering what we have presented on Python, we think that it is reasonable to
+bet that it will become one of the \textit{lingua franca} in science and in
+fluid dynamics.  This explains why we have chosen it to be the main language
+for the project FluidDyn.
+
+
+\subsection*{Productivity at individual, group and community levels}
+
+% remark Julien Salort "It is well known that": bad
+% pa: common sense says ?
+% It is well known 
+It is not surprising
+% av: "It is not surprising"
+%
+that short-term efficiency and long-term efficiency are
+sometimes incompatible.
+%
+Quick and dirty scripts can be efficient in the short term, but such a workflow
+has a negative impact on a longer time scale.
+
+Similarly, we can also differentiate productivity at different scales of
+collaboration.
+%
+An individual can be very efficient with a particular tool, but the same tool
+can be very inefficient to collaborate even with co-workers.
+%
+A group can be very efficient with a code which is closed-source.  If this
+strategy can be efficient for the group (at least in the short term), it leads
+to waste for the community. Other groups will need to develop codes with the
+same features.  Good ideas will be spread in different codes and since the
+number of users and developers are smaller for each of these codes, the code
+quality will not improve as fast as it would with an open-source strategy. In a
+nutshell, as this proverb says, \textit{``If you want to go fast, go alone. But
+if you want to go far, go together.''}
+
+Thus, a community using open-source methods can be efficient to co-develop its
+tools. However, some of its members have to spend more energy to bear this
+dynamics, which implies that they somehow sacrifice their individual efficiency.
+We see that short-term efficiency, long-term efficiency and productivity at
+different levels can often be incompatible and that we have to consider these
+conflicts when choosing between different technologies.
+
+\subsection*{Programming in the field of fluid mechanics}
+
+We study fluid mechanics via laboratory experiments, in situ measurements,
+analytic computation, numerical simulations and data processing.
+%
+Nowadays, programming is involved in all methods, and thus it is difficult to do
+fluid mechanics without software development.
+%
+However, the level in software engineering is on average very low in the
+community.
+%
+Even today, it is quite commonplace to start a PhD without any serious training in
+GNU/Linux and modern programming tools.
+%
+A large majority of scientists and technicians are also unaware of the new
+challenges and opportunities of open-source.
+
+Since fluid dynamics is an engineering science, closed-source commercial software
+have historically been dominant in the field.
+%
+Few people are aware of the vicious circle of the closed-source model for people
+and groups relying on it.
+%
+This mechanism is nevertheless very damaging. In the closed-source model, a group
+pays for a license or a new development. The group does not learn how to develop
+what has been paid for. The company, on contrary, stands to gain from profits and
+the feedback generated from users, through which it improves the product sold.
+The group produces codes, books, courses using the closed-source product or
+acquire knowledge on how to use the closed-source product, so that the group is
+increasingly dependent on the product and is ready to pay more for it.
+%
+Such vicious circles are difficult to break, but not impossible. This can be
+done by introducing alternative open-source solutions, bringing in positivity to
+this circle.
+
+We have seen that it was very common to rely on commercial companies and
+closed-source software for most of the new developments in fluid mechanics.
+%
+Nevertheless there are also a lot of codes produced by scientists in the
+field. But without the technical knowledge on how to work collectively on code,
+this production is often of bad quality (compared to the information technology
+industry standard) and it is basically doomed to be abandoned after its use.
+%
+However, it is natural to try to reuse code or at least to build the next steps
+on what has been done before.  Thousands of hours of highly qualified people
+are spent in trying to understand and reuse codes badly written with
+inappropriate languages!
+
+On a technical point of view, the majority of the coding in the field involve a
+mix of Fortran/C or C++, shell languages (as Bash) and Matlab. For experiments,
+the graphical programming environment
+\href{http://www.ni.com/en-us/shop/labview.html}{Labview} is dominant for
+control of physical objects and acquisition and Matlab is used for data
+processing.
+%
+Often, languages are used for things for which they are not adapted.
+%
+Fortran, C or C++ have not been designed for fast prototyping of complex
+programs.
+%
+It is known that for scientific purposes, one should restrict shell scripting
+to extremely simple tasks.
+%
+Similarly, using Matlab for developing complex programs is technically a
+questionable choice.
+%
+These technical solutions also represent a problem for code reuse, sharing and
+collaborative development.
+%
+We are now going to present factual arguments explaining why we think that the
+massive usage of Matlab decreases the collective efficiency of the community.
+
+\subsubsection*{Discussion on Matlab, Labview and Mathematica}
+
+% see http://www.pyzo.org/python_vs_matlab.html
+% see https://www.linkedin.com/pulse/matlab-vs-python-jan-rhebergen
+
+Matlab is a closed-source proprietary numerical computing environment.
+%
+It is a good tool for simple processing with matrices, image processing, data
+visualization and certain niche applications. The language is well adapted for
+these tasks. The development environment is nice and the interpreter is quite
+fast, especially now that it has a JIT compiler.
+
+However, the language suffers from serious technical issues which make Matlab
+an inadequate tool
+% \citationneeded[opinion] % pa: I think what we say is fine for an article. We
+% are not writing a wikipedia page which has the ambition to be neutral. Here,
+% we gives an argued opinion, which is totally normal in a scientific article.
+% av: fair enough :)
+for doing more than simple processing and data plotting. The comparison with
+Python often debated upon. We list a few striking Matlab weaknesses:
+
+\begin{itemize}
+\item One file for each function (or class) available outside the file where it
+is implemented. No notion of package or module.
+
+\item No real organization of the standard library. All built-in and
+user-defined functions are available in a huge flat namespace. No import
+mechanism and as a result we cannot deduce, simply by looking at the code,
+where a function comes from.
+
+\item A standard way to organize multi-file code is to write scripts that
+modify and define global variables (see for example
+\href{https://www.damtp.cam.ac.uk/user/jrt51/files/diablo\_mat.tar.gz}{%
+this Matlab version of the code Diablo}).  It is so simple to do this that we
+can assert the language strongly encourages this practice.  Matlab files are
+not self consistent, i.e.\ it is normal to use in a file a global variable
+defined outside of the file.
+
+\item Very bad default argument mechanism.
+
+Default arguments for a function is a very common feature is many programming
+languages. In Python, we can write:
+\begin{minted}[fontsize=\footnotesize]{python}
+def myfunc(a, b, c=1, has_to_print=True):
+    if has_to_print:
+        print('a =', a, 'b =', b, 'c =', c)
+    return c * (a + b)
+\end{minted}
+
+An implementation for approximately the same behavior in Matlab could be (as
+advised in the official Matlab documentation):
+\begin{minted}[fontsize=\footnotesize]{matlab}
+function ret = myfunc(a, b, varargin)
+    if nargin < 2 | nargin > 4
+        error(['The number of arguments has to be ' ...
+               'greater than 2 and lower than 5'])
+    end
+    if nargin == 4
+        has_to_print = varargin{2};
+    else
+        has_to_print = 1;
+    end
+    if nargin >= 3
+        c = varargin{1};
+    else
+        c = 1;
+    end
+
+    if has_to_print
+        disp(['a = ' num2str(a) '; b = ' num2str(b) '; c = ' num2str(c)])
+    end
+    ret = c * (a + b);
+end
+\end{minted}
+Even for a very simple function, there are many places where bugs can be
+introduced and the code is much less readable than the corresponding Python
+code.
+
+\item Less intuitive syntax for string operations in Matlab, compared to
+Python. Take for example for string comparison, \codeinline{strcmp(s1, s2)} in
+Matlab versus \codeinline{s1 == s2} in Python or for look up,
+\codeinline{contains(s1, pattern)} in Matlab versus \codeinline{pattern in s1}
+in Python.
+% \item Less intuitive and clear syntax for exception
+% handling. \citationneeded[opinionated].
+% pa: Matlab has now a MException class. The syntax is not nice, but it is
+% not so important.
+\item Less clear and intuitive model and syntax for object oriented
+programming, compared to Python. As for functions, one file per user-defined
+class is necessary.
+% \citationneeded[opinionated].
+\item Parenthesis used for both function calls and indexing, causing ambiguity.
+\item Matlab codes are usually full of \codeinline{;}, \codeinline{.*},
+\codeinline{./}, \codeinline{\&\&} and \codeinline{||}, which make them quite
+``noisy''.  Moreover, there is nothing like the Python PEP~8. This makes a
+large proportion of the Matlab codes difficult to read and understand, due to
+lack of a consistent code style.
+\item The syntax \codeinline{a(100, 100) = 1;} to create and extend matrix is a
+very good way to hide bugs. The code \codeinline{a = eye(2); a(i0, i1) = 1;}
+will never raise any error regardless the values of \codeinline{i0} and
+\codeinline{i1}! No error is raised if a user misspell the variable
+\codeinline{a} and write something like \codeinline{aa(100, 100) = 1;}.
+\end{itemize}
+
+Now we turn our attention, from structural issues of Matlab syntax, to more
+practical constraints its use brings about.  By definition of a closed-source
+software, Matlab is a big black box: it is impossible to study the
+implementation of its functions.
+
+Matlab is not free. The price for one license for non-commercial use is not
+very expensive for most research and teaching institutes. However, when we
+start to add up the price of the toolboxes necessary to run most codes, it
+starts to become substantially large for some institutions.  The price of
+Matlab quickly escalates when deployed on a cluster with MPI, since a licence
+is required per user, per node!
+% av: not per process.
+% see: https://www.nas.nasa.gov/hecc/support/kb/running-matlab-applications-in-parallel_522.html
+
+It would be interesting to estimate what could be done with open-source
+solutions with a part of the amount paid by public research institutes. How
+many developers could be paid to improve the alternative open-source solutions?
+%
+This question raises the issue of funding scientific open-source software.
+
+Moreover, it is well known that the lack of license for the personal computers
+of staff is sometimes solved with cracked versions of Matlab. How can serious
+research projects rely on such illegal methods?
+%
+Note that open-source Matlab interpreters do exist, such as Octave and Scilab.
+%
+% pa: warning! Octave has a JIT compiler!
+%
+% Unfortunately, these are not serious alternative today. Their user
+% community is too small and they are not very efficient, especially now that
+% Matlab uses a JIT compiler and that optimized Matlab codes rely on it.
+
+The recent open-source and Python dynamics represent a hard punch for Matlab,
+which is losing the dominant position it has in some domains.
+%
+Note that this is a very recent development. The Python scientific ecosystem can
+now compete in nearly all domains, but this was not the case typically 5 years
+ago.
+%
+There are still a large number of researchers and teachers in sciences who are
+strongly attached to Matlab mainly because they have used it a lot.
+%
+It is, of course, difficult to change habits especially when those are efficient
+(for a short time-span and on an individual or group scale) enough for what you
+do.
+
+It is normal that Mathworks, the company which makes money with Matlab, spreads
+\href{https://www.mathworks.com/products/matlab/matlab-vs-python.html}{arguments
+against Python and its scientific ecosystem}.  Some of them are valid, for
+example the issue of the lively, huge and thus complicated scientific ecosystem
+that we have already discussed.  Other arguments are unfair or no longer valid
+nowadays.
+% Here, we remove a long argument with Mathworks (see the file
+% old_arguments_mathworks.tex)
+% av: Less provocative, that is good. But we can still add a footnote linking
+% the Pyzo page / LinkedIn page comparing python and matlab.
+%
+% We replace by this:
+The scientific Python ecosystem is now very mature, robust, well documented and
+fully integrated.  Many of this components are supported by professional
+developers paid by companies or research institutes, for example \pack{Numba}
+(Anaconda, Nvidia), \pack{TensorFlow} (Google), \pack{PyTorch} (Facebook, Twitter,
+Nvidia), Scikit-learn (INRIA), Mercurial (Facebook).
+%
+The support by the Python community is both very reactive and of very good
+level (for example in Stack Overflow, and issues page on major repositories)
+and it is now possible to pay companies to get professional support on
+scientific Python (for example
+\href{https://software.intel.com/en-us/distribution-for-python/get-help}{Intel}
+and \href{https://www.anaconda.com/enterprise/}{Anaconda}).
+%
+Finally, with the tools available today, with little effort we can get a very
+efficient program using only Python code.
+
+To conclude on Matlab, some people may use it efficiently for their work, but it
+starts to be a problem for the collective efficiency of the community. Except
+from the existence of a large code base difficult to translate in better
+languages or for some very specific applications, it seems difficult today to
+find a good technical reason to continue using Matlab.
+
+The same remarks can be made for Labview. It is a graphical programming
+language and the programs are saved as binary files. This is a problem because
+first it is impossible to read a Labview program without Labview and, more
+importantly, it forbids the use of source management tools which are so
+important for collective work and open-source.
+
+Matlab and Labview also lead to problems for students, who learn bad coding
+habits and languages that are much less in demand by employers than for example
+Python.
+
+For symbolic computation, some specialists use Mathematica, which is a good and
+very expensive proprietary closed-source mathematical symbolic computation
+program.
+%
+Sage and Sympy are two complementary open-source alternative both based on
+Python.
+
+
+\subsubsection*{Different models for software development in fluid mechanics}
+
+Proprietary codes tend to dominate the field of fluid mechanics. This is true
+for industrial Computational Fluid Dynamics (CFD), for example with the Ansys
+suite and also for acquisition and analysis of images of fluid with the
+two companies Dantec and Lavision.
+%
+Even certain softwares developed by researchers in academic laboratories
+also follow a closed-source model, for example
+\href{http://www.damtp.cam.ac.uk/user/fdl/digiflow/index.htm}{Digiflow}.
+%
+Closed-source or even undistributed software is a widespread model in the
+field.
+%
+The arguments against sharing are diverse:
+
+% todo: DONE
+% pa: I am really uncomfortable with this presentation which gives the
+% impression that we think that the arguments against sharing are always wrong.
+%
+% We have to make it clear that it is not the case and that we do respect how
+% other people think and work.
+% av: I have commented out specific counter arguments, instead added two
+% sentences after the bullets
+\begin{itemize}
+\item \textit{``We do not share to keep a comparative advantage.''}
+
+%	Sharing code leads to reproducibility, making related
+%	publications more attractive to readers. The authors gain
+%	comparative advantage by earning citations.
+
+\item \textit{``We do not share because we do not provide support.''}
+
+%	Support and documentation is invaluable, of course. But sometimes, a code
+%	with comments can be sufficient, which is a common practice.
+
+\item \textit{``We do not share because people would not be able to
+correctly use the code or interpret the results.''}
+
+% pa: this one does not respond to the problem... (bad use of the program)
+
+%	Poorly written code is infinitely more useful than no code at all.
+
+\item \textit{``We do not share because we want to control industrial usage.''}
+
+%	Proper choice of license can legally restrict and permit industrial
+%	usage at the discretion of the developer.
+
+\item \textit{``We do not share because we do not want people to review
+and criticize our code.''}
+
+%	People are, in general, kind and welcoming in the open-source community.
+
+\item \textit{``We do not share, because in this way, people will think our
+project has more value.''}
+
+% pa: this one looks too "religious" to me :-) but ok...
+%	True value is gained by furthering science and dissemination of ideas, not by
+%	fabricating an appearance.
+\end{itemize}
+
+The flip-side involves releasing a well-written, documented, easy to use and
+maintain source code with appropriate license to ensure credit where it is due.
+This can potentially add value for the community through added transparency in
+publications, and in return, value for the authors of software in terms of
+recognition and citations. We have only looked at the most ideal scenarios and
+the question of soundness of the above arguments is left as an open question to
+the reader.
+
+Between closed-source and open-source, is a grey area gathering different
+practices.
+%
+It is quite common to share only for ``friends'' to control the dissemination
+of the software.
+%
+This model can be institutionalized with an official group, for example with
+the code \href{https://www.coria-cfd.fr/index.php/YALES2}{Yales2}.
+%
+% av: Institutionalized? I don't understand.
+With such a model, the lack of a proper open-source license can naturally lead
+to problems and is a limitation for users/developers.
+%
+Another common practice is to share without repository (for example
+\href{http://www.damtp.cam.ac.uk/user/jrt51/files.html}{Diablo} or
+\href{http://yakari.polytechnique.fr/people/deloncle/ns3d.html}{NS3D}) and/or
+without license (\href{https://choosealicense.com/no-permission/}{meaning that the
+code is actually under exclusive copyright}).
+
+Finally, several scientists in the fluid dynamics community have used
+open-source methods in their work for a long time.
+%
+There are a lot of open-source research codes written with proprietary tools
+(typically written in Matlab, see for example
+\href{http://pivlab.blogspot.de/}{PIVlab},
+\href{http://servforge.legi.grenoble-inp.fr/projects/soft-uvmat/}{UVmat} and
+\href{https://de.mathworks.com/matlabcentral/fileexchange/10902-pivmat-4-00}{PIVmat}).
+%
+Let us first say that these codes are a great wealth for the community at least
+for three reasons: (i) they can be used as they are, (ii) people using these
+codes can be more open to the open-source dynamics, and (iii) open-source
+research projects using open-source tools can exploit the ideas in these codes.
+%
+Let us also point out a drawback of such a model. We do not pay the authors, but
+people do need to pay to use the software. Even the authors of the software give
+money to the same company to be able to use their software. Do they realize that
+when they work on these programs, they work (often, for free) for the company that
+sells the proprietary tool?
+
+Some proper open-source codes have emerged, for example
+\href{https://nek5000.mcs.anl.gov/}{NEK5000} (Fortran),
+\href{https://www.openfoam.com/}{OpenFOAM} (C++),
+\href{http://basilisk.fr}{Basilisk} (C) and
+\href{http://channelflow.org/}{Channelflow} (C++) and
+\href{https://www.code-saturne.org}{Code\_Saturn} (C/Fortran).
+%
+Big companies have started to use open-source development for fluid mechanics
+application. For example, Volkswagen group (Volkswagen, Audi, Seat, Porsche,
+Skoda, ...) has used OpenFOAM since
+2006\footnote{\url{https://www.nas.nasa.gov/assets/pdf/ams/%
+2014/AMS_20141202_Othmer.pdf}}.
+%
+EDF, the main French electric utility company has also a interesting
+\href{http://linuxfr.org/news/strat\%C3\%A9gie-open-source-\%C3\%A0-edf-rd}{%
+open-source strategy}.  It has produced many programs and in particular the CFD
+solver \href{https://www.code-saturne.org}{Code\_Saturn}.
+%
+EDF is also involved in the development of
+\href{https://www.paraview.org/}{Paraview}\footnote{\url{https://blog.kitware.com/introducing-some-new-paraview-5-0-features/}}.
+
+Finally, scientists have started to use Python to study fluid mechanics,
+especially through CFD codes (\href{http://dedalus-project.org/}{Dedalus},
+\href{https://github.com/spectralDNS}{SpectralDNS},
+\href{https://github.com/mikaem/Oasis}{Oasis}, \href{http://pyfr.org/}{PyFR}
+and \href{https://fenicsproject.org/}{FEniCS}) or through data analysis
+(\href{http://www.openptv.net/}{OpenPTV},
+\href{https://github.com/jr7/pypiv}{PyPIV}).
+%
+The packages of the FluidDyn project are also part of this trend.
+
+\subsection*{FluidDyn project: Breaking the status quo}
+
+We have seen that there is a strong dynamics in play around the use of
+computers (in particular with the web) and that this creates very efficient
+tools and methods for collective work and software development.
+%
+The potential of these tools is not fully exploited yet, in the field of fluid
+mechanics.
+
+FluidDyn is a project to foster open-science and open-source coding in Python
+in the field of fluid mechanics.
+%
+The project envisages to provide the technical framework to allow collaborative
+development of tools useful for the fluid mechanics community, and to do better
+science with open methods.
+%
+% It first started with one package.  Soon we had to prefer a decentralized
+% organization with one common package and other specialized packages.
+% av: mentioned in the next subsection
+We provide examples of solutions for:
+\begin{itemize}
+\item Good coding practice with readable and easy to comprehend Python code
+(PEP~8).
+\item Source control management (Mercurial) and forge (Bitbucket) simple for
+the new comers.
+\item Packaging and installation procedure. All packages are available from
+\href{https://pypi.org/}{Pypi} and can be install simply with
+\href{https://pypi.org/project/pip/}{pip}, the standard Python installation
+tool.
+\item Licenses: depending on the packages, we choose to use the CeCILL-B or the
+CeCILL licenses. These licenses are a BSD compatible and a GPL compatible
+licenses adapted to both international and French legal
+matters\footnote{\url{http://www.cecill.info/licences.en.html}}.
+\item Documentation produced with standard and up-to-date tools: Sphinx,
+Anaconda and Jupyter. Built and hosted online at
+\href{https://readthedocs.org/}{Read the Docs}. Can also be generated offline.
+\item Unittest and continuous integration with Bitbucket Pipelines and Travis.
+\end{itemize}
+We hope that such clean framework will allow contributions from scientists in
+the field and that we can build together a nice, user-friendly and efficient
+ecosystem specialized in research and teaching in fluid dynamics.
+
+\section*{Implementation and architecture}
+
+% \textcolor{blue}{How the software was implemented, with details of the
+% architecture where relevant. Use of relevant diagrams is appropriate. Please
+% also describe any variants and associated implementation differences.}
+
+\subsection*{Organization of the code in packages}
+
+FluidDyn was originally intended to be a single package to perform experiments
+and simulations. Since a typical user may not be involved in both experiments
+and simulations and also, due to increasing complexity as a virtue of rapid
+development cycle made the need to decentralize FluidDyn evident.
+Now, FluidDyn project hosts a number of specialized packages, namely:
+
+\begin{itemize}
+\item \fluidpack{dyn}: The base package which contains pure-python code that can
+be reused in scripts or in specialized FluidDyn packages. It also contains codes
+for miscellaneous command-line utilities useful for a typical fluid dynamics user.
+
+The code of this package is presented in further detail in its documentation
+(\url{https://fluiddyn.readthedocs.io}) and some prominent features are presented
+in the following subsection.
+
+\item \fluidpack{fft}~\cite[see the companion paper][]{fluidfft}: a package which
+provides C++ and Python classes unifying various libaries to perform Fast Fourier
+Transform (FFT) in sequential and in parallel.
+
+\item \fluidpack{sim}~\cite[see the companion paper][]{fluidsim}: Numerically
+oriented framework to run sequential and parallel Computational Fluid Dynamics
+(CFD) simulations and on-the-fly post-processing for a variety of problems
+(Navier-Stokes, Shallow Water, F\"oppl von K\'arm\'an equations, to name a few).
+A study using \fluidpack{sim} has just been published in Physics of Fluids
+\cite[]{LindborgMohanan2017}.
+
+\item \fluidpack{lab}: Package to handle laboratory experiments. Primarily used to
+communicate with various hardware devices such as motors and pumps, to handle I/O
+between sensors, and to store data.
+%
+Experiments using \fluidpack{lab} have been carried out in the DAMTP fluid
+laboratory \cite[Cambridge, UK. cf.][]{LeclercqPartridgeAugierDalzielKerswell2016}, in ENS Lyon laboratory
+\cite[Lyon, France][]{salort2018} and at LEGI \cite[Grenoble, France][]{ISSF2016}.
+
+\item \fluidpack{image}: Scalable image processing package which implements
+various algorithms to calibrate cameras, to preprocess images, to do Particle
+Image Velocimetry (PIV) and to postprocess data.
+%
+Fluidimage is used to process images taken during experiments performed in the
+Coriolis platform at LEGI \cite[]{ISSF2016}.
+
+\item \fluidpack{foam}: Small package to load OpenFoam data and plot them.
+
+\item \fluidpack{coriolis}: Small package used to carry out experiments in the
+\href{http://www.legi.grenoble-inp.fr/web/spip.php?article757}{Coriolis platform}
+(a large rotating platform participating in the European consortiums Euhit and
+Hydralab) and open the data obtained \cite[see, for example,][]{ISSF2016}. One of
+the motivations behind creating this package is to study how to use open-source to
+create and share open-data.
+
+\end{itemize}
+
+A detailed presentation on the above packages can be found in their respective
+documentations on the web and for \fluidpack{fft} and \fluidpack{sim} in the
+two companion papers \cite[]{fluidfft, fluidsim}.  This article will now focus
+on the base package \fluiddyn.
+
+All functions and classes defined in \fluiddyn are pure Python elements, meaning
+that no extensions are implemented in \fluiddyn.  Thus the package \fluiddyn is
+extremely easy to install with just a \codeinline{pip install} command and no
+compilation.
+
+The code base was designed to follow Python 2.7 syntax during its genesis. Now,
+it has been made forward compatible with Python 3 through the use of external
+package future.
+
+\subsection*{API of the Python library \fluiddyn}
+
+The package \fluiddyn is organized into five sub-packages: 
+\begin{itemize}
+\item \codeinline{fluiddyn.io}: This subpackage provides utilities for
+input/output to different file formats.
+\item \codeinline{fluiddyn.util}: Miscellaneous utilities.
+\item \codeinline{fluiddyn.calcul}: Modules for numerical computations.
+\item \codeinline{fluiddyn.clusters}: Classes to launch jobs on HPC clusters.
+\item \codeinline{fluiddyn.output}: Utilities to produce scientific outputs
+(figures and videos).
+\end{itemize}
+
+Sub-packages \codeinline{io}, \codeinline{util} and \codeinline{calcul} are the
+largest in terms of lines of code and provides the Application Programming
+Interfaces (API) to support \fluidpack{sim}, \fluidpack{lab} and
+\fluidpack{image}.
+%
+For the sake of brevity, we shall only describe here some of the most important
+modules.
+
+\subsubsection*{Module \codeinline{fluiddyn.util.paramcontainer}}
+
+Sub-package \codeinline{paramcontainer} defines class
+\codeinline{ParamContainer} which is a hierarchical container for any type of
+parameters. As shown in
+\href{http://fluiddyn.readthedocs.io/en/latest/ipynb/tuto_paramscontainer.html}{%
+this tutorial}, various strengths of an object of this class include:
+\begin{itemize}
+\item Support containing and printing documentation on the parameters.
+\item Support printing to console as XML and saving as XML, hdf5 and netcdf4
+files.
+\item Evaluate data types automatically while loading from saved files.
+\item Easy exploration in an interactive console.
+\item Allows modification of default parameters through simple Python script
+files. An error is raised if the user attempts to use an invalid parameter.
+\item Graphical User Interface (GUI) frontend with PyQt.
+\end{itemize}
+
+Thus, it makes it a much more robust implementation for saving key parameters,
+compared to conventional methods which rely on text or CSV files.
+
+\subsubsection*{Module \codeinline{fluiddyn.util.serieofarrays}}
+
+This modules provides classes to iterate over files. It is a common task in data
+processing to understand how to organized a \textit{serie} of files from filenames
+and formats. Then one has to form smaller sets of arrays contained in the
+files. For example, we can have such \textit{serie}: \codeinline{im1\_1.png,
+im1\_2.png, im1\_3.png, im2\_1.png, im2\_2.png, im2\_3.png} and we could create
+subsets like \codeinline{((im1\_1.png, im1\_2.png, im1\_2.png), (im2\_1.png,
+im2\_2.png, im2\_3.png))}. From the same \textit{serie} of images, we can also
+create other subsets \codeinline{((im1\_1.png, im2\_1.png), (im1\_2.png,
+im2\_2.png), (im1\_3.png, im2\_3.png))}.
+
+The classes of this module allows one to do it with a quite simple and general
+API as shown in
+\href{http://fluiddyn.readthedocs.io/en/latest/ipynb/tuto_serieofarrays.html}{%
+the tutorial on the module}.
+
+\subsubsection*{Module \codeinline{fluiddyn.util.mpi}}
+
+This simple module makes simulataneous sequential and MPI programming a breeze
+by providing number of processes, \codeinline{nb\_proc = 1} and \codeinline{rank
+= 0}, when used in sequential mode, otherwise providing the appropriate values
+provided by \pack{mpi4py} package. Use of this module thwarts coding several if-else
+clauses. If the program was using MPI, also defines the variable
+\codeinline{comm} as an alias for the \codeinline{MPI.COMM\_WORLD} communicator.
+
+\subsubsection*{Module \codeinline{fluiddyn.calcul.easyfft}}
+
+Thin wrapper for an unified API using classes around the packages \pack{pyfftw}
+and \pack{scipy.fftpack}.  It is very easy to perform forward and inverse Fast
+Fourier Transforms (FFT) in one-, two- and three-dimensions.
+The FFT can be multithreaded if the environment variable
+\codeinline{OMP\_NUM\_THREADS} is defined.
+
+\subsection*{The \fluiddyn command-line utilities}
+
+The package \fluiddyn also provides few command-line utilities to perform
+simple tasks useful for a scientist developing with Python and using the
+FluidDyn packages.
+\begin{itemize}
+
+\item \codeinline{fluidinfo}
+
+Displays important information related to software and hardware. It
+includes detailed information such as currently installed FluidDyn packages,
+other third-party packages, C compiler, MPI and \Numpy configuration.
+
+\item \codeinline{fluiddump}
+
+Utility to print the hierarchy of HDF5 and NetCDF files. It does not depend on
+the NetCDF4 library.
+
+\item \codeinline{fluidnbstripout}
+
+Very simple layer to stripout Jupyter notebooks of output, which is useful to
+keep the notebooks lightweight when included in a repository.
+%
+This tool is based on \href{https://github.com/kynan/nbstripout}{nbstripout}
+but, in contrast to nbstripout,
+%
+by default the notebooks with a file name ending as `.nbconvert.ipynb' are
+excluded.
+
+\item \codeinline{fluidmat2py}
+
+Utility to produce a strange code which is no longer Matlab and not yet Python.
+%
+This strange code is then much easier to translate into correct Python than the
+original Matlab code.
+
+\end{itemize}
+
+
+\section*{Quality control}
+
+% \textcolor{blue}{Detail the level of testing that has been carried out on the
+% code (e.g. unit, functional, load etc.), and in which environments. If not
+% already included in the software documentation, provide details of how a user
+% could quickly understand if the software is working (e.g. providing examples
+% of running the software with sample input and output data). }
+
+The package \fluiddyn\ currently supplies unit tests covering around 70\% of its
+code.  These unit tests are run regularly through continuous integration on Travis
+CI with the most recent releases of \fluiddyn's dependencies and on Bitbucket
+Pipelines inside a static \href{https://hub.docker.com/u/fluiddyn}{Docker
+container}.  The tests are run using standard Python interpreter with all
+supported versions.
+
+For \fluiddyn, the code coverage results are displayed at
+\href{https://codecov.io/gh/fluiddyn/fluiddyn}{Codecov}.  Using third-party
+packages \pack{coverage} and \pack{tox}, it is straightforward to bootstrap the
+installation with dependencies, test with multiple Python versions and combine the
+code coverage report, ready for upload. It is also possible to run similar
+isolated tests using \pack{tox} or coverage analysis using \pack{coverage} in a
+local machine.  Up-to-date build status and coverage status are displayed on the
+landing page of the Bitbucket repository.
+
+We also try to follow a consistent code style as recomended by PEP (Python
+enhancement proposals) 8 and 257. This is also inspected using lint checkers
+such as \codeinline{flake8} and \codeinline{pylint} among the developers.  The
+code is regularly cleaned up using the Python code formatter \codeinline{black}.
+
+\section*{(2) Availability}
+\vspace{0.5cm}
+\section*{Operating system}
+
+% \textcolor{blue}{Please include minimum version compatibility.}
+
+Windows and any POSIX based OS, such as GNU/Linux and macOS.
+
+\section*{Programming language}
+
+% \textcolor{blue}{Please include minimum version compatibility.}
+
+Python 2.7, 3.4 or above.
+
+% \section*{Additional system requirements}
+
+% \textcolor{blue}{E.g. memory, disk space, processor, input devices, output devices.}
+
+\section*{Dependencies}
+
+% \textcolor{blue}{E.g. libraries, frameworks, incl. minimum version
+% compatibility.}
+
+We list here only the dependencies of the base package \fluidpack{dyn}.
+
+\begin{itemize}
+\item {\bf Minimum:} \Numpy, \pack{Matplotlib}, \pack{psutil}, \pack{future},
+\pack{subprocess32} (for Python 2.7 only).
+
+\item {\bf Full functionality:} \pack{h5py}, \pack{h5netcdf}, \pack{mpi4py},
+\pack{Scipy}, \pack{pyfftw} (requires FFTW library), \pack{pillow}.
+
+\item {\bf Optional:} OpenCV with Python bindings, \pack{scikit-image}.
+\end{itemize}
+\section*{List of contributors}
+
+% \textcolor{blue}{Please list anyone who helped to create the software (who may
+% also not be an author of this paper), including their roles and affiliations.}
+
+\begin{itemize}
+\item Pierre Augier (LEGI): creator of the FluidDyn project, developer of
+majority of the FluidDyn packages, future-proofing with Python 3 compatibility
+and documentation.
+
+\item Ashwin Vishnu Mohanan (KTH): developer of the packages
+\fluidpack{sim}, \fluidpack{fft}, \fluidpack{image} and
+\fluiddyn; documentation, code coverage and continuous integration (Docker,
+Bitbucket pipeline and Travis).
+
+\item Cyrille Bonamy (LEGI): developer of \fluidpack{fft}, \fluidpack{sim} and
+\fluidpack{foam}. Main maintainer of \fluidpack{foam}.
+
+\item Antoine Campagne (LEGI): developer of \fluidpack{image} and
+\fluidpack{lab}.
+
+\item Miguel Calpe Linares (LEGI): developer of \fluidpack{sim} and
+\fluidpack{lab}.
+
+\item Julien Salort (Laboratoire de physique, ENS de Lyon): developer of
+\fluidpack{lab}.
+
+\end{itemize}
+%
+% \section*{Software location:}
+%
+% % {\bf Archive} \textcolor{blue}{(e.g. institutional repository, general
+% % repository) (required – please see instructions on journal website for
+% % depositing archive copy of software in a suitable repository)}
+%
+% \begin{description}[noitemsep,topsep=0pt]
+% \item[Name:] PyPI
+% \item[Persistent identifier:] https://pypi.org/project/fluiddyn
+% \item[Licence:] CeCILL-B, a BSD compatible French licence.
+% \item[Publisher:] Pierre Augier
+% \item[Version published:] 0.2.3
+% \item[Date published:] 02/05/2018
+% \end{description}
+%
+% {\bf Code repository}
+% % \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
+%
+% \begin{description}[noitemsep,topsep=0pt]
+% \item[Name:] Bitbucket
+% \item[Persistent identifier:] https://bitbucket.org/fluiddyn/fluiddyn
+% \item[Licence:] CeCILL-B
+% \item[Date published:] 2015
+% \end{description}
+
+% {\bf Emulation environment} \textcolor{blue}{(if appropriate)}
+
+% \begin{description}[noitemsep,topsep=0pt]
+% \item[Name:] \textcolor{blue}{The name of the archive.}
+% \item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
+% \item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
+% \item[Date published:] \textcolor{blue}{dd/mm/yy}
+% \end{description}
+
+% \section*{Language}
+
+% \textcolor{blue}{Language of repository, software and supporting files.}
+
+% English
+
+\section*{(3) Reuse potential}
+%
+% \textcolor{blue}{Please describe in as much detail as possible the ways in
+% which the software could be reused by other researchers both within and outside
+% of your field. This should include the use cases for the software, and also
+% details of how the software might be modified or extended (including how
+% contributors should contact you) if appropriate. Also you must include details
+% of what support mechanisms are in place for this software (even if there is no
+% support).}
+%
+
+As a library, \fluiddyn\ has been used in the project's specialized packages.
+The common code base for packages with such varied applications is a proof of
+\fluiddyn's versatility and generality. It can be used in other packages outside
+the FluidDyn project easily depending on the need. The command-lines tools can
+be useful to all scientists working with Python. Other use cases could be:
+\begin{itemize}
+	\item \codeinline{ParamContainer} as a generic parameter storage
+		standard.
+	\item Modules within \codeinline{fluiddyn.util} for miniature tasks,
+		printing in terminal with colours, getting memory usage
+		information, detecting if the current Python session is inside
+		IPython, creating a string with time and date, etc.
+	\item Modules within \codeinline{fluiddyn.io} to read
+		and save images of various formats including TIFF files with
+		multiple images; easily ask user with yes/no queries; handle
+		different file formats using classes, including CSV, HDF5,
+		Digiflow, Dantec formats.
+	\item Modules inside \codeinline{fluiddyn.clusters} subpackage to
+		make job submission scriptable in HPC clusters with OAR or
+		SLURM job schedulers. It could be even used for non-Python
+		jobs.
+\end{itemize}
+
+
+There is no formal support mechanism. However, bug reports can be submitted at the
+\href{https://bitbucket.org/fluiddyn/fluiddyn/issues}{Issues page on Bitbucket}.
+Discussions and questions can be aired on instant messaging channels in Riot (or
+equivalent with Matrix protocol) at
+\url{%
+  https://matrix.to/#/#fluiddyn-users:matrix.org}
+or via IRC protocol on Freenode at \codeinline{\#fluiddyn-users}.
+
+\subsection*{Conclusions}
+
+FluidDyn is an attempt to set off collaborative dynamics based on open-source
+development in fluid dynamics research.
+%
+We shall try, with this project, to explore the possibilities of open-source in
+science and fluid dynamics, by fully exploiting the new open-source tools and
+methods presented in the first subsections of the introduction.
+
+% todo: again mention some success of community-driven subject-area research
+% libraries? See the file ./communitydriven_research_soft.md
+
+The project is right now in a very preliminary stage.  Packages are actively
+evolving with interesting features and a framework for collaborative
+development, packaging, documenting and testing is now well set.
+%
+However, the community around the project is currently tiny and now, we have to
+work on attracting users and developers since an active community is a
+criteria for success and sustenance of an open-source project.
+
+Will people use the FluidDyn tools and collaborate through the project
+FluidDyn?
+%
+There are clearly many challenges and potential barriers:
+\begin{itemize}
+\item Some habits in the community.
+\item Knowledge and skills in the community. For example, only few people use
+issue tracker and pull requests.
+% from Julien Salort: bad!
+% \item Misunderstanding between colleagues and in particular colleagues with
+% responsibilities and power.
+\item Lack of a business model for open-source software in science.  A good
+quality open-source software has a cost that institutions should be willing
+to fund and support.
+\item Lack of recognition of the work spent in open-source, in particular for
+precarious scientists.
+\end{itemize}
+
+On our side, we also have positive points.
+%
+The quality of the tools we use (Python and its scientific ecosystem,
+Mercurial, Read the Docs, Jupyter, ...) is impressive.
+%
+Scientific code is done to be read and to transmit ideas. To this effect, Python
+is among the best languages today.
+%
+We can benefit from the dynamics of Python and of emerging subjects like deep
+learning and the Internet of Things.
+%
+Finally, if we manage to gather a community of users and of developers, the
+collective efficiency related to open-source methods and tools can be a strong
+booster.
+
+\section*{Acknowledgements}
+
+% \textcolor{blue}{Please add any relevant acknowledgements to anyone else who
+% supported the project in which the software was created, but did not work
+% directly on the software itself.}
+
+We thank the CNRS to finance the work of Pierre Augier while giving freedom in
+terms of scientific project.
+%
+Similarly, Ashwin Vishnu Mohanan could not have been as involved in this
+project without the kindness of Erik Lindborg.
+%
+We thank Cyrille Bonamy, Antoine Campagne, Miguel Calpe Linares and Julien
+Salort for their implications in the development of some of the FluidDyn
+packages.
+%
+We thank Bitbucket for providing us for free a high quality forge compatible with
+Mercurial.
+%
+Finally, we thank Gabriel Moreau and Jo\"el Sommeria for their constant willing
+to discuss and share their knowledge.
+
+\section*{Funding statement}
+
+% \textcolor{blue}{If the software resulted from funded research please give the
+% funder and grant number.}
+
+This project has indirectly benefit from funding from the foundation Simone et
+Cino Del Duca de l'Institut de France, the European Research Council (ERC)
+under the European Union's Horizon 2020 research and innovation program (grant
+agreement No 647018-WATU and Euhit consortium) and the Swedish Research Council
+(Vetenskapsr{\aa}det): 2013-5191.
+%
+We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI and
+the Swedish National Infrastructure for Computing (SNIC).
+
+% \section*{Competing interests}
+
+% \textcolor{blue}{If any of the authors have any competing interests then these
+% must be declared. The authors’ initials should be used to denote differing
+% competing interests. For example: “BH has minority shares in [company name],
+% which part funded the research grant for this project. All other authors have
+% no competing interests."
+% %
+% If there are no competing interests, please add the statement: “The authors
+% declare that they have no competing interests.” }
+
+% The authors declare that they have no competing interests.
+
+% already included by \bibliography{../bib}
+% \section*{References}
+
+% \textcolor{blue}{Please enter references in the Harvard style and include a DOI
+% where available, citing them in the text with a number in square brackets,
+% e.g.}
+
+% \textcolor{blue}{[1] Piwowar, H A 2011 Who Shares? Who Doesn't? Factors
+% Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI:
+% \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
+%
+% \bibliographystyle{../agsm}
+% \bibliography{../bib}
+
+
+% \rule{\textwidth}{1pt}
+%
+% { \bf Copyright Notice} \\
+% Authors who publish with this journal agree to the following terms: \\
+%
+% Authors retain copyright and grant the journal right of first publication with
+% the work simultaneously licensed under a
+% \href{http://creativecommons.org/licenses/by/3.0/}{Creative Commons Attribution
+% License} that allows others to share the work with an acknowledgement of the
+% work's authorship and initial publication in this journal.
+%
+% Authors are able to enter into separate, additional contractual arrangements
+% for the non-exclusive distribution of the journal's published version of the
+% work (e.g., post it to an institutional repository or publish it in a book),
+% with an acknowledgement of its initial publication in this journal.
+%
+% By submitting this paper you agree to the terms of this Copyright Notice, which
+% will apply to this submission if and when it is published by this journal.
+%
+%
