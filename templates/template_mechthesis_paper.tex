@@ -1,0 +1,85 @@
+% Define title, author(s), affiliation and publishing status
+%
+\papertitle[\VAR{title_short}] % Short title used in headlines (optional)
+{%
+  \VAR{title}% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+}%
+%
+\papertoctitle{\VAR{title_toc | default(title)}} % Title for toc
+%
+% Short authors used in headlines and List Of Papers
+\paperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
+{%
+  \VAR{authors_aff[:-1] | join(', ')} and \VAR{authors_aff | last}] % Short authors used in headlines and List Of Papers
+}%
+%
+% (optional) Short authors used in List Of Papers
+\listpaperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
+%
+\paperaffiliation
+{%
+  %: for aff in enum_affiliations[:-1] :%
+    \VAR{aff} \\
+  %: endfor :%
+    \VAR{enum_affiliations | last}
+}%
+%
+\paperjournal[\VAR{pub_short}] % Short publish info used in List Of Papers
+{%
+	\VAR{pub}%
+}%
+%
+\papervolume{\VAR{volume}}%
+%
+\papernumber{\VAR{number}}%
+%
+\paperpages{\VAR{pages}}%
+%
+\paperyear{\VAR{year}}%
+%
+\papersummary%
+{% Insert summary of the paper here (used in introduction) 
+    \VAR{abstract_short | default(abstract)}
+}%
+%
+\graphicspath{{\VAR{dir}/}}%
+%
+%
+%===============================================================================
+%                            BEGIN PAPER
+%===============================================================================
+%
+\begin{paper}
+
+\makepapertitle
+
+%------------------------------------------------------------------------------
+% Abstract
+%------------------------------------------------------------------------------
+%
+\begin{paperabstract}
+    \VAR{abstract}
+\end{paperabstract}
+
+
+%------------------------------------------------------------------------------
+% Article
+%------------------------------------------------------------------------------
+%
+\input{\VAR{dir}/article.tex}
+
+
+%------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------
+%
+%\clearpage
+\bibliographystyle{jfm}
+\bibliography{thesis}
+%
+\IfFileExists{\VAR{dir}/paper.bbl}{\input{\VAR{dir}/paper.bbl}}{}
+
+%===============================================================================
+%                            END PAPER
+%===============================================================================
+\end{paper}

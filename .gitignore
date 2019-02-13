@@ -19,3 +19,7 @@ _minted*
 
 # compiled files
 *.pdf
+
+
+.mypy_cache
+**/__pycache__
