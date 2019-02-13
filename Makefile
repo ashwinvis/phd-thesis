@@ -11,7 +11,8 @@ main = thesis
 TEMPLATE_DIR = ./templates/mechthesis/
 
 TEX = latexmk
-TEX_FLAGS = -use-make -pdf -pdflatex="pdflatex -shell-escape %O %S"
+TEX_FLAGS = -quiet -draftmode
+PDFLATEX_FLAGS = -quiet -use-make -pdf -pdflatex="pdflatex -shell-escape"
 
 BIB = bibtex
 BIB_FLAGS =
@@ -19,13 +20,16 @@ BIB_FLAGS =
 
 # Dependencies:
 #
+TEMPLATE_PAPER = templates/template_mechthesis_paper.tex
+META_PAPER = $(wildcard paper*/paper.yml)
+SRCS_PAPER = $(subst /,/paper.tex,$(wildcard paper*/))
 SRCS = packages.tex         \
        commands.tex         \
        frontmatter.tex      \
        acknowledgements.tex \
        $(kappa).tex         \
        $(main).tex          \
-       $(subst /,/paper.tex,$(wildcard paper*/))
+       $(SRCS_PAPER)
 
 # Template and BibTeX dependencies
 #
@@ -41,6 +45,7 @@ AUXS = $(kappa).aux \
        $(subst /,/paper.aux,$(wildcard paper*/))
 
 BBLS = $(kappa).bbl \
+	   $(main).bbl \
        $(subst /,/paper.bbl,$(wildcard paper*/))
 
 # Rules:
@@ -49,11 +54,11 @@ default: all
 
 all: $(main).pdf
 #
-$(main).pdf: $(SRCS) $(DEPS) $(BBLS)
+$(main).pdf: $(SRCS) $(DEPS) # $(BBLS)
 	@echo building $(main) with $(TEX)
 	# @$(TEX) $(TEX_FLAGS) -draftmode $(main) #> /dev/null
 	# @sed -i -e 's/toPaper/Paper/g' thesis.out	
-	@$(TEX) $(TEX_FLAGS) $(main) #> /dev/null
+	@$(TEX) $(PDFLATEX_FLAGS) $(main) #> /dev/null
 
 $(AUXS): $(SRCS) $(DEPS)
 	@echo building $(main) with $(TEX) [for $@]
@@ -61,8 +66,12 @@ $(AUXS): $(SRCS) $(DEPS)
 
 %.bbl: %.aux $(main).bib
 	@echo building $@  with $(BIB)
-	# @$(BIB) $(BIB_FLAGS) $< #> /dev/null
-	@$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
+	@$(BIB) $(BIB_FLAGS) $< #> /dev/null
+	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
+
+$(SRCS_PAPER): $(META_PAPER) $(TEMPLATE_PAPER)
+	@echo building $@ with python
+	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 #
 clean: clean_papers clean_thesis
 

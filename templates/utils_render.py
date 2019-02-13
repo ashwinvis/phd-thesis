@@ -47,6 +47,9 @@ def get_options_from_yaml(path):
     with open(path) as f:
         options = yml.load(f.read())
 
+    if "dir" not in options or options["dir"] is None:
+        options["dir"] = path.parent
+
     options["authors_short"] = [
         name_in_initials(name) for name in options["authors"]
     ]
