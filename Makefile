@@ -11,7 +11,7 @@ main = thesis
 TEMPLATE_DIR = ./templates/mechthesis/
 
 TEX = latexmk
-TEX_FLAGS = -quiet -use-make -pdf -pdflatex="pdflatex -shell-escape %O %S"
+TEX_FLAGS = -use-make -pdf -pdflatex="pdflatex -shell-escape %O %S"
 
 BIB = bibtex
 BIB_FLAGS =
@@ -19,16 +19,19 @@ BIB_FLAGS =
 
 # Dependencies:
 #
-SRCS = $(TEMPLATE_DIR)/jfm.bst              \
-       $(TEMPLATE_DIR)/MechThesis.cls       \
-       packages.tex         \
+SRCS = packages.tex         \
        commands.tex         \
        frontmatter.tex      \
        acknowledgements.tex \
        $(kappa).tex         \
        $(main).tex          \
-       $(main).bib          \
        $(subst /,/paper.tex,$(wildcard paper*/))
+
+# Template and BibTeX dependencies
+#
+DEPS = $(TEMPLATE_DIR)/MechThesis.cls       \
+       $(TEMPLATE_DIR)/jfm.bst              \
+       $(main).bib
 
 AUXS = $(kappa).aux \
        $(main).aux  \
@@ -46,29 +49,35 @@ default: all
 
 all: $(main).pdf
 #
-$(main).pdf: $(SRCS) $(BBLS)
+$(main).pdf: $(SRCS) $(DEPS) $(BBLS)
 	@echo building $(main) with $(TEX)
 	# @$(TEX) $(TEX_FLAGS) -draftmode $(main) #> /dev/null
 	# @sed -i -e 's/toPaper/Paper/g' thesis.out	
 	@$(TEX) $(TEX_FLAGS) $(main) #> /dev/null
 
-$(AUXS): $(SRCS)
+$(AUXS): $(SRCS) $(DEPS)
 	@echo building $(main) with $(TEX) [for $@]
 	@$(TEX) $(TEX_FLAGS) -draftmode $(main) #> /dev/null
 
 %.bbl: %.aux $(main).bib
-	@echo building $< with $(BIB)
-	@$(BIB) $(BIB_FLAGS) $< #> /dev/null
+	@echo building $@  with $(BIB)
+	# @$(BIB) $(BIB_FLAGS) $< #> /dev/null
+	@$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
 #
 clean: clean_papers clean_thesis
 
+cleanall: clean
+	@rm -f  *.{ps,dvi,pdf}
+	@rm -f  paper*/*.{ps,dvi,pdf}
+	@rm -rf paper*/_minted-*
+
 clean_thesis:
 	@echo cleaning thesis
-	@rm -f *.ps *.dvi *.aux *.toc *.log *.out *.bbl *.blg *.pls *.psm *~ *.syntex.gz
+	@rm -f *.{aux,toc,log,out,bbl,blg,pls,psm,synctex.gz,fls,fdb_latexmk}
 
 clean_papers:
 	@echo cleaning papers
-	@rm -f paper*/*.aux paper*/*.bbl paper*/*.blg
+	@rm -f paper*/*.{aux,bbl,blg,fls,fdb_latexmk,log,out,pdf,synctex.gz}
 
 vimtex:
 	# gvim $(name).tex --servername GVIM &

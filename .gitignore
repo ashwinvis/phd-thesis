@@ -9,6 +9,7 @@
 *~
 *.swp
 .DS_Store
+.vscode
 
 # latexmk
 *.fdb_latexmk
@@ -20,6 +21,15 @@ _minted*
 # compiled files
 *.pdf
 
+# benchmarking files
+paper**/*.pstats
+paper**/.json
+*.tar.gz
+*.dio
+paper**/*.dot
+paper**/*.xml
+paper**/old
 
 .mypy_cache
 **/__pycache__
+**/.ipynb_checkpoints/
