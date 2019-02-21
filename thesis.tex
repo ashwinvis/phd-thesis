@@ -94,6 +94,7 @@
 
 \printer{Universitetsservice US--AB, Stockholm}% Printer informations
 
+\bibliography{thesis}
 
 %===============================================================================
 %===============================================================================
@@ -126,7 +127,9 @@
 %-------------------------------------------------------------------------------
 % Overview and summary
 %
+\begin{refsection}
 \include{overview}
+\end{refsection}
 
 %-------------------------------------------------------------------------------
 % Comment the following command if you do not want a separate page for Part II
@@ -150,13 +153,22 @@
 %-------------------------------------------------------------------------------
 % Paper 1
 %
-%\include{paper1/paper}
+\begin{refsection}
+ \include{paper_00_fluiddyn_meta/paper}
+\end{refsection}
 
 %-------------------------------------------------------------------------------
 % Paper 2
 %
 %\include{paper2/paper}
 
+\begin{refsection}
+ \include{paper_01_fluidfft/paper}
+\end{refsection}
+
+\begin{refsection}
+ \include{paper_02_fluidsim/paper}
+\end{refsection}
 
 %===============================================================================
 %===============================================================================
