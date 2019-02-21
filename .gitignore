@@ -5,6 +5,7 @@
 *.psm
 *.toc
 *.bbl
+*.bcf
 *.blg
 *~
 *.swp
