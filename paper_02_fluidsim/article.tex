@@ -8,16 +8,16 @@
 
 \rule{\textwidth}{1pt}
 
-\section{(1) Overview}
+\section{Overview}
 
 \vspace{0.5cm}
 
-\section{Title}
+\subsection{Title}
 
 FluidSim: modular, object-oriented Python package for high-performance CFD
 simulations
 
-\section{Paper Authors}
+\subsection{Paper Authors}
 
 1. MOHANAN, Ashwin Vishnu$^a$ \\
 2. BONAMY, Cyrille$^b$ \\
@@ -30,14 +30,14 @@ $^a$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.
 $^b$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
 Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.
 
-\section{Paper Author Roles and Affiliations}
+\subsection{Paper Author Roles and Affiliations}
 1. Ph.D. student, Linn\'e Flow Centre, KTH Royal Institute of Technology,
 Sweden; \\
 2. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
 3. Ph.D. student, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
 4. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France
 
-\section{Abstract}
+\subsection{Abstract}
 
 %\textcolor{blue}{A short (ca. 100 word) summary of the software being
 %described: what problem the software addresses, how it was implemented and
@@ -83,14 +83,14 @@ The source code is hosted at Bitbucket as a Mercurial repository
 and the documentation generated using Sphinx can be read online at
 \href{https://fluidsim.readthedocs.io}{fluidsim.readthedocs.io}.
 
-\section{Keywords}
+\subsection{Keywords}
 
 % Python;\ CFD;\ HPC;\ MPI;\ modular;\ object-oriented;\ tested;\ documented;\
 % open-source
 0D; 1D; 2D; 3D; pseudo-spectral; finite difference; computational fluid
 dynamics; sequential; MPI; GPU
 
-\section{Introduction}
+\subsection{Introduction}
 
 % \textcolor{blue}{An overview of the software, how it was produced, and the
 % research for which it has been used, including references to relevant research
@@ -214,7 +214,7 @@ In the latter half of the paper, we shall also inspect the performance of
 \fluidpack{sim} in large computing clusters and compare \fluidpack{sim} with three
 different pseudo-spectral CFD codes.
 
-\section{Implementation and architecture}
+\subsection{Implementation and architecture}
 
 % \textcolor{blue}{How the software was implemented, with details of the
 % architecture where relevant. Use of relevant diagrams is appropriate. Please
@@ -540,7 +540,7 @@ class inheritance}.
 
 
 
-\subsection{Performance}
+\subsubsection{Performance}
 
 % todo: we need to go back over this part after the fluidfft paper will be
 % written and using the fluidfft paper. Some bits of what is here could go in
@@ -881,7 +881,7 @@ $31.078$ to $2.175$ seconds for the $1024\times1024\times1024$ case.
 
 
 
-\subsection{CFD pseudo-spectral code comparisons}
+\subsection{pseudo-spectral code comparisons}
 
 %TODO-DONE: Compare profiling of Dedalus SpectralDNS, NS3D
 % See the file notes_compare_codes.md
@@ -1165,7 +1165,7 @@ demonstrate that our very high-level and modular Python code is very efficient
 and is not slower than a well-optimized Fortran code.
 
 
-\section{Quality control}
+\subsection{Quality control}
 
 % \textcolor{blue}{Detail the level of testing that has been carried out on the
 % code (e.g.\ unit, functional, load etc.), and in which environments. If not
@@ -1213,19 +1213,19 @@ All the above quality control techniques are implemented within the continuous
 testing solutions, Travis CI and Bitbucket Pipelines. Instructions on how to
 run unit tests, coverage and lint tests are included in the documentation.
 
-\section{(2) Availability}
+\section{Availability}
 \vspace{0.5cm}
-\section{Operating system}
+\subsection{Operating system}
 
 Any POSIX based OS, such as GNU/Linux and macOS.
 
-\section{Programming language}
+\subsection{Programming language}
 
 Python 2.7, 3.4 or above. For the next versions, we will
 \href{https://python3statement.org/}{drop Python 2.7 support and Python $>=$
 3.6 will be required}.
 
-\section{Dependencies}
+\subsection{Dependencies}
 
 \begin{itemize}
 \item {\bf Minimum:} \fluidpack{dyn}, \Numpy, \pack{h5netcdf}, \fluidpack{fft}
@@ -1234,7 +1234,7 @@ Python 2.7, 3.4 or above. For the next versions, we will
 \pack{Pythran}, \pack{pulp}.
 \end{itemize}
 
-\section{List of contributors}
+\subsection{List of contributors}
 
 \begin{itemize}
 \item Ashwin Vishnu Mohanan (KTH): Development of the shallow water equations
@@ -1251,7 +1251,7 @@ compatibility and documentation.
 \end{itemize}
 
 
-\section{Software location:}
+\subsection{Software location:}
 
 {\bf Archive}
 
@@ -1284,11 +1284,11 @@ GNU General Public License (GPL).
 \item[Date published:] 02/10/2017
 \end{description}
 
-\section{Language}
+\subsection{Language}
 
 English
 
-\section{(3) Reuse potential}
+\section{Reuse potential}
 
 %\textcolor{blue}{Please describe in as much detail as possible the ways in
 %which the software could be reused by other researchers both within and outside
@@ -1326,7 +1326,7 @@ or via IRC protocol on Freenode at \codeinline{\#fluiddyn-users}. Discussions
 can also be exchanged via the official mailing list\footnote{
 \url{https://www.freelists.org/list/fluiddyn}}.
 
-\section{Acknowledgements}
+\subsection{Acknowledgements}
 
 % \textcolor{blue}{Please add any relevant acknowledgements to anyone else who
 % supported the project in which the software was created, but did not work
@@ -1338,7 +1338,7 @@ kindness of Erik Lindborg.
 We are grateful to Bitbucket for providing us with a high quality forge
 compatible with Mercurial, free of cost.
 
-\section{Funding statement}
+\subsection{Funding statement}
 
 % \textcolor{blue}{If the software resulted from funded research please give the
 % funder and grant number.}
@@ -1353,11 +1353,11 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 (grant 2018-A0040107567) and the Swedish National Infrastructure for Computing
 (SNIC).
 
-\section{Competing interests}
+\subsection{Competing interests}
 
 The authors declare that they have no competing interests.
 
-% \section{References}
+% \subsection{References}
 
 % \textcolor{blue}{Please enter references in the Harvard style and include a DOI
 % where available, citing them in the text with a number in square brackets,
