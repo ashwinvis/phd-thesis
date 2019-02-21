@@ -110,7 +110,7 @@ todo:
 vimtex:
 	# gvim $(name).tex --servername GVIM &
 	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
-	NVIM_LISTEN_ADDRESS=GVIM nvim-gtk $(name).tex &
+	NVIM_LISTEN_ADDRESS=GVIM nvim-gtk $(main).tex &
 
 doit: vimtex $(name).pdf
 	zathura $(name).pdf &
