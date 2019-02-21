@@ -1,0 +1,36 @@
+title:
+  "FluidFFT: common API (C++ and Python) for Fast Fourier Transform HPC
+  libraries"
+title_toc:
+  "FluidFFT: common API (C++ and Python) for Fast Fourier Transform HPC
+  libraries"
+title_short:
+  "FluidFFT: common API (C++ and Python) for FFT HPC libraries"
+authors:
+ - Ashwin Vishnu Mohanan
+ - Cyrille Bonamy
+ - Pierre Augier
+affiliations:
+ - Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+pub_short: J. Open Res. Softw.
+pub: Journal of Open Research Software
+volume: Accepted
+number: 1
+pages: 1--10
+year: 2019
+#dir:
+abstract: |
+  The Python package \fluidpack{fft} provides a common Python API for performing
+  Fast Fourier Transforms (FFT) in sequential, in parallel and on GPU with different
+  FFT libraries (FFTW, P3DFFT, PFFT, cuFFT). \fluidpack{fft} is a comprehensive FFT
+  framework which allows Python users to easily and efficiently perform FFT and the
+  associated tasks, such as as computing linear operators and energy spectra.
+  We describe the architecture of the package composed of C++ and Cython FFT
+  classes, Python ``operator'' classes and Pythran functions.
+  The package supplies utilities to easily test itself and benchmark the different
+  FFT solutions for a particular case and on a particular machine.
+  We present a performance scaling analysis on three different computing clusters
+  and a microbenchmark showing that \fluidpack{fft} is an interesting solution to
+  write efficient Python applications using FFT.

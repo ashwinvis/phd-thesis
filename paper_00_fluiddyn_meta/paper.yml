@@ -1,0 +1,49 @@
+title:
+  "FluidDyn: a Python open-source framework for research and teaching in
+  fluid dynamics by simulations, experiments and data processing"
+title_toc: "FluidDyn: a Python open-source framework for research and teaching"
+title_short: "FluidDyn: a Python open-source framework for research and teaching"
+authors:
+ - Pierre Augier
+ - Ashwin Vishnu Mohanan
+ - Cyrille Bonamy
+affiliations:
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+ - Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+pub_short: J. Open Res. Softw.
+pub: Journal of Open Research Software
+volume: Accepted
+number: 1
+pages: 1--10
+year: 2014
+#dir:
+abstract: |
+  \href{http://fluiddyn.readthedocs.io}{FluidDyn} is a project to foster
+  open-science and open-source in the fluid dynamics community.  It is thought of as
+  a research project to channel open-source dynamics, methods and tools to do
+  science.
+  %
+  We propose a set of Python packages forming a framework to study fluid dynamics
+  with different methods, in particular laboratory experiments (package
+  \fluidpack{lab}), simulations (packages \fluidpack{fft}, \fluidpack{sim} and
+  \fluidpack{foam}) and data processing (package \fluidpack{image}).
+  %
+  In the present article, we give an overview of the specialized packages of the
+  project and then focus on the base package called \fluidpack{dyn}, which contains
+  common code used in the specialized packages.  Packages \fluidpack{fft} and
+  \fluidpack{sim} are described with greater detail in two companion papers,
+  \citet{fluidfft, fluidsim}.
+  %
+  With the project FluidDyn, we demonstrate that specialized scientific code can
+  be written with methods and good practices of the open-source community. The
+  Mercurial repositories are available in Bitbucket
+  (\url{https://bitbucket.org/fluiddyn/}). All codes are documented using Sphinx
+  and Read the Docs, and tested with continuous integration run on Bitbucket
+  Pipelines and Travis.
+  %
+  To improve the reuse potential, the codes are as modular as possible, leveraging
+  the simple object-oriented programming model of Python.
+  %
+  All codes are also written to be highly efficient, using C++, Cython and
+  Pythran to speedup the performance of critical functions.

@@ -6,75 +6,111 @@
 
 # Variables:
 #
-kappa = overview
-main = thesis
-TEMPLATE_DIR = ./templates/mechthesis/
+kappa := overview
+main := thesis
+# paper := paper?
+paper := paper_0*
+TEMPLATE_DIR := ./templates/mechthesis/
 
-TEX = latexmk
-TEX_FLAGS = -quiet -use-make -pdf -pdflatex="pdflatex -shell-escape %O %S"
+TEX := pdflatex
+DRAFT_FLAGS := -draftmode -interaction=nonstopmode -shell-escape
+FINAL_FLAGS := -interaction=nonstopmode -shell-escape
 
-BIB = bibtex
-BIB_FLAGS =
+BIB := biber
+BIB_FLAGS :=
+BIB_FILE := $(main).bib
 
+REDIRECT := | tail -n 5
+# REDIRECT := 1> /dev/null
+# REDIRECT := # no redirect
 
 # Dependencies:
 #
-SRCS = $(TEMPLATE_DIR)/jfm.bst              \
-       $(TEMPLATE_DIR)/MechThesis.cls       \
-       packages.tex         \
+TEMPLATE_PAPER = templates/template_mechthesis_paper.tex
+META_PAPER = $(wildcard $(paper)/paper.yml)
+SRCS_PAPER = $(subst /,/paper.tex,$(wildcard $(paper)/))
+SRCS = packages.tex         \
        commands.tex         \
        frontmatter.tex      \
        acknowledgements.tex \
        $(kappa).tex         \
        $(main).tex          \
-       $(main).bib          \
-       $(subst /,/paper.tex,$(wildcard paper*/))
+       $(SRCS_PAPER)
+
+# Template and BibTeX dependencies
+#
+DEPS = $(TEMPLATE_DIR)/MechThesis.cls       \
+       $(TEMPLATE_DIR)/jfm.bst              \
+       $(BIB_FILE)
 
 AUXS = $(kappa).aux \
-       $(main).aux  \
-       $(main).toc  \
-       $(main).pls  \
-       $(main).psm  \
-       $(subst /,/paper.aux,$(wildcard paper*/))
+       $(main).aux \
+       $(subst /,/paper.aux,$(wildcard $(paper)/))
+       # $(main).toc  \
 
-BBLS = $(kappa).bbl \
-       $(subst /,/paper.bbl,$(wildcard paper*/))
+BBLS = $(main).bbl \
+       $(main).bcf
 
 # Rules:
 #
 default: all
 
-all: $(main).pdf
+all: $(main).pdf log
 #
-$(main).pdf: $(SRCS) $(BBLS)
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 	@echo building $(main) with $(TEX)
-	# @$(TEX) $(TEX_FLAGS) -draftmode $(main) #> /dev/null
-	# @sed -i -e 's/toPaper/Paper/g' thesis.out	
-	@$(TEX) $(TEX_FLAGS) $(main) #> /dev/null
+	# @$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
+	@sed -i -e 's/toPaper/Paper/g' thesis.out	
+	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
-$(AUXS): $(SRCS)
-	@echo building $(main) with $(TEX) [for $@]
-	@$(TEX) $(TEX_FLAGS) -draftmode $(main) #> /dev/null
+$(AUXS): $(SRCS) $(DEPS)
+	@echo building $(main) with $(TEX) for $@
+	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+	# @$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
+	# %.aux: %.tex
 
-%.bbl: %.aux $(main).bib
-	@echo building $< with $(BIB)
+%.bbl: %.bcf %.aux $(BIB_FILE)
+	@echo building $@  with $(BIB)
 	@$(BIB) $(BIB_FLAGS) $< #> /dev/null
-#
+	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
+
+%.tex: %.yml $(TEMPLATE_PAPER)
+	@echo building $@ with python
+	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
+
+$(BIB_FILE):
+	@python scripts/get_bib.py
+
+log: $(main).log
+	rubber-info $(main) | ccze -m ansi
+
 clean: clean_papers clean_thesis
+
+cleanall: clean
+	@echo cleaning generated ps,dvi,pdf,paper.tex
+	@rm -f  *.{ps,dvi,pdf}
+	@rm -f paper*/paper.tex
+	@rm -f paper*/*.{ps,dvi,pdf}
+
+clean_minted:
+	@rm -rf _minted-$(main) $(paper)/_minted-*
 
 clean_thesis:
 	@echo cleaning thesis
-	@rm -f *.ps *.dvi *.aux *.toc *.log *.out *.bbl *.blg *.pls *.psm *~ *.syntex.gz
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk}
 
 clean_papers:
 	@echo cleaning papers
-	@rm -f paper*/*.aux paper*/*.bbl paper*/*.blg
+	@rm -f paper*/*.{aux,bbl,blg,fls,fdb_latexmk,log,out,synctex.gz}
+
+todo:
+	@grep -r --color=tty '%TODO:'
 
 vimtex:
 	# gvim $(name).tex --servername GVIM &
 	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
-	NVIM_LISTEN_ADDRESS=GVIM nvim-gtk $(name).tex &
+	NVIM_LISTEN_ADDRESS=GVIM nvim-gtk $(main).tex &
 
 doit: vimtex $(name).pdf
 	zathura $(name).pdf &
-
