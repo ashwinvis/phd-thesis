@@ -113,7 +113,7 @@ documentation, complete with examples and tutorials.  For these reasons
 replace some in-house pseudo-spectral codes written in more conventional
 languages.
 
-\subsubsection{Balance between runtime efficiency and cost of development}
+\paragraphbf{Balance between runtime efficiency and cost of development}
 In today's world where clusters are moving from petascale to exascale
 performance, computing power is aplenty. In most research scenarios, it becomes
 apparent that \emph{man-hours are more expensive than computing time}. In other
@@ -184,7 +184,7 @@ the execution of optimized compiled functions and thus that the ``Python cost'' 
 negligible.
 
 
-\subsubsection{Target audiences}
+\paragraphbf{Target audiences}
 \fluidpack{sim} is designed to cater to the needs of three kinds of audience.
 \begin{itemize}
 \item \emph{Users}, who run simulations with already available solvers. To do
@@ -233,7 +233,7 @@ to use inheritance to modify certain parts to suit one's needs, and avoiding the
 risk of breaking a functioning code.
 
 
-\subsubsection{Package organization}
+\paragraphbf{Package organization}
 
 \fluidpack{sim} is meant to serve as a framework for numerical solvers using
 different methods. For the present version of \fluidpack{sim} there is support for
@@ -284,7 +284,7 @@ methods to compute one variable from another.
 We now turn our attention to the simulation object which illustrates how to
 access the code from the user's perspective.
 
-\subsubsection{The simulation object}
+\paragraphbf{The simulation object}
 
 The simulation object is instantiated with necessary parameters just before
 starting the time stepping.  A simple 2D Navier-Stokes simulation can be
@@ -608,7 +608,7 @@ The code comparisons were made on a smaller machine.
 Results from the three analyses are systematically studied in the following
 sections.
 
-\subsubsection{Profiling}
+\paragraphbf{Profiling}
 
 It is straightforward to perform profiling with the help of the
 \href{https://docs.python.org/3/library/profile.html}{cProfile} module, available
@@ -685,7 +685,7 @@ However, the time in pure Python remains for all cases largely negligible compar
 to the time spent in compiled extensions.
 
 
-\subsubsection{Scalability}
+\paragraphbf{Scalability}
 
 Scalability can be quantified by speedup $S$ which is a measure of the time taken
 to complete $N$ iterations for different number of processes, $n_p$.
@@ -724,7 +724,7 @@ consumed in making forward- and inverse-FFT calls, an inherent bottleneck of
 the pseudo-spectral approach. The FFT function calls are the source of most of
 the MPI calls during runtime, limiting the parallelism.
 
-\subsubsection{2D benchmarks}\label{sec:bench2d}
+\paragraphbf{2D benchmarks}\label{sec:bench2d}
 
 The Navier-Stokes 2D solver (\codeinline{fluidsim.solvers.ns2d}) solving an
 initial value problem (with random fields) was chosen as the test case for strong
@@ -820,7 +820,7 @@ $0.195$ to $0.023$ seconds for the $1024\times1024$ case, and from
 $0.128$ to $0.051$ seconds for the $2048\times2048$ case. Thus it is indeed
 feasible and scalable to use this particular solver.
 
-\subsubsection{3D benchmarks}
+\paragraphbf{3D benchmarks}
 
 Using a similar process as described in the previous section,
 %~\ref{sec:bench2d},

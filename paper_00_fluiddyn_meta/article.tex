@@ -330,7 +330,7 @@ Interfaces (API) to support \fluidpack{sim}, \fluidpack{lab} and
 For the sake of brevity, we shall only describe here some of the most important
 modules.
 
-\subsubsection{Module \codeinline{fluiddyn.util.paramcontainer}}
+\paragraphbf{Module \codeinline{fluiddyn.util.paramcontainer}}
 
 Sub-package \codeinline{paramcontainer} defines class
 \codeinline{ParamContainer} which is a hierarchical container for any type of
@@ -351,7 +351,7 @@ files. An error is raised if the user attempts to use an invalid parameter.
 Thus, it makes it a much more robust implementation for saving key parameters,
 compared to conventional methods which rely on text or CSV files.
 
-\subsubsection{Module \codeinline{fluiddyn.util.serieofarrays}}
+\paragraphbf{Module \codeinline{fluiddyn.util.serieofarrays}}
 
 This module provides classes to iterate over files. It is a common task in data
 processing to understand how to organize a \textit{sequence} of files from
@@ -386,7 +386,7 @@ API as shown in
 \href{http://fluiddyn.readthedocs.io/en/latest/ipynb/tuto_serieofarrays.html}{%
 the tutorial on the module}.
 
-\subsubsection{Module \codeinline{fluiddyn.util.mpi}}
+\paragraphbf{Module \codeinline{fluiddyn.util.mpi}}
 
 This simple module makes simultaneous sequential and MPI programming a breeze
 by providing number of processes, \codeinline{nb\_proc = 1} and \codeinline{rank
@@ -395,7 +395,7 @@ provided by \pack{mpi4py} package. Use of this module thwarts coding several if-
 clauses. If the program was using MPI, also defines the variable
 \codeinline{comm} as an alias for the \codeinline{MPI.COMM\_WORLD} communicator.
 
-\subsubsection{Module \codeinline{fluiddyn.calcul.easyfft}}
+\paragraphbf{Module \codeinline{fluiddyn.calcul.easyfft}}
 
 Thin wrapper for an unified API using classes around the packages \pack{pyfftw}
 and \pack{scipy.fftpack}.  It is very easy to perform forward and inverse Fast
