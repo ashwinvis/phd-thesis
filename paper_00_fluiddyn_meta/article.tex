@@ -15,11 +15,11 @@
 
 % \rule{\textwidth}{1pt}
 
-% \section*{(1) Overview}
+% \section{(1) Overview}
 
 % \vspace{0.5cm}
 
-% \section*{Title}
+% \section{Title}
 
 % \textcolor{blue}{The title of the software paper should focus on the software,
 % e.g. “Text mining software from the X project”. If the software is closely
@@ -38,7 +38,7 @@
 % FluidDyn: a Python open-source framework for research and teaching in fluid
 % dynamics by simulations, experiments and data processing
 
-% \section*{Paper Authors}
+% \section{Paper Authors}
 
 % \textcolor{blue}{1. Last name, first name; (Lead/corresponding author first) \\
 % 2. Last name, first name; etc.}
@@ -53,7 +53,7 @@
 % Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.\\
 % $^b$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.
 %
-% \section*{Paper Author Roles and Affiliations}
+% \section{Paper Author Roles and Affiliations}
 % \textcolor{blue}{1. First author role and affiliation \\
 % 2. Second author role and affiliation etc.}
 
@@ -62,7 +62,7 @@
 % Sweden; \\
 % 3. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
 
-% \section*{Abstract}
+% \section{Abstract}
 
 % \textcolor{blue}{A short (ca. 100 word) summary of the software being
 % described: what problem the software addresses, how it was implemented and
@@ -97,7 +97,7 @@
 % All codes are also written to be highly efficient, using C++, Cython and
 % Pythran to speedup the performance of critical functions.
 
-% \section*{Keywords}
+% \section{Keywords}
 
 % % \textcolor{blue}{keyword 1; keyword 2; etc. \\
 % % Keywords should make it easy to identify who and what the software will be
@@ -107,7 +107,7 @@
 % experiments. Free and open-source software, modular, object-oriented,
 % collaborative, efficient, tested, documented.
 
-\section*{Introduction}
+\section{Introduction}
 
 % \textcolor{blue}{An overview of the software, how it was produced, and the
 % research for which it has been used, including references to relevant research
@@ -231,7 +231,7 @@ and efficient ecosystem specialized in research and teaching in fluid dynamics.
 % architecture where relevant. Use of relevant diagrams is appropriate. Please
 % also describe any variants and associated implementation differences.}
 
-\subsection*{Organization of the code in packages}
+\subsection{Organization of the code in packages}
 
 FluidDyn was originally intended to be a single package to perform experiments
 and simulations. Since a typical user may not be involved in both experiments
@@ -304,7 +304,7 @@ We now tend to abandon Python 2.7 support for the next releases of the package.
 %
 This article will now focus on the base package \fluiddyn.
 
-\subsection*{API of the Python library \fluiddyn}
+\subsection{API of the Python library \fluiddyn}
 
 All functions and classes defined in \fluiddyn are pure Python elements, meaning
 that no extensions are implemented in \fluiddyn.  Thus the package \fluiddyn is
@@ -330,7 +330,7 @@ Interfaces (API) to support \fluidpack{sim}, \fluidpack{lab} and
 For the sake of brevity, we shall only describe here some of the most important
 modules.
 
-\subsubsection*{Module \codeinline{fluiddyn.util.paramcontainer}}
+\subsubsection{Module \codeinline{fluiddyn.util.paramcontainer}}
 
 Sub-package \codeinline{paramcontainer} defines class
 \codeinline{ParamContainer} which is a hierarchical container for any type of
@@ -351,7 +351,7 @@ files. An error is raised if the user attempts to use an invalid parameter.
 Thus, it makes it a much more robust implementation for saving key parameters,
 compared to conventional methods which rely on text or CSV files.
 
-\subsubsection*{Module \codeinline{fluiddyn.util.serieofarrays}}
+\subsubsection{Module \codeinline{fluiddyn.util.serieofarrays}}
 
 This module provides classes to iterate over files. It is a common task in data
 processing to understand how to organize a \textit{sequence} of files from
@@ -386,7 +386,7 @@ API as shown in
 \href{http://fluiddyn.readthedocs.io/en/latest/ipynb/tuto_serieofarrays.html}{%
 the tutorial on the module}.
 
-\subsubsection*{Module \codeinline{fluiddyn.util.mpi}}
+\subsubsection{Module \codeinline{fluiddyn.util.mpi}}
 
 This simple module makes simultaneous sequential and MPI programming a breeze
 by providing number of processes, \codeinline{nb\_proc = 1} and \codeinline{rank
@@ -395,7 +395,7 @@ provided by \pack{mpi4py} package. Use of this module thwarts coding several if-
 clauses. If the program was using MPI, also defines the variable
 \codeinline{comm} as an alias for the \codeinline{MPI.COMM\_WORLD} communicator.
 
-\subsubsection*{Module \codeinline{fluiddyn.calcul.easyfft}}
+\subsubsection{Module \codeinline{fluiddyn.calcul.easyfft}}
 
 Thin wrapper for an unified API using classes around the packages \pack{pyfftw}
 and \pack{scipy.fftpack}.  It is very easy to perform forward and inverse Fast
@@ -403,7 +403,7 @@ Fourier Transforms (FFT) in one-, two- and three-dimensions.
 The FFT can be multithreaded if the environment variable
 \codeinline{OMP\_NUM\_THREADS} is defined.
 
-\subsection*{The \fluiddyn command-line utilities}
+\subsection{The \fluiddyn command-line utilities}
 
 The package \fluiddyn also provides few command-line utilities to perform
 simple tasks useful for a scientist developing with Python and using the
@@ -447,7 +447,7 @@ original Matlab code.
 \end{itemize}
 
 
-\section*{Quality control}
+\section{Quality control}
 
 % \textcolor{blue}{Detail the level of testing that has been carried out on the
 % code (e.g. unit, functional, load etc.), and in which environments. If not
@@ -476,15 +476,15 @@ enhancement proposals) 8 and 257. This is also inspected using lint checkers
 such as \codeinline{flake8} and \codeinline{pylint} among the developers.  The
 code is regularly cleaned up using the Python code formatter \codeinline{black}.
 
-\section*{(2) Availability}
+\section{(2) Availability}
 \vspace{0.5cm}
-\section*{Operating system}
+\section{Operating system}
 
 % \textcolor{blue}{Please include minimum version compatibility.}
 
 Windows and any POSIX based OS, such as GNU/Linux and macOS.
 
-\section*{Programming language}
+\section{Programming language}
 
 % \textcolor{blue}{Please include minimum version compatibility.}
 
@@ -492,11 +492,11 @@ Python 2.7, 3.4 or above. For the next versions, we will
 \href{https://python3statement.org/}{drop Python 2.7 support and Python $>=$
 3.6 will be required}.
 
-% \section*{Additional system requirements}
+% \section{Additional system requirements}
 
 % \textcolor{blue}{E.g. memory, disk space, processor, input devices, output devices.}
 
-\section*{Dependencies}
+\section{Dependencies}
 
 % \textcolor{blue}{E.g. libraries, frameworks, incl. minimum version
 % compatibility.}
@@ -512,7 +512,7 @@ We list here only the dependencies of the base package \fluidpack{dyn}.
 
 \item {\bf Optional:} OpenCV with Python bindings, \pack{scikit-image}.
 \end{itemize}
-\section*{List of contributors}
+\section{List of contributors}
 
 % \textcolor{blue}{Please list anyone who helped to create the software (who may
 % also not be an author of this paper), including their roles and affiliations.}
@@ -541,7 +541,7 @@ Bitbucket Pipelines and Travis CI).
 
 \end{itemize}
 
-% \section*{Software location:}
+% \section{Software location:}
 %
 % % {\bf Archive} \textcolor{blue}{(e.g. institutional repository, general
 % % repository) (required – please see instructions on journal website for
@@ -575,13 +575,13 @@ Bitbucket Pipelines and Travis CI).
 % \item[Date published:] \textcolor{blue}{dd/mm/yy}
 % \end{description}
 
-% \section*{Language}
+% \section{Language}
 %
 % % \textcolor{blue}{Language of repository, software and supporting files.}
 %
 % English
 
-\section*{(3) Reuse potential}
+\section{(3) Reuse potential}
 %
 % \textcolor{blue}{Please describe in as much detail as possible the ways in
 % which the software could be reused by other researchers both within and outside
@@ -626,7 +626,7 @@ or via IRC protocol on Freenode at \codeinline{\#fluiddyn-users}. Discussions
 can also be exchanged via the official mailing list\footnote{
 \url{https://www.freelists.org/list/fluiddyn}}.
 
-\subsection*{Conclusions}
+\subsection{Conclusions}
 
 FluidDyn is an attempt to set off collaborative dynamics based on open-source
 development in fluid dynamics research.
@@ -688,7 +688,7 @@ Finally, if we manage to gather a community of users and of developers, the
 collective efficiency related to open-source methods and tools can be a strong
 booster.
 
-\section*{Acknowledgements}
+\section{Acknowledgements}
 
 % \textcolor{blue}{Please add any relevant acknowledgements to anyone else who
 % supported the project in which the software was created, but did not work
@@ -709,7 +709,7 @@ compatible with Mercurial, free of cost.
 Finally, we thank Gabriel Moreau and Jo\"el Sommeria for their constant will
 to discuss and share their knowledge.
 
-\section*{Funding statement}
+\section{Funding statement}
 
 % \textcolor{blue}{If the software resulted from funded research please give the
 % funder and grant number.}
@@ -724,7 +724,7 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 (grant 2018-A0040107567) and the Swedish National Infrastructure for Computing
 (SNIC).
 
-\section*{Competing interests}
+\section{Competing interests}
 
 % \textcolor{blue}{If any of the authors have any competing interests then these
 % must be declared. The authors’ initials should be used to denote differing
@@ -738,7 +738,7 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 The authors declare that they have no competing interests.
 
 % already included by \bibliography{../bib}
-% \section*{References}
+% \section{References}
 
 % \textcolor{blue}{Please enter references in the Harvard style and include a DOI
 % where available, citing them in the text with a number in square brackets,

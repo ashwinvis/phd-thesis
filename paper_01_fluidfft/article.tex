@@ -14,11 +14,11 @@ Please submit the completed paper to: editor.jors@ubiquitypress.com
 
 \rule{\textwidth}{1pt}
 
-\section*{(1) Overview}
+\section{(1) Overview}
 
 \vspace{0.5cm}
 
-\section*{Title}
+\section{Title}
 
 % \textcolor{blue}{The title of the software paper should focus on the software,
 % e.g. “Text mining software from the X project”. If the software is closely
@@ -29,7 +29,7 @@ Please submit the completed paper to: editor.jors@ubiquitypress.com
 
 FluidFFT: common API (C++ and Python) for Fast Fourier Transform HPC libraries
 
-\section*{Paper Authors}
+\section{Paper Authors}
 
 % \textcolor{blue}{1. Last name, first name; (Lead/corresponding author first) \\
 % 2. Last name, first name; etc.}
@@ -44,7 +44,7 @@ $^a$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.
 $^b$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
 Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.\\
 
-\section*{Paper Author Roles and Affiliations}
+\section{Paper Author Roles and Affiliations}
 % \textcolor{blue}{1. First author role and affiliation \\
 % 2. Second author role and affiliation etc.}
 
@@ -53,7 +53,7 @@ Sweden; \\
 2. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
 3. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France
 
-\section*{Abstract}
+\section{Abstract}
 
 % \textcolor{blue}{A short (ca. 100 word) summary of the software being
 % described: what problem the software addresses, how it was implemented and
@@ -75,7 +75,7 @@ We present a performance scaling analysis on three different computing clusters
 and a microbenchmark showing that \fluidpack{fft} is an interesting solution to
 write efficient Python applications using FFT.
 
-\section*{Keywords}
+\section{Keywords}
 
 % \textcolor{blue}{keyword 1; keyword 2; etc. \\
 % Keywords should make it easy to identify who and what the software will be
@@ -84,7 +84,7 @@ write efficient Python applications using FFT.
 Free and open-source library; Python; Fast Fourier Transform; Distributed; MPI;
 GPU; High performance computing%
 
-\section*{Introduction}
+\section{Introduction}
 
 % \textcolor{blue}{An overview of the software, how it was produced, and the
 % research for which it has been used, including references to relevant research
@@ -206,7 +206,7 @@ we show how we test and maintain the quality of the code base through
 continuous integration and mention some possible applications of
 \fluidpack{fft}.
 
-\section*{Implementation and architecture}
+\section{Implementation and architecture}
 
 % \textcolor{blue}{How the software was implemented, with details of the
 % architecture where relevant. Use of relevant diagrams is appropriate. Please
@@ -227,7 +227,7 @@ double-precision\footnote{Most C++ classes also support single-precision.}
 computation with real-to-complex FFT, complex-to-real inverse FFT, and additional
 helper functions.
 
-\subsection*{C++ API}
+\subsection{C++ API}
 
 \begin{figure}[htp]
   \centering
@@ -321,7 +321,7 @@ Detailed information regarding the C++ classes and its member functions are
 also included in the online documentation\footnote{%
 \url{https://fluidfft.readthedocs.io/en/latest/doxygen/index.html}.}.
 
-\subsection*{Python API} Similar to other packages in the FluidDyn project,
+\subsection{Python API} Similar to other packages in the FluidDyn project,
 \fluidpack{fft} also uses an object-oriented approach, providing FFT classes.
 %
 This is in contrast with the approach adopted by \pack{numpy.fft} and \pack{%
@@ -395,7 +395,7 @@ easily switch between FFT libraries.
 Let us now turn our attention to how the code is organized. We shall also describe
 how the source code is built, and linked with the supported libraries.
 
-\subsection*{Code organization}
+\subsection{Code organization}
 \begin{figure}[htp]
   \centering
   \includegraphics[width=0.96\linewidth]{Pyfig/fig_build_use}
@@ -468,9 +468,9 @@ installation to run benchmarks and plot the results. In the next subsection, we
 shall look at some results by making use of these utilities on three computing
 clusters.
 
-\subsection*{Performance}
+\subsection{Performance}
 
-\subsubsection*{Scalability tests using \codeinline{fluidfft-bench}}
+\subsubsection{Scalability tests using \codeinline{fluidfft-bench}}
 
 % Simple!! Few cases. Few clusters. Figures obtained with
 % fluidfft-bench-analysis
@@ -693,7 +693,7 @@ Therefore, an application build upon \fluidpack{fft} can be efficient for
 different sizes and machines.
 
 
-\subsubsection*{Microbenchmark of critical ``operator'' functions}
+\subsubsection{Microbenchmark of critical ``operator'' functions}
 
 As already mentioned, we use \pack{Pythran} \citep{guelton2018pythran} to
 compile some critical ``operator'' functions.  In this subsection, we present a
@@ -917,7 +917,7 @@ could take into account dealiasing in the FFT classes to save some memory and
 computation time\footnote{See
 \href{https://bitbucket.org/fluiddyn/fluidfft/issues/21/}{fluidfft issue 21}.}.
 
-\section*{Quality control}
+\section{Quality control}
 
 % \textcolor{blue}{Detail the level of testing that has been carried out on the
 % code (e.g. unit, functional, load etc.), and in which environments. If not
@@ -948,15 +948,15 @@ as \codeinline{flake8} and \codeinline{pylint} among the developers.  The Python
 code is regularly cleaned up using the code formatter \codeinline{black}.
 
 
-\section*{(2) Availability}
+\section{(2) Availability}
 \vspace{0.5cm}
-\section*{Operating system}
+\section{Operating system}
 
 % \textcolor{blue}{Please include minimum version compatibility.}
 
 Windows and any POSIX based OS, such as GNU/Linux and macOS.
 
-\section*{Programming language}
+\section{Programming language}
 
 % \textcolor{blue}{Please include minimum version compatibility.}
 
@@ -970,7 +970,7 @@ has been successfully tested on PyPy 6.0.
 A C++11 supporting compiler, while not mandatory for the C++ API or Cython
 extensions of \fluidpack{fft}, is recommended to be able to use Pythran extensions.
 
-\section*{Dependencies}
+\section{Dependencies}
 
 % \textcolor{blue}{E.g. libraries, frameworks, incl. minimum version
 % compatibility.}
@@ -990,7 +990,7 @@ Python API:
 \end{itemize}
 
 
-\section*{List of contributors}
+\section{List of contributors}
 
 % \textcolor{blue}{Please list anyone who helped to create the software (who may
 % also not be an author of this paper), including their roles and affiliations.}
@@ -1003,7 +1003,7 @@ Python API:
   tests, continuous integration, and bug fixes.
 \end{itemize}
 
-\section*{Software location:}
+\section{Software location:}
 
 % {\bf Archive} \textcolor{blue}{(e.g. institutional repository, general
 % repository) (required – please see instructions on journal website for
@@ -1038,13 +1038,13 @@ GNU General Public License (GPL).
 \item[Date published:] 02/10/2017
 \end{description}
 
-\section*{Language}
+\section{Language}
 
 % \textcolor{blue}{Language of repository, software and supporting files.}
 
 English
 
-\section*{(3) Reuse potential}
+\section{(3) Reuse potential}
 
 % \textcolor{blue}{Please describe in as much detail as possible the ways in
 % which the software could be reused by other researchers both within and outside
@@ -1068,7 +1068,7 @@ or via IRC protocol on Freenode at \codeinline{\#fluiddyn-users}. Discussions
 can also be exchanged via the official mailing list\footnote{
 \url{https://www.freelists.org/list/fluiddyn}}.
 
-\section*{Acknowledgements}
+\section{Acknowledgements}
 
 % \textcolor{blue}{Please add any relevant acknowledgements to anyone else who
 % supported the project in which the software was created, but did not work
@@ -1080,7 +1080,7 @@ kindness of Erik Lindborg.
 We are grateful to Bitbucket for providing us with a high quality forge
 compatible with Mercurial, free of cost.
 
-\section*{Funding statement}
+\section{Funding statement}
 
 % \textcolor{blue}{If the software resulted from funded research please give the
 % funder and grant number.}
@@ -1095,7 +1095,7 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 (grant 2018-A0040107567) and the Swedish National Infrastructure for Computing
 (SNIC).
 
-\section*{Competing interests}
+\section{Competing interests}
 
 % \textcolor{blue}{If any of the authors have any competing interests then these
 % must be declared. The authors’ initials should be used to denote differing
@@ -1108,7 +1108,7 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 
 The authors declare that they have no competing interests.
 
-% \section*{References}
+% \section{References}
 
 % \textcolor{blue}{Please enter references in the Harvard style and include a DOI
 % where available, citing them in the text with a number in square brackets,
