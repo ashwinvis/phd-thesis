@@ -9,7 +9,7 @@
 kappa := overview
 main := thesis
 # paper := paper?
-paper := paper_00*
+paper := paper_0[1,2]*
 TEMPLATE_DIR := ./templates/mechthesis/
 
 TEX := pdflatex
