@@ -28,7 +28,7 @@ REDIRECT := | tail -n 5
 #
 TEMPLATE_PAPER = templates/template_mechthesis_paper.tex
 META_PAPER = $(wildcard $(paper)/paper.yml)
-SRCS_PAPER = $(wildcard $(paper)/paper.tex)
+SRCS_PAPER = $(subst /,/paper.tex,$(wildcard $(paper)/))
 SRCS = packages.tex         \
        commands.tex         \
        frontmatter.tex      \
@@ -45,7 +45,7 @@ DEPS = $(TEMPLATE_DIR)/MechThesis.cls       \
 
 AUXS = $(kappa).aux \
        $(main).aux \
-       $(wildcard $(paper)/paper.aux)
+       $(subst /,/paper.aux,$(wildcard $(paper)/))
        # $(main).toc  \
 
 BBLS = $(main).bbl \
@@ -88,9 +88,10 @@ log: $(main).log
 clean: clean_papers clean_thesis
 
 cleanall: clean
+	@echo cleaning generated ps,dvi,pdf,paper.tex
 	@rm -f  *.{ps,dvi,pdf}
-	# @rm -f paper*/paper.tex
-	# @rm -f  paper*/*.{ps,dvi,pdf}
+	@rm -f paper*/paper.tex
+	@rm -f paper*/*.{ps,dvi,pdf}
 
 clean_minted:
 	@rm -rf _minted-$(main) $(paper)/_minted-*
