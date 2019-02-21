@@ -2,24 +2,24 @@
 %% Bonner and John Brennan, Durham University, UK.
 %% see http://openresearchsoftware.metajnl.com
 
-\documentclass{../jors}
+% % \documentclass{../jors}
 
-\begin{document}
+% \begin{document}
 
-{\bf Software paper for submission to the Journal of Open Research Software} \\
+% {\bf Software paper for submission to the Journal of Open Research Software} \\
 
-To complete this template, please replace the blue text with your own. The paper
-has three main sections: (1) Overview; (2) Availability; (3) Reuse potential.
+% To complete this template, please replace the blue text with your own. The paper
+% has three main sections: (1) Overview; (2) Availability; (3) Reuse potential.
 
-Please submit the completed paper to: editor.jors@ubiquitypress.com
+% Please submit the completed paper to: editor.jors@ubiquitypress.com
 
-\rule{\textwidth}{1pt}
+% \rule{\textwidth}{1pt}
 
-\section*{(1) Overview}
+% \section*{(1) Overview}
 
-\vspace{0.5cm}
+% \vspace{0.5cm}
 
-\section*{Title}
+% \section*{Title}
 
 % \textcolor{blue}{The title of the software paper should focus on the software,
 % e.g. “Text mining software from the X project”. If the software is closely
@@ -35,77 +35,77 @@ Please submit the completed paper to: editor.jors@ubiquitypress.com
 
 % new title
 
-FluidDyn: a Python open-source framework for research and teaching in fluid
-dynamics by simulations, experiments and data processing
+% FluidDyn: a Python open-source framework for research and teaching in fluid
+% dynamics by simulations, experiments and data processing
 
-\section*{Paper Authors}
+% \section*{Paper Authors}
 
 % \textcolor{blue}{1. Last name, first name; (Lead/corresponding author first) \\
 % 2. Last name, first name; etc.}
-
-1. AUGIER Pierre$^a$\\
-2. MOHANAN Ashwin Vishnu$^b$\\
-3. BONAMY Cyrille$^a$\\
-
-\smallskip
-
-$^a$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
-Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.\\
-$^b$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.
-
-\section*{Paper Author Roles and Affiliations}
+%
+% 1. AUGIER Pierre$^a$\\
+% 2. MOHANAN Ashwin Vishnu$^b$\\
+% 3. BONAMY Cyrille$^a$\\
+%
+% \smallskip
+%
+% $^a$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
+% Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.\\
+% $^b$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.
+%
+% \section*{Paper Author Roles and Affiliations}
 % \textcolor{blue}{1. First author role and affiliation \\
 % 2. Second author role and affiliation etc.}
 
-1. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France\\
-2. Ph.D. student, Linn\'e Flow Centre, KTH Royal Institute of Technology,
-Sweden; \\
-3. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
+% 1. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France\\
+% 2. Ph.D. student, Linn\'e Flow Centre, KTH Royal Institute of Technology,
+% Sweden; \\
+% 3. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
 
-\section*{Abstract}
+% \section*{Abstract}
 
 % \textcolor{blue}{A short (ca. 100 word) summary of the software being
 % described: what problem the software addresses, how it was implemented and
 % architected, where it is stored, and its reuse potential.}
 
-\href{http://fluiddyn.readthedocs.io}{FluidDyn} is a project to foster
-open-science and open-source in the fluid dynamics community.  It is thought of as
-a research project to channel open-source dynamics, methods and tools to do
-science.
-%
-We propose a set of Python packages forming a framework to study fluid dynamics
-with different methods, in particular laboratory experiments (package
-\fluidpack{lab}), simulations (packages \fluidpack{fft}, \fluidpack{sim} and
-\fluidpack{foam}) and data processing (package \fluidpack{image}).
-%
-In the present article, we give an overview of the specialized packages of the
-project and then focus on the base package called \fluidpack{dyn}, which contains
-common code used in the specialized packages.  Packages \fluidpack{fft} and
-\fluidpack{sim} are described with greater detail in two companion papers,
-\citet{fluidfft, fluidsim}.
-%
-With the project FluidDyn, we demonstrate that specialized scientific code can
-be written with methods and good practices of the open-source community. The
-Mercurial repositories are available in Bitbucket
-(\url{https://bitbucket.org/fluiddyn/}). All codes are documented using Sphinx
-and Read the Docs, and tested with continuous integration run on Bitbucket
-Pipelines and Travis.
-%
-To improve the reuse potential, the codes are as modular as possible, leveraging
-the simple object-oriented programming model of Python.
-%
-All codes are also written to be highly efficient, using C++, Cython and
-Pythran to speedup the performance of critical functions.
+% \href{http://fluiddyn.readthedocs.io}{FluidDyn} is a project to foster
+% open-science and open-source in the fluid dynamics community.  It is thought of as
+% a research project to channel open-source dynamics, methods and tools to do
+% science.
+% %
+% We propose a set of Python packages forming a framework to study fluid dynamics
+% with different methods, in particular laboratory experiments (package
+% \fluidpack{lab}), simulations (packages \fluidpack{fft}, \fluidpack{sim} and
+% \fluidpack{foam}) and data processing (package \fluidpack{image}).
+% %
+% In the present article, we give an overview of the specialized packages of the
+% project and then focus on the base package called \fluidpack{dyn}, which contains
+% common code used in the specialized packages.  Packages \fluidpack{fft} and
+% \fluidpack{sim} are described with greater detail in two companion papers,
+% \citet{fluidfft, fluidsim}.
+% %
+% With the project FluidDyn, we demonstrate that specialized scientific code can
+% be written with methods and good practices of the open-source community. The
+% Mercurial repositories are available in Bitbucket
+% (\url{https://bitbucket.org/fluiddyn/}). All codes are documented using Sphinx
+% and Read the Docs, and tested with continuous integration run on Bitbucket
+% Pipelines and Travis.
+% %
+% To improve the reuse potential, the codes are as modular as possible, leveraging
+% the simple object-oriented programming model of Python.
+% %
+% All codes are also written to be highly efficient, using C++, Cython and
+% Pythran to speedup the performance of critical functions.
 
-\section*{Keywords}
+% \section*{Keywords}
 
-% \textcolor{blue}{keyword 1; keyword 2; etc. \\
-% Keywords should make it easy to identify who and what the software will be
-% useful for.}
+% % \textcolor{blue}{keyword 1; keyword 2; etc. \\
+% % Keywords should make it easy to identify who and what the software will be
+% % useful for.}
 
-Fluid dynamics research with Python. Numerical simulations. Laboratory
-experiments. Free and open-source software, modular, object-oriented,
-collaborative, efficient, tested, documented.
+% Fluid dynamics research with Python. Numerical simulations. Laboratory
+% experiments. Free and open-source software, modular, object-oriented,
+% collaborative, efficient, tested, documented.
 
 \section*{Introduction}
 
@@ -116,8 +116,8 @@ collaborative, efficient, tested, documented.
 
 
 Science is mainly a collective activity.  We can go further only by
-\href{https://en.wikipedia.org/wiki/%
-Standing_on_the_shoulders_of_giants}{``standing on the shoulders of giants''}
+\href{https://en.wikipedia.org/wiki/Standing\_on\_the\_shoulders\_of\_giants}{``standing
+on the shoulders of giants''}
 (and of a huge number of technicians and scientists).  Science is a lot about
 how to build new knowledge from the work of others and hence, the exchange
 of ideas is a fundamental aspect.
@@ -225,7 +225,7 @@ and efficient ecosystem specialized in research and teaching in fluid dynamics.
 
 
 
-\section*{Implementation and architecture}
+\section{Implementation and architecture}
 
 % \textcolor{blue}{How the software was implemented, with details of the
 % architecture where relevant. Use of relevant diagrams is appropriate. Please
@@ -541,31 +541,31 @@ Bitbucket Pipelines and Travis CI).
 
 \end{itemize}
 
-\section*{Software location:}
-
-% {\bf Archive} \textcolor{blue}{(e.g. institutional repository, general
-% repository) (required – please see instructions on journal website for
-% depositing archive copy of software in a suitable repository)}
-
-\begin{description}[noitemsep,topsep=0pt]
-\item[Name:] PyPI
-\item[Persistent identifier:] https://pypi.org/project/fluiddyn
-\item[Licence:] CeCILL-B, a BSD compatible French licence.
-\item[Publisher:] Pierre Augier
-\item[Version published:] 0.2.4
-\item[Date published:] 02/07/2018
-\end{description}
-
-{\bf Code repository}
-% \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
-
-\begin{description}[noitemsep,topsep=0pt]
-\item[Name:] Bitbucket
-\item[Persistent identifier:] https://bitbucket.org/fluiddyn/fluiddyn
-\item[Licence:] CeCILL-B
-\item[Date published:] 2015
-\end{description}
-
+% \section*{Software location:}
+%
+% % {\bf Archive} \textcolor{blue}{(e.g. institutional repository, general
+% % repository) (required – please see instructions on journal website for
+% % depositing archive copy of software in a suitable repository)}
+%
+% \begin{description}[noitemsep,topsep=0pt]
+% \item[Name:] PyPI
+% \item[Persistent identifier:] https://pypi.org/project/fluiddyn
+% \item[Licence:] CeCILL-B, a BSD compatible French licence.
+% \item[Publisher:] Pierre Augier
+% \item[Version published:] 0.2.4
+% \item[Date published:] 02/07/2018
+% \end{description}
+%
+% {\bf Code repository}
+% % \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
+%
+% \begin{description}[noitemsep,topsep=0pt]
+% \item[Name:] Bitbucket
+% \item[Persistent identifier:] https://bitbucket.org/fluiddyn/fluiddyn
+% \item[Licence:] CeCILL-B
+% \item[Date published:] 2015
+% \end{description}
+%
 % {\bf Emulation environment} \textcolor{blue}{(if appropriate)}
 
 % \begin{description}[noitemsep,topsep=0pt]
@@ -575,11 +575,11 @@ Bitbucket Pipelines and Travis CI).
 % \item[Date published:] \textcolor{blue}{dd/mm/yy}
 % \end{description}
 
-\section*{Language}
-
-% \textcolor{blue}{Language of repository, software and supporting files.}
-
-English
+% \section*{Language}
+%
+% % \textcolor{blue}{Language of repository, software and supporting files.}
+%
+% English
 
 \section*{(3) Reuse potential}
 %
@@ -748,10 +748,6 @@ The authors declare that they have no competing interests.
 % Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI:
 % \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
 
-\bibliographystyle{../agsm}
-\bibliography{../bib}
-
-
 \rule{\textwidth}{1pt}
 
 { \bf Copyright Notice} \\
@@ -771,5 +767,3 @@ with an acknowledgement of its initial publication in this journal.
 By submitting this paper you agree to the terms of this Copyright Notice, which
 will apply to this submission if and when it is published by this journal.
 
-
-\end{document}

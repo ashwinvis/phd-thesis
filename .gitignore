@@ -14,6 +14,7 @@
 # latexmk
 *.fdb_latexmk
 *.fls
+*.run.xml
 
 # minted
 _minted*
@@ -33,3 +34,4 @@ paper**/old
 .mypy_cache
 **/__pycache__
 **/.ipynb_checkpoints/
+*.code-workspace

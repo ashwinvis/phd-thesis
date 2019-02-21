@@ -1,6 +1,28 @@
-% Insert HERE any additional packages
+% Packages used in chapter open science
+%\usepackage{epstopdf}
+%\usepackage{listings}
+%\usepackage{fancyref}
 
-\usepackage{graphicx} % Enhanced support for graphics
+% \usepackage[newfloat,draft=true]{minted}
+\usepackage[newfloat,finalizecache=true]{minted}
+%\usepackage{booktabs}
+%\usepackage{outlines}
+
+%\usepackage{har2nat}
+
+%% Uncomment the following
+\usepackage{xspace}
+\usepackage{xcolor}
+%% \usepackage{sectsty}
+\usepackage{enumitem}
+% \usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\input{templates/mechthesis/packages}
+
+% Insert HERE any additional packages
+% \usepackage{graphicx} % Enhanced support for graphics
 
 % Useful packages (not required):
 %
@@ -14,17 +36,18 @@
 % \usepackage[normalem]{ulem} % Package for underlining 
 
 %===============================================================================
-%                        DO NOT TOUCH WHAT FOLLOWS
+%                        MechThesis includes the following
 %===============================================================================
 %
 % The following packages are required by the MechThesis class
 %
-\usepackage[utf8]{inputenc} % Accept different input encodings
-\usepackage[swedish,english]{babel} % Multilingual support for Plain TeX or LaTeX
-\usepackage{microtype} % Subliminal refinements towards typographical perfection
-\usepackage{natbib} % Flexible bibliography support
-\usepackage[hidelinks]{hyperref} % Extensive support for hypertext in LaTeX
-\usepackage{caption} % Correct figures and tables caption width
+% \usepackage[utf8]{inputenc} % Accept different input encodings
+% \usepackage[swedish,english]{babel} % Multilingual support for Plain TeX or LaTeX
+% \usepackage{microtype} % Subliminal refinements towards typographical perfection
+% \usepackage{csquotes} % Recommended for biblatex
+% \usepackage[style=jfm,natbib=true]{biblatex}
+% \usepackage[hidelinks]{hyperref} % Extensive support for hypertext in LaTeX
+% \usepackage{caption} % Correct figures and tables caption width
 %
 % The following packages are loaded by MechThesis.cls and need not to be loaded
 % in this file:
@@ -38,17 +61,3 @@
 % - fp          (if [happyadvisor] option is used)
 
 
-% Packages used in chapter open science
-%\usepackage{epstopdf}
-%\usepackage{listings}
-%\usepackage{fancyref}
-
-\usepackage[finalizecache]{minted}
-%\usepackage{booktabs}
-%\usepackage{outlines}
-
-%\usepackage{har2nat}
-
-\usepackage{xspace}
-
-%\usepackage{etoolbox}

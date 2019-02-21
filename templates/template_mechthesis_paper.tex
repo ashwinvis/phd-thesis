@@ -10,11 +10,11 @@
 % Short authors used in headlines and List Of Papers
 \paperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
 {%
-  \VAR{authors_aff[:-1] | join(', ')} and \VAR{authors_aff | last}] % Short authors used in headlines and List Of Papers
+  \VAR{authors_aff[:-1] | join(', ')} and \VAR{authors_aff | last} % Short authors used in headlines and List Of Papers
 }%
 %
 % (optional) Short authors used in List Of Papers
-\listpaperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
+% \listpaperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
 %
 \paperaffiliation
 {%
@@ -74,10 +74,10 @@
 %------------------------------------------------------------------------------
 %
 %\clearpage
-\bibliographystyle{jfm}
-\bibliography{thesis}
-%
-\IfFileExists{\VAR{dir}/paper.bbl}{\input{\VAR{dir}/paper.bbl}}{}
+%\bibliographystyle{jfm}
+%\bibliography{thesis}
+%\IfFileExists{\VAR{dir}/paper.bbl}{\input{\VAR{dir}/paper.bbl}}{}
+\printbibliography[heading=subbibliography]
 
 %===============================================================================
 %                            END PAPER

@@ -94,6 +94,7 @@
 
 \printer{Universitetsservice US--AB, Stockholm}% Printer informations
 
+\bibliography{thesis}
 
 %===============================================================================
 %===============================================================================
@@ -101,7 +102,7 @@
 %===============================================================================
 %===============================================================================
 
-\includeonly{overview}
+%\includeonly{overview}
 
 \begin{document}
 
@@ -126,7 +127,9 @@
 %-------------------------------------------------------------------------------
 % Overview and summary
 %
+\begin{refsection}
 \include{overview}
+\end{refsection}
 
 %-------------------------------------------------------------------------------
 % Comment the following command if you do not want a separate page for Part II
@@ -139,18 +142,21 @@
 % Part II: Papers
 %===============================================================================
 %
-% \part{Papers}
+\part{Papers}
 
 %-------------------------------------------------------------------------------
 % Summary of the papers
 %
-% \makepapersummary
-% \cleardoublepage
+\makepapersummary
+\cleardoublepage
 
 %-------------------------------------------------------------------------------
 % Paper 1
 %
-%\include{paper1/paper}
+\begin{refsection}
+ \include{paper_00_fluiddyn_meta/paper}
+ % \include{paper1/paper}
+\end{refsection}
 
 %-------------------------------------------------------------------------------
 % Paper 2
