@@ -104,6 +104,9 @@ clean_papers:
 	@echo cleaning papers
 	@rm -f paper*/*.{aux,bbl,blg,fls,fdb_latexmk,log,out,synctex.gz}
 
+todo:
+	@grep -r --color=tty '%TODO:'
+
 vimtex:
 	# gvim $(name).tex --servername GVIM &
 	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
@@ -111,4 +114,3 @@ vimtex:
 
 doit: vimtex $(name).pdf
 	zathura $(name).pdf &
-
