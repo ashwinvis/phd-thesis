@@ -9,7 +9,7 @@
 kappa := overview
 main := thesis
 # paper := paper?
-paper := paper_0[1,2]*
+paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
 TEX := pdflatex
@@ -75,7 +75,7 @@ $(AUXS): $(SRCS) $(DEPS)
 	@$(BIB) $(BIB_FLAGS) $< #> /dev/null
 	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
 
-$(SRCS_PAPER): $(META_PAPER) $(TEMPLATE_PAPER)
+%.tex: %.yml $(TEMPLATE_PAPER)
 	@echo building $@ with python
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 
