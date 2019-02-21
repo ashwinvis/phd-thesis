@@ -4,7 +4,13 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+certifi==2018.11.29       # via requests
+chardet==3.0.4            # via requests
 docopt==0.6.2
+idna==2.8                 # via requests
 jinja2==2.10
 markupsafe==1.1.0         # via jinja2
+pygments==2.3.1
+requests==2.21.0
 ruamel.yaml==0.15.88
+urllib3==1.24.1           # via requests

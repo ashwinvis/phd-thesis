@@ -2,97 +2,95 @@
 %% Bonner and John Brennan, Durham Universtiy, UK.
 %% see http://openresearchsoftware.metajnl.com
 
-\documentclass{../jors}
+% \documentclass{../jors}
 
-\begin{document}
+% {\bf Software paper for submission to the Journal of Open Research Software} \\
+%
+% \rule{\textwidth}{1pt}
 
-{\bf Software paper for submission to the Journal of Open Research Software} \\
-
-\rule{\textwidth}{1pt}
-
-\section*{(1) Overview}
-
-\vspace{0.5cm}
-
-\section*{Title}
-
-FluidSim: modular, object-oriented Python package for high-performance CFD
-simulations
-
-\section*{Paper Authors}
-
-1. MOHANAN, Ashwin Vishnu$^a$ \\
-2. BONAMY, Cyrille$^b$ \\
-3. CALPE LINARES, Miguel$^b$ \\
-4. AUGIER, Pierre$^b$
-
-\smallskip
-
-$^a$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.\\
-$^b$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
-Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.
-
-\section*{Paper Author Roles and Affiliations}
-1. Ph.D. student, Linn\'e Flow Centre, KTH Royal Institute of Technology,
-Sweden; \\
-2. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
-3. Ph.D. student, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
-4. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France
-
-\section*{Abstract}
-
+\section{Overview}
+%
+% \vspace{0.5cm}
+%
+% \subsection{Title}
+%
+% FluidSim: modular, object-oriented Python package for high-performance CFD
+% simulations
+%
+% \subsection{Paper Authors}
+%
+% 1. MOHANAN, Ashwin Vishnu$^a$ \\
+% 2. BONAMY, Cyrille$^b$ \\
+% 3. CALPE LINARES, Miguel$^b$ \\
+% 4. AUGIER, Pierre$^b$
+%
+% \smallskip
+%
+% $^a$ Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden.\\
+% $^b$ Univ. Grenoble Alpes, CNRS, Grenoble INP\footnote{Institute of Engineering
+% Univ. Grenoble Alpes}, LEGI, 38000 Grenoble, France.
+%
+% \subsection{Paper Author Roles and Affiliations}
+% 1. Ph.D. student, Linn\'e Flow Centre, KTH Royal Institute of Technology,
+% Sweden; \\
+% 2. Research Engineer, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
+% 3. Ph.D. student, LEGI, Universit\'e Grenoble Alpes, CNRS, France; \\
+% 4. Researcher, LEGI, Universit\'e Grenoble Alpes, CNRS, France
+%
+% \subsection{Abstract}
+%
 %\textcolor{blue}{A short (ca. 100 word) summary of the software being
 %described: what problem the software addresses, how it was implemented and
 %architected, where it is stored, and its reuse potential.}
 
-The Python package \fluidpack{sim} is introduced in this article as an extensible
-framework for Computational Fluid Mechanics (CFD) solvers.
+% The Python package \fluidpack{sim} is introduced in this article as an extensible
+% framework for Computational Fluid Mechanics (CFD) solvers.
+% %
+% It is developed as a part of \href{https://fluiddyn.readthedocs.io}{FluidDyn}
+% project \citep{fluiddyn}, an effort to promote open-source and open-science
+% collaboration within fluid mechanics community and intended for both educational
+% as well as research purposes.
+% %
+% Solvers in \fluidpack{sim} are scalable, High-Performance Computing (HPC) codes
+% which are powered under the hood by the rich, scientific Python ecosystem and the
+% Application Programming Interfaces (API) provided by \fluidpack{dyn} and
+% \fluidpack{fft} packages \citep{fluidfft}.
+% %
+% The present article describes the design aspects of \fluidpack{sim}, which
+% includes use of Python as the main language; focus on the ease of use, reuse
+% and maintenance of the code without compromising performance.
+% %
+% The implementation details including optimization methods, modular organization
+% of features and object-oriented approach of using classes to implement solvers
+% are also briefly explained.
+% %
+% Currently, \fluidpack{sim} includes solvers for a variety of physical problems
+% using different numerical methods (including finite-difference methods).
+% %
+% However, this metapaper shall dwell only on the implementation and performance
+% of its pseudo-spectral solvers, in particular the two- and three-dimensional
+% Navier-Stokes solvers.
+% %
+% We investigate the performance and scalability of \fluidpack{sim} in a
+% state of the art HPC cluster.
+% %
+% Three similar pseudo-spectral CFD codes based on Python (Dedalus, SpectralDNS) and
+% Fortran (NS3D) are presented and qualitatively and quantitatively compared to
+% \fluidpack{sim}.
+% %
+% The source code is hosted at Bitbucket as a Mercurial repository
+% \href{https://bitbucket.org/fluiddyn/fluidsim}{bitbucket.org/fluiddyn/fluidsim}
+% and the documentation generated using Sphinx can be read online at
+% \href{https://fluidsim.readthedocs.io}{fluidsim.readthedocs.io}.
 %
-It is developed as a part of \href{https://fluiddyn.readthedocs.io}{FluidDyn}
-project \citep{fluiddyn}, an effort to promote open-source and open-science
-collaboration within fluid mechanics community and intended for both educational
-as well as research purposes.
+% \subsection{Keywords}
 %
-Solvers in \fluidpack{sim} are scalable, High-Performance Computing (HPC) codes
-which are powered under the hood by the rich, scientific Python ecosystem and the
-Application Programming Interfaces (API) provided by \fluidpack{dyn} and
-\fluidpack{fft} packages \citep{fluidfft}.
-%
-The present article describes the design aspects of \fluidpack{sim}, which
-includes use of Python as the main language; focus on the ease of use, reuse
-and maintenance of the code without compromising performance.
-%
-The implementation details including optimization methods, modular organization
-of features and object-oriented approach of using classes to implement solvers
-are also briefly explained.
-%
-Currently, \fluidpack{sim} includes solvers for a variety of physical problems
-using different numerical methods (including finite-difference methods).
-%
-However, this metapaper shall dwell only on the implementation and performance
-of its pseudo-spectral solvers, in particular the two- and three-dimensional
-Navier-Stokes solvers.
-%
-We investigate the performance and scalability of \fluidpack{sim} in a
-state of the art HPC cluster.
-%
-Three similar pseudo-spectral CFD codes based on Python (Dedalus, SpectralDNS) and
-Fortran (NS3D) are presented and qualitatively and quantitatively compared to
-\fluidpack{sim}.
-%
-The source code is hosted at Bitbucket as a Mercurial repository
-\href{https://bitbucket.org/fluiddyn/fluidsim}{bitbucket.org/fluiddyn/fluidsim}
-and the documentation generated using Sphinx can be read online at
-\href{https://fluidsim.readthedocs.io}{fluidsim.readthedocs.io}.
+% % Python;\ CFD;\ HPC;\ MPI;\ modular;\ object-oriented;\ tested;\ documented;\
+% % open-source
+% 0D; 1D; 2D; 3D; pseudo-spectral; finite difference; computational fluid
+% dynamics; sequential; MPI; GPU
 
-\section*{Keywords}
-
-% Python;\ CFD;\ HPC;\ MPI;\ modular;\ object-oriented;\ tested;\ documented;\
-% open-source
-0D; 1D; 2D; 3D; pseudo-spectral; finite difference; computational fluid
-dynamics; sequential; MPI; GPU
-
-\section*{Introduction}
+\subsection{Introduction}
 
 % \textcolor{blue}{An overview of the software, how it was produced, and the
 % research for which it has been used, including references to relevant research
@@ -115,7 +113,7 @@ documentation, complete with examples and tutorials.  For these reasons
 replace some in-house pseudo-spectral codes written in more conventional
 languages.
 
-\subsubsection*{Balance between runtime efficiency and cost of development}
+\paragraphbf{Balance between runtime efficiency and cost of development}
 In today's world where clusters are moving from petascale to exascale
 performance, computing power is aplenty. In most research scenarios, it becomes
 apparent that \emph{man-hours are more expensive than computing time}. In other
@@ -186,7 +184,7 @@ the execution of optimized compiled functions and thus that the ``Python cost'' 
 negligible.
 
 
-\subsubsection*{Target audiences}
+\paragraphbf{Target audiences}
 \fluidpack{sim} is designed to cater to the needs of three kinds of audience.
 \begin{itemize}
 \item \emph{Users}, who run simulations with already available solvers. To do
@@ -216,7 +214,7 @@ In the latter half of the paper, we shall also inspect the performance of
 \fluidpack{sim} in large computing clusters and compare \fluidpack{sim} with three
 different pseudo-spectral CFD codes.
 
-\section*{Implementation and architecture}
+\subsection{Implementation and architecture}
 
 % \textcolor{blue}{How the software was implemented, with details of the
 % architecture where relevant. Use of relevant diagrams is appropriate. Please
@@ -235,7 +233,7 @@ to use inheritance to modify certain parts to suit one's needs, and avoiding the
 risk of breaking a functioning code.
 
 
-\subsubsection*{Package organization}
+\paragraphbf{Package organization}
 
 \fluidpack{sim} is meant to serve as a framework for numerical solvers using
 different methods. For the present version of \fluidpack{sim} there is support for
@@ -286,7 +284,7 @@ methods to compute one variable from another.
 We now turn our attention to the simulation object which illustrates how to
 access the code from the user's perspective.
 
-\subsubsection*{The simulation object}
+\paragraphbf{The simulation object}
 
 The simulation object is instantiated with necessary parameters just before
 starting the time stepping.  A simple 2D Navier-Stokes simulation can be
@@ -542,7 +540,7 @@ class inheritance}.
 
 
 
-\subsection*{Performance}
+\subsubsection{Performance}
 
 % todo: we need to go back over this part after the fluidfft paper will be
 % written and using the fluidfft paper. Some bits of what is here could go in
@@ -610,7 +608,7 @@ The code comparisons were made on a smaller machine.
 Results from the three analyses are systematically studied in the following
 sections.
 
-\subsubsection*{Profiling}
+\paragraphbf{Profiling}
 
 It is straightforward to perform profiling with the help of the
 \href{https://docs.python.org/3/library/profile.html}{cProfile} module, available
@@ -687,7 +685,7 @@ However, the time in pure Python remains for all cases largely negligible compar
 to the time spent in compiled extensions.
 
 
-\subsubsection*{Scalability}
+\paragraphbf{Scalability}
 
 Scalability can be quantified by speedup $S$ which is a measure of the time taken
 to complete $N$ iterations for different number of processes, $n_p$.
@@ -726,7 +724,7 @@ consumed in making forward- and inverse-FFT calls, an inherent bottleneck of
 the pseudo-spectral approach. The FFT function calls are the source of most of
 the MPI calls during runtime, limiting the parallelism.
 
-\subsubsection*{2D benchmarks}\label{sec:bench2d}
+\paragraphbf{2D benchmarks}\label{sec:bench2d}
 
 The Navier-Stokes 2D solver (\codeinline{fluidsim.solvers.ns2d}) solving an
 initial value problem (with random fields) was chosen as the test case for strong
@@ -822,7 +820,7 @@ $0.195$ to $0.023$ seconds for the $1024\times1024$ case, and from
 $0.128$ to $0.051$ seconds for the $2048\times2048$ case. Thus it is indeed
 feasible and scalable to use this particular solver.
 
-\subsubsection*{3D benchmarks}
+\paragraphbf{3D benchmarks}
 
 Using a similar process as described in the previous section,
 %~\ref{sec:bench2d},
@@ -883,7 +881,7 @@ $31.078$ to $2.175$ seconds for the $1024\times1024\times1024$ case.
 
 
 
-\subsection*{CFD pseudo-spectral code comparisons}
+\subsection{pseudo-spectral code comparisons}
 
 %TODO-DONE: Compare profiling of Dedalus SpectralDNS, NS3D
 % See the file notes_compare_codes.md
@@ -1167,7 +1165,7 @@ demonstrate that our very high-level and modular Python code is very efficient
 and is not slower than a well-optimized Fortran code.
 
 
-\section*{Quality control}
+\subsection{Quality control}
 
 % \textcolor{blue}{Detail the level of testing that has been carried out on the
 % code (e.g.\ unit, functional, load etc.), and in which environments. If not
@@ -1215,19 +1213,19 @@ All the above quality control techniques are implemented within the continuous
 testing solutions, Travis CI and Bitbucket Pipelines. Instructions on how to
 run unit tests, coverage and lint tests are included in the documentation.
 
-\section*{(2) Availability}
+\section{Availability}
 \vspace{0.5cm}
-\section*{Operating system}
+\subsection{Operating system}
 
 Any POSIX based OS, such as GNU/Linux and macOS.
 
-\section*{Programming language}
+\subsection{Programming language}
 
 Python 2.7, 3.4 or above. For the next versions, we will
 \href{https://python3statement.org/}{drop Python 2.7 support and Python $>=$
 3.6 will be required}.
 
-\section*{Dependencies}
+\subsection{Dependencies}
 
 \begin{itemize}
 \item {\bf Minimum:} \fluidpack{dyn}, \Numpy, \pack{h5netcdf}, \fluidpack{fft}
@@ -1236,7 +1234,7 @@ Python 2.7, 3.4 or above. For the next versions, we will
 \pack{Pythran}, \pack{pulp}.
 \end{itemize}
 
-\section*{List of contributors}
+\subsection{List of contributors}
 
 \begin{itemize}
 \item Ashwin Vishnu Mohanan (KTH): Development of the shallow water equations
@@ -1253,9 +1251,9 @@ compatibility and documentation.
 \end{itemize}
 
 
-\section*{Software location:}
+\subsection{Software location}
 
-{\bf Archive}
+\paragraph{\bf Archive}
 
 \begin{description}[noitemsep,topsep=0pt]
 \item[Name:] PyPI
@@ -1286,11 +1284,11 @@ GNU General Public License (GPL).
 \item[Date published:] 02/10/2017
 \end{description}
 
-\section*{Language}
+\subsection{Language}
 
 English
 
-\section*{(3) Reuse potential}
+\section{Reuse potential}
 
 %\textcolor{blue}{Please describe in as much detail as possible the ways in
 %which the software could be reused by other researchers both within and outside
@@ -1328,7 +1326,7 @@ or via IRC protocol on Freenode at \codeinline{\#fluiddyn-users}. Discussions
 can also be exchanged via the official mailing list\footnote{
 \url{https://www.freelists.org/list/fluiddyn}}.
 
-\section*{Acknowledgements}
+\subsection*{Acknowledgements}
 
 % \textcolor{blue}{Please add any relevant acknowledgements to anyone else who
 % supported the project in which the software was created, but did not work
@@ -1340,7 +1338,7 @@ kindness of Erik Lindborg.
 We are grateful to Bitbucket for providing us with a high quality forge
 compatible with Mercurial, free of cost.
 
-\section*{Funding statement}
+\subsection*{Funding statement}
 
 % \textcolor{blue}{If the software resulted from funded research please give the
 % funder and grant number.}
@@ -1355,11 +1353,11 @@ We have also been able to use supercomputers of CIMENT/GRICAD, CINES/GENCI
 (grant 2018-A0040107567) and the Swedish National Infrastructure for Computing
 (SNIC).
 
-\section*{Competing interests}
+\subsection*{Competing interests}
 
 The authors declare that they have no competing interests.
 
-% \section*{References}
+% \subsection{References}
 
 % \textcolor{blue}{Please enter references in the Harvard style and include a DOI
 % where available, citing them in the text with a number in square brackets,
@@ -1369,13 +1367,13 @@ The authors declare that they have no competing interests.
 % Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI:
 % \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
 
-\bibliographystyle{../agsm}
-\bibliography{../bib}
+% \rule{\textwidth}{1pt}
+\vspace{10pt}
+\hrule
+\vspace{10pt}
 
+\paragraphbf{Copyright Notice}
 
-\rule{\textwidth}{1pt}
-
-{\bf Copyright Notice} \\
 Authors who publish with this journal agree to the following terms: \\
 
 Authors retain copyright and grant the journal right of first publication with
@@ -1392,5 +1390,3 @@ with an acknowledgement of its initial publication in this journal.
 By submitting this paper you agree to the terms of this Copyright Notice, which
 will apply to this submission if and when it is published by this journal.
 
-
-\end{document}

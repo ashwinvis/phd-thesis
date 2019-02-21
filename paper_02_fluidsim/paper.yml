@@ -1,0 +1,65 @@
+title:
+  "FluidSim: modular, object-oriented Python package for high-performance CFD
+  simulations"
+title_toc:
+  "FluidSim: modular, object-oriented Python package for high-performance CFD
+  simulations"
+title_short:
+  "FluidSim: modular, object-oriented Python package for CFD"
+authors:
+ - Ashwin Vishnu Mohanan
+ - Cyrille Bonamy
+ - Miguel Calpe Linares
+ - Pierre Augier
+affiliations:
+ - Linn\'e Flow Centre, Department of Mechanics, KTH, 10044 Stockholm, Sweden
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+ - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
+pub_short: J. Open Res. Softw.
+pub: Journal of Open Research Software
+volume: Accepted
+number: 1
+pages: 1--10
+year: 2019
+#dir:
+abstract: |
+  The Python package \fluidpack{sim} is introduced in this article as an extensible
+  framework for Computational Fluid Mechanics (CFD) solvers.
+  %
+  It is developed as a part of \href{https://fluiddyn.readthedocs.io}{FluidDyn}
+  project \citep{fluiddyn}, an effort to promote open-source and open-science
+  collaboration within fluid mechanics community and intended for both educational
+  as well as research purposes.
+  %
+  Solvers in \fluidpack{sim} are scalable, High-Performance Computing (HPC) codes
+  which are powered under the hood by the rich, scientific Python ecosystem and the
+  Application Programming Interfaces (API) provided by \fluidpack{dyn} and
+  \fluidpack{fft} packages \citep{fluidfft}.
+  %
+  The present article describes the design aspects of \fluidpack{sim}, which
+  includes use of Python as the main language; focus on the ease of use, reuse
+  and maintenance of the code without compromising performance.
+  %
+  The implementation details including optimization methods, modular organization
+  of features and object-oriented approach of using classes to implement solvers
+  are also briefly explained.
+  %
+  Currently, \fluidpack{sim} includes solvers for a variety of physical problems
+  using different numerical methods (including finite-difference methods).
+  %
+  However, this metapaper shall dwell only on the implementation and performance
+  of its pseudo-spectral solvers, in particular the two- and three-dimensional
+  Navier-Stokes solvers.
+  %
+  We investigate the performance and scalability of \fluidpack{sim} in a
+  state of the art HPC cluster.
+  %
+  Three similar pseudo-spectral CFD codes based on Python (Dedalus, SpectralDNS) and
+  Fortran (NS3D) are presented and qualitatively and quantitatively compared to
+  \fluidpack{sim}.
+  %
+  The source code is hosted at Bitbucket as a Mercurial repository
+  \href{https://bitbucket.org/fluiddyn/fluidsim}{bitbucket.org/fluiddyn/fluidsim}
+  and the documentation generated using Sphinx can be read online at
+  \href{https://fluidsim.readthedocs.io}{fluidsim.readthedocs.io}.
