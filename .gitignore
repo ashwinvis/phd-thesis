@@ -30,6 +30,8 @@ paper**/.json
 paper**/*.dot
 paper**/*.xml
 paper**/old
+# generated from yml
+paper*/paper.tex
 
 .mypy_cache
 **/__pycache__
