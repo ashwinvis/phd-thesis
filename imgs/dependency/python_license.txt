@@ -1,0 +1,30 @@
+General Goals
+
+In general, we want the word mark "Python" and the Python logos to be used with
+minimal restriction to refer to the Python programming language.
+
+We do not want these trademarks to be used:
+
+    * to refer to any other programming language
+    * in a way that is misleading or may imply association of unrelated modules,
+      tools, documentation, or other resources with the Python programming
+      language
+    * in ways that confuse the community as to whether the Python programming
+      language is open source and free to use
+
+Uses that Never Require Approval
+
+All trademarks are subject to "nominative use rules" that allow use of the
+trademark to name the trademarked entity in a way that is minimal and does not
+imply a sponsorship relationship with the trademark holder.
+
+As such, stating accurately that software is written in the Python programming
+language, that it is compatible with the Python programming language, or that
+it contains the Python programming language, is always allowed. In those cases,
+you may use the word "Python" or the unaltered logos to indicate this, without
+our prior approval. This is true both for non-commercial and commercial uses.
+
+This clause overrides other clauses of this policy. However, if you have any
+doubts about your intended use of the trademarks, please contact the PSF
+Trademarks Committee.
+

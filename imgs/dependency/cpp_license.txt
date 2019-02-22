@@ -1,0 +1,30 @@
+Foundation name and C++ logo
+
+The “Standard C++ Foundation” name and stylized “C++” logo are trademarks of
+the Standard C++ Foundation and may not be used without permission from the
+Foundation. Permission is hereby granted:
+
+    * to use the unaltered logo in conjunction with any product (including but
+      not limited to a C++ compiler implementation or tool, or a product
+      written using C++) or material (including but not limited to product
+      packaging, documentation, educational material, user group meeting
+      information, or blog post) that is related to the standardized C++
+      language or working drafts thereof (including the C++ International
+      Standard and related Technical Specifications, whether published or
+      draft, but excluding nonstandard vendor-specific extensions), and that
+      does not imply endorsement of a product or organization (including but
+      not limited to that it is not being used as part of another
+      organization’s logo); and
+    * to use the “Standard C++ Foundation” name to refer to the Standard C++
+      Foundation or to the isocpp.org website, optionally with a courtesy link
+      to isocpp.org or isocpp.org/about, but not in a way that claims or
+      implies affiliation with or endorsement of a product or organization.
+
+In general, we want the logo to be used as widely as possible to indicate
+material related to the portable C++ and its applications, without implicitly
+endorsing something or someone. We do not normally approve modified versions of
+the logo; instead, most uses should use the unmodified logo beside or near any
+other art without overlap. If you would like to inquire about a use that is not
+covered above, or you are not sure it is covered, please ask first.
+
+The logo is available in various formats in the C++ logo GitHub repo. 

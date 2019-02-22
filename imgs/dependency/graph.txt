@@ -1,0 +1,28 @@
+# adjacency list
+Python Cython Pythran transonic mpi4py h5py h5netcdf matplotlib NumPy SciPy IPython Jupyter SymPy pandas fluiddyn fluidsim fluidfft
+pandas C
+xarray NumPy pandas
+C HDF5 FFTW
+C++ xproject
+Fortran numpy.f2py P3DFFT
+NumPy numpy.f2py Cython
+SciPy Fortran C 
+# Extension
+Cython C C++
+Pythran C++ Cython xsimd
+xproject xsimd
+transonic Pythran
+# I/O and visualization
+matplotlib C++
+h5py HDF5
+h5netcdf h5py
+# FluidDyn project
+fluiddyn NumPy h5py mpi4py matplotlib h5netcdf SciPy
+fluidfft cuFFT FFTW P3DFFT PFFT transonic Cython
+fluidsim fluiddyn fluidfft transonic SciPy
+# external runtime libraries
+CUDA cuFFT
+OpenMP Cython Pythran
+MPI mpi4py
+SIMD Pythran xsimd 
+FFTW Fortran P3DFFT PFFT OpenMP SIMD MPI

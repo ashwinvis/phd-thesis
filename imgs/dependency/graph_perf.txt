@@ -1,0 +1,20 @@
+# adjacency list
+Python Cython Pythran Numba numpy.f2py xtensor-python rust-numpy PyPy pyjulia mpi4py multiprocessing threading asyncio
+C SWIG Cython
+C++ SWIG Cython Boost.Python xproject
+Fortran numpy.f2py
+Rust rust-numpy
+Julia PyCall.jl
+pyjulia PyCall.jl
+Pythran Cython xsimd Boost.Python
+xproject xtensor xtensor-python xsimd
+xtensor xtensor-python
+# parallelization through external runtime libraries
+CUDA Numba
+OpenMP Cython Pythran Numba
+MPI mpi4py
+SIMD Pythran xsimd Numba
+# parallelization through python standard libraries
+multiprocessing dask
+threading dask Numba
+asyncio trio
