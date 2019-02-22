@@ -1,134 +1,40 @@
-%% Journal of Open Research Software Latex template -- Created By Stephen
-%% Bonner and John Brennan, Durham Universtiy, UK.
-%% see http://openresearchsoftware.metajnl.com
-
 \chapter{Towards reproducible, open science through open research software}
-%TODO: Fix table of contents
 \section{Introduction}
 
-% \vspace{0.5cm}
+% \subsection{Science, software, open-source and the computer revolution}
 
-% \section*{Title}
+% FIXME: Deleted
+% Science: giants, collective, grows when shared
+% Web: money, open-source, tools esp. DVCS
+% Computing: performance, GPU
+% Changes: dynamics, way science is done, coding inferior, open science
 
-% \textcolor{blue}{The title of the software paper should focus on the software,
-% e.g. “Text mining software from the X project”. If the software is closely
-% linked to a specific research paper, then “Software from Paper Title” is
-% appropriate. The title should be factual, relating to the functionality of the
-% software and the area it relates to rather than making claims about the
-% software, e.g. “Easy-to-use”.}
-
-% old title
-
-% FluidDyn: a Python open-source framework for research and teaching in fluid
-% dynamics
-
-% pa: this title may not be really good for this paper...
-% - "research and teaching" may not be very important in the title
-% - Recent progress in open-source software engineering and consequences on
-%   science
-
-% todo: find a better title!
-
-% Taking advantage of recent advances in open-source software engineering to study
-% fluid dynamics: the example of the FluidDyn project
-
-
-% \textcolor{blue}{An overview of the software, how it was produced, and the
-% research for which it has been used, including references to relevant research
-% articles. A short comparison with software which implements similar
-% functionality should be included in this section. }
-
-\subsection{Science, software, open-source and the computer revolution}
-
-Science is mainly a collective activity.  We can go further only by
-\href{https://en.wikipedia.org/wiki/%
-Standing_on_the_shoulders_of_giants}{``standing on the shoulders of giants''}
-(and of a huge number of technicians and scientists).  Science is a lot about
-how to build new knowledge from the work of others and hence, the exchange
-of ideas is a fundamental aspect.
-%
-In the last decades, we have lived through a revolution on how people exchange
-ideas.
-%
-Computers of all kinds (from smartphones to HPC clusters) connected by a world
-wide web are used for human communication and also for many other applications.
-%
-It has become nearly effortless to reproduce and exchange ideas and data.
-%
-The set of intangibles that grows when shared and degrades when hoarded, such as
-knowledge and love, has been somehow extended.
-% Relevant quote: 
-% O Goddess Saraswati, your Treasure is unique in nature.  It increases when it
-% is freely spent and gets destroyed if it is hoarded (and not shared with
-% others).
-%
-The information technology revolution open doors to fantastic opportunities for
-human collaboration, and of course, for science.
-
-Web related activities alone account for at least 5\% of GDP in the USA and the
-European Union\footnote{See the report by Internet Association titled
-\href{https://internetassociation.org/reports/refreshing-understanding-internet-economy-ia-report/}
-{``Refreshing Our Understanding of the Internet Economy''}}.
-% \cite{hooton_christopher_refreshing_2017}.
-A huge amount of money (and work) is invested on the related technologies. We
-are familiar with the most prominent companies involved in this dynamics
-(Google, Facebook, etc.), but there are also several smaller and sometimes
-lesser known organizations.  Most of these companies base part of their work on
-the open-source paradigm contributing to open-source languages, libraries,
-software and operating systems, while also using them --- a win-win situation
-for both the corporations and the community.
-%
-This has lead to deep changes in software engineering, with a massive use of
-open-source methods and tools, for example
-\href{https://en.wikipedia.org/wiki/Distributed_version_control}{distributed
-version control systems (DVCS)} and web-based source development platforms.
-
-The computer performance continues to
-\href{https://en.wikipedia.org/wiki/Moore\%27s_law}{increase exponentially},
-now also with the help of Graphical Processing Units (GPU). This gave way to a
-big boom in practical uses of data science and machine learning, which drives a
-strong research on artificial intelligence.  This dynamics contributes to
-progresses in open-source software.
-
-These changes in our world also reflect in the way science is done.
-%
-Software and programming in science occupy a much bigger place than before.
-%
 % see http://sciencecodemanifesto.org/
 % http://lorenabarba.com/gallery/reproducibility-pi-manifesto/
 % https://www.numfocus.org/
 %
-The role of software in science has changed. In the past, coding was sometimes
-considered as an inferior activity by some scientists.  The focus was on the
-theory and the mathematical demonstration, which had to be elegant as it gets
-included in the articles.  In contrast, it was normal to write crude code
-% av: crappy = shitty!
-% alternatives: shabby, inelegant, amateurish, unpolished, clumsy
-% https://en.oxforddictionaries.com/thesaurus/amateurish
-and to just show the results. Nowadays, codes tend to be at the heart of
-research.
-
-``Open-science'' is a new trend taking advantage of these new facts.  Pioneering
-attempts are being made to do better science, improving reproducibility and
-collective efficiency, by using the open-source methods and tools for science
-and sharing and collaborating via the world wide web.
-
 % http://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261
+% We provide examples of solutions for: Good coding practice, source control
+% management, packaging, licenses documentation, testing,CI
 
-This paper presents FluidDyn, a project to foster open-science and open-source in
-fluid mechanics. This first section ``Overview'' is organized into two large
-parts.  A long introduction presents the context and describes our motivations and
-the concept behind the project FluidDyn.  It is organized as follows:
+% Fluiddyn: foster open-science, source. Framework for collaborative dev, open
+% methods
+
+This chapter presents FluidDyn, a project and an ecosystem of packages to
+facilitate open-science and open-source in the field of fluid mechanics.  The
+chapter is organized into several parts to present the context and describes
+our motivations and the concept behind the project FluidDyn as follows:
+
 \begin{itemize}
 \item A scientific project based on the collaboration through open-source, such
 as FluidDyn, is only possible thanks to the recent developments in methods and
 tools for open-source software engineering. We start by presenting these
 developments and discuss the implications for the scientists.
 
-\item FluidDyn is based on the language Python. Incidently, it is the defining
+\item FluidDyn is based on the language Python. Incidentally, it is the defining
 characteristics of Python which make the eventual success of such a
 project realizable.
-
+%
 Python is one of the most important tool in recent open-source dynamics and in
 particular in science.
 %
@@ -143,19 +49,75 @@ individuals and productivity at the community level.
 and present some of the main tools commonly used.
 
 \item The introduction finally ends with a summary of the motivations for the
-project FluidDyn and a presentation of its principles.
+project FluidDyn and a summary of the packages used\footnote{%
+  We use FluidDyn (with capital letters) to name the project and \fluiddyn for
+the base package.}.
 \end{itemize}
 
-%TODO: Fix names
-The section ``Introduction'' is completed by a second subsection called
-``Implementation and architecture'' devoted to present the organization of the
-packages of the project and to describe in more detail the base package
-\fluiddyn\footnote{We use FluidDyn (with capital letters) to name the project and
-\fluiddyn for the base package.}.
+
+\section{A modern approach to computational sciences}
+
+Computational sciences, and especially computational fluid dynamics (CFD) as a
+discipline has flourished a lot in the latter half of the twentieth century.
+Incidentally the origin of this domain can be traced back to the ideas
+in \citet{richardson_weather_1922} to achieve numerical weather prediction.
+With the arrival of first computer general-purpose computer, ENIAC, the first
+simulations were made using a simple barotropic model to make 24 hour
+forecasts \citep{lynch_richardson_2010}. In those early days when the use and
+availability of computers were limited, such methods were neither widespread
+nor feasible. Scientific investigations were dominated by theoretical and
+experimental methods.
+We have come a long way since then and today one can say that computational
+methods now complement theoretical and experimental studies and are equally
+important.
+Thus to recreate a particular scientific study, the mathematical representation
+or even an algorithms leaves a lot to be desired. With the connectivity
+provided by the world wide web it is possible to do more and reinvent the way
+we perform sciences.
+
+\begin{figure}[h]
+  \includegraphics[width=0.8\textwidth]{open_science}
+  \caption{A schematic representation of various concepts and methodologies
+  involved in achieving reproducibility in sciences.}\label{fig:opensci}
+\end{figure}
+
+In recent years there has been a move towards the open science
+\citep{royal_society_great_britain_science_2012}. Depicted in figure
+\ref{fig:opensci} are some of steps needed to ensure reproducibility and
+transparency in sciences. \emph{Knowledge} has been traditionally disseminated
+in the form of courses and books from universities, and to the wider scientific
+community through research articles, conference proceedings and workshops.
+While this is nothing new, knowledge has become more accessible to the public
+through public-domain and Creative Commons (or similar) licensed course
+materials and massively open online courses (MOOCs). Moreover, there is also an
+emerging push to publish in open-access journals either through systematic
+reforms in academia on how researchers are assessed on their productivity or
+through regulations and offering incentives, such as waiving the application
+processing charge for publishing \citep{nosek_promoting_2015}.
+
+As mentioned earlier there is a lot of work involved in condensing and
+implicating this knowledge into working applications. The \emph{know-how} can
+be made accessible and open to scrutiny by making research software open-source
+with an appropriate license. To make the codes usable it has to be complemented
+by documentation which typically includes tutorials, examples and a detailed
+commentary of different components of the code. Furthermore, to inspire
+confidence in and to ensure reliability of the code throughout the process of
+software development, it needs unit-tests with which a code is continuously
+deployed, built and tested --- a process known as Continuous Integration (CI),
+which is described in detail later in this chapter. Depending on how much
+matured a software is, these can be easy or cumbersome to implement, but
+nevertheless, the result is a cleaner and reliable code.
+
+Finally, the \emph{results} generated from the such codes together with the
+workflow (i.e. scripts to run the codes and to postprocess the data) when made
+open in the form of datasets can ensure that research would be reproducible and
+preserved in archives for several years to come. Open datasets can be shared
+and made citeable through services such as \href{https://zenodo.org}{Zenodo}
+and \href{https://figshare.com}{Figshare}.
 
 \subsection{Methods and tools for open-source software engineering}
 
-\paragraph{Free and Open-Source Software (FOSS).} The term \emph{free} in
+\paragraphbf{Free and Open-Source Software (FOSS)} The term \emph{free} in
 FOSS is a misnomer, as it actually stands for \emph{freedom} (to use, modify
 and distribute). The FOSS movement has dramatically decreased the cost of using
 computers, and is evident from the widespread use of GNU/Linux systems in
@@ -235,8 +197,8 @@ the second-age of FOSS movement~\cite{fitzgerald_transformation_2006}.
 % etc.
 
 
-\paragraph{Distributed Version Control Systems (DVCS) and web-based source
-development platforms.}  Collaboration was achieved in the early years of FOSS
+\paragraphbf{Distributed Version Control Systems (DVCS) and web-based source
+development platforms} Collaboration was achieved in the early years of FOSS
 development through emailing ``patches'', and centralized VCS near the turn of
 the 21\textsuperscript{st} century.  The collective collaboration on
 development is today streamlined with the emergence of DVCS (especially, Git
@@ -261,7 +223,7 @@ Note that, it is now possible to use Mercurial to work with Git repositories,
 for example hosted in GitHub and GitLab\footnote{By using the Mercurial
 extension \href{http://hg-git.github.io/}{hg-git}.}.
 
-\paragraph{Package management and third-party software repositories.} Python
+\paragraphbf{Package management and third-party software repositories} Python
 as a medium for scientific computing owes its success to a rich ecosystem of
 third-party packages.  Smooth deployment of these packages requires a package
 manager and a supported repository. A credible hub to upload source codes as
@@ -622,7 +584,7 @@ compiler which gives impressive results. It creates compiled extensions from pur
 Python code with simple type annotations written as comments.
 %
 The resulting extensions are usually as fast as Fortran or C++ written by
-non-specialists \cite[see, for example, benchmarks for the packages
+non-specialists \citep[see, for example, benchmarks for the packages
 \fluidpack{fft} and \fluidpack{sim},][]{fluidfft, fluidsim}.
 %
 They are created with a very interesting two-step compilations: first the code
@@ -1362,36 +1324,9 @@ create and share open-data.
 \end{itemize}
 
 A detailed presentation on the above packages can be found in their respective
-documentations on the web and for \fluidpack{fft} and \fluidpack{sim} in the
-two companion papers \cite[]{fluidfft, fluidsim}.  This article will now focus
-on the base package \fluiddyn.
-
-All functions and classes defined in \fluiddyn are pure Python elements, meaning
-that no extensions are implemented in \fluiddyn.  Thus the package \fluiddyn is
-extremely easy to install with just a \codeinline{pip install} command and no
-compilation.
-
-The code base was designed to follow Python 2.7 syntax during its genesis. Now,
-it has been made forward compatible with Python 3 through the use of external
-package future.
-
-\subsection{API of the Python library \fluiddyn}
-
-The package \fluiddyn is organized into five sub-packages: 
-\begin{itemize}
-\item \codeinline{fluiddyn.io}: This subpackage provides utilities for
-input/output to different file formats.
-\item \codeinline{fluiddyn.util}: Miscellaneous utilities.
-\item \codeinline{fluiddyn.calcul}: Modules for numerical computations.
-\item \codeinline{fluiddyn.clusters}: Classes to launch jobs on HPC clusters.
-\item \codeinline{fluiddyn.output}: Utilities to produce scientific outputs
-(figures and videos).
-\end{itemize}
-
-Sub-packages \codeinline{io}, \codeinline{util} and \codeinline{calcul} are the
-largest in terms of lines of code and provides the Application Programming
-Interfaces (API) to support \fluidpack{sim}, \fluidpack{lab} and
-\fluidpack{image}.
+documentations on the web and for \fluidpack{dyn}, \fluidpack{fft} and
+\fluidpack{sim} in the respective software metapapers
+\citep[]{fluiddyn, fluidfft, fluidsim}. 
 
 \section{Conclusion}
 
