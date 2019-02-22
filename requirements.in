@@ -3,3 +3,8 @@ docopt
 ruamel.yaml
 requests
 pygments
+networkx
+nxviz
+matplotlib
+# Optional
+pyqt5
