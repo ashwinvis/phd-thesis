@@ -49,7 +49,7 @@ individuals and productivity at the community level.
 and present some of the main tools commonly used.
 
 \item The introduction finally ends with a summary of the motivations for the
-project FluidDyn and a summary of the packages used\footnote{%
+project FluidDyn and an overview of the packages used\footnote{%
   We use FluidDyn (with capital letters) to name the project and \fluiddyn for
 the base package.}.
 \end{itemize}
@@ -71,11 +71,12 @@ We have come a long way since then and today one can say that computational
 methods now complement theoretical and experimental studies and are equally
 important.
 Thus to recreate a particular scientific study, the mathematical representation
-or even an algorithms leaves a lot to be desired. With the connectivity
+or even an algorithm leaves a lot to be desired. With the connectivity
 provided by the world wide web it is possible to do more and reinvent the way
 we perform sciences.
 
 \begin{figure}[h]
+  \centering
   \includegraphics[width=0.8\textwidth]{open_science}
   \caption{A schematic representation of various concepts and methodologies
   involved in achieving reproducibility in sciences.}\label{fig:opensci}
@@ -111,9 +112,13 @@ nevertheless, the result is a cleaner and reliable code.
 Finally, the \emph{results} generated from the such codes together with the
 workflow (i.e. scripts to run the codes and to postprocess the data) when made
 open in the form of datasets can ensure that research would be reproducible and
-preserved in archives for several years to come. Open datasets can be shared
-and made citeable through services such as \href{https://zenodo.org}{Zenodo}
-and \href{https://figshare.com}{Figshare}.
+preserved in archives for several years to come \citep{gewin_data_2016}. Open
+datasets can be shared and made citeable through services such as
+\href{https://zenodo.org}{Zenodo} and \href{https://figshare.com}{Figshare}.
+
+In the present work, through FluidDyn project, we have managed to implement all
+the aspects of making the know-how open through open-source software. We shall
+now take a look at the tools which have made it possible.
 
 \subsection{Methods and tools for open-source software engineering}
 
@@ -152,7 +157,7 @@ personal computers, embedded devices, and also smart phones (with Android).
 Over the years, FOSS development has transitioned from an organic community of
 volunteers, towards an organized system with participation from industries,
 non-profit organizations and government institutions. This could be regarded as
-the second-age of FOSS movement~\cite{fitzgerald_transformation_2006}.
+the second-age of FOSS movement~\citep{fitzgerald_transformation_2006}.
 
 %todo: DONE
 % Here, we have to add a paragraph on free and open-source (libre)
@@ -244,7 +249,7 @@ delivering and downloading Python packages, assisted by package managers
 Specialized package managers have also emerged to install scientific
 libraries and compilers such as \pack{easybuild} and \pack{spack}.
 
-\paragraph{Continuous integration (CI).} The need for strong reliability of
+\paragraphbf{Continuous integration (CI)} The need for strong reliability of
 programs with increasing complexity has forced developers to use continuous
 integration.
 %
@@ -270,7 +275,7 @@ dependencies.  CI is specifically important for dynamical
 languages and open-source code since it allows open-source projects to welcome
 participation from many people while maintaining a high degree of reliability.
 
-\paragraph{Websites to share knowledge.} Mutual aid and knowledge sharing
+\paragraphbf{Websites to share knowledge} Mutual aid and knowledge sharing
 have been important aspects of the web since its inception and these practices
 are now of foremost importance for many human activities.
 %
@@ -295,7 +300,7 @@ Through instant messaging a geographically separated team, as is the case with
 FluidDyn project, can achieve near real-time collaboration without the hassle
 of setting up video conferences or meetings.
 
-\paragraph{Automatic web documentations built on servers.}  Documentation
+\paragraphbf{Automatic web documentations built on servers} Documentation
 generators such as Sphinx (for Python) and Doxygen (for many languages
 including C, C++, Fortran and Python) ``automagically'' convert in-line
 comments into documentations as PDF, HTML and more. Read the Docs has in the
@@ -321,13 +326,13 @@ would not have been possible without these new software development methods.
 % subject-area research libraries (see the file
 % ./communitydriven_research_soft.md).
 %
-As a scientists, we can wonder how to fully exploit these new possibilities to do
+As scientists, we can wonder how to fully exploit these new possibilities to do
 science.  The project FluidDyn is an attempt to help the fluid dynamics community
 to advance in this direction.
 
 
 
-\subsection{Python, a programming language adapted for open-science}
+\section{Python, a programming language adapted for open-science}
 
 We now turn to the presentation of the
 \href{https://www.python.org/}{programming language Python}, another
@@ -544,14 +549,14 @@ tools like \pack{Numba} and \pack{dask}. Hardware giants such as Intel and Nvidi
 also contribute to the Python scientific ecosystem.
 
 
-\paragraphbf{Some Python issues}
+\subsection{Some Python issues and their solutions}
 
-\paragraph{Since the standard Python interpreter does not do any proper
-compilation,} Python code in some CPU bounded cases can be too slow.  Thus, one
+Since the standard Python interpreter does not do any proper
+compilation, Python code in some CPU bounded cases can be too slow. Thus, one
 has to use special tools to get optimized machine instructions to speedup
 performance-critical code.
 
-\textbf{Ahead Of Time compilation.}  Since Python is primarily a ``glue''
+\paragraphbf{Ahead Of Time compilation}  Since Python is primarily a ``glue''
 language, a common solution is to use code written in C, C++ or Fortran.
 %
 % todo: DONE
@@ -602,11 +607,11 @@ vectorization with SIMD instructions \citep{guelton2014exploring}. Pythran
 understands both Matlab-like vectorized code and C-like code with explicit loops
 \citep{guelton2018pythran}.
 
-We present in the two companion papers \citep{fluidfft, fluidsim} examples of
+We present in \citet{fluidfft, fluidsim} examples of
 highly efficient Python codes, optimized using a combination of Cython and
 Pythran extensions.
 
-\textbf{Just In Time (JIT) compilation.} Another way to obtain optimized
+\paragraphbf{Just In Time (JIT) compilation} Another way to obtain optimized
 machine instructions is by using JIT compilation, i.e.\ by compiling only the
 critical code at run time.
 %
@@ -636,7 +641,7 @@ GPU\footnote{See for example
 \url{https://devblogs.nvidia.com/parallelforall/seven-things-numba/}}.
 
 
-\paragraph{No type-checking.} In contrast to languages using Ahead Of Time
+\paragraphbf{No type-checking} In contrast to languages using Ahead Of Time
 compilation, there is no type-checking in Python (and more generally in many
 dynamical languages).  Type-checking is useful since it can avoid simple bugs.
 However, it is not a good practice even with static languages to rely only on
@@ -655,7 +660,7 @@ which allows for Optional Static Typing and thus type-checking for
 Python\footnote{We plan to add type hitting in the most important FluidDyn modules
 to investigate how we can take advantage of type-checking with Mypy.}.
 
-\paragraph{A lively, huge and thus complicated ecosystem.} As already
+\paragraphbf{A lively, huge and thus complicated ecosystem} As already
 mentioned, Python is a versatile language. For many applications, the standard
 library is insufficient and one needs external packages.
 %
@@ -674,7 +679,7 @@ be regular academic courses, MOOCs or workshops like ones organized by
 %
 Of course, such abundance of projects can also be seen as an advantage.
 
-\paragraph{Absence of multicore computational parallelism using threads.}
+\paragraphbf{Absence of multicore computational parallelism using threads}
 Threads behave like light subprograms. In principle, they can use the different
 cores of the CPU at the same time but the CPython interpreter forbids that they
 interpret python code at the same time\footnote{See
@@ -706,7 +711,7 @@ to use other strategies: extensions (fine grain parallelism), multiprocessing
 (with mpi4py) or ZeroMQ.
 
 
-\paragraphbf{Rich landscape of open-source languages useful for science}
+\subsection{Rich landscape of open-source languages useful for science}
 
 So far, we have discussed in detail about Python. However, there are many
 interesting open-source languages that can be used for scientific applications.
@@ -771,6 +776,7 @@ bet that it will become one of the \textit{lingua franca} in science and in
 fluid dynamics.  This explains why we have chosen it to be the main language
 for the project FluidDyn.
 
+\section{On software development methodologies}
 
 \subsection{Productivity at individual, group and community levels}
 
@@ -880,12 +886,14 @@ collaborative development.
 We are now going to present factual arguments explaining why we think that the
 massive usage of Matlab decreases the collective efficiency of the community.
 
-\paragraphbf{Discussion on Matlab, Labview and Mathematica}
+\subsection{Discussion on the use of proprietary software for research}
+% \paragraphbf{Discussion on Matlab, Labview and Mathematica}
 
 % see http://www.pyzo.org/python_vs_matlab.html
 % see https://www.linkedin.com/pulse/matlab-vs-python-jan-rhebergen
 
-Matlab is a closed-source proprietary numerical computing environment.
+Matlab is an example of a closed-source proprietary numerical computing
+environment.
 %
 It is a good tool for simple processing with matrices, image processing, data
 visualization and certain niche applications. The language is well adapted for
@@ -1186,9 +1194,11 @@ research projects using open-source tools can exploit the ideas in these codes.
 %
 Let us also point out a drawback of such a model. We do not pay the authors, but
 people do need to pay to use the software. Even the authors of the software give
-money to the same company to be able to use their software. Do they realize that
-when they work on these programs, they work (often, for free) for the company that
-sells the proprietary tool?
+money to the same company to be able to use their software. 
+%
+% Do they realize that when they work on these programs,
+Ironically, when people develop programs using these tools, they work (often,
+for free) for the company that sells the proprietary tool.
 
 Some proper open-source codes have emerged, for example
 \href{https://nek5000.mcs.anl.gov/}{NEK5000} (Fortran),
@@ -1221,7 +1231,8 @@ and \href{https://fenicsproject.org/}{FEniCS}) or through data analysis
 %
 The packages of the FluidDyn project are also part of this trend.
 
-\section{FluidDyn project: Breaking the status quo}
+\section{FluidDyn project}
+%: Breaking the status quo}
 % \section{Implementation and architecture}
 
 We have seen that there is a strong dynamics in play around the use of
@@ -1238,6 +1249,23 @@ The project envisages to provide the technical framework to allow collaborative
 development of tools useful for the fluid mechanics community, and to do better
 science with open methods.
 %
+What we have now is not by ``reinventing the wheel'', but rather by ``standing
+on the shoulders of giants''. In other words we have utilized and extended
+existing and mature packages and libraries to create packages in FluidDyn as
+demonstrated in figure \ref{fig:dependency}. We have designed them such that
+the packages are generic enough for a wider audience and are maintainable in
+the long run.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{dependency}
+  \caption{An illustration of the various C/C++ (green), Fortran (gray), Python
+  (pink) packages and language agnostic frameworks (yellow) utilized in
+  FluidDyn packages \fluidpack{dyn}, \fluidpack{fft} and \fluidpack{sim} and
+  how they depend on each other, denoted by the lines connecting the
+  circles.}\label{fig:dependency}
+\end{figure}
+
 % It first started with one package.  Soon we had to prefer a decentralized
 % organization with one common package and other specialized packages.
 % av: mentioned in the next subsection
@@ -1328,7 +1356,7 @@ documentations on the web and for \fluidpack{dyn}, \fluidpack{fft} and
 \fluidpack{sim} in the respective software metapapers
 \citep[]{fluiddyn, fluidfft, fluidsim}. 
 
-\section{Conclusion}
+% \section{Conclusion}
 
 % FluidDyn is an attempt to set off collaborative dynamics based on open-source
 % development in fluid dynamics research.
