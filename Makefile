@@ -51,8 +51,12 @@ AUXS = $(kappa).aux \
 BBLS = $(main).bbl \
        $(main).bcf
 
+MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
+
 # Rules:
 #
+.PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
+
 default: all
 
 all: $(main).pdf log
@@ -64,7 +68,7 @@ $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 	@sed -i -e 's/toPaper/Paper/g' thesis.out	
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
-$(AUXS): $(SRCS) $(DEPS)
+$(AUXS): $(SRCS) $(DEPS) $(MKDWN2TEX)
 	@echo building $(main) with $(TEX) for $@
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 	# @$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
@@ -78,6 +82,10 @@ $(AUXS): $(SRCS) $(DEPS)
 %.tex: %.yml $(TEMPLATE_PAPER)
 	@echo building $@ with python
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
+
+chapter_%.latex: chapter_%.md
+	@echo building $@ with pandoc
+	@pandoc $< -o $@
 
 $(BIB_FILE):
 	@python scripts/get_bib.py
