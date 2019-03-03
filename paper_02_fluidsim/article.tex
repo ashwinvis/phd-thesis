@@ -378,7 +378,6 @@ function \codeinline{fluidsim.load\_state\_phys\_file}.):
 % labels in Fig.~\ref{fig:callgraph}.  The sub-classes are responsible for a
 % unique set of functionalities for the solver to work.
 
-% todo: redo this figure (API changes)...
 
 \begin{figure}[htp]
 \centering
@@ -541,15 +540,6 @@ class inheritance}.
 
 
 \subsubsection{Performance}
-
-% todo: we need to go back over this part after the fluidfft paper will be
-% written and using the fluidfft paper. Some bits of what is here could go in
-% the fluidfft paper.
-%
-% It is not interesting here to multiply the FFT comparisons and to run these
-% benchmarks on many clusters. We have to be as simple as possible.
-%
-% We need to include the CFD code comparison here.
 
 Performance of a code can be carefully measured by three different program
 analysis methods: profiling, micro-benchmarking and scalability analysis.

@@ -21,22 +21,25 @@
 % methods
 
 This chapter presents FluidDyn, a project and an ecosystem of packages to
-facilitate open-science and open-source in the field of fluid mechanics.  The
-chapter is organized into several parts to present the context and describes
-our motivations and the concept behind the project FluidDyn as follows:
+facilitate open-science and open-source development in the field of fluid
+mechanics.
+%
+The chapter is organized into several parts to present the context and to
+describe our motivations and the concept behind the project FluidDyn as
+follows:
 
 \begin{itemize}
 \item A scientific project based on the collaboration through open-source, such
 as FluidDyn, is only possible thanks to the recent developments in methods and
 tools for open-source software engineering. We start by presenting these
-developments and discuss the implications for the scientists.
+developments and discuss the implications for scientists.
 
 \item FluidDyn is based on the language Python. Incidentally, it is the defining
 characteristics of Python which make the eventual success of such a
 project realizable.
 %
-Python is one of the most important tool in recent open-source dynamics and in
-particular in science.
+Python is one of the most important tool in recent open-source dynamics,
+particularly in science.
 %
 Python in fluid mechanics is growing fast, but is yet to reach widespread
 adoption as the language of choice. Therefore, it is useful to present its
@@ -61,14 +64,14 @@ Computational sciences, and especially computational fluid dynamics (CFD) as a
 discipline has flourished a lot in the latter half of the twentieth century.
 Incidentally the origin of this domain can be traced back to the ideas
 in \citet{richardson_weather_1922} to achieve numerical weather prediction.
-With the arrival of first computer general-purpose computer, ENIAC, the first
+With the arrival of first electronic general-purpose computer, ENIAC, the first
 simulations were made using a simple barotropic model to make 24 hour
 forecasts \citep{lynch_richardson_2010}. In those early days when the use and
 availability of computers were limited, such methods were neither widespread
 nor feasible. Scientific investigations were dominated by theoretical and
 experimental methods.
-We have come a long way since then and today one can say that computational
-methods now complement theoretical and experimental studies and are equally
+We have come a long way since then and today one can say that, computational
+methods now complement theoretical and experimental studies, and are equally
 important.
 Thus to recreate a particular scientific study, the mathematical representation
 or even an algorithm leaves a lot to be desired. With the connectivity
@@ -83,37 +86,47 @@ we perform sciences.
 \end{figure}
 
 In recent years there has been a move towards the open science
-\citep{royal_society_great_britain_science_2012}. Depicted in figure
-\ref{fig:opensci} are some of steps needed to ensure reproducibility and
-transparency in sciences. \emph{Knowledge} has been traditionally disseminated
-in the form of courses and books from universities, and to the wider scientific
-community through research articles, conference proceedings and workshops.
+\citep[see the report by][]{royal_society_great_britain_science_2012}.
+%
+Depicted in figure \ref{fig:opensci} are some of steps needed to ensure
+reproducibility and transparency in sciences.
+%
+\emph{Knowledge} has been traditionally disseminated in the form of courses and
+books from universities, and to the wider scientific community through research
+articles, conference proceedings and workshops.
+
 While this is nothing new, knowledge has become more accessible to the public
 through public-domain and Creative Commons (or similar) licensed course
 materials and massively open online courses (MOOCs). Moreover, there is also an
-emerging push to publish in open-access journals either through systematic
+emerging push to publish in open-access journals\footnote{In the European
+  Union, a proposal to implement Plan S (\url{https://www.coalition-s.org}) was
+  been set in motion in September 2018 to fast track adoption of open-access.
+} either through systematic
 reforms in academia on how researchers are assessed on their productivity or
 through regulations and offering incentives, such as waiving the application
 processing charge for publishing \citep{nosek_promoting_2015}.
 
 As mentioned earlier there is a lot of work involved in condensing and
-implicating this knowledge into working applications. The \emph{know-how} can
-be made accessible and open to scrutiny by making research software open-source
-with an appropriate license. To make the codes usable it has to be complemented
-by documentation which typically includes tutorials, examples and a detailed
-commentary of different components of the code. Furthermore, to inspire
-confidence in and to ensure reliability of the code throughout the process of
-software development, it needs unit-tests with which a code is continuously
-deployed, built and tested --- a process known as Continuous Integration (CI),
-which is described in detail later in this chapter. Depending on how much
-matured a software is, these can be easy or cumbersome to implement, but
-nevertheless, the result is a cleaner and reliable code.
+implementing this knowledge in the form of working applications.
+%
+The \emph{know-how} can be made accessible and open to scrutiny by making
+research software open-source with an appropriate license.  To make the codes
+usable it has to be complemented by documentation which typically includes
+tutorials, examples and a detailed commentary of different components of the code.
+%
+Furthermore, to inspire confidence in and to ensure reliability of the code
+throughout the process of software development, it needs unit-tests with
+which a code is continuously deployed, built and tested --- a process known as
+Continuous Integration (CI), which is described in detail later in this
+chapter. Depending on how much matured a software is, these can be easy or
+cumbersome to implement, but nevertheless, the result is a cleaner and reliable
+code.
 
 Finally, the \emph{results} generated from the such codes together with the
 workflow (i.e. scripts to run the codes and to postprocess the data) when made
 open in the form of datasets can ensure that research would be reproducible and
 preserved in archives for several years to come \citep{gewin_data_2016}. Open
-datasets can be shared and made citeable through services such as
+datasets can be shared and made citable through services such as
 \href{https://zenodo.org}{Zenodo} and \href{https://figshare.com}{Figshare}.
 
 In the present work, through FluidDyn project, we have managed to implement all
@@ -158,17 +171,6 @@ Over the years, FOSS development has transitioned from an organic community of
 volunteers, towards an organized system with participation from industries,
 non-profit organizations and government institutions. This could be regarded as
 the second-age of FOSS movement~\citep{fitzgerald_transformation_2006}.
-
-%todo: DONE
-% Here, we have to add a paragraph on free and open-source (libre)
-% software:
-
-% The following facts can be mentioned:
-
-% - tex (started in 1977), latex (1985)
-
-% - GNU (started 1983), FSF in 1985, licence and philosophy...
-% first complete system (with the Linux kernel) in 1991
 
 % - 90s arrival of internet (soon mass market)
 
@@ -284,11 +286,6 @@ by websites like the community driven encyclopedia
 \href{https://www.wikipedia.org/}{Wikipedia} or the community driven forum
 \href{https://stackoverflow.com/}{Stack Overflow}, where people write thousands
 of questions and answers on programming each week.
-% todo: remark from Julien Salort: it's old.
-% av: So are technologies like git and hg, but we are putting together what
-% characterizes our workflow, aren't we? We can emphasize that these forums
-% often work only when there is a "thriving community" like the Python
-% userbase.
 IRC protocol has continued to sustain the test of time. Instant messaging
 channels such as \codeinline{\#python} on Freenode facilitate interactive
 discussions and a form of community-level support system --- a role which used
@@ -363,12 +360,6 @@ Java, C++ and Javascript.
 %
 Let us summarize some characteristics of the Python languages that have lead to
 such incredible success.
-
-% todo: DONE
-% We need an introductory paragraph on how big is Python today
-% + the fact that several scientists miss this fact.
-
-% See the file ./python-one-main-languages.rst
 
 The Python language has been designed to boost the communication of technical
 ideas between humans. The resulting code is as simple as possible due to the
@@ -558,9 +549,6 @@ performance-critical code.
 
 \paragraphbf{Ahead Of Time compilation}  Since Python is primarily a ``glue''
 language, a common solution is to use code written in C, C++ or Fortran.
-%
-% todo: DONE
-% add a reference to ctypes and cffi to call C with pure Python code
 %
 It is possible, without a compilation step, to call functions in C libraries
 through pure python code using \pack{ctypes} standard module or the \pack{cffi}
@@ -1106,7 +1094,7 @@ field.
 %
 The arguments against sharing are diverse:
 
-% todo: DONE
+% TODO: perhaps include the commented out sections in the beginning of the chapter
 % pa: I am really uncomfortable with this presentation which gives the
 % impression that we think that the arguments against sharing are always wrong.
 %
@@ -1234,7 +1222,7 @@ The packages of the FluidDyn project are also part of this trend.
 \section{FluidDyn project}
 %: Breaking the status quo}
 % \section{Implementation and architecture}
-
+% TODO: a lot of self-plagiarism below - needs rewrite
 We have seen that there is a strong dynamics in play around the use of
 computers (in particular with the web) and that this creates very efficient
 tools and methods for collective work and software development.
@@ -1365,7 +1353,7 @@ documentations on the web and for \fluidpack{dyn}, \fluidpack{fft} and
 % science and fluid dynamics, by fully exploiting the new open-source tools and
 % methods presented in the first subsections of the introduction.
 %
-% % todo: again mention some success of community-driven subject-area research
+% % again mention some success of community-driven subject-area research
 % % libraries? See the file ./communitydriven_research_soft.md
 %
 % The project is right now in a very preliminary stage.  Packages are actively

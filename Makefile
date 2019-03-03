@@ -105,7 +105,8 @@ clean_papers:
 	@rm -f paper*/*.{aux,bbl,blg,fls,fdb_latexmk,log,out,synctex.gz}
 
 todo:
-	@grep -r --color=tty '%TODO:'
+	@# grep -r --color=tty '%.*[Tt][Oo][Dd][Oo]:'
+	@ack '%.*[Tt][Oo][Dd][Oo]:'
 
 vimtex:
 	# gvim $(name).tex --servername GVIM &
