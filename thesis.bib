@@ -1,4 +1,37 @@
 
+@article{kraichnan_inertial_1967,
+  langid = {english},
+  title = {Inertial {{Ranges}} in {{Two}}-{{Dimensional Turbulence}}},
+  volume = {10},
+  issn = {00319171},
+  doi = {10.1063/1.1762301},
+  number = {7},
+  journaltitle = {Phys. Fluids},
+  date = {1967},
+  pages = {1417},
+  keywords = {\#nosource},
+  author = {Kraichnan, Robert H.}
+}
+
+@article{lilly_stratified_1983,
+  title = {Stratified Turbulence and the Mesoscale Variability of the Atmosphere},
+  volume = {40},
+  journaltitle = {J. Atmos. Sci.},
+  date = {1983},
+  pages = {749},
+  keywords = {\#nosource},
+  author = {Lilly, D. K.}
+}
+
+@article{lindborg_energy_2006,
+  title = {The Energy Cascade in a Strongly Stratified Fluid},
+  volume = {550},
+  journaltitle = {J. Fluid Mech.},
+  date = {2006},
+  pages = {207},
+  author = {Lindborg, E.}
+}
+
 @article{fluiddyn,
   title = {{{FluidDyn}}: A {{Python}} Open-Source Framework for Research and Teaching in Fluid Dynamics},
   volume = {(Submitted)},
@@ -121,7 +154,6 @@
   volume = {203},
   issn = {0010-4655},
   doi = {10.1016/j.cpc.2016.02.005},
-  abstract = {Direct Numerical Simulations (DNS) of the Navier Stokes equations is an invaluable research tool in fluid dynamics. Still, there are few publicly available research codes and, due to the heavy number crunching implied, available codes are usually written in low-level languages such as C/C++ or Fortran. In this paper we describe a pure scientific Python pseudo-spectral DNS code that nearly matches the performance of C++ for thousands of processors and billions of unknowns. We also describe a version optimized through Cython, that is found to match the speed of C++. The solvers are written from scratch in Python, both the mesh, the MPI domain decomposition, and the temporal integrators. The solvers have been verified and benchmarked on the Shaheen supercomputer at the KAUST supercomputing laboratory, and we are able to show very good scaling up to several thousand cores. A very important part of the implementation is the mesh decomposition (we implement both slab and pencil decompositions) and 3D parallel Fast Fourier Transforms (FFT). The mesh decomposition and FFT routines have been implemented in Python using serial FFT routines (either NumPy, pyFFTW or any other serial FFT module), NumPy array manipulations and with MPI communications handled by MPI for Python (mpi4py). We show how we are able to execute a 3D parallel FFT in Python for a slab mesh decomposition using 4 lines of compact Python code, for which the parallel performance on Shaheen is found to be slightly better than similar routines provided through the FFTW library. For a pencil mesh decomposition 7 lines of code is required to execute a transform.},
   issue = {Supplement C},
   journaltitle = {Comput. Phys. Commun.},
   date = {2016-06},
@@ -140,7 +172,6 @@
 @report{hooton_christopher_refreshing_2017,
   langid = {american},
   title = {Refreshing {{Our Understanding}} of the {{Internet Economy}}},
-  abstract = {Internet Association's first economic white paper takes a closer look at the size of the internet economy, both in the U.S. and abroad.},
   date = {2017-01},
   author = {Hooton, Christopher}
 }
@@ -151,7 +182,6 @@
   volume = {12},
   issn = {1545-7885},
   doi = {10.1371/journal.pbio.1001745},
-  abstract = {We describe a set of best practices for scientific software development, based on research and experience, that will improve scientists' productivity and the reliability of their software.},
   number = {1},
   journaltitle = {PLOS Biol.},
   date = {2014-01},
@@ -164,7 +194,6 @@
   title = {A {{Comparative Study}} of {{Programming Languages}} in {{Rosetta Code}}},
   volume = {1},
   doi = {10.1109/ICSE.2015.90},
-  abstract = {Sometimes debates on programming languages are more religious than scientific. Questions about which language is more succinct or efficient, or makes developers more productive are discussed with fervor, and their answers are too often based on anecdotes and unsubstantiated beliefs. In this study, we use the largely untapped research potential of Rosetta Code, a code repository of solutions to common programming tasks in various languages, which offers a large data set for analysis. Our study is based on 7'087 solution programs corresponding to 745 tasks in 8 widely used languages representing the major programming paradigms (procedural: C and Go, object-oriented: C\# and Java, functional: F\# and Haskell, scripting: Python and Ruby). Our statistical analysis reveals, most notably, that: functional and scripting languages are more concise than procedural and object-oriented languages, C is hard to beat when it comes to raw speed on large inputs, but performance differences over inputs of moderate size are less pronounced and allow even interpreted languages to be competitive, compiled strongly-typed languages, where more defects can be caught at compile time, are less prone to runtime failures than interpreted or weakly-typed languages. We discuss implications of these results for developers, language designers, and educators.},
   booktitle = {2015 {{IEEE}}/{{ACM}} 37th {{IEEE International Conference}} on {{Software Engineering}}},
   date = {2015-05},
   pages = {778-788},
@@ -178,7 +207,6 @@
   issn = {0018-9162},
   doi = {10.1109/2.660187},
   shorttitle = {Scripting},
-  abstract = {A fundamental change is occurring in the way people write computer programs, away from system programming languages such as C or C++ to scripting languages such as Perl or Tcl. Although many people are participating in the change, few realize that the change is occurring and even fewer know why it is happening. This article explains why scripting languages will handle many of the programming tasks in the next century better than system programming languages. System programming languages were designed for building data structures and algorithms from scratch, starting from the most primitive computer elements. Scripting languages are designed for gluing. They assume the existence of a set of powerful components and are intended primarily for connecting components},
   number = {3},
   journaltitle = {Computer},
   date = {1998-03},
@@ -192,7 +220,6 @@
   volume = {33},
   issn = {0018-9162},
   doi = {10.1109/2.876288},
-  abstract = {Often heated, debates regarding different programming languages' effectiveness remain inconclusive because of scarce data and a lack of direct comparisons. The author addresses that challenge, comparatively analyzing 80 implementations of the phone-code program in seven different languages (C, C++, Java, Perl, Python, Rexx and Tcl). Further, for each language, the author analyzes several separate implementations by different programmers. The comparison investigates several aspects of each language, including program length, programming effort, runtime efficiency, memory consumption, and reliability. The author uses comparisons to present insight into program language performance},
   number = {10},
   journaltitle = {Computer},
   date = {2000-10},
@@ -211,7 +238,6 @@
   volume = {30},
   issn = {0276-7783},
   doi = {10.2307/25148740},
-  abstract = {A frequent characterization of open source software is the somewhat outdated, mythical one of a collective of supremely talented software hackers freely volunteering their services to produce uniformly high-quality software. I contend that the open source software phenomenon has metamorphosed into a more mainstream and commercially viable form, which I label as OSS 2.0. I illustrate this transformation using a framework of process and product factors, and discuss how the bazaar metaphor, which up to now has been associated with the open source development process, has actually shifted to become a metaphor better suited to the OSS 2.0 product delivery and support process. Overall the OSS 2.0 phenomenon is significantly different from its free software antecedent. Its emergence accentuates the fundamental alteration of the basic ground rules in the software landscape, signifying the end of the proprietary-driven model that has prevailed for the past 20 years or so. Thus, a clear understanding of the characteristics of the emergent OSS 2.0 phenomenon is required to address key challenges for research and practice.},
   number = {3},
   journaltitle = {MIS Q.},
   date = {2006},
@@ -347,7 +373,6 @@
   volume = {334},
   issn = {0036-8075, 1095-9203},
   doi = {10.1126/science.1213847},
-  abstract = {Computational science has led to exciting new developments, but the nature of the work has exposed limitations in our ability to evaluate published findings. Reproducibility has the potential to serve as a minimum standard for judging scientific claims when full independent replication of a study is not possible.},
   number = {6060},
   journaltitle = {Science},
   date = {2011-12-02},
@@ -363,7 +388,6 @@
   volume = {1},
   issn = {2397-3374},
   doi = {10.1038/s41562-016-0021},
-  abstract = {Improving the reliability and efficiency of scientific research will increase the credibility of the published scientific literature and accelerate discovery. Here we argue for the adoption of measures to optimize key elements of the scientific process: methods, reporting and dissemination, reproducibility, evaluation and incentives. There is some evidence from both simulations and empirical studies supporting the likely effectiveness of these measures, but their broad adoption by researchers, institutions, funders and journals will require iterative evaluation and improvement. We discuss the goals of these measures, and how they can be implemented, in the hope that this will facilitate action toward improving the transparency, reproducibility and efficiency of scientific research.},
   number = {1},
   journaltitle = {Nat. Hum. Behav.},
   date = {2017-01-10},
@@ -376,7 +400,6 @@
   title = {Science as an Open Enterprise.},
   isbn = {978-0-85403-962-3},
   url = {https://royalsociety.org/~/media/Royal_Society_Content/policy/projects/sape/2012-06-20-SAOE.pdf},
-  abstract = {"The Science as an open enterprise report highlights the need to grapple with the huge deluge of data created by modern technologies in order to preserve the principle of openness and to exploit data in ways that have the potential to create a second open science revolution. Exploring massive amounts of data using modern digital technologies has enormous potential for science and its application in public policy and business. The report maps out the changes that are required by scientists, their institutions and those that fund and support science if this potential is to be realised."},
   date = {2012},
   author = {{Royal Society (Great Britain)} and {Policy Studies Unit}},
   note = {OCLC: 801537812}
@@ -388,8 +411,6 @@
   volume = {348},
   issn = {0036-8075, 1095-9203},
   doi = {10.1126/science.aab2374},
-  abstract = {Author guidelines for journals could help to promote transparency, openness, and reproducibility
-Author guidelines for journals could help to promote transparency, openness, and reproducibility},
   number = {6242},
   journaltitle = {Science},
   date = {2015-06-26},
@@ -406,7 +427,6 @@ Author guidelines for journals could help to promote transparency, openness, and
   issn = {0028-0836},
   doi = {10.1038/nj7584-117a},
   shorttitle = {Data Sharing},
-  abstract = {The move to make scientific findings transparent can be a major boon to research, but it can be tricky to embrace the change.},
   number = {7584},
   journaltitle = {Nature},
   date = {2016-01-07},
@@ -419,29 +439,6 @@ Author guidelines for journals could help to promote transparency, openness, and
   title = {From {{Richardson}} to Early Numerical Weather Prediction},
   isbn = {978-0-521-19006-0},
   url = {https://researchrepository.ucd.ie/handle/10197/2891},
-  abstract = {The development of computer models for numerical simulation of the atmosphere 
-and oceans is one of the great scientific triumphs of the past fifty years. These 
-models have added enormously to our understanding of the complex processes in 
-the atmosphere and oceans. The consequences for humankind of ongoing climate 
-change will be far-reaching. Earth system models are the best means we have of 
-predicting the future of our climate. 
- 
-The basic ideas of numerical forecasting and climate modeling were developed 
-about a century ago, long before the first electronic computer was constructed. 
-However, advances on several fronts were necessary before numerical prediction 
-could be put into practice. A fuller understanding of atmospheric dynamics allowed 
-the development of simplified systems of equations; regular observations of the 
-free atmosphere provided the initial conditions; stable finite difference schemes 
-were developed; and powerful electronic computers provided a practical means of 
-carrying out the calculations required to predict the changes in the weather. 
- 
-In this chapter, we trace the history of computer forecasting from Richardson’s 
-prodigious manual computation, through the ENIAC (Electronic Numerical 
-Integrator and Computer) integrations to the early days of operational numerical 
-weather prediction and climate modeling. The useful range of deterministic prediction 
-is increasing by about one day each decade. We set the scene for the story 
-of the remarkable progress in weather forecasting and in climate modeling over 
-the past fifty years, which will be treated in subsequent chapters.},
   publisher = {{Cambridge University Press}},
   date = {2010-12},
   author = {Lynch, Peter}
@@ -455,6 +452,111 @@ the past fifty years, which will be treated in subsequent chapters.},
   date = {1922},
   author = {Richardson, Lewis F},
   note = {OCLC: 3494280}
+}
+
+@article{lindborg_determining_2000,
+  title = {Determining the {{Cascade}} of {{Passive Scalar Variance}} in the {{Lower Stratosphere}}},
+  volume = {85},
+  doi = {10.1103/PhysRevLett.85.5663},
+  number = {26},
+  journaltitle = {Phys. Rev. Lett.},
+  date = {2000-12-25},
+  pages = {5663-5666},
+  author = {Lindborg, Erik and Cho, John Y. N.}
+}
+
+@article{cho_horizontal_2001,
+  langid = {english},
+  title = {Horizontal Velocity Structure Functions in the Upper Troposphere and Lower Stratosphere: 1. {{Observations}}},
+  volume = {106},
+  issn = {2156-2202},
+  doi = {10.1029/2000JD900814},
+  shorttitle = {Horizontal Velocity Structure Functions in the Upper Troposphere and Lower Stratosphere},
+  number = {D10},
+  journaltitle = {J. Geophys. Res. Atmospheres},
+  date = {2001},
+  pages = {10223-10232},
+  author = {Cho, John Y. N. and Lindborg, Erik}
+}
+
+@article{nastrom_climatology_1985-1,
+  title = {A {{Climatology}} of {{Atmospheric Wavenumber Spectra}} of {{Wind}} and {{Temperature Observed}} by {{Commercial Aircraft}}},
+  volume = {42},
+  issn = {0022-4928},
+  doi = {10.1175/1520-0469(1985)042<0950:ACOAWS>2.0.CO;2},
+  number = {9},
+  journaltitle = {J. Atmos. Sci.},
+  date = {1985-05-01},
+  pages = {950-960},
+  author = {Nastrom, G. D. and Gage, K. S.}
+}
+
+@article{lilly_stratified_1983-1,
+  title = {Stratified {{Turbulence}} and the {{Mesoscale Variability}} of the {{Atmosphere}}},
+  volume = {40},
+  issn = {0022-4928},
+  doi = {10.1175/1520-0469(1983)040<0749:STATMV>2.0.CO;2},
+  number = {3},
+  journaltitle = {J. Atmos. Sci.},
+  date = {1983-03-01},
+  pages = {749-761},
+  author = {Lilly, D. K.}
+}
+
+@article{dewan_stratospheric_1979-1,
+  langid = {english},
+  title = {Stratospheric {{Wave Spectra Resembling Turbulence}}},
+  volume = {204},
+  issn = {0036-8075, 1095-9203},
+  doi = {10.1126/science.204.4395.832},
+  number = {4395},
+  journaltitle = {Science},
+  date = {1979-05-25},
+  pages = {832-835},
+  author = {Dewan, Edmond M.},
+  eprinttype = {pmid},
+  eprint = {17730524}
+}
+
+@article{gage_evidence_1979-1,
+  title = {Evidence Far a K−5/3 {{Law Inertial Range}} in {{Mesoscale Two}}-{{Dimensional Turbulence}}},
+  volume = {36},
+  issn = {0022-4928},
+  doi = {10.1175/1520-0469(1979)036<1950:EFALIR>2.0.CO;2},
+  number = {10},
+  journaltitle = {J. Atmos. Sci.},
+  date = {1979-10-01},
+  pages = {1950-1954},
+  author = {Gage, K. S.}
+}
+
+@article{lindborg_helmholtz_2015,
+  langid = {english},
+  title = {A {{Helmholtz}} Decomposition of Structure Functions and Spectra Calculated from Aircraft Data},
+  volume = {762},
+  issn = {0022-1120, 1469-7645},
+  doi = {10.1017/jfm.2014.685},
+  journaltitle = {J. Fluid Mech.},
+  date = {2015-01},
+  pages = {R4},
+  keywords = {\#nosource,atmospheric flows,meteorology,stratified flows},
+  author = {Lindborg, Erik}
+}
+
+@article{callies_transition_2014,
+  title = {Transition from Geostrophic Turbulence to Inertia–Gravity Waves in the Atmospheric Energy Spectrum},
+  volume = {111},
+  issn = {0027-8424},
+  doi = {10.1073/pnas.1410772111},
+  number = {48},
+  journaltitle = {Proc Natl Acad Sci U S A},
+  date = {2014-12-02},
+  pages = {17033-17038},
+  keywords = {\#nosource},
+  author = {Callies, Jörn and Ferrari, Raffaele and Bühler, Oliver},
+  eprinttype = {pmid},
+  eprint = {25404349},
+  pmcid = {PMC4260586}
 }
 
 
