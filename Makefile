@@ -85,7 +85,7 @@ $(AUXS): $(SRCS) $(DEPS) $(MKDWN2TEX)
 
 chapter_%.latex: chapter_%.md
 	@echo building $@ with pandoc
-	@pandoc $< -o $@
+	@pandoc --natbib $< -o $@
 
 $(BIB_FILE):
 	@python scripts/get_bib.py
