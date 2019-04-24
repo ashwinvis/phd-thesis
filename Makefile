@@ -99,7 +99,6 @@ cleanall: clean
 	@echo cleaning generated ps,dvi,pdf,paper.tex
 	@rm -f  *.{ps,dvi,pdf}
 	@rm -f paper*/paper.tex
-	@rm -f paper*/*.{ps,dvi,pdf}
 
 clean_minted:
 	@rm -rf _minted-$(main) $(paper)/_minted-*

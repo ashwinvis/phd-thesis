@@ -1,0 +1,37 @@
+title:
+  A two-dimensional toy model for geophysical turbulence
+title_short:
+  Toy model for geophysical turbulence
+authors:
+ - Erik Lindborg
+ - Ashwin Vishnu Mohanan
+affiliations:
+ - Linn\'e FLOW Centre, KTH Mechanics, S-100 44 Stockholm, Sweden
+ - Linn\'e FLOW Centre, KTH Mechanics, S-100 44 Stockholm, Sweden
+pub_short: Phys. Fluids
+pub: Physics of Fluids
+volume: 29
+number: 11
+pages: 111114
+year: 2017
+dir: paper_03_toy_model
+abstract: |
+  A toy model for large scale geophysical turbulence is constructed by making two
+  modifications of the shallow water model. Unlike the shallow water model the toy model
+  has a quadratic expression for total energy, which is the sum of Available Potential
+  Energy (APE) and Kinetic Energy (KE). More importantly, in contrast to the shallow
+  water model the toy model does not produce any shocks. Three numerical simulations
+  with different forcing are presented and compared with the simulation of a full
+  General Circulation Model (GCM).  The energy which is injected cascades in a similar
+  way as  in the GCM.  First, some of the energy is converted from APE to KE at large
+  scales.  The wave field is then undergoing a forward energy cascade displaying shallow
+  spectra, close to $ k^{-5/3} $, for both APE and KE,  {while the vortical field either
+  displays a $ k^{-3} $-spectrum or a more shallow spectrum, close to $ k^{-5/3} $,
+  depending on the forcing. } In a simulation with medium forcing wave number, some of
+  the energy which is converted from APE to KE is undergoing an inverse energy cascade
+  which is produced by nonlinear interactions only involving the rotational component of
+  the velocity field.  The inverse energy cascade builds up a vortical field at larger
+  scales than the forcing scale. At these scales coherent vortices emerge with a strong
+  dominance of anticyclonic vortices. The relevance of the simulation results to the
+  dynamics of the atmosphere is discussed as is possible continuations of the
+  investigation. 
