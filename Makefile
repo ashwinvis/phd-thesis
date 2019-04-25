@@ -20,6 +20,9 @@ BIB := biber
 BIB_FLAGS :=
 BIB_FILE := $(main).bib
 
+red:="\033[0;31m"
+end:="\033[0m"
+
 REDIRECT := | tail -n 5
 # REDIRECT := 1> /dev/null
 # REDIRECT := # no redirect
@@ -56,27 +59,28 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
+.NOPARALLEL: $(main).pdf log
 
 default: all
 
-all: $(main).pdf log
+all: log
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 	@echo building $(main) with $(TEX)
 	# @$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
-	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 	@sed -i -e 's/toPaper/Paper/g' thesis.out	
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(SRCS) $(DEPS) $(MKDWN2TEX)
 	@echo building $(main) with $(TEX) for $@
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
-	# @$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
-	# %.aux: %.tex
 
-%.bbl: %.bcf %.aux $(BIB_FILE)
-	@echo building $@  with $(BIB)
-	@$(BIB) $(BIB_FLAGS) $< #> /dev/null
+%.bcf: %.aux
+	@echo $(red)building $@ with $< $(end)
+
+%.bbl: %.aux $(BIB_FILE)
+	@echo building $@ with $(BIB)
+	@$(BIB) $(BIB_FLAGS) $(main) #> /dev/null
 	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
 
 %.tex: %.yml $(TEMPLATE_PAPER)
@@ -90,7 +94,7 @@ chapter_%.latex: chapter_%.md
 $(BIB_FILE):
 	@python scripts/get_bib.py
 
-log: $(main).log
+log: $(main).pdf
 	rubber-info $(main) | ccze -m ansi
 
 clean: clean_papers clean_thesis
