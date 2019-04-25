@@ -29,8 +29,8 @@ which expects a inertial range which scales as $k^{-5/3}$ with forward energy ca
 
 Postulates were also made that in two-dimensional turbulence, vorticity and enstrophy
 conservation and the absence of vortex stretching mechanism places a strong constraint
-on the cascade [see for example, @fjortoft_changes_1953;@charney_geostrophic_1971].
-These developments led to the seminal work by @kraichnan_inertial_1967 wherein a theory
+on the cascade [see for example, @fjortoft_changes_1953;@Charney1971].
+These developments led to the seminal work by @Kraichnan1971 wherein a theory
 for a coexistence of a dual inertial range was conjectured. The presence of a
 large-scale inertial range dominated by inverse-energy cascade and energy spectra which
 scales as $E(k) \sim \epsilon^{2/3} k^{-5/3}$, along with a smaller-scale

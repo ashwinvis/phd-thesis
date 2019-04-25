@@ -304,7 +304,16 @@ The $ k^{-5/3} $ spectrum has been reproduced
  by some General Circulation Models (GCM:s) based on the primitive
 equations \cite[]{KoshykHamilton2001, Skamarock2004,
 Hamilton_etal2008}.  \cite{AugierLindborg2013}  formulated a spectral energy budget of kinetic and available potential energy in terms of spherical harmonics and used this formulation to investigated two GCM:s. It was found that one of the models -- named the AFES model -- was able to reproduce a downscale energy cascade with realistic $ k^{-5/3} $ mesoscale spectra. The result was almost too good, since the AFES model simulation only contained 21 vertical levels, while theoretical arguments based on stratified turbulence theory \cite[]{Lindborg2006} suggest that a much finer vertical resolution would be needed. This lead us to ask what number of vertical levels a model needs in order  to reproduce a downscale energy cascade. Was \cite{YuanHamilton1994}  right  when they suggested that even a single layer model, such as the SW equations, could do the job? 
-The original motivation of this study was to investigate this suggestion. A first set of simulations of the SW equations, containing both balanced and gravity wave motions, showed some encouraging results. Indeed, gravity waves were transferring energy towards small scales. However, after a while it became clear that the cascade was not as strong as in the GCM simulation.  Moreover, in all the SW simulations we observed shocks with an associated $ k^{-2} $-spectrum rather than a $ k^{-5/3} $-spectrum. These observations lead us to dismiss the SW equations as a model for the atmospheric downscale cascade. Based on the SW equations we developed another two-dimensional toy model  \cite[]{LindborgMohanan} that is absent of shocks and can reproduce the energy cascade in the GCM quite well, including a $ k^{-5/3}  $-spectrum.
+The original motivation of this study was to investigate this suggestion. A first set of
+simulations of the SW equations, containing both balanced and gravity wave motions,
+showed some encouraging results. Indeed, gravity waves were transferring energy towards
+small scales. However, after a while it became clear that the cascade was not as strong
+as in the GCM simulation.  Moreover, in all the SW simulations we observed shocks with
+an associated $ k^{-2} $-spectrum rather than a $ k^{-5/3} $-spectrum. These
+observations lead us to dismiss the SW equations as a model for the atmospheric
+downscale cascade. Based on the SW equations we developed another two-dimensional toy
+model  \cite[]{LindborgMohanan2017} that is absent of shocks and can reproduce the
+energy cascade in the GCM quite well, including a $ k^{-5/3}  $-spectrum.
 
 The shocks we observed in the SW simulations left us in a state of curiosity. In some simulations they appeared to be pretty strong and in others rather weak. In some simulations they were densely packed and in others sparsely distributed. 
 In what way  do the input parameters regulate these variations? Will there always be shocks or will they disappear in the limit of weak nonlinearities?  Such questions made us to shift our theoretical focus and pursue the study, despite the fact that the answer to the question that originally motived it turned out to be negative.  
@@ -668,7 +677,7 @@ for the nonlinear term and an exact integration for the linear and dissipative
 terms. This explicit integration is especially useful at very high resolution
 and very large $c$ when the shortest waves are very fast. We use an adaptable
 time step method which maximizes the time step over a standard
-Courant-Friedrichs-Lewy condition \cite[]{Lundbladh1999, AugierChomazBillant2012}.
+Courant-Friedrichs-Lewy condition \cite{Lundbladh1999, AugierChomazBillant2012}.
 %
 Most of the aliasing is removed by truncating 8/9 of the modes along each
 direction \cite[for a detail discussion on the issues of the non-conservation
