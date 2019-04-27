@@ -95,6 +95,9 @@ $(BIB_FILE):
 	@python scripts/get_bib.py
 
 log: $(main).pdf
+	rubber-info $(main)
+
+colorlog: $(main).log
 	rubber-info $(main) | ccze -m ansi
 
 clean: clean_papers clean_thesis
