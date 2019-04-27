@@ -4,7 +4,7 @@ ruamel.yaml
 requests
 pygments
 networkx
-nxviz
+nxviz>=0.6.1
 matplotlib
 # Optional
 pyqt5
