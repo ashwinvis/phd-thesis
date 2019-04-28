@@ -37,13 +37,13 @@ strong constraint on the cascade [see for example,
 work by @Kraichnan1971 wherein a theory for a coexistence of a dual inertial
 range was conjectured. The presence of a large-scale inertial range dominated
 by inverse-energy cascade was predicted wherein, the energy spectra scales as
-$E(k) \sim \epsilon^{2/3} k^{-5/3}$. A smaller-scale spectra characterized by
+$E(k) \sim \epsilon^{2/3} ak^{-5/3}$. A smaller-scale spectra characterized by
 forward enstrophy cascade was also predicted, which scales as $E(k) \sim
 \eta^{2/3} k^{-3}$. One way to deduce these power laws was to invoke similar
-assumptions as @Kolmogorov1941. It was assumed that the \m53 inertial range
+assumptions as @Kolmogorov1941. It was assumed that the $\mfivethird$ inertial range
 only depends on wavenumber $k$ and mean energy dissipation rate $\epsilon$, and
 likewise the -3 range would depend on $k$ and mean enstrophy dissipation rate
-$\eta$.  A more formal approach relying on statistical mechanics arguments were
+$\eta$. A more formal approach relying on statistical mechanics arguments were
 put forth to arrive at the same conclusion and additionally, predict the
 direction of cascade.
 
@@ -64,26 +64,20 @@ and enstrophy fluxes expressed as,
 <!-- -->
 respectively. Thus the fluxes were analysed as two classes of mutually
 exclusive interactions, the range $k' \in [k, \infty)$ would interact with all
-the wavenumbers $p, q \lt k$ and similarly the range $k' \in [0, k]$ would
-interact with all wavenumbers $p, q \gt k$. Using this as a starting point, it
+the wavenumbers $p, q < k$ and similarly the range $k' \in [0, k]$ would
+interact with all wavenumbers $p, q > k$. Using this as a starting point, it
 was shown that one would obtain a constant energy flux $\Pi(k)$ for all $k$
-when energy spectra scales with the exponent \m53 and a constant enstrophy flux
+when energy spectra scales with the exponent $\mfivethird$ and a constant enstrophy flux
 for all $k$ when the energy spectra scales as -3.
 
-The direction of the cascade was determined using statistical mechanics
-arguments. The transfer terms themselves do not have any bias in their sign
-(implying the direction of cascade). However, it was argued that for a general
-equilibrium spectrum of the form,
-<!---->
-\begin{equation} U(k) = 1 / (\beta k^2 + \alpha), \end{equation}
-<!---->
-the vorticity spectrum would scale as $2 \pi k^3 U(k)$, which means vorticity
-would tend to accumulate at high wavenumbers. This would result from a forward
-cascade of enstrophy, which in turn implies the transfer term at $k=1$,
-$T(1,p,q)$ would be negative. This hints towards a forward enstrophy cascade
-complemented by an inverse energy cascade. 
+The directions of cascade, i.e. the signs of the fluxes used in scaling the
+inertial ranges, were estimated using statistical mechanics arguments [see also
+@kraichnan_two-dimensional_1980]. It stated that a Gaussian initial state with
+an energy spectra $E(k) = \pi k U(k)$ would reach an equilibrium distribution
+which scales as $U(k)~k^{n}$  where $n \notin [0, 2]$. Therefore it implies a
+bidirectional transfer of energy starting from the initial intermediate scale.
 
-Of particular interest was also the note that while the \m53 spectrum could arise
+Of particular interest was also the note that while the $\mfivethird$ spectrum could arise
 from local interactions, the -3 spectrum would be due to non-local in nature.
 Kraichnan correctly identified that these results would have deep impact in our
 understanding of mesoscale turbulence.
