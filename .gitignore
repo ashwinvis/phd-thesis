@@ -23,6 +23,7 @@ _minted*
 # compiled files
 *.pdf
 chapter*.latex
+chapter*.pandoc.*
 
 # benchmarking files
 paper**/*.pstats

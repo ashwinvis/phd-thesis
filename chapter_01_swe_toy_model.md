@@ -1,3 +1,7 @@
+---
+documentclass: scrartcl
+---
+
 \chapter{Atmospheric turbulence and Shallow Water and Toy Model Equations}
 
 Atmospheric turbulence is characterized by a huge scale separation of fluid
@@ -34,18 +38,18 @@ Postulates were also made that in two-dimensional turbulence, vorticity and
 enstrophy conservation and the absence of vortex stretching mechanism places a
 strong constraint on the cascade [see for example,
 @fjortoft_changes_1953;@Charney1971].  These developments led to the seminal
-work by @Kraichnan1971 wherein a theory for a coexistence of a dual inertial
+work by @Kraichnan1967 wherein a theory for a coexistence of a dual inertial
 range was conjectured. The presence of a large-scale inertial range dominated
 by inverse-energy cascade was predicted wherein, the energy spectra scales as
-$E(k) \sim \epsilon^{2/3} ak^{-5/3}$. A smaller-scale spectra characterized by
+$E(k) \sim \epsilon^{2/3} k^{-5/3}$. A smaller-scale spectra characterized by
 forward enstrophy cascade was also predicted, which scales as $E(k) \sim
 \eta^{2/3} k^{-3}$. One way to deduce these power laws was to invoke similar
-assumptions as @Kolmogorov1941. It was assumed that the $\mfivethird$ inertial range
-only depends on wavenumber $k$ and mean energy dissipation rate $\epsilon$, and
-likewise the -3 range would depend on $k$ and mean enstrophy dissipation rate
-$\eta$. A more formal approach relying on statistical mechanics arguments were
-put forth to arrive at the same conclusion and additionally, predict the
-direction of cascade.
+assumptions as @Kolmogorov1941. It was assumed that the $\mfivethird$ inertial
+range only depends on wavenumber $k$ and mean energy dissipation rate
+$\epsilon$, and likewise the -3 range would depend on $k$ and mean enstrophy
+dissipation rate $\eta$. A more formal approach relying on statistical
+mechanics arguments were put forth to arrive at the same conclusion and
+additionally, predict the direction of cascade.
 
 Kraichnan studied how triad interactions would function in the context of
 two-dimensional turbulence, using incompressible Navier-Stokes equations, which
@@ -84,4 +88,19 @@ understanding of mesoscale turbulence.
 
 ## Turbulence in synoptic and mesoscale flows
 
-In @Charney1971 the existence of  
+Despite the firm foundations that the theory of @Kraichnan1967 presented, a gap
+left to be bridged -- to connect the ideal two-dimensional turbulence to
+atmospheric turbulence. @Charney1971 pondered if it was possible to realize the
+predictions at all and if so, at what limits can the atmosphere be considered
+two-dimensional. It is well known that most of turbulence, especially in
+planetary scales, originates from baroclinic instabilities. The effects of
+rotation and stratification were not considered in @Kraichnan1967. These
+"shortcomings" were addressed to some extent in @Charney1971, wherein the -3
+spectra scaling was derived by analyzing the so-called quasi-geostrophic
+equations. The paper also introduced the expression for linearized potential
+vorticity $q = \zeta - f \frac{\eta}{H}$, where $\zeta$ is the relative
+vorticity, $f$ is the solid body rotation speed of the frame of reference, and
+$\eta$ is the displacement field of a shallow layer of fluid of mean height $H$. 
+
+
+![Predicted](imgs/cascade.pdf){#fig: cascade}
