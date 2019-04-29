@@ -91,6 +91,21 @@ chapter_%.latex: chapter_%.md
 	@echo building $@ with pandoc
 	@pandoc --natbib $< -o $@
 
+chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
+	@echo building $@ with pandoc
+	@pandoc --biblatex \
+		--bibliography $(BIB_FILE) \
+		-s --filter pandoc-citeproc \
+		--filter pandoc-crossref \
+		--top-level-division=chapter \
+		--include-in-header templates/mkdwn-header.tex \
+		--from markdown+yaml_metadata_block+table_captions \
+		$< -o $@
+
+chapter_%.pandoc.pdf: chapter_%.pandoc.tex
+	@echo building $@ with latexmk
+	@latexmk -silent -use-make -pdf $<
+
 $(BIB_FILE):
 	@python scripts/get_bib.py
 
