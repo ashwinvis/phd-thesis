@@ -1,5 +1,9 @@
 ---
 documentclass: scrartcl
+header-includes:
+  - "\\usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}"
+  - "\\newcommand{\\chapter}[1]{\\section{\\underline{#1}}}"
+  - "\\input{commands}"
 ---
 
 \chapter{Atmospheric turbulence and Shallow Water and Toy Model Equations}
@@ -81,12 +85,14 @@ an energy spectra $E(k) = \pi k U(k)$ would reach an equilibrium distribution
 which scales as $U(k)~k^{n}$  where $n \notin [0, 2]$. Therefore it implies a
 bidirectional transfer of energy starting from the initial intermediate scale.
 
-Of particular interest was also the note that while the $\mfivethird$ spectrum could arise
-from local interactions, the -3 spectrum would be due to non-local in nature.
-Kraichnan correctly identified that these results would have deep impact in our
-understanding of mesoscale turbulence.
+Of particular interest was also the note that while the $\mfivethird$ spectrum
+could arise from local interactions, the -3 spectrum would be non-local in
+nature. Kraichnan correctly identified that these results would have deep
+impact in our understanding of mesoscale turbulence.
 
-## Turbulence in synoptic and mesoscale flows
+## Turbulence in atmosphere
+
+### Quasi-Geostrophic equations
 
 Despite the firm foundations that the theory of @Kraichnan1967 presented, a gap
 left to be bridged -- to connect the ideal two-dimensional turbulence to
@@ -96,11 +102,72 @@ two-dimensional. It is well known that most of turbulence, especially in
 planetary scales, originates from baroclinic instabilities. The effects of
 rotation and stratification were not considered in @Kraichnan1967. These
 "shortcomings" were addressed to some extent in @Charney1971, wherein the -3
-spectra scaling was derived by analyzing the so-called quasi-geostrophic
-equations. The paper also introduced the expression for linearized potential
-vorticity $q = \zeta - f \frac{\eta}{H}$, where $\zeta$ is the relative
-vorticity, $f$ is the solid body rotation speed of the frame of reference, and
-$\eta$ is the displacement field of a shallow layer of fluid of mean height $H$. 
+spectra scaling was derived by analyzing the so-called quasi-geostrophic (QG)
+equations which conserves an approximate expression for potential vorticity:
 
+$$ \Dt{} \left[ \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left( \frac{\tilde \rho}{N^2}
+\p_z \psi \right) + \beta y  \right] = 0 $${#eq:quasigeo}
 
-![Predicted](imgs/cascade.pdf){#fig: cascade}
+where $\psi$ is the horizontal stream function, $f$ is the solid body rotation
+speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
+the Brunt-V$\"a$isala frequency and $\beta \approx \p_y f$ is the beta
+parameter. These equations are valid when the certain criteria are met such as:
+
+* Rossby number $Ro < O(1)$, indicating strong rotation,
+* Variations in the Coriolis force ($\beta$) are small, implying scales may not
+  be as large as planetary length scales,
+
+and some other scale restrictions [see chapter 5 in @vallis_atmospheric_2017].
+Using this equation and the result that energy and QG enstrophy are a conserved
+quantity it was shown that, for a sufficiently high Reynolds number flow the
+energy cascade can be inhibited by the geostrophic constraint, thus behaving
+like two-dimensional flow. Also the -3 scaling law was derived for the QG
+equations. Observational results from @wellck_effect_1971 was then used to
+demonstrate the existence of -3 spectra.
+
+### Energy cascade in synoptic and mesoscale flows
+
+![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade might
+simultaneously occur in two-dimensional turbulence. Right: A schematic of
+observed energy spectra in the atmosphere [@NastromGage1985]
+](imgs/cascade.pdf){#fig:cascade}
+
+Nowadays, it is largely agreed upon that the -3 spectra in the _synoptic_
+scales (typically, for wavelengths over a thousand kilometres) are
+characterized by Kraichnan-type turbulence, with a constant enstrophy flux
+cascading downscale. The left plot of @fig:cascade shows how Kraichnan
+anticipated the two scaling laws would coexist -- a stirring force would inject
+rotational energy at intermediate scales which would then cascade towards
+either extrema. In contrast to this picture, a study by @NastromGage1985, which
+compiled data from over 6000 aircraft flights spanning several years, revealed
+a spectra that is similar to the sketch on the right plot of @fig:cascade. One
+should note that, the -3 range dominates in terms of energy and spans across
+the synoptic scales, whereas a lesser yet substantial $\mfivethird$ range
+characterizes the _mesoscale_ flows.
+
+The explanation for the mechanism behind the $\mfivethird$ mesoscale spectra
+has been an open question ever since, and competing theories were put forth to
+address this. @Dewan:1979 analysed the energy spectrum of velocity fluctuations
+in the stratosphere up to wavelength of the order of 10 kilometres, which
+displayed a $\mfivethird$ scaling. It was suggested that buoyancy or internal
+gravity waves, feeding on turbulent layers trapped by large scale shear flows,
+could be the driving mechanism behind this non-linear cascade of energy. It was
+also asserted that a Kolmogorov-type _forward_ cascade of wave scales could be
+involved. This was substantiated using a simple model for a shear flow due to a
+wave by @Phillips.
+
+In two contemporary articles by @Gage:1979 and @Lilly:1983, a competing view
+that the mesoscale cascade process would be similar to Kraichnan's prediction
+of inverse energy cascade was presented. In the former article, the temporal
+variability of winds was derived structure functions and presented as evidence
+for the existence of $\mfivethird$ spectra. @Lilly:1983 studied decaying wave
+in stably-stratified turbulence and its tendency to evolve into enlarged
+vortices for evidence of inverse cascade. A scale based decomposition of the
+Boussinesq equation into waves and vortices from @riley_direct_1981, was used
+to study the interactions of waves and stratification with an initial state of
+isotropic turbulence with a $k^{-2}$ spectrum. It was hypothesized that the
+stratified turbulence would then transfer energy to larger scale, resulting in
+a shallower $\mfivethird$ spectrum. These ideas were also revisited fairly
+recently by @Xia2011 through experiments, wherein a large scale planar vortex
+was forced from the small scales electromagnetically to generate a
+$\mfivethird$ spectrum.

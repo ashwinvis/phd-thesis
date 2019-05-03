@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-# paper := paper?
+chapter := chapter_01_swe_toy_model
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -93,14 +93,16 @@ chapter_%.latex: chapter_%.md
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	@echo building $@ with pandoc
-	@pandoc --biblatex \
+	@pandoc \
+		-F pandoc-crossref \
+		-F pandoc-citeproc \
 		--bibliography $(BIB_FILE) \
-		-s --filter pandoc-citeproc \
-		--filter pandoc-crossref \
+		--csl templates/journal-of-fluid-mechanics.csl \
+		--standalone \
 		--top-level-division=chapter \
-		--include-in-header templates/mkdwn-header.tex \
 		--from markdown+yaml_metadata_block+table_captions \
 		$< -o $@
+		# --biblatex \
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
 	@echo building $@ with latexmk
@@ -112,14 +114,14 @@ $(BIB_FILE):
 log: $(main).pdf
 	rubber-info $(main)
 
-colorlog: $(main).log
-	rubber-info $(main) | ccze -m ansi
+%.log:
+	rubber-info $@ | ccze -m ansi
 
 clean: clean_papers clean_thesis
 
 cleanall: clean
-	@echo cleaning generated ps,dvi,pdf,paper.tex
-	@rm -f  *.{ps,dvi,pdf}
+	@echo cleaning generated ps,dvi,pdf,paper.tex,pandoc.tex
+	@rm -f  *.{ps,dvi,pdf,pandoc.tex}
 	@rm -f paper*/paper.tex
 
 clean_minted:
@@ -127,7 +129,7 @@ clean_minted:
 
 clean_thesis:
 	@echo cleaning thesis
-	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk}
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml}
 
 clean_papers:
 	@echo cleaning papers
@@ -141,7 +143,13 @@ vimtex:
 	# gvim $(name).tex --servername GVIM &
 	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
 	# NVIM_LISTEN_ADDRESS=GVIM 
-	nvim-qt $(main).tex 2> /dev/null &
+	nvim $(main).tex 2> /dev/null &
 
-doit: vimtex $(main).pdf
-	zathura $(main).pdf &
+openpdf:
+	zathura $(chapter).pandoc.pdf &
+
+openmkdwn:
+	nvim $(chapter).md
+
+# doit: vimtex openpdf
+doit: $(chapter).pandoc.pdf openpdf openmkdwn
