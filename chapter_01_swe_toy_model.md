@@ -1,11 +1,3 @@
----
-documentclass: scrartcl
-header-includes:
-  - "\\usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}"
-  - "\\newcommand{\\chapter}[1]{\\section{\\underline{#1}}}"
-  - "\\input{commands}"
----
-
 \chapter{Atmospheric turbulence and Shallow Water and Toy Model Equations}
 
 Atmospheric turbulence is characterized by a huge scale separation of fluid
@@ -171,3 +163,11 @@ a shallower $\mfivethird$ spectrum. These ideas were also revisited fairly
 recently by @Xia2011 through experiments, wherein a large scale planar vortex
 was forced from the small scales electromagnetically to generate a
 $\mfivethird$ spectrum.
+
+### Stratified turbulence
+
+In the early 
+
+The question of direction of the mesoscale energy cascade has remained an
+unsettled debate for a long time [@vallgren_possible_2011-1], however today one
+can say the majority of results tend to favour the forward-cascade hypothesis.

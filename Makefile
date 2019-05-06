@@ -89,7 +89,10 @@ $(AUXS): $(SRCS) $(DEPS) $(MKDWN2TEX)
 
 chapter_%.latex: chapter_%.md
 	@echo building $@ with pandoc
-	@pandoc --natbib $< -o $@
+	@pandoc \
+		--natbib \
+		-F pandoc-crossref \
+		$< -o $@
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	@echo building $@ with pandoc
@@ -100,7 +103,8 @@ chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 		--csl templates/journal-of-fluid-mechanics.csl \
 		--standalone \
 		--top-level-division=chapter \
-		--from markdown+yaml_metadata_block+table_captions \
+		--from markdown+table_captions \
+		--metadata-file=pandoc-meta.yml \
 		$< -o $@
 		# --biblatex \
 
