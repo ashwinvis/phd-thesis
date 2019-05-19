@@ -1,7 +1,6 @@
 \chapter{Towards reproducible, open science through open research software}
 \section{Introduction}
 
-% \subsection{Science, software, open-source and the computer revolution}
 
 % FIXME: Deleted
 % Science: giants, collective, grows when shared
@@ -20,45 +19,58 @@
 % Fluiddyn: foster open-science, source. Framework for collaborative dev, open
 % methods
 
-This chapter presents FluidDyn, a project and an ecosystem of packages to
-facilitate open-science and open-source development in the field of fluid
-mechanics.
+In order to attain the research goals in this thesis, a path off the beaten
+track was pursued -- i.e. to create a handful of easy to maintain, rigorously
+tested, and most-importantly, open-source scientific packages which does not
+compromise on performance.
 %
-The chapter is organized into several parts to present the context and to
-describe our motivations and the concept behind the project FluidDyn as
-follows:
+This resulted in the creation of FluidDyn, a project to facilitate open-science
+in the field of fluid mechanics.
+%
+The focus of the project was to develop a set of packages to implement a
+framework for simulations \citep{fluidsim}, experiments
+\citep{augier_fluidimage_2016,augier_fluidlab_nodate}, Fast Fourier Transforms
+\citep{fluidfft} -- all depending on a base package to reuse certain utilities
+and data structures \citep{fluiddyn}.
+%
+The project owes a lot to the recent developments in methods and tools for
+open-source software engineering.
+%
+Several good and modern coding practices were adopted while developing these
+packages.
+%
+An understanding of the design choices and the workflow involved would be of
+general interest to the reader.
 
-\begin{itemize}
-\item A scientific project based on the collaboration through open-source, such
-as FluidDyn, is only possible thanks to the recent developments in methods and
-tools for open-source software engineering. We start by presenting these
-developments and discuss the implications for scientists.
-
-\item FluidDyn is based on the language Python. Incidentally, it is the defining
-characteristics of Python which make the eventual success of such a
-project realizable.
+FluidDyn packages are primarily written in Python language. Incidentally, it is
+the defining characteristics of Python which make the eventual success of such
+a project realizable.
 %
 Python is one of the most important tool in recent open-source dynamics,
 particularly in science.
 %
-Python in fluid mechanics is growing fast, but is yet to reach widespread
-adoption as the language of choice. Therefore, it is useful to present its
-characteristics for readers who are unacquainted with its nuances.
+The popularity of the language in fluid mechanics is growing, but is yet
+to reach widespread adoption as the language of choice. 
 
-\item We will discuss about the possible contradiction between productivity of
-individuals and productivity at the community level.
+We shall now discuss these topics in greater detail. The chapter is organized
+into two sections. The first section focusses on the technical aspects, with
+particular focus on emerging developments in programming languages, tools and
+services suited for open-source software development. We shall present Python's
+strengths and weaknesses as a language for scientific computing.
+%
+The section ends with a note on the capabilities of FluidDyn
+packages\footnote{We use FluidDyn (with capital letters) to name the project
+and \fluiddyn for the base package.}.
+%
+In the second section a comparison of various software development
+methodologies are made. Here, we will also discuss about the possible
+contradiction between productivity of individuals and productivity at the
+community level.
+%
+% The chapter finally ends with a summary of the motivations for the project
+% FluidDyn and an overview of the packages used.
 
-\item We will establish a picture of software engineering in fluid mechanics
-and present some of the main tools commonly used.
-
-\item The introduction finally ends with a summary of the motivations for the
-project FluidDyn and an overview of the packages used\footnote{%
-  We use FluidDyn (with capital letters) to name the project and \fluiddyn for
-the base package.}.
-\end{itemize}
-
-
-\section{A modern approach to computational sciences}
+\section{Science, software, open-source and the computer revolution}
 
 Computational sciences, and especially computational fluid dynamics (CFD) as a
 discipline has flourished a lot in the latter half of the twentieth century.
