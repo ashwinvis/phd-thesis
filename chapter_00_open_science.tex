@@ -70,25 +70,28 @@ community level.
 % The chapter finally ends with a summary of the motivations for the project
 % FluidDyn and an overview of the packages used.
 
-\section{Science, software, open-source and the computer revolution}
+% \section{Science, software, open-source and the computer revolution}
+\section{Open-source software and open-science}
 
 Computational sciences, and especially computational fluid dynamics (CFD) as a
-discipline has flourished a lot in the latter half of the twentieth century.
-Incidentally the origin of this domain can be traced back to the ideas
-in \citet{richardson_weather_1922} to achieve numerical weather prediction.
-With the arrival of first electronic general-purpose computer, ENIAC, the first
-simulations were made using a simple barotropic model to make 24 hour
-forecasts \citep{lynch_richardson_2010}. In those early days when the use and
-availability of computers were limited, such methods were neither widespread
-nor feasible. Scientific investigations were dominated by theoretical and
+discipline, have flourished a lot in the latter half of the twentieth century.
+Incidentally the origin of this discipline can be traced back to the ideas in
+\citet{richardson_weather_1922} to achieve numerical weather prediction.
+Following the arrival of first electronic general-purpose computer, ENIAC, the
+first simulations were made using a simple barotropic model to make 24 hour
+forecasts \citep{lynch_richardson_2010}. In those early days when the
+availability of computers was limited, such methods were neither widespread nor
+feasible. Scientific investigations were dominated by theoretical and
 experimental methods.
-We have come a long way since then and today one can say that, computational
-methods now complement theoretical and experimental studies, and are equally
-important.
-Thus to recreate a particular scientific study, the mathematical representation
-or even an algorithm leaves a lot to be desired. With the connectivity
-provided by the world wide web it is possible to do more and reinvent the way
-we perform sciences.
+%
+We have come a long way since then and today computational methods now
+complement theoretical and experimental studies, and are equally important.
+%
+% Thus, in a typical scientific study, there is significant effort involved in
+% translating the mathematical representation to a working research software.
+%
+With the connectivity provided by the world wide web it is possible to achieve
+more and reinvent the way we perform sciences.
 
 \begin{figure}[h]
   \centering
@@ -103,86 +106,108 @@ In recent years there has been a move towards the open science
 Depicted in figure \ref{fig:opensci} are some of steps needed to ensure
 reproducibility and transparency in sciences.
 %
-\emph{Knowledge} has been traditionally disseminated in the form of courses and
-books from universities, and to the wider scientific community through research
-articles, conference proceedings and workshops.
-
-While this is nothing new, knowledge has become more accessible to the public
+Traditionally, \emph{knowledge} has been disseminated in the form of courses
+and books from universities, and to the wider scientific community through
+research articles, conference proceedings and workshops.
+%
+In the last decade, knowledge has become more accessible to the public
 through public-domain and Creative Commons (or similar) licensed course
 materials and massively open online courses (MOOCs). Moreover, there is also an
 emerging push to publish in open-access journals\footnote{In the European
   Union, a proposal to implement Plan S (\url{https://www.coalition-s.org}) was
   been set in motion in September 2018 to fast track adoption of open-access.
 } either through systematic
-reforms in academia on how researchers are assessed on their productivity or
-through regulations and offering incentives, such as waiving the application
-processing charge for publishing \citep{nosek_promoting_2015}.
+reforms in academia on how researchers' productivity are assessed or through
+regulations and offering incentives, such as waiving the application processing
+charge for publishing \citep{nosek_promoting_2015}.
 
-As mentioned earlier there is a lot of work involved in condensing and
-implementing this knowledge in the form of working applications.
+A lot of work is required to condense and implement this knowledge in the
+form of working applications.
 %
 The \emph{know-how} can be made accessible and open to scrutiny by making
-research software open-source with an appropriate license.  To make the codes
-usable it has to be complemented by documentation which typically includes
-tutorials, examples and a detailed commentary of different components of the code.
+research software open-source with an appropriate license\footnote{For a
+  detailed comparison of licenses, visit either
+  \url{https://choosealicense.com} or
+  \url{https://www.gnu.org/licenses/license-list.html}.
+}.
 %
-Furthermore, to inspire confidence in and to ensure reliability of the code
-throughout the process of software development, it needs unit-tests with
-which a code is continuously deployed, built and tested --- a process known as
+To make codes usable they have to be complemented by documentation which
+typically includes tutorials, examples and a detailed commentary of different
+components.
+%
+Furthermore, to inspire confidence in and to ensure reliability of a code
+throughout the process of software development, it needs unit-tests through
+which a code is continuously built, tested and deployed --- a process known as
 Continuous Integration (CI), which is described in detail later in this
-chapter. Depending on how much matured a software is, these can be easy or
+chapter. Depending on how matured a software is CI can be easy or
 cumbersome to implement, but nevertheless, the result is a cleaner and reliable
 code.
 
 Finally, the \emph{results} generated from the such codes together with the
 workflow (i.e. scripts to run the codes and to postprocess the data) when made
-open in the form of datasets can ensure that research would be reproducible and
+open in the form of datasets can ensure that research is reproducible and
 preserved in archives for several years to come \citep{gewin_data_2016}. Open
 datasets can be shared and made citable through services such as
 \href{https://zenodo.org}{Zenodo} and \href{https://figshare.com}{Figshare}.
 
-In the present work, through FluidDyn project, we have managed to implement all
-the aspects of making the know-how open through open-source software. We shall
-now take a look at the tools which have made it possible.
+In FluidDyn project, we have strived to implement all the aspects of making the
+know-how open through open-source software. We shall now take a look at the
+tools which have made it possible.
 
 \subsection{Methods and tools for open-source software engineering}
 
-\paragraphbf{Free and Open-Source Software (FOSS)} The term \emph{free} in
-FOSS is a misnomer, as it actually stands for \emph{freedom} (to use, modify
-and distribute). The FOSS movement has dramatically decreased the cost of using
-computers, and is evident from the widespread use of GNU/Linux systems in
-desktops, computing clusters and web-servers in academia and beyond.
+\subsubsection{Free and Open-Source Software}
+
+Open-source software development that we know today has been built on top of
+the firm foundations of the Free and Open-Source Software (FOSS) movement. The
+term \emph{free} in FOSS is a misnomer, as it actually stands for
+\emph{freedom} (to use, modify and distribute). The FOSS movement has
+dramatically decreased the cost of using computers, which is evident from the
+widespread use of GNU/Linux systems in desktops, computing clusters and
+web-servers in academia and beyond.
 %
-The beginnings of FOSS culture can be traced back to the success for scientific
-publication of the free type-setting standards \TeX\ (1977) and \LaTeX\ (1985).
+The FOSS culture can be traced back to the success for scientific publication
+of the free type-setting standards \TeX\ (1977) and \LaTeX\ (1985).
 %
 Another founding moment for the FOSS movement was the launch of the GNU project
 in 1983 by \href{https://en.wikipedia.org/wiki/Richard_Stallman}{Richard
-Stallman}, to create a Unix-like computer operating system composed entirely of
-free software\footnote{For completeness, see also the work done on
-\href{https://www.levenez.com/unix/}{other Unix operating systems,
-for example BSD}.}.
+  Stallman}, to create a Unix-like computer operating system composed entirely
+  of free software\footnote{For completeness, see also the work done on
+  \href{https://www.levenez.com/unix/}{other Unix operating systems, for
+example BSD}.}.
 %
 GNU is today known for its compiler collection (GCC) and a multitude of tools
-which when combined with the Linux kernel (created by
+which combined with the Linux kernel (created by
 \href{https://en.wikipedia.org/wiki/Linus_Torvalds}{Linus Torvalds} in 1991)
-forms the GNU/Linux operating systems that we are familiar today.
+forms the GNU/Linux operating system.
+% and its several distributions (Debian, Red Hat, Slackware, Arch Linux and
+% Gentoo to name a few)
+that we are familiar with today.
 %
-FOSS movement has had huge successes in many frontiers --- Apache could be
-termed as the ``first killer-app of Linux'' and now with an ever-increasing
-suite of softwares including Firefox, LibreOffice, Gimp as solid alternatives
-to proprietary offerings.
+% FOSS movement has had huge successes in many frontiers --- Apache could be
+% termed as the ``first killer-app of Linux'' and now with an ever-increasing
+% suite of softwares including Firefox, LibreOffice, Gimp as solid alternatives
+% to proprietary offerings.
 %
 Linux has become the most widely used kernel, being deployed on servers,
-personal computers, embedded devices, and also smart phones (with Android).
+personal computers, embedded devices, and also smart phones (with Android). The
+success of the Linux kernel project was attributed to the \emph{bazaar} model of
+software development in \citet{raymond_cathedral_1999}, wherein a code can stay
+structured despite releasing frequently and delegating tasks to community with
+myriad agendas.
 
 % remark Julien Salort: not interesting. Nothing on BSD.
 % https://www.levenez.com/unix/
 
 Over the years, FOSS development has transitioned from an organic community of
 volunteers, towards an organized system with participation from industries,
-non-profit organizations and government institutions. This could be regarded as
-the second-age of FOSS movement~\citep{fitzgerald_transformation_2006}.
+non-profit organizations and government institutions.
+%
+Such a model results in a win-win scenario -- users benefit from transparency and
+ability to tinker, and the organizations profit with more contributions.
+%
+The FOSS movement has thus entered into a second era
+\citep{fitzgerald_transformation_2006}.
 
 % - 90s arrival of internet (soon mass market)
 
@@ -215,25 +240,21 @@ the second-age of FOSS movement~\citep{fitzgerald_transformation_2006}.
 % av:That is probably because we did not mention patches and CVS, subversion
 % etc.
 
+\subsubsection{Source code management and packaging}
 
-\paragraphbf{Distributed Version Control Systems (DVCS) and web-based source
-development platforms} Collaboration was achieved in the early years of FOSS
-development through emailing ``patches'', and centralized VCS near the turn of
-the 21\textsuperscript{st} century.  The collective collaboration on
-development is today streamlined with the emergence of DVCS (especially, Git
-and Mercurial) and web-based source development platforms like GitHub,
-Bitbucket and more recently GitLab.
+Collaboration was achieved in the early years of FOSS development through
+emailing ``patches'', and centralized Version Control Systems (VCS) near the
+turn of the 21\textsuperscript{st} century.  The collective collaboration on
+development is today streamlined with the emergence of Distributed Version
+Control Systems (DVCS), especially, Git and Mercurial). In web-based source
+development platforms like GitHub, Bitbucket and GitLab DVCS repositories are
+enhanced with code-review tools, which typically consists of a issue tracker
+and pull-request mechanism.
 %
-These tools are designed to work on any kind of text files, not just codes, so
-they could even be utilized to write scientific documents with multiple authors.
-%
-These tools are so useful for work, that using DVCS in science shall reap
-benefits in terms of productivity in the long run~\cite{wilson_best_2014}.
-
 Git has become the \textit{de facto} standard for source management. However,
 for the FluidDyn project, we prefer to use Mercurial because we consider it to
 be simpler for the beginners and just as powerful for expert users\footnote{See
-\href{https://www.mercurial-scm.org/wiki/GitConcepts}{``a detailed
+  \href{https://www.mercurial-scm.org/wiki/GitConcepts}{``a detailed
 comparison''} on Mercurial website.}. Simplicity and lowering the learning
 barrier for scientists who are not experts in software development is crucial
 for our project.
@@ -241,105 +262,129 @@ for our project.
 Note that, it is now possible to use Mercurial to work with Git repositories,
 for example hosted in GitHub and GitLab\footnote{By using the Mercurial
 extension \href{http://hg-git.github.io/}{hg-git}.}.
+%
+Version control tools are designed to work on any kind of text files, not just
+codes, so they could even be utilized to write scientific documents with
+multiple authors.
+%
+The use of DVCS in science will lead to long term productivity benefits
+\citep{wilson_best_2014}.
 
-\paragraphbf{Package management and third-party software repositories} Python
-as a medium for scientific computing owes its success to a rich ecosystem of
-third-party packages.  Smooth deployment of these packages requires a package
-manager and a supported repository. A credible hub to upload source codes as
-compressed archives or as pre-compiled binary packages was therefore
-indispensable. The use of repositories started with the conception of CPAN and
-CRAN repositories for the languages Perl and R in 1993 --- based on the
-Comprehensive TeX Archive Network (CTAN) model for \TeX\ packages. 
 
-Today, \href{https://pypi.org}{Python Package Index (PyPI)} and
+%\paragraphbf{Package management and software repositories} 
+Python as a medium for scientific computing owes its success to a rich
+ecosystem of third-party packages.  Smooth deployment of these packages
+requires a package manager and a supported repository. A credible hub to upload
+source codes as compressed archives or as pre-compiled binary packages was
+therefore indispensable. The use of repositories started with the conception of
+CPAN and CRAN repositories for the languages Perl and R in 1993 --- based on
+the Comprehensive TeX Archive Network (CTAN) model for \TeX\ packages. 
+%
+Packaging process depends on the language used in a project, however some good
+practices are universal, such as supplying documentation (a README file at the
+bare minimum), keeping installation paths flexible and relying on official
+build tools \citep{taschuk_ten_2017}.
+%
+For Python, \href{https://pypi.org}{Python Package Index (PyPI)} and
 \href{https://anaconda.org}{Anaconda Cloud} are major repositories for
 delivering and downloading Python packages, assisted by package managers
 \pack{pip} and \pack{conda} respectively.
-% Almost all major 
+% Almost all major
 % languages\footnote{\href{https://stackoverflow.com/questions/1693529/%
 % list-of-top-repositories-by-programming-language}{https://stackoverflow.com/%
-% questions/1693529/list-of-top-repositories-by-programming-language}}
-% have similar repositories, with exceptions such as Fortran and Matlab.
-Specialized package managers have also emerged to install scientific
-libraries and compilers such as \pack{easybuild} and \pack{spack}.
+% questions/1693529/list-of-top-repositories-by-programming-language}} have
+% similar repositories, with exceptions such as Fortran and Matlab.
+Specialized package managers have also emerged to install scientific libraries
+and compilers such as \pack{easybuild} and \pack{spack}.
 
-\paragraphbf{Continuous integration (CI)} The need for strong reliability of
-programs with increasing complexity has forced developers to use continuous
-integration.
+\subsubsection{Continuous Integration and documentation} The need for
+strong reliability of packages with increasing complexity has forced developers
+to use Continuous Integration (CI).
 %
-In CI, firstly the code is \emph{built} against a known, repeatable emulation
-environment on a server. Thereafter, a set of \emph{unit tests} are run for each
-commit (modification of the code) to check that no bugs have been introduced. It
-is also important to analyse what portion of the source code is covered by these
-unit tests --- a method referred to as \emph{code coverage}. In FluidDyn project
-we stop at this level, but it is possible to further enhance it by adding code
-style checks by running linters alongside unit tests; and also to add
-\emph{continuous delivery} of documentation and package releases.
-
-Almost all CI platforms are free for open-source projects --- Travis CI,
-CircleCI and Appveyor % (sic) av: I have double checked the official names
-to name a few. Bitbucket and GitLab have built-in CI
-implementations.  Websites such as Codecov and Coveralls help to chart and
-analyse the code coverage history, viewable by anyone.
-
 When the code depends on a wide variety of external dependencies, CI is useful
-to avoid \href{https://en.wikipedia.org/wiki/Software\_rot}{software rot},
-i.e.\ to avoid becoming obsolete with newer versions of the compiler or its
-dependencies.  CI is specifically important for dynamical
-languages and open-source code since it allows open-source projects to welcome
-participation from many people while maintaining a high degree of reliability.
-
-\paragraphbf{Websites to share knowledge} Mutual aid and knowledge sharing
-have been important aspects of the web since its inception and these practices
-are now of foremost importance for many human activities.
+to avoid \fnref{https://en.wikipedia.org/wiki/Software\_rot}{software rot},
+i.e.\ to avoid obsolescence with newer versions of the compiler or its
+dependencies. CI is specifically important for dynamical languages and
+open-source code since it allows open-source projects to welcome contributions
+from other developers while maintaining a high degree of reliability.
 %
-In particular, learning programming and computer science is now greatly aided
-by websites like the community driven encyclopedia
-\href{https://www.wikipedia.org/}{Wikipedia} or the community driven forum
-\href{https://stackoverflow.com/}{Stack Overflow}, where people write thousands
-of questions and answers on programming each week.
-IRC protocol has continued to sustain the test of time. Instant messaging
-channels such as \codeinline{\#python} on Freenode facilitate interactive
-discussions and a form of community-level support system --- a role which used
-to be filled by mailing lists alone in the past. Alternatives such as Riot
-(Matrix protocol), Gitter, and Slack have gained traction offering different
-integrations solutions on top of instant messaging.
+Firstly the code is \emph{built} against a known, repeatable emulation
+environment on a server. Thereafter, a set of \emph{unit tests} are run for
+each commit (modification of the code) to check that no bugs have been
+introduced. It is also important to analyse what portion of the source code is
+covered by these unit tests --- a method referred to as \emph{code coverage}.
 %
-Through instant messaging a geographically separated team, as is the case with
-FluidDyn project, can achieve near real-time collaboration without the hassle
-of setting up video conferences or meetings.
+Almost all CI platforms are free for open-source projects --- Travis CI,
+CircleCI and Appveyor to name a few. Bitbucket and GitLab have built-in CI
+implementations. Websites such as Codecov and Coveralls help to chart and
+analyse the code coverage history, viewable by anyone. To use these services
+one simply has to write a simple file in YAML format and authenticate the
+respective services with ``read'' permissions.
 
-\paragraphbf{Automatic web documentations built on servers} Documentation
-generators such as Sphinx (for Python) and Doxygen (for many languages
-including C, C++, Fortran and Python) ``automagically'' convert in-line
-comments into documentations as PDF, HTML and more. Read the Docs has in the
-recent years become the main host for building and publishing documentation on
-servers as web pages, thus easing the process for developers and considerably
-improving access to information.
+New users and developers often rely on good documentation and examples to start
+working with an unfamiliar piece of software. Documentation generators such as
+Sphinx (for Python) and Doxygen (for many languages including C, C++, Fortran
+and Python) parses in-line comments into documentations as PDF, HTML and
+more \citep{lee_ten_2018}. In principle, the can be executed online and deployed
+using any CI. ``Read the Docs'' has, in the recent years, become the hub for
+building and hosting documentation online, thus facilitating the process for
+developers and considerably improving access to information for users.
+%
+In the FluidDyn project we this stop at automating tests and documentation of the
+latest version, but it is possible to further enhance it by adding code style
+checks by running ``linters'' alongside unit tests, \emph{continuous
+delivery} of package releases and preserving older versions of
+documentation.
+
+\subsubsection{Communication}
+
+% Mutual aid and knowledge sharing have been important aspects of the web since
+% its inception and these practices are now of foremost importance for many
+% human activities.
+%
+%In particular, 
+Learning programming and computer science is now greatly aided by websites like
+the community driven encyclopedia \href{https://www.wikipedia.org/}{Wikipedia}
+or the community driven forum \href{https://stackoverflow.com/}{Stack
+Overflow}, where people write thousands of questions and answers on programming
+each week. IRC protocol has continued to sustain the test of time. Instant
+messaging channels such as \codeinline{\#python} on Freenode facilitate
+interactive discussions and a form of community-level support system --- a role
+which used to be filled by mailing lists alone in the past. Alternatives such
+as Riot (Matrix protocol), Gitter, and Slack have gained popularity offering
+different integrations solutions on top of instant messaging.
+%
+Through instant messaging a geographically separated team, as in the case of
+the FluidDyn project, can achieve near real-time collaboration without having
+to arrange video conferences or meetings.
+
+%\paragraphbf{Automatic web documentations built on servers}
 
 % We need transitions and some words at the end of the subsections to help the
 % readers to understand why we present what we present and what is the link
 % with the FluidDyn project...
 
-We have presented new methods and tools used in software development.  Taken
-all together, they greatly improve our efficiency for collective work and open
-possibilities of interactions that were unthinkable only few years ago.
+Thus, there is a number of new methods and tools in software development.
+Taken all together, they greatly improve our collective efficiency and
+open possibilities of interactions that were unthinkable a few years ago.
 %
 For example, the success of community-driven software like \pack{astropy} (a
-subject-area research library with \href{https://github.com/astropy/astropy}{more
-than 240 contributors}) and \pack{scikit-learn} (a machine learning toolkit with
-\href{https://github.com/scikit-learn/scikit-learn}{more than 1000 contributors})
-would not have been possible without these new software development methods.
+subject-area research library with
+\href{https://github.com/astropy/astropy}{more than 240 contributors}) and
+\pack{scikit-learn} (a machine learning toolkit with
+\href{https://github.com/scikit-learn/scikit-learn}{more than 1000
+contributors}) would not have been possible without these new software
+development methods.
 %
 % pa: done: we need to mention in this paragraph existing community-driven
 % subject-area research libraries (see the file
 % ./communitydriven_research_soft.md).
 %
 As scientists, we can wonder how to fully exploit these new possibilities to do
-science.  The project FluidDyn is an attempt to help the fluid dynamics community
-to advance in this direction.
+science.  The project FluidDyn is an attempt to help the fluid dynamics
+community to advance in this direction.
 
-
+% TODO:
 
 \section{Python, a programming language adapted for open-science}
 

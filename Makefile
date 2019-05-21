@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_swe_toy_model
+chapter := chapter_00_open_science
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -143,17 +143,17 @@ todo:
 	@# grep -r --color=tty '%.*[Tt][Oo][Dd][Oo]:'
 	@ack '%.*[Tt][Oo][Dd][Oo]:'
 
-vimtex:
+opentex:
 	# gvim $(name).tex --servername GVIM &
 	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
 	# NVIM_LISTEN_ADDRESS=GVIM 
-	nvim $(main).tex 2> /dev/null &
+	nvim-gtk $(chapter).tex 2> /dev/null &
 
 openpdf:
 	zathura $(chapter).pandoc.pdf &
 
 openmkdwn:
-	nvim $(chapter).md
+	nvim-gtk $(chapter).md
 
-# doit: vimtex openpdf
+# doit: opentex openpdf
 doit: $(chapter).pandoc.pdf openpdf openmkdwn
