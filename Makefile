@@ -16,6 +16,9 @@ TEX := pdflatex
 DRAFT_FLAGS := -draftmode -interaction=nonstopmode -shell-escape
 FINAL_FLAGS := -interaction=nonstopmode -shell-escape
 
+VIM := nvim-gtk
+VIM_FLAGS := -- +'set backupcopy=yes'
+
 BIB := biber
 BIB_FLAGS :=
 BIB_FILE := $(main).bib
@@ -146,22 +149,22 @@ todo:
 	@ack '%.*[Tt][Oo][Dd][Oo]:'
 
 opentex:
-	# gvim $(name).tex --servername GVIM &
-	# xterm -class GVIM -e vim $(name).tex --servername GVIM &
-	# NVIM_LISTEN_ADDRESS=GVIM 
-	nvim-gtk $(chapter).tex 2> /dev/null &
+	$(VIM) $(chapter).tex $(VIM_FLAGS) 2> /dev/null &
 
 openpdf:
 	zathura $(chapter).pandoc.pdf &
 
 openmkdwn:
-	nvim-gtk $(chapter).md
+	$(VIM) $(chapter).md $(VIM_FLAGS)
 
 watch:
-	watchmedo shell-command \
-		--patterns="*.tex;*.md" \
-		--command='make -j1'
-		# --command='echo "$${watch_src_path}"'
+	watchmedo \
+		shell-command \
+		--patterns="*.tex;*.md"  \
+		--command='make -j' \
+		--drop
+		# log \
+		# --command='echo "$${watch_src_path}"' \
 
 doit: opentex openpdf watch
 # doit: $(chapter).pandoc.pdf openpdf openmkdwn
