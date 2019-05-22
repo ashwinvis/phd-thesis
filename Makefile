@@ -59,7 +59,7 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
-.NOPARALLEL: $(main).pdf log
+.NOPARALLEL: $(main).pdf log watch
 
 default: all
 
@@ -155,5 +155,11 @@ openpdf:
 openmkdwn:
 	nvim-gtk $(chapter).md
 
-# doit: opentex openpdf
-doit: $(chapter).pandoc.pdf openpdf openmkdwn
+watch:
+	watchmedo shell-command \
+		--patterns="*.tex;*.md" \
+		--command='make -j1'
+		# --command='echo "$${watch_src_path}"'
+
+doit: opentex openpdf watch
+# doit: $(chapter).pandoc.pdf openpdf openmkdwn

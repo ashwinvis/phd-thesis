@@ -9,3 +9,4 @@ matplotlib
 # Optional
 pyqt5
 bibtexparser
+watchdog

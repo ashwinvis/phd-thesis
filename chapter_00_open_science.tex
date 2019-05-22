@@ -240,7 +240,7 @@ The FOSS movement has thus entered into a second era
 % av:That is probably because we did not mention patches and CVS, subversion
 % etc.
 
-\subsubsection{Source code management and packaging}
+\subsubsection{Source code management}
 
 Collaboration was achieved in the early years of FOSS development through
 emailing ``patches'', and centralized Version Control Systems (VCS) near the
@@ -271,31 +271,34 @@ The use of DVCS in science will lead to long term productivity benefits
 \citep{wilson_best_2014}.
 
 
-%\paragraphbf{Package management and software repositories} 
-Python as a medium for scientific computing owes its success to a rich
-ecosystem of third-party packages.  Smooth deployment of these packages
-requires a package manager and a supported repository. A credible hub to upload
-source codes as compressed archives or as pre-compiled binary packages was
-therefore indispensable. The use of repositories started with the conception of
-CPAN and CRAN repositories for the languages Perl and R in 1993 --- based on
-the Comprehensive TeX Archive Network (CTAN) model for \TeX\ packages. 
-%
+\subsubsection{Package management and software repositories} 
+
 Packaging process depends on the language used in a project, however some good
-practices are universal, such as supplying documentation (a README file at the
-bare minimum), keeping installation paths flexible and relying on official
-build tools \citep{taschuk_ten_2017}.
+practices are universal, such as licensing, supplying documentation (a README
+file at the bare minimum), keeping installation paths flexible and relying on
+official build tools \citep{taschuk_ten_2017}.
 %
-For Python, \href{https://pypi.org}{Python Package Index (PyPI)} and
-\href{https://anaconda.org}{Anaconda Cloud} are major repositories for
-delivering and downloading Python packages, assisted by package managers
-\pack{pip} and \pack{conda} respectively.
+A credible repository to packages as compressed archives or as pre-compiled binary
+packages is indispensable to promote code reuse and reproducibility of results.
+%
+The use of repositories started with the conception of
+CPAN and CRAN repositories for the languages Perl and R in 1993 --- based on
+the Comprehensive \TeX\ Archive Network (CTAN) model for \TeX\ packages. 
+
+Python as a medium for scientific computing owes its success to a rich
+ecosystem of third-party packages. \href{https://pypi.org}{Python Package
+Index (PyPI)} and \href{https://anaconda.org}{Anaconda Cloud} are major
+repositories for delivering and downloading Python packages, assisted by
+package managers \pack{pip} and \pack{conda} respectively. The
+\fnref{https://packaging.python.org}{``Python Packaging User Guide''} is an
+excellent guide to install, package and distribute projects.
 % Almost all major
 % languages\footnote{\href{https://stackoverflow.com/questions/1693529/%
 % list-of-top-repositories-by-programming-language}{https://stackoverflow.com/%
 % questions/1693529/list-of-top-repositories-by-programming-language}} have
 % similar repositories, with exceptions such as Fortran and Matlab.
-Specialized package managers have also emerged to install scientific libraries
-and compilers such as \pack{easybuild} and \pack{spack}.
+Specialized package managers, such as \pack{easybuild} and \pack{spack}, have
+also emerged to install scientific libraries and compilers.
 
 \subsubsection{Continuous Integration and documentation} The need for
 strong reliability of packages with increasing complexity has forced developers
@@ -317,24 +320,24 @@ covered by these unit tests --- a method referred to as \emph{code coverage}.
 Almost all CI platforms are free for open-source projects --- Travis CI,
 CircleCI and Appveyor to name a few. Bitbucket and GitLab have built-in CI
 implementations. Websites such as Codecov and Coveralls help to chart and
-analyse the code coverage history, viewable by anyone. To use these services
+analyse the code coverage history, viewable by anyone. To use these services,
 one simply has to write a simple file in YAML format and authenticate the
 respective services with ``read'' permissions.
 
 New users and developers often rely on good documentation and examples to start
 working with an unfamiliar piece of software. Documentation generators such as
 Sphinx (for Python) and Doxygen (for many languages including C, C++, Fortran
-and Python) parses in-line comments into documentations as PDF, HTML and
-more \citep{lee_ten_2018}. In principle, the can be executed online and deployed
-using any CI. ``Read the Docs'' has, in the recent years, become the hub for
-building and hosting documentation online, thus facilitating the process for
-developers and considerably improving access to information for users.
+and Python) parses in-line comments into documentations as PDF, HTML and more
+\citep{lee_ten_2018}. The documentation generation can be automated online and
+deployed using any CI. ``Read the Docs'' has, in the recent years, become the
+hub for building and hosting documentation online, thus facilitating the
+process for developers and considerably improving access to information for
+users.
 %
-In the FluidDyn project we this stop at automating tests and documentation of the
-latest version, but it is possible to further enhance it by adding code style
-checks by running ``linters'' alongside unit tests, \emph{continuous
-delivery} of package releases and preserving older versions of
-documentation.
+In the FluidDyn project we this stop at automating tests and documentation of
+the latest version, but it is possible to further exploit the CI by adding code
+style checks by running ``linters'' alongside unit tests, \emph{continuous
+delivery} of package releases and preserving older versions of documentation.
 
 \subsubsection{Communication}
 
@@ -344,7 +347,7 @@ documentation.
 %
 %In particular, 
 Learning programming and computer science is now greatly aided by websites like
-the community driven encyclopedia \href{https://www.wikipedia.org/}{Wikipedia}
+the community driven encyclopaedia \href{https://www.wikipedia.org/}{Wikipedia}
 or the community driven forum \href{https://stackoverflow.com/}{Stack
 Overflow}, where people write thousands of questions and answers on programming
 each week. IRC protocol has continued to sustain the test of time. Instant
