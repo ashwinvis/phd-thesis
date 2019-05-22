@@ -53,19 +53,19 @@ The popularity of the language in fluid mechanics is growing, but is yet
 to reach widespread adoption as the language of choice. 
 
 We shall now discuss these topics in greater detail. The chapter is organized
-into two sections. The first section focusses on the technical aspects, with
+into three sections. The first section focusses on the technical aspects, with
 particular focus on emerging developments in programming languages, tools and
-services suited for open-source software development. We shall present Python's
-strengths and weaknesses as a language for scientific computing.
+services suited for open-source software development. In the next section, we
+present Python's strengths and weaknesses as a language for scientific
+computing.
 %
 The section ends with a note on the capabilities of FluidDyn
 packages\footnote{We use FluidDyn (with capital letters) to name the project
 and \fluiddyn for the base package.}.
 %
-In the second section a comparison of various software development
-methodologies are made. Here, we will also discuss about the possible
-contradiction between productivity of individuals and productivity at the
-community level.
+The last section compares various software development methodologies. Here, we
+will also discuss about the possible contradiction between productivity of
+individuals and productivity at the community level.
 %
 % The chapter finally ends with a summary of the motivations for the project
 % FluidDyn and an overview of the packages used.
@@ -339,7 +339,7 @@ the latest version, but it is possible to further exploit the CI by adding code
 style checks by running ``linters'' alongside unit tests, \emph{continuous
 delivery} of package releases and preserving older versions of documentation.
 
-\subsubsection{Communication}
+\subsubsection{Knowledge hubs and communication}
 
 % Mutual aid and knowledge sharing have been important aspects of the web since
 % its inception and these practices are now of foremost importance for many
@@ -361,12 +361,6 @@ Through instant messaging a geographically separated team, as in the case of
 the FluidDyn project, can achieve near real-time collaboration without having
 to arrange video conferences or meetings.
 
-%\paragraphbf{Automatic web documentations built on servers}
-
-% We need transitions and some words at the end of the subsections to help the
-% readers to understand why we present what we present and what is the link
-% with the FluidDyn project...
-
 Thus, there is a number of new methods and tools in software development.
 Taken all together, they greatly improve our collective efficiency and
 open possibilities of interactions that were unthinkable a few years ago.
@@ -379,126 +373,112 @@ subject-area research library with
 contributors}) would not have been possible without these new software
 development methods.
 %
-% pa: done: we need to mention in this paragraph existing community-driven
-% subject-area research libraries (see the file
-% ./communitydriven_research_soft.md).
-%
 As scientists, we can wonder how to fully exploit these new possibilities to do
 science.  The project FluidDyn is an attempt to help the fluid dynamics
 community to advance in this direction.
 
-% TODO:
 
 \section{Python, a programming language adapted for open-science}
 
 We now turn to the presentation of the
 \href{https://www.python.org/}{programming language Python}, another
-fundamental tool for the FluidDyn project.  Note that, this is not a detailed
+fundamental tool for the FluidDyn project. Note that, this is not a detailed
 technical presentation: we focus on the ideas necessary to understand why the
 FluidDyn project is based on this language and on facts interesting for
 potential FluidDyn users and developers.
 
-Python community has thrived remarkably in the last few years, evident from the
-fact that by the end of 2017, Python became the second most popular language in
-terms of pull-requests in GitHub\footnote{See GitHub's annual report titled
-\href{https://octoverse.github.com/}{ ``The State of the Octoverse 2017''}.} and
-questions on StackOverflow\footnote{See
+The Python community has thrived remarkably in the last few years, which is
+evident from the fact that by the end of 2017, Python became the second most
+popular language in terms of pull-requests in GitHub\footnote{See GitHub's
+	annual report titled \href{https://octoverse.github.com/}{ ``The State
+of the Octoverse 2017''}.} and questions on StackOverflow\footnote{See
 \href{https://stackoverflow.blog/2017/09/06/incredible-growth-python/}{ ``The
 Incredible Growth of Python''}, a blog post by Stack Overflow.}.
 %
 TIOBE-index\footnote{\url{https://www.tiobe.com/tiobe-index}}, which assess the
 popularity of a language based on number of skilled users, courses and
 third-party vendors, ranks Python at number four. IEEE Spectrum\footnote{See
-the analysis titled \href{https://spectrum.ieee.org/computing/software/%
+	the analysis titled
+	\href{https://spectrum.ieee.org/computing/software/%
 the-2017-top-programming-languages}{``The 2017 Top Programming Languages''} on
 IEEE spectrum.} ranks Python as the most popular language in 2017 with a metric
 based on trends, demand by employers and users on open-source hubs.  All the
-rankings do agree that Python usage has been steadily growing and is here to
-stay.  Python largely outclasses languages like Fortran and Matlab according to
-these statistics, and is now clearly one of the mainstream languages with C,
-Java, C++ and Javascript.
+rankings agree that Python usage has been steadily growing and is here to stay.
+Python largely outclasses languages like Fortran and Matlab according to these
+statistics, and is now clearly one of the mainstream languages with C, Java,
+C++ and JavaScript.
+%
+The language has been designed to boost the communication of technical ideas
+between humans. 
 %
 Let us summarize some characteristics of the Python languages that have lead to
-such incredible success.
+such an incredible success.
+%
+Python differs from other mainstream languages for a variety of reasons:
 
-The Python language has been designed to boost the communication of technical
-ideas between humans. The resulting code is as simple as possible due to the
-inherent emphasis on readability. Humans can focus on the ideas. Python differs
-from other mainstream languages for a variety of reasons:
 
 \begin{itemize}
-\item \textbf{Aesthetics.} The syntax is nice and elegant. Blocks of code are
-defined with the indentation.
-\item \textbf{Code style.} There are explicit guidelines
-(\href{https://www.python.org/dev/peps/pep-0008/}{PEP~8}) supporting the
-regularity (and thereby readability) of the code and tools
-(linters) to evaluate adherence to the style.
-\item \textbf{Dynamic typing.} The variables (the ``names'' in the code) are
-not attached for life to an object in memory\footnote{Opposite behavior
-compared to static languages as Fortran, C and C++.}. The types of the objects
-are inferred at run time from the code and the context, and in many situations,
-one does not need to declare them explicitly.
-%
-% Being a strongly typed language\footnote{In contrast to weakly typed languages,
-% such as JavaScript}, types of the objects are respected and implicit type
-% conversions are rarely performed.
-% av: "rarely / never"?
-% eg: 'hello' * 2 -> 'hellohello'; 1/3 -> 0.3333333
-%
-% pa: I think we can not cover such complicate notion in this document... It is
-% anyway not so important for our demonstration.
-\item \textbf{Automatic memory management.}  The user need not handle the
-memory allocation and deallocation by hand.  There are, of course, ways to
-control the memory usage of a program, though not as precisely as for low-level
-languages.
+\item \textbf{Aesthetics.} The syntax is expressive, with an inherent emphasis
+on readability. Blocks of code are defined with the indentation.
+
+\item \textbf{Code style.} There are official (but, optional) guidelines, named
+\fnref{https://www.python.org/dev/peps/pep-0008/}{PEP~8}, advocating for
+regularity of the code. Linters and code-formatters can evaluate adherence to
+this style.
+
+\item \textbf{Automatic memory management.}  A garbage collector handles the
+memory allocation and deallocation, which needs no user intervention. There
+are, of course, ways to control the memory usage of a program, though not as
+precisely as for low-level languages.
+
+\item \textbf{Dynamic typing.}
+The types of the objects are inferred at run time from the code and the
+context, and in many situations, one does not need to declare them explicitly.
+
 \item \textbf{Interpreted.} The standard way\footnote{There are also tools to
 compile Python code (for example Cython and Pythran).} to run a Python code is
 to ``interpret'' it.  A program called the interpreter executes the code
 nearly\footnote{Actually, the execution of Python code is less simple and
-involves an Abstract Syntax Tree.}  instruction-by-instruction, with very few
+involves an Abstract Syntax Tree.} instruction-by-instruction, with very few
 optimizations.
 %
 In contrast to other compiled languages such as Fortran, C or C++, there is no
 proper compilation step: the code is not translated to optimized machine
 instructions, but only to Python bytecode.
 %
-We will discuss shortly the disadvantages of this characteristic. Two evident
-advantages are rapid development cycle and the possibility of interactive
-workflow (usually with IPython or Jupyter notebooks).
+Two evident advantages are rapid development cycle and the possibility of
+interactive workflow (usually with IPython or Jupyter notebooks).
+%
+Note that there are many implementations of Python
+interpreters\footnote{Notable ones are CPython (written in C), Jython (Java),
+IronPython (C\#), PyPy (Rpython, a subset of Python) and
+MicroPython/CircuitPython (C, targeted to micro-controllers).}. The default and
+most widely used implementation is written in C and is called CPython.
 
-Note that there are many implementations of Python interpreters\footnote{We can
-cite CPython (written in C), Jython (Java), IronPython (C\#), PyPy (Rpython, a
-subset of Python) and MicroPython/CircuitPython (C, targeted to
-micro-controllers).}. The default and most widely used implementation is written
-in C and is called CPython.
+\item \textbf{Multi-paradigm.} Supports imperative, object-oriented, functional
+and aspect-oriented programming.
 
-\item \textbf{Simple, yet powerful.}
+\item \textbf{Extension support}. It is easy to interface with code written in
+several other languages (in particular C, C++ and Fortran).
 
-\begin{itemize}
-\item Python supports multiple programming paradigms, including imperative,
-object-oriented and functional.
+\item \textbf{Batteries included.} Python comes with a large and high quality
+\href{https://docs.python.org% /3/library/index.html}{standard library}.
 
-\item It is easy to interface with code written in other languages (in particular
-C, C++ and Fortran).
+\item \textbf{Cross platform.} Python can be deployed on many different
+machines with different operating systems (Linux, Windows, macOS, Android) and
+architectures (from a microcontroller --- with MicroPython or CircuitPython ---
+to a Blue Gene supercomputer).
 
-\item Python comes with a large and high quality \href{https://docs.python.org%
-/3/library/index.html}{standard library}.
-
-\item Python can be deployed on many different machines with different operating
-systems (Linux, Windows, macOS, Android) and architectures (from a microcontroller
---- with MicroPython or CircuitPython --- to a Blue Gene supercomputer).
-
-\end{itemize}
 \end{itemize}
 
 Thus, Python is one of the best ``glue'' languages for fast prototyping.
-Developing with Python is much faster and easier than with many other
-languages.  Less bugs are introduced by the developers simply because there are
-much less lines of code \cite{nanz_comparative_2015}.
+Code development in Python is much faster and easier than with many other
+languages. Less bugs are introduced by the developers simply because there are
+fewer lines of code \citep{nanz_comparative_2015}.
 %
 Maintaining and modifying existing code is also eased by the very good code
 readability associated with the language.
-
+%
 Another consequence of the apparent simplicity of Python is that the learning
 curve has a nice shape. Learning Python is very easy at the beginning and the
 complexity gradually increases as the level of the developer increases.
@@ -508,8 +488,8 @@ beginners and very powerful for advanced users.
 
 Python is an old language (first implementation in 1991!) but it continues to
 evolve.
-\begin{itemize}
-\item A hard and controversial decision was taken to clean up Python from its
+%
+A hard and controversial decision was taken to clean up Python from its
 historical incoherences by having a new series of backwards-incompatible
 versions of the language, Python 3.  Python 3.0 was released in December 2008.
 After a long and difficult process, the transition from Python 2 to Python 3 is
@@ -521,10 +501,10 @@ numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst}{future
 releases of \Numpy} and of \href{http://www.python3statement.org/}{the main
 scientific packages} will soon drop compatibility with Python 2. These changes
 open doors to very clean, coherent and potentially faster Python
-experience. Therefore, one should not use Python 2 for science anymore and
-instead, adopt the newer versions ($>=3.5$ in 2018).
+experience. Therefore, one should not use Python 2 for science any more and
+instead, adopt the newer versions.
 
-\item New versions of Python have nice new features to adapt to new usages and to
+New versions of Python have nice new features to adapt to new usages and to
 recent trends in computer science.  For example, three new features were
 introduced in Python 3.5 (first released on September 2015): the \codeinline{@}
 operator for matrix multiplication, the new \codeinline{async} and
@@ -532,58 +512,58 @@ operator for matrix multiplication, the new \codeinline{async} and
 paragraph on the issue of type checking in the following.} (with the module
 \codeinline{typing} and an associated syntax presented in the
 \href{https://www.python.org/dev/peps/pep-0484/}{PEP~484}).
-\end{itemize}
-
-\paragraphbf{An incredible success}
 
 Being a very versatile language, Python is widely used for many different
-applications:
+applications\footnote{\href{https://www.jetbrains.com/research/devecosystem-2018/python/}{See
+\emph{The State of Developer Ecosystem Survey in 2018} by JetBrains}}. 
+
 \begin{itemize}
-\item Simple scripting.
+\item Simple scripting
 
-\item System, database and network administration.
+\item Web development
 
-\item GNU/Linux distribution software.
+\item Data science
+
+\item System, database and network administration
+
+\item GNU/Linux distribution software
 
 \item Python is now one of the main scripting languages to add programmability
-to applications (for example Paraview, Visit, QGIS, Blender, ...).
+to applications (for example Paraview, Visit, QGIS, Blender, ...)
 
-\item Web servers.
+\item Web scraping
 
-\item Web scraping and data analysis.
+\item Animation, gaming and film industry
 
-\item Animation movies, game development and gaming.
+\item Education
 
-\item Education. Python has recently become one of the most popular language
+\item Science
+
+\end{itemize}
+
+Python has recently become one of the most popular language
 for teaching programming and computer science.
-
-\item Science!
 Python is now widely used in scientific applications. It has now a mature and
 powerful scientific ecosystem with well-established based packages (\Numpy for
 N-dimensional homogeneous arrays, \Scipy as the fundamental toolkit for
 scientific computing, \pack{Matplotlib} for plotting and \pack{Pandas} for data
 structures) and several more specialized packages (to name a few, \pack{h5py},
-\pack{mpi4py}, \pack{skimage}, \pack{sklearn}, ...). There are now great (and
-often shiny) tools for most of the applications. For example, the
-\href{https://github.com/rougier/python-visualization-landscape}{%
-landscape of visualization tools usable through Python} is impressive.
+\pack{mpi4py}, \pack{skimage}, \pack{sklearn}).
+The \href{https://github.com/rougier/python-visualization-landscape}{%
+landscape of visualization tools usable through Python} makes it possible to
+integrate post-processing and analysis capabilities into a single application.
 %
 Python is one of the main languages for data science with packages such as
 \pack{Pandas}, \pack{statmodels}, \pack{sklearn}, \pack{Keras}, \pack{TensorFlow}
 and \pack{PyTorch}.
 
-There are now ready-to-use ``batteries-included'' Python installers
-(similar to Matlab), like in particular the
+There are now ready-to-use ``batteries-included'' Python installers (similar to
+Matlab), like in particular the
 \href{https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)}{%
-freemium open-source distribution Anaconda}, so it is very easy to start using
-Python for scientific purposes.
-
-There are now nice Python integrated development environments (IDE) adapted for
+open-source distribution Anaconda}, so it is very easy to start using Python
+for scientific purposes. Integrated development environments (IDE) adapted for
 scientists, for example \href{https://github.com/spyder-ide/spyder}{Spyder},
-\href{http://www.pyzo.org/}{Pyzo} and
-\href{https://jupyterlab.readthedocs.io}{Jupyterlab}.
-
-\end{itemize}
+and \href{https://jupyterlab.readthedocs.io}{JupyterLab}.
 
 Python has a very large and supportive community (see for example
 the \href{http://stackoverflow.com/tags}{Stack Overflow tags}).
