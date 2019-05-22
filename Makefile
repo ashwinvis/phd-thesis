@@ -47,8 +47,8 @@ DEPS = $(TEMPLATE_DIR)/MechThesis.cls       \
        $(BIB_FILE)
 
 AUXS = $(kappa).aux \
-       $(main).aux \
        $(subst /,/paper.aux,$(wildcard $(paper)/))
+       # $(main).aux \
        # $(main).toc  \
 
 BBLS = $(main).bbl \
@@ -71,7 +71,9 @@ $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 	@sed -i -e 's/toPaper/Paper/g' thesis.out	
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
-$(AUXS): $(SRCS) $(DEPS) $(MKDWN2TEX)
+$(AUXS): $(main).aux
+
+$(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
 	@echo building $(main) with $(TEX) for $@
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
