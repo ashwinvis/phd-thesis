@@ -7,8 +7,8 @@ image: ashwinvis/latex-pandoc-python
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - /usr/local/texlive/texmf-local
-    - /root/.cache/pip
+    - .cache/pip
+    - venv/
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -18,6 +18,8 @@ build:
     - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb
         upquote ifplatform xstring framed caption outlines booktabs enumitem
         babel-swedish microtype csquotes logreq
+    - python -m venv venv
+    - source venv/bin/activate
     - pip install -r requirements.txt
   script:
     - make -j
