@@ -121,10 +121,10 @@ $(BIB_FILE):
 	@python scripts/get_bib.py
 
 log: $(main).pdf
-	rubber-info $(main)
+	cat $(main).log
 
-%.log:
-	rubber-info $@ | ccze -m ansi
+rlog:
+	rubber-info $(main)
 
 clean: clean_papers clean_thesis
 
