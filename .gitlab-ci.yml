@@ -12,9 +12,9 @@ cache:
 
 build:
   before_script:
-    - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb \
-        upquote ifplatform xstring framed caption outlines booktabs \
-        enumitem babel-swedish microtype csquotes logreq
+    - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb
+        upquote ifplatform xstring framed caption outlines booktabs enumitem
+        babel-swedish microtype csquotes logreq
     - pip install -r requirements.txt
   script:
     - make -j
