@@ -2,11 +2,22 @@
 # use docker image with latex preinstalled
 # since there is no official latex image, use https://github.com/blang/latex-docker
 # possible alternative: https://github.com/natlownes/docker-latex
-image: blang/latex
+image: ashwinvis/latex-pandoc-python
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - /usr/local/texlive/texmf-local
+    - /root/.cache/pip
 
 build:
+  before_script:
+    - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb \
+        upquote ifplatform xstring framed caption outlines booktabs \
+        enumitem babel-swedish microtype csquotes logreq
+    - pip install -r requirements.txt
   script:
-    - make
+    - make -j
   artifacts:
     paths:
       - "*.pdf"
