@@ -10,6 +10,9 @@ cache:
     - /usr/local/texlive/texmf-local
     - /root/.cache/pip
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 build:
   before_script:
     - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb
