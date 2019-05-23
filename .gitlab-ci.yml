@@ -4,14 +4,15 @@
 # possible alternative: https://github.com/natlownes/docker-latex
 image: ashwinvis/latex-pandoc-python
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .cache/pip
     - venv/
-
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
 
 build:
   before_script:
