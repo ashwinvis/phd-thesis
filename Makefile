@@ -30,7 +30,7 @@ define cprint =
 	@echo -e $(red)$(1)$(end)
 endef
 
-REDIRECT := | tail -n 5
+REDIRECT := | tail -n 2
 # REDIRECT := 1> /dev/null
 # REDIRECT := # no redirect
 
@@ -68,16 +68,13 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
-.NOPARALLEL: $(main).pdf log watch
+.NOPARALLEL: $(main).pdf $(main).bbl log watch
 
-default: all
-
-all: $(main).pdf log
+all: log
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 	$(call cprint,"building $@ with $(TEX)")
-	# @$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
-	@sed -i -e 's/toPaper/Paper/g' thesis.out	
+	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(main).aux
@@ -89,10 +86,9 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
 %.bcf: %.aux
 	$(call cprint,"building $@ with $<")
 
-%.bbl: %.aux $(BIB_FILE)
+%.bbl: %.bcf $(BIB_FILE)
 	$(call cprint,"building $@ with $(BIB)")
-	@$(BIB) $(BIB_FLAGS) $(main) #> /dev/null
-	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
+	@$(BIB) $(BIB_FLAGS) $(main) $(REDIRECT)
 
 %.tex: %.yml $(TEMPLATE_PAPER)
 	$(call cprint,"building $@ with python templates/utils_render.py")
@@ -127,7 +123,7 @@ $(BIB_FILE):
 	$(call cprint,"building $@ with python scripts/get_bib.py")
 	@python scripts/get_bib.py
 
-log:
+log: $(main).pdf
 	$(call cprint,"printing $@")
 ifndef RUBBER_INFO
 	cat $(main).log
@@ -164,6 +160,9 @@ opentex:
 openpdf:
 	zathura $(chapter).pandoc.pdf &
 
+openthesis:
+	zathura $(main).pdf &
+
 openmkdwn:
 	$(VIM) $(chapter).md $(VIM_FLAGS)
 
@@ -174,8 +173,6 @@ watch:
 		--patterns="*.tex;*.md"  \
 		--command='make -j' \
 		--drop
-		# log \
-		# --command='echo "$${watch_src_path}"' \
 
-doit: opentex openpdf watch
+doit: opentex openthesis watch
 # doit: $(chapter).pandoc.pdf openpdf openmkdwn
