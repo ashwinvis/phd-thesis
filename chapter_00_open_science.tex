@@ -432,7 +432,7 @@ are, of course, ways to control the memory usage of a program, though not as
 precisely as for low-level languages.
 
 \item \textbf{Dynamic typing.}
-The types of the objects are inferred at run time from the code and the
+The types of objects are inferred at run time from the code and the
 context, and in many situations, one does not need to declare them explicitly.
 
 \item \textbf{Interpreted.} The standard way\footnote{There are also tools to
@@ -442,18 +442,9 @@ nearly\footnote{Actually, the execution of Python code is less simple and
 involves an Abstract Syntax Tree.} instruction-by-instruction, with very few
 optimizations.
 %
-In contrast to other compiled languages such as Fortran, C or C++, there is no
+In contrast to other compiled languages, such as Fortran, C or C++, there is no
 proper compilation step: the code is not translated to optimized machine
 instructions, but only to Python bytecode.
-%
-Two evident advantages are rapid development cycle and the possibility of
-interactive workflow (usually with IPython or Jupyter notebooks).
-%
-Note that there are many implementations of Python
-interpreters\footnote{Notable ones are CPython (written in C), Jython (Java),
-IronPython (C\#), PyPy (Rpython, a subset of Python) and
-MicroPython/CircuitPython (C, targeted to micro-controllers).}. The default and
-most widely used implementation is written in C and is called CPython.
 
 \item \textbf{Multi-paradigm.} Supports imperative, object-oriented, functional
 and aspect-oriented programming.
@@ -483,19 +474,29 @@ Another consequence of the apparent simplicity of Python is that the learning
 curve has a nice shape. Learning Python is very easy at the beginning and the
 complexity gradually increases as the level of the developer increases.
 %
+Its interpreted nature is advantageous for a rapid development cycle and the
+possibility of interactive workflow (usually with IPython or Jupyter
+notebooks).
+%
 Therefore, Python is good for developers of all levels: very gentle for
 beginners and very powerful for advanced users.
 
 Python is an old language (first implementation in 1991!) but it continues to
 evolve.
 %
+Note that there are many implementations of Python
+interpreters\footnote{Notable ones are CPython (written in C), Jython (Java),
+IronPython (C\#), PyPy (Rpython, a subset of Python) and
+MicroPython/CircuitPython (C, targeted to micro-controllers).}. The default and
+most widely used implementation is written in C and is called CPython.
+%
 A hard and controversial decision was taken to clean up Python from its
 historical incoherences by having a new series of backwards-incompatible
-versions of the language, Python 3.  Python 3.0 was released in December 2008.
+versions of the language, starting with Python 3.0, released in December 2008.
 After a long and difficult process, the transition from Python 2 to Python 3 is
-now (2018) behind us for nearly all important packages\footnote{Close to
+now (201) behind us for nearly all important packages\footnote{Close to
 \href{https://python3wos.appspot.com/}{95\% of the most downloaded packages}
-are Python 3 compatible now.}.  Especially for scientific applications, we can
+are Python 3 compatible now.}. Especially for scientific applications, we can
 now work only in Python 3. For instance, \href{https://github.com/%
 numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst}{future
 releases of \Numpy} and of \href{http://www.python3statement.org/}{the main
@@ -503,7 +504,7 @@ scientific packages} will soon drop compatibility with Python 2. These changes
 open doors to very clean, coherent and potentially faster Python
 experience. Therefore, one should not use Python 2 for science any more and
 instead, adopt the newer versions.
-
+%
 New versions of Python have nice new features to adapt to new usages and to
 recent trends in computer science.  For example, three new features were
 introduced in Python 3.5 (first released on September 2015): the \codeinline{@}
@@ -515,7 +516,7 @@ paragraph on the issue of type checking in the following.} (with the module
 
 Being a very versatile language, Python is widely used for many different
 applications\footnote{\href{https://www.jetbrains.com/research/devecosystem-2018/python/}{See
-\emph{The State of Developer Ecosystem Survey in 2018} by JetBrains}}. 
+\emph{The State of Developer Ecosystem Survey in 2018} by JetBrains}}:
 
 \begin{itemize}
 \item Simple scripting
@@ -528,8 +529,9 @@ applications\footnote{\href{https://www.jetbrains.com/research/devecosystem-2018
 
 \item GNU/Linux distribution software
 
-\item Python is now one of the main scripting languages to add programmability
-to applications (for example Paraview, Visit, QGIS, Blender, ...)
+\item GUI desktop applications
+
+\item Scripting layer for applications (for example Paraview, Visit, QGIS, Blender, ...)
 
 \item Web scraping
 
@@ -541,54 +543,54 @@ to applications (for example Paraview, Visit, QGIS, Blender, ...)
 
 \end{itemize}
 
-Python has recently become one of the most popular language
-for teaching programming and computer science.
-Python is now widely used in scientific applications. It has now a mature and
-powerful scientific ecosystem with well-established based packages (\Numpy for
-N-dimensional homogeneous arrays, \Scipy as the fundamental toolkit for
-scientific computing, \pack{Matplotlib} for plotting and \pack{Pandas} for data
-structures) and several more specialized packages (to name a few, \pack{h5py},
-\pack{mpi4py}, \pack{skimage}, \pack{sklearn}).
+Python
+% has recently become one of the most popular language for teaching programming
+% and developing scientific applications. It 
+has now a mature and powerful scientific ecosystem with well-established based
+packages (\Numpy for N-dimensional homogeneous arrays, \Scipy as the
+fundamental toolkit for scientific computing, \pack{Matplotlib} for plotting
+and \pack{Pandas} for data structures) and several more specialized packages
+(to name a few, \pack{h5py}, \pack{mpi4py}, \pack{skimage}, \pack{sklearn}).
 The \href{https://github.com/rougier/python-visualization-landscape}{%
 landscape of visualization tools usable through Python} makes it possible to
 integrate post-processing and analysis capabilities into a single application.
 %
 Python is one of the main languages for data science with packages such as
-\pack{Pandas}, \pack{statmodels}, \pack{sklearn}, \pack{Keras}, \pack{TensorFlow}
-and \pack{PyTorch}.
-
-There are now ready-to-use ``batteries-included'' Python installers (similar to
-Matlab), like in particular the
-\href{https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)}{%
-open-source distribution Anaconda}, so it is very easy to start using Python
-for scientific purposes. Integrated development environments (IDE) adapted for
-scientists, for example \href{https://github.com/spyder-ide/spyder}{Spyder},
-and \href{https://jupyterlab.readthedocs.io}{JupyterLab}.
-
-Python has a very large and supportive community (see for example
-the \href{http://stackoverflow.com/tags}{Stack Overflow tags}).
+\pack{Pandas}, \pack{statmodels}, \pack{sklearn}, \pack{Keras},
+\pack{TensorFlow} and \pack{PyTorch}.
 %
-But Python is also supported by companies using Python and the open-source
-dynamics.  Most of these companies that support Python are specialized in
-web technologies and data-driven research.  But, recently, companies basing
-their business
-% av: earlier "computer and web technologies". Computer is quite obvious, isn't
-% it?
-on Python for science have started to become quite powerful in terms of
-development. For example Anaconda Inc.\ is strongly implied in the development of
-tools like \pack{Numba} and \pack{dask}. Hardware giants such as Intel and Nvidia
-also contribute to the Python scientific ecosystem.
+There user-friendly and ready-to-use Python installers (similar to Matlab), in
+particular the
+\href{https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)}{%
+open-source distribution Anaconda} to streamline the installation in 
+desktop platforms.
+Integrated development environments (IDE) adapted for
+scientists, for example \href{https://github.com/spyder-ide/spyder}{Spyder},
+and \href{https://jupyterlab.readthedocs.io}{JupyterLab} are often useful for
+interactive development.
 
+Python has a very large and supportive community (see for example the
+\href{http://stackoverflow.com/tags}{Stack Overflow tags}).
+%
+But Python development is also supported by companies specialized in web
+technologies and data-driven research. However, recently, companies involved in
+scientific software development have started to become quite influential. For
+example Anaconda Inc.\ is strongly engaged in the development of tools like JIT
+Python accelerator \pack{Numba}, and parallelism framework \pack{dask}.
+Hardware giants such as Intel and Nvidia also contribute to the Python
+scientific ecosystem.
+%
+To summarize, it is practical to use and extend Python for scientific purposes.
 
 \subsection{Some Python issues and their solutions}
 
 Since the standard Python interpreter does not do any proper
-compilation, Python code in some CPU bounded cases can be too slow. Thus, one
+compilation, Python code for some CPU bounded tasks can be too slow. Thus, one
 has to use special tools to get optimized machine instructions to speedup
 performance-critical code.
 
-\paragraphbf{Ahead Of Time compilation}  Since Python is primarily a ``glue''
-language, a common solution is to use code written in C, C++ or Fortran.
+\paragraphbf{Ahead Of Time compilation} Python is primarily a ``glue''
+language, and a common solution is to use code written in C, C++ or Fortran.
 %
 It is possible, without a compilation step, to call functions in C libraries
 through pure python code using \pack{ctypes} standard module or the \pack{cffi}
