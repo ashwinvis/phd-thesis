@@ -26,9 +26,15 @@ BIB_FILE := $(main).bib
 red:="\033[0;31m"
 end:="\033[0m"
 
+define cprint =
+	@echo -e $(red)$(1)$(end)
+endef
+
 REDIRECT := | tail -n 5
 # REDIRECT := 1> /dev/null
 # REDIRECT := # no redirect
+
+RUBBER_INFO := $(shell command -v rubber-info 2> /dev/null)
 
 # Dependencies:
 #
@@ -66,10 +72,10 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 default: all
 
-all: log
+all: $(main).pdf log
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
-	@echo building $(main) with $(TEX)
+	$(call cprint,"building $@ with $(TEX)")
 	# @$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 	@sed -i -e 's/toPaper/Paper/g' thesis.out	
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
@@ -77,30 +83,30 @@ $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
 $(AUXS): $(main).aux
 
 $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
-	@echo building $(main) with $(TEX) for $@
+	$(call cprint,"building $@ with $(TEX)")
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
 %.bcf: %.aux
-	@echo $(red)building $@ with $< $(end)
+	$(call cprint,"building $@ with $<")
 
 %.bbl: %.aux $(BIB_FILE)
-	@echo building $@ with $(BIB)
+	$(call cprint,"building $@ with $(BIB)")
 	@$(BIB) $(BIB_FLAGS) $(main) #> /dev/null
 	# @$(BIB) $(BIB_FLAGS) $(basename $@) #> /dev/null
 
 %.tex: %.yml $(TEMPLATE_PAPER)
-	@echo building $@ with python
+	$(call cprint,"building $@ with python templates/utils_render.py")
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 
 chapter_%.latex: chapter_%.md
-	@echo building $@ with pandoc
+	$(call cprint,"building $@ with pandoc")
 	@pandoc \
 		--natbib \
 		-F pandoc-crossref \
 		$< -o $@
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
-	@echo building $@ with pandoc
+	$(call cprint,"building $@ with pandoc")
 	@pandoc \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
@@ -114,34 +120,38 @@ chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 		# --biblatex \
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
-	@echo building $@ with latexmk
+	$(call cprint,"building $@ with latexmk")
 	@latexmk -silent -use-make -pdf $<
 
 $(BIB_FILE):
+	$(call cprint,"building $@ with python scripts/get_bib.py")
 	@python scripts/get_bib.py
 
-log: $(main).pdf
+log:
+	$(call cprint,"printing $@")
+ifndef RUBBER_INFO
 	cat $(main).log
-
-rlog:
-	rubber-info $(main)
+else
+	rubber-info $(main).log | ccze -m ansi
+endif
 
 clean: clean_papers clean_thesis
 
 cleanall: clean
-	@echo cleaning generated ps,dvi,pdf,paper.tex,pandoc.tex
+	$(call cprint,"cleaning generated ps,dvi,pdf,paper.tex,pandoc.tex")
 	@rm -f  *.{ps,dvi,pdf,pandoc.tex}
 	@rm -f paper*/paper.tex
 
 clean_minted:
+	$(call cprint,"cleaning minted")
 	@rm -rf _minted-$(main) $(paper)/_minted-*
 
 clean_thesis:
-	@echo cleaning thesis
+	$(call cprint,"cleaning thesis")
 	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml}
 
 clean_papers:
-	@echo cleaning papers
+	$(call cprint,"cleaning papers")
 	@rm -f paper*/*.{aux,bbl,blg,fls,fdb_latexmk,log,out,synctex.gz}
 
 todo:
@@ -158,6 +168,7 @@ openmkdwn:
 	$(VIM) $(chapter).md $(VIM_FLAGS)
 
 watch:
+	$(call cprint,"watching for changes")
 	watchmedo \
 		shell-command \
 		--patterns="*.tex;*.md"  \
