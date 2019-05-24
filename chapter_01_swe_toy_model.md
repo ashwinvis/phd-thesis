@@ -94,7 +94,7 @@ two-dimensional. It is well known that most of turbulence, especially in
 planetary scales, originates from baroclinic instabilities. The effects of
 rotation and stratification were not considered in @Kraichnan1967. These
 "shortcomings" were addressed to some extent in @Charney1971, wherein the -3
-spectra scaling was derived by analyzing the so-called quasi-geostrophic (QG)
+spectra scaling was derived by analysing the so-called quasi-geostrophic (QG)
 equations which conserves an approximate expression for potential vorticity:
 
 $$ \Dt{} \left[ \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left( \frac{\tilde \rho}{N^2}
@@ -102,7 +102,7 @@ $$ \Dt{} \left[ \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left( \frac{\tilde \rh
 
 where $\psi$ is the horizontal stream function, $f$ is the solid body rotation
 speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
-the Brunt-V$\"a$isala frequency and $\beta \approx \p_y f$ is the beta
+the Brunt-V\text{\"a}isala frequency and $\beta \approx \p_y f$ is the beta
 parameter. These equations are valid when the certain criteria are met such as:
 
 * Rossby number $Ro < O(1)$, indicating strong rotation,

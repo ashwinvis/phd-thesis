@@ -446,8 +446,8 @@ In contrast to other compiled languages, such as Fortran, C or C++, there is no
 proper compilation step: the code is not translated to optimized machine
 instructions, but only to Python bytecode.
 
-\item \textbf{Multi-paradigm.} Supports imperative, object-oriented, functional
-and aspect-oriented programming.
+\item \textbf{Multi-paradigm.} Imperative, object-oriented, functional
+and aspect-oriented programming are supported.
 
 \item \textbf{Extension support}. It is easy to interface with code written in
 several other languages (in particular C, C++ and Fortran).
@@ -531,7 +531,8 @@ applications\footnote{\href{https://www.jetbrains.com/research/devecosystem-2018
 
 \item GUI desktop applications
 
-\item Scripting layer for applications (for example Paraview, Visit, QGIS, Blender, ...)
+\item Scripting layer for applications (for example Paraview, Visit, QGIS,
+	Blender)
 
 \item Web scraping
 
@@ -584,18 +585,67 @@ To summarize, it is practical to use and extend Python for scientific purposes.
 
 \subsection{Some Python issues and their solutions}
 
-Since the standard Python interpreter does not do any proper
-compilation, Python code for some CPU bounded tasks can be too slow. Thus, one
-has to use special tools to get optimized machine instructions to speedup
-performance-critical code.
+In the context of scientific computing there are some common issues that Python
+developers would face. The issues are listed below and the solutions are
+specified briefly. The solutions are explained in further detail in subsequent
+paragraphs.
 
-\paragraphbf{Ahead Of Time compilation} Python is primarily a ``glue''
-language, and a common solution is to use code written in C, C++ or Fortran.
+\begin{itemize}
+
+\item \textbf{Performance in CPU bounded tasks.} Since the standard Python
+	interpreter does not do any proper compilation, pure Python code for
+	some CPU bounded tasks can be too slow. Thus, one has to avoid writing
+	loops as much as possible and use vectorized array operations as much
+	as possible, or call \emph{foreign functions}, or use special tools to
+	build extensions using \emph{Ahead Of Time} or \emph{Just In Time}
+	compilation to speedup performance-critical code.
+
+\item \textbf{Absence of type checking.} In contrast to compiled languages,
+	there is no type-checking in Python (and more generally in many
+	interpreted languages). Types are respected however, and type errors,
+	if any, would occur during runtime.
+	\emph{Type hints} and \emph{static type checking} can solve this issue.
+
+\item \textbf{Concurrent, but not parallel multi-threading.} Threads behave
+	like light sub-programs. In principle, they can use the different cores
+	of the CPU at the same time, but the CPython interpreter forbid threads
+	to interpret python code at the same time\footnote{See
+	\href{https://opensource.com/article/17/4/grok-gil}{this blog article
+on ``How to grok the GIL''} and
+\href{https://faster-cpython.readthedocs.io/cpython37.html}{this technical
+presentation by a CPython core developer}.}. In other words, threads can
+coexist concurrently, by not execute in parallel.
+%
+This limitation comes from an important detail in the implementation of the
+CPython interpreter: a Global Interpreter Lock (GIL) to prevent race conditions
+that could corrupt data.
+%
+GIL greatly simplifies the implementation of CPython and that
+it is very difficult to remove it while keeping other nice technical properties
+of CPython intact\footnote{See
+\url{https://wiki.python.org/moin/GlobalInterpreterLock}. Note that PyPy
+also uses a GIL, while two other implementations of the Python language, Jython
+and IronPython, do not have this limitation}.
+
+\item \textbf{Lively, and thus, complicated ecosystem of packages.} For many
+	applications, the standard library is insufficient and one needs
+	external packages. Sometimes there are multiple options and the
+	user/developer has to make choices regarding the tools to use.
+	Especially for the beginners who are not used to the open-source realm,
+	it can be confusing prospect to make good technological choices.
+
+\end{itemize}
+
+\subsubsection{Foreign functions}
+%
+Python is primarily a ``glue'' language, and a common solution to achieve
+performance is to use existing code written in C, C++ or Fortran.
 %
 It is possible, without a compilation step, to call functions in C libraries
 through pure python code using \pack{ctypes} standard module or the \pack{cffi}
 package.
 %
+Similarly \href{https://cppyy.readthedocs.io}{cppyy} can interpret C++ code.
 Libraries with Python bindings can also be used directly (for e.g., wrapped
 using SWIG or Boost.Python) or one has to write extensions, i.e.\ Python
 modules written in C or C++ using the CPython API that can be imported directly
@@ -608,11 +658,20 @@ curve compared to Python.
 Nevertheless, this strategy has given rise to the base modules of the scientific
 Python stack, namely \Numpy, \Scipy and \pack{Matplotlib}.
 
-Python developers do not actually have to write the compiled extensions in C,
-C++ or Fortran, since there are tools to generate them automatically from
-Python code (Pythran) or from Cython code. Cython \citep{behnel_cython2011} is a
-smooth blend of two languages with possibility to add type declarations like in
-C/C++, but with a syntax similar to Python.
+\subsubsection{Ahead Of Time compilation}
+Ahead Of Time compilation is process of generating compiled extensions which
+can be dynamically executed by Python.
+%
+Python developers do not actually have to write the extensions in C, C++ or
+Fortran, since there are tools to generate them automatically from Python code
+(Pythran) or from Cython code. Cython \citep{behnel_cython2011} is a smooth
+blend of two languages with possibility to add type declarations like in C/C++,
+but with a syntax similar to Python.
+%
+There are also other projects to create extensions in C++ with
+\href{https://github.com/pybind/pybind11/}{pybind11}, and in Rust with
+\href{https://github.com/PyO3}{PyO3}.
+
 
 Pythran \citep{guelton2015pythran, guelton2018pythran} is a quite recent Python
 compiler which gives impressive results. It creates compiled extensions from pure
@@ -626,54 +685,66 @@ They are created with a very interesting two-step compilations: first the code
 is optimized at the Python level and then an automatically produced C++ code is
 properly compiled.
 %
-This two-step compilation provides room for very clever optimizations as
-demonstrated, for example, in
-\href{http://serge-sans-paille.github.io/pythran-stories/%
-being-more-than-a-translator.html}{%
-this blog post by the main developer of Pythran}.
+This two-step compilation provides room for very clever optimizations
+\footnote{As demonstrated in this blog post by the main developer of
+Pythran \url{http://serge-sans-paille.github.io/pythran-stories/%
+being-more-than-a-translator.html}}.
 %
 Pythran supports OpenMP pragma \citep{guelton2013compiling} and can use modern
 vectorization with SIMD instructions \citep{guelton2014exploring}. Pythran
 understands both Matlab-like vectorized code and C-like code with explicit loops
 \citep{guelton2018pythran}.
-
+%
 We present in \citet{fluidfft, fluidsim} examples of
 highly efficient Python codes, optimized using a combination of Cython and
 Pythran extensions.
 
-\paragraphbf{Just In Time (JIT) compilation} Another way to obtain optimized
-machine instructions is by using JIT compilation, i.e.\ by compiling only the
-critical code at run time.
+\subsubsection{Just In Time (JIT) compilation}
+Another way to obtain optimized machine instructions is by using JIT
+compilation, i.e.\ by compiling only the critical code at run time.
 %
 This strategy can yield good results with other languages as for example Matlab
 or Julia.
 %
-Pypy, an alternative interpreter written in Python, has a JIT compiler. However,
-Pypy is not widely used for scientific applications mainly because of
+PyPy, an alternative interpreter written in Python, has a JIT compiler. However,
+PyPy is not widely used for scientific applications mainly because of
 compatibility problems with the extensions written for CPython.
 %
-However this could change since a recent version of Pypy (6.0) supports the main
-packages of the Python scientific stack (\Numpy, \Scipy, \pack{Matplotlib},
-\pack{Pandas}, etc.).
+However this could change since recent versions, starting with PyPy 6.0,
+supports the main packages of the Python scientific stack (\Numpy, \Scipy,
+\pack{Matplotlib}, \pack{Pandas}, etc.).
 
-Adding a JIT to the interpreter CPython has been notoriously difficult (see
-\href{https://faster-cpython.readthedocs.io/}{faster-cpython}). One of the
+Adding a JIT to the interpreter CPython has been notoriously difficult
+\footnote{\url{https://faster-cpython.readthedocs.io/}}. One of the
 problem seems to be the C API provided in CPython and used by many extensions.
 %
-Python being first a glue language, a faster CPython with a JIT is actually not
-so necessary for many purposes. Therefore, not as much money and work has been
-put in accelerating Python than for example for Java and JavaScript.
+A faster CPython with a JIT is actually not so necessary for many purposes,
+since Python extensions are enough. Therefore, not as much money and work
+has been put in accelerating Python than for example for Java and JavaScript.
 
 Another strategy is to add a JIT to CPython through an external package
-(\pack{Numba}) and to only compile the critical functions.  Moreover,
+(\pack{Numba}).
+%
 \pack{Numba} is particularly interesting because it can take advantage of the
 GPU\footnote{See for example
 \url{https://devblogs.nvidia.com/parallelforall/seven-things-numba/}}.
 
 
-\paragraphbf{No type-checking} In contrast to languages using Ahead Of Time
-compilation, there is no type-checking in Python (and more generally in many
-dynamical languages).  Type-checking is useful since it can avoid simple bugs.
+\subsubsection{Type hints and static type checking}
+%
+Type-checking is useful since it can avoid simple bugs.
+\fnref{https://docs.python.org/3/whatsnew/3.5.html\#whatsnew-pep-484}{PEP-484}
+introduced a syntax and a related \codeinline{typing} module to add
+type-hints, typically for function parameters and return types.
+%
+Static type checkers like \href{http://mypy-lang.org/}{Mypy} and
+\href{https://github.com/google/pytype}{pytype}
+%
+\footnote{We plan to add type hinting in the most important FluidDyn modules to
+investigate how we can take advantage of type-checking with Mypy.}
+%
+allows to process type-hints and report inconsistencies in the code.
+
 However, it is not a good practice even with static languages to rely only on
 type-checking to look for bugs in a code.
 %
@@ -682,66 +753,36 @@ reliable codes.
 %
 Dynamical languages rely a lot on unit tests so it is very important to put at
 least a little bit of time and energy to write a decent battery of tests.
-%
-We have to mention the young and promising project
-\href{http://mypy-lang.org/}{Mypy}\footnote{Guido van Rossum, the author and
-``Benevolent Dictator For Life'' of Python, is involved in the project Mypy.},
-which allows for Optional Static Typing and thus type-checking for
-Python\footnote{We plan to add type hitting in the most important FluidDyn modules
-to investigate how we can take advantage of type-checking with Mypy.}.
 
-\paragraphbf{A lively, huge and thus complicated ecosystem} As already
-mentioned, Python is a versatile language. For many applications, the standard
-library is insufficient and one needs external packages.
-%
-% For most applications there are several projects usable through Python.
-Most of the time there are several Python packages for a certain application.
-A user/developer has to make choices regarding the tools to use.  Especially
-for the beginners who are not used to the open-source realm, it can be
-difficult to understand a ``landscape of projects'' for a particular
-application and to make good technological choices.
-
-It is important to get a good introduction on how to work with the open-source
-dynamics and the scientific Python ecosystem.  It can also be very useful to ask
-to more advanced users and attend Python courses or workshops\footnote{This could
-be regular academic courses, MOOCs or workshops like ones organized by
-\href{https://software-carpentry.org/}{Software Carpentry}.}.
-%
-Of course, such abundance of projects can also be seen as an advantage.
-
-\paragraphbf{Absence of multicore computational parallelism using threads}
-Threads behave like light subprograms. In principle, they can use the different
-cores of the CPU at the same time but the CPython interpreter forbids that they
-interpret python code at the same time\footnote{See
-\href{https://opensource.com/article/17/4/grok-gil}{this blog article on ``How
-to grok the GIL''} and
-\href{https://faster-cpython.readthedocs.io/cpython37.html}{this technical
-presentation by a CPython core developer}.}.
-%
-This limitation comes from an important detail in the implementation of the
-CPython interpreter: a Global Interpreter Lock (GIL) to prevent race conditions
-that could corrupt data.
-%
-It seems that the GIL greatly simplies the implementation of CPython and that it
-is very difficult to remove it while keeping other nice technical properties of
-CPython intact\footnote{See \url{https://wiki.python.org/moin/GlobalInterpreterLock}.}.
-Note that Pypy also uses a GIL, while two other implementations of the Python
-language, Jython and IronPython, do not have this limitation.
+\subsubsection{Achieving computational parallelism}
 
 At any rate, threads using the interpreter do not use the CPU at the same time
-so it is not possible to use threads to do multicore computational parallelism
+so it is not possible to use threads to do multi-core computational parallelism
 with pure python code to accelerate CPU bounded tasks.
 %
 Note however, that threads can be (and are widely) used in Python for
 concurrency, i.e.\ to perform I/O tasks (which does not need CPU) concurrently.
 %
-To do proper computational parallelism for CPU bounded tasks with the GIL, one has
-to use other strategies: extensions (fine grain parallelism), multiprocessing
-(coarse grain parallelism) and inter-process communication, for example, with MPI
-(with mpi4py) or ZeroMQ.
+To do proper computational parallelism for CPU bounded tasks with the GIL, one
+has to use other strategies: extensions (fine grain parallelism),
+multiprocessing (coarse grain parallelism) and inter-process communication, for
+example, with MPI (with mpi4py) or ZeroMQ.
+
+\subsubsection{Choosing the right package}
+%
+For a beginner in Python development, it is important to get a good
+introduction on how to work with the open-source workflows and understanding of
+the scientific Python stack.
+%
+It can also be very useful to ask to more advanced users and attend Python
+courses or workshops\footnote{This could be regular academic courses, MOOCs or
+workshops like ones organized by
+\href{https://software-carpentry.org/}{Software Carpentry}.}.
+%
+Of course, such abundance of projects can also be seen as an advantage.
 
 
-\subsection{Rich landscape of open-source languages useful for science}
+\subsection{The state of languages for scientific computing}
 
 So far, we have discussed in detail about Python. However, there are many
 interesting open-source languages that can be used for scientific applications.
@@ -752,94 +793,64 @@ C++ is used in many recent developments. Its recent improvements (C++11, C++14)
 make it a modern and very useful language.
 %
 JavaScript, Java, Scala, Smalltalk, Haskell, R, Julia, Perl and Lua are used for
-some scientific codes. Go and Rust are quite young languages and are not (yet)
-widely used for scientific applications.
-
-It is of course very difficult to predict which technologies will be widely
+some scientific codes. Go and Rust are quite young languages with emphasis on
+memory-safety and are not (yet) widely used for scientific applications.
+%
+It is, of course, very difficult to predict which technologies will be widely
 used in even the near future (10 or 20 years for example).
 %
-From what we see, it seems that the idea of ``one language to do everything for
-science'' will not succeed, at least soon.  This was maybe the project of Julia
-creators, but despite the qualities of this language, it also has
-limitations\footnote{For example C-like include instead of Python-like
-import. From our point of view, a Pythonic flavor of Julia would be very
-interesting.}.
+It seems that the idea of ``one language to do everything for science'' will
+not succeed, at least not in the near future. 
+%
+The limited scope of the language is likely the reason why the community
+around Fortran and Julia are not widespread outside academia.
 %
 It seems that a very important aspect in the future will be interoperability
 between coexisting tools\footnote{See for example the cross-language development
-platform \href{https://arrow.apache.org/}{Apache Arrow}.}.
-
-So what about Python?  As already mentioned, it is today the language with the
-strongest dynamics in science, data analysis and much more.  Several students
-learn and will learn it. Many scientists in the future would, hopefully, be
-able to appreciate these strengths and favour the Pythonic approaches.  With
-such dynamics today, we can anticipate that the Python world will be able to
-embrace new technological trends and to overcome some of its current
-limitations.
+platform for in-memory data, \href{https://arrow.apache.org/}{Apache Arrow}.}.
 %
-It is reasonable to predict that Python will continue to shine as a language
-(i) particularly good for human communication and to write ideas, (ii) for fast
-prototyping and (iii) for interoperability with code written in other languages
-(see for example the recent projects \href{https://cppyy.readthedocs.io}{cppyy}
-and \href{https://github.com/pybind/pybind11/}{pybind11}, or
-\href{https://github.com/PyO3}{the possibility to interact with Rust code}).
-
-\paragraphbf{Summary: Python, a versatile Swiss Army Knife for the
-scientists}
-
-Python has become a great versatile tool for scientists.  The scientific
-ecosystem of Python is nowadays really impressive.  The scientific Python
-community is strong and quickly growing.
+Knowledge of Python is also an advantage in terms of employability these days.
 %
-A scientist with good skills in Python can do most of what she/he needs to do in
-programming (which does not mean that Python is the best language to do
-anything!).
-%
-In contrast, no skill in Python is a real disadvantage for many tasks and for
-employability.
-%
-Therefore, in most fields today, if a scientist has to acquire good skills in
-one language, it is in Python.
-
 Considering what we have presented on Python, we think that it is reasonable to
 bet that it will become one of the \textit{lingua franca} in science and in
-fluid dynamics.  This explains why we have chosen it to be the main language
-for the project FluidDyn.
+fluid dynamics.
+%
+We have, therefore, chosen it to be the main language for the project FluidDyn.
 
 \section{On software development methodologies}
 
 \subsection{Productivity at individual, group and community levels}
 
-% remark Julien Salort "It is well known that": bad
-% pa: common sense says ?
-% It is well known 
+% remark Julien Salort "It is well known that": bad pa: common sense says ?  It
+% is well known 
 It is not surprising
 % av: "It is not surprising"
 %
-that short-term efficiency and long-term efficiency are
-sometimes incompatible.
+that short-term efficiency and long-term efficiency are sometimes incompatible.
 %
-Quick and dirty scripts can be efficient in the short term, but such a workflow
-has a negative impact on a longer time scale.
-
-Similarly, we can also differentiate productivity at different scales of
+Quick and dirty scripts can be efficient in the short term, but has a negative
+impact on a longer time scale.
+%
+Similarly, we can also differentiate productivity at different levels of
 collaboration.
 %
 An individual can be very efficient with a particular tool, but the same tool
-can be very inefficient to collaborate even with co-workers.
+can be very inefficient when used in a collaboration.
 %
-A group can be very efficient with a code which is closed-source.  If this
-strategy can be efficient for the group (at least in the short term), it leads
-to waste for the community. Other groups will need to develop codes with the
-same features.  Good ideas will be spread in different codes and since the
-number of users and developers are smaller for each of these codes, the code
-quality will not improve as fast as it would with an open-source strategy. In a
-nutshell, as this proverb says, \textit{``If you want to go fast, go alone. But
-if you want to go far, go together.''}
+A group can be very efficient with a code which is closed-source. Although such
+a strategy can be efficient for the group (at least in the short term), it may
+lead to waste for the community. Other groups will need to develop codes with
+the same features.
+%
+Good ideas will be spread in separate codes and since the number of users and
+developers is small for each of these codes, the code quality will not
+improve as fast as it would with an open-source strategy. In a nutshell, as
+this proverb says, \textit{``If you want to go fast, go alone. But if you want
+to go far, go together.''}
 
 Thus, a community using open-source methods can be efficient to co-develop its
 tools. However, some of its members have to spend more energy to bear this
-dynamics, which implies that they somehow sacrifice their individual efficiency.
+dynamics, at the risk of sacrificing their individual efficiency.
 We see that short-term efficiency, long-term efficiency and productivity at
 different levels can often be incompatible and that we have to consider these
 conflicts when choosing between different technologies.
@@ -847,7 +858,7 @@ conflicts when choosing between different technologies.
 \subsection{Programming in the field of fluid mechanics}
 
 We study fluid mechanics via laboratory experiments, in situ measurements,
-analytic computation, numerical simulations and data processing.
+analytic tools, numerical simulations and data processing.
 %
 Nowadays, programming is involved in all methods, and thus it is difficult to do
 fluid mechanics without software development.
@@ -855,8 +866,8 @@ fluid mechanics without software development.
 However, the level in software engineering is on average very low in the
 community.
 %
-Even today, it is quite commonplace to start a PhD without any serious training in
-GNU/Linux and modern programming tools.
+Even today, it is quite commonplace to start a Ph.D. without any serious
+training in GNU/Linux and modern programming tools.
 %
 A large majority of scientists and technicians are also unaware of the new
 challenges and opportunities of open-source.
