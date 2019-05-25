@@ -86,7 +86,7 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
 %.bcf: %.aux
 	$(call cprint,"building $@ with $<")
 
-%.bbl: %.bcf $(BIB_FILE)
+%.bbl: %.bcf %.aux $(BIB_FILE)
 	$(call cprint,"building $@ with $(BIB)")
 	@$(BIB) $(BIB_FLAGS) $(main) $(REDIRECT)
 
