@@ -244,10 +244,15 @@ Collaboration was achieved in the early years of FOSS development through
 emailing ``patches'', and centralized Version Control Systems (VCS) near the
 turn of the 21\textsuperscript{st} century.  The collective collaboration on
 development is today streamlined with the emergence of Distributed Version
-Control Systems (DVCS), especially, Git and Mercurial). In web-based source
-development platforms like GitHub, Bitbucket and GitLab, DVCS repositories are
-enhanced with code-review tools, typically consisting of a issue tracker
-and pull-request mechanism.
+Control Systems (DVCS), especially, Git and Mercurial).
+%
+Version control tools are designed to work on any kind of text files, not just
+codes, so they could even be utilized to write scientific documents with
+multiple authors.
+%
+In web-based source development platforms like GitHub, Bitbucket and GitLab,
+DVCS repositories are enhanced with code-review tools, typically consisting of
+a issue tracker and pull-request mechanism.
 %
 Git has become the \textit{de facto} standard for source management. However,
 for the FluidDyn project, we prefer to use Mercurial because we consider it to
@@ -260,10 +265,6 @@ for our project.
 Note that, it is now possible to use Mercurial to work with Git repositories,
 for example hosted in GitHub and GitLab\footnote{By using the Mercurial
 extension \href{http://hg-git.github.io/}{hg-git}.}.
-%
-Version control tools are designed to work on any kind of text files, not just
-codes, so they could even be utilized to write scientific documents with
-multiple authors.
 %
 The use of DVCS in science will lead to long term productivity benefits
 \citep{wilson_best_2014}.
@@ -282,14 +283,14 @@ packages is indispensable to promote code reuse and reproducibility of results.
 The use of repositories started with the conception of
 CPAN and CRAN repositories for the languages Perl and R in 1993 --- based on
 the Comprehensive \TeX\ Archive Network (CTAN) model for \TeX\ packages. 
-
+%
 Python as a medium for scientific computing owes its success to a rich
 ecosystem of third-party packages. \href{https://pypi.org}{Python Package
 Index (PyPI)} and \href{https://anaconda.org}{Anaconda Cloud} are major
 repositories for delivering and downloading Python packages, assisted by
 package managers \pack{pip} and \pack{conda} respectively. The
 \fnref{https://packaging.python.org}{``Python Packaging User Guide''} is an
-excellent guide to install, package and distribute projects.
+excellent guide to learn how to install, package and distribute projects.
 % Almost all major
 % languages\footnote{\href{https://stackoverflow.com/questions/1693529/%
 % list-of-top-repositories-by-programming-language}{https://stackoverflow.com/%
@@ -306,7 +307,7 @@ When the code depends on a wide variety of external dependencies, CI is useful
 to avoid \fnref{https://en.wikipedia.org/wiki/Software\_rot}{software rot},
 i.e.\ to avoid obsolescence with newer versions of the compiler or its
 dependencies. CI is specifically important for dynamical languages and
-open-source code since it allows open-source projects to welcome contributions
+open-source code since, it allows open-source projects to welcome contributions
 from other developers while maintaining a high degree of reliability.
 %
 Firstly the code is \emph{built} against a known, repeatable emulation
@@ -353,7 +354,7 @@ messaging channels such as \codeinline{\#python} on Freenode facilitate
 interactive discussions and a form of community-level support system --- a role
 which used to be filled by mailing lists alone in the past. Alternatives such
 as Riot (Matrix protocol), Gitter, and Slack have gained popularity offering
-different integrations solutions on top of instant messaging.
+different integration solutions on top of instant messaging.
 %
 Through instant messaging a geographically separated team, as in the case of
 the FluidDyn project, can achieve near real-time collaboration without having
@@ -421,8 +422,8 @@ on readability. Blocks of code are defined with the indentation.
 
 \item \textbf{Code style.} There are official (but, optional) guidelines, named
 \fnref{https://www.python.org/dev/peps/pep-0008/}{PEP~8}, advocating for
-regularity of the code. Linters and code-formatters can evaluate adherence to
-this style.
+regularity of the code. Linters and code-formatters can evaluate and enforce
+adherence to this style.
 
 \item \textbf{Automatic memory management.}  A garbage collector handles the
 memory allocation and deallocation, which needs no user intervention. There
@@ -447,7 +448,7 @@ instructions, but only to Python bytecode.
 \item \textbf{Multi-paradigm.} Imperative, object-oriented, functional
 and aspect-oriented programming are supported.
 
-\item \textbf{Extension support}. It is easy to interface with code written in
+\item \textbf{Extensible}. It is easy to interface with code written in
 several other languages (in particular C, C++ and Fortran).
 
 \item \textbf{Batteries included.} Python comes with a large and high quality
@@ -459,17 +460,17 @@ architectures (from a microcontroller --- with MicroPython or CircuitPython ---
 to a Blue Gene supercomputer).
 
 \end{itemize}
-
+%
 Thus, Python is one of the best ``glue'' languages for fast prototyping.
 Code development in Python is much faster and easier than with many other
 languages. Less bugs are introduced by the developers simply because there are
 fewer lines of code \citep{nanz_comparative_2015}.
 %
-Maintaining and modifying existing code is also eased by the very good code
+Maintaining and modifying existing code is also facilitated by the very good code
 readability associated with the language.
 %
 Another consequence of the apparent simplicity of Python is that the learning
-curve has a nice shape. Learning Python is very easy at the beginning and the
+curve has a nice shape. Learning Python is very easy from the start and the
 complexity gradually increases as the level of the developer increases.
 %
 Its interpreted nature is advantageous for a rapid development cycle and the
@@ -492,10 +493,10 @@ A hard and controversial decision was taken to clean up Python from its
 historical incoherences by having a new series of backwards-incompatible
 versions of the language, starting with Python 3.0, released in December 2008.
 After a long and difficult process, the transition from Python 2 to Python 3 is
-now (201) behind us for nearly all important packages\footnote{Close to
+behind us for nearly all important packages\footnote{Close to
 \href{https://python3wos.appspot.com/}{95\% of the most downloaded packages}
-are Python 3 compatible now.}. Especially for scientific applications, we can
-now work only in Python 3. For instance, \href{https://github.com/%
+are Python 3 compatible as of 2018.}. Especially for scientific applications,
+we can now work only in Python 3. For instance, \href{https://github.com/%
 numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst}{future
 releases of \Numpy} and of \href{http://www.python3statement.org/}{the main
 scientific packages} will soon drop compatibility with Python 2. These changes
@@ -541,12 +542,14 @@ applications\footnote{\href{https://www.jetbrains.com/research/devecosystem-2018
 \item Science
 
 \end{itemize}
-
+%
 Python
 % has recently become one of the most popular language for teaching programming
 % and developing scientific applications. It 
-has now a mature and powerful scientific ecosystem with well-established based
-packages (\Numpy for N-dimensional homogeneous arrays, \Scipy as the
+has now a mature and powerful scientific ecosystem with well-established
+foundational packages
+%
+(\Numpy for N-dimensional homogeneous arrays, \Scipy as the
 fundamental toolkit for scientific computing, \pack{Matplotlib} for plotting
 and \pack{Pandas} for data structures) and several more specialized packages
 (to name a few, \pack{h5py}, \pack{mpi4py}, \pack{skimage}, \pack{sklearn}).
@@ -569,16 +572,16 @@ scientists, for example \href{https://github.com/spyder-ide/spyder}{Spyder},
 and \href{https://jupyterlab.readthedocs.io}{JupyterLab} are often useful for
 interactive development.
 
-Python has a very large and supportive community (see for example the
-\href{http://stackoverflow.com/tags}{Stack Overflow tags}).
+Python has a very large and supportive community (see, for example,
+\fnref{http://stackoverflow.com/tags/python}{Stack Overflow tags}).
 %
-But Python development is also supported by companies specialized in web
-technologies and data-driven research. However, recently, companies involved in
-scientific software development have started to become quite influential. For
-example Anaconda Inc.\ is strongly engaged in the development of tools like JIT
-Python accelerator \pack{Numba}, and parallelism framework \pack{dask}.
-Hardware giants such as Intel and Nvidia also contribute to the Python
-scientific ecosystem.
+Python development is also supported by companies, and most of them specialize
+in web technologies and data-driven research. However, recently, companies
+involved in scientific software development have started to become quite
+influential. For example, Anaconda Inc.\ is strongly engaged in the development
+of tools like JIT Python accelerator \pack{Numba}, and parallelism framework
+\pack{dask}. Hardware giants such as Intel and Nvidia also contribute to the
+Python scientific ecosystem.
 %
 To summarize, it is practical to use and extend Python for scientific purposes.
 
@@ -595,14 +598,14 @@ paragraphs.
 	interpreter does not do any proper compilation, pure Python code for
 	some CPU bounded tasks can be too slow. Thus, one has to avoid writing
 	loops as much as possible and use vectorized array operations as much
-	as possible, or call \emph{foreign functions}, or use special tools to
-	build extensions using \emph{Ahead Of Time} or \emph{Just In Time}
-	compilation to speedup performance-critical code.
+	as possible. One can also call \emph{foreign functions}, or use special
+	tools to build extensions using \emph{Ahead Of Time} or \emph{Just In
+	Time} compilation to speedup performance-critical code.
 
 \item \textbf{Absence of type checking.} In contrast to compiled languages,
 	there is no type-checking in Python (and more generally in many
 	interpreted languages). Types are respected however, and type errors,
-	if any, would occur during runtime.
+	if any, would be raised during runtime.
 	\emph{Type hints} and \emph{static type checking} can solve this issue.
 
 \item \textbf{Concurrent, but not parallel multi-threading.} Threads behave
@@ -667,9 +670,8 @@ Fortran, since there are tools to generate them automatically from Python code
 blend of two languages with possibility to add type declarations like in C/C++,
 but with a syntax similar to Python.
 %
-There are also other projects to create extensions in C++ with
-\href{https://github.com/pybind/pybind11/}{pybind11}, and in Rust with
-\href{https://github.com/PyO3}{PyO3}.
+There are also other projects to create extensions in C++ with \pack{pybind11},
+and in Rust with \href{https:///pyo3.rs}{PyO3}.
 
 
 Pythran \citep{guelton2015pythran, guelton2018pythran} is a quite recent Python
@@ -684,7 +686,7 @@ They are created with a very interesting two-step compilations: first the code
 is optimized at the Python level and then an automatically produced C++ code is
 properly compiled.
 %
-This two-step compilation provides room for very clever optimizations
+This two-step compilation provides room for very clever optimizations%
 \footnote{As demonstrated in this blog post by the main developer of
 Pythran \url{http://serge-sans-paille.github.io/pythran-stories/%
 being-more-than-a-translator.html}}.
@@ -705,14 +707,6 @@ compilation, i.e.\ by compiling only the critical code at run time.
 This strategy can yield good results with other languages as for example Matlab
 or Julia.
 %
-PyPy, an alternative interpreter written in Python, has a JIT compiler. However,
-PyPy is not widely used for scientific applications mainly because of
-compatibility problems with the extensions written for CPython.
-%
-However this could change since recent versions, starting with PyPy 6.0,
-supports the main packages of the Python scientific stack (\Numpy, \Scipy,
-\pack{Matplotlib}, \pack{Pandas}, etc.).
-
 Adding a JIT to the interpreter CPython has been notoriously difficult
 \footnote{\url{https://faster-cpython.readthedocs.io/}}. One of the
 problem seems to be the C API provided in CPython and used by many extensions.
@@ -721,6 +715,14 @@ A faster CPython with a JIT is actually not so necessary for many purposes,
 since Python extensions are enough. Therefore, not as much money and work
 has been put in accelerating Python than for example for Java and JavaScript.
 
+PyPy, an alternative interpreter written in Python, has a JIT compiler. However,
+PyPy is not widely used for scientific applications mainly because of
+compatibility problems with the extensions written for CPython.
+%
+However this could change since recent versions, starting with PyPy 6.0,
+supports the main packages of the Python scientific stack (\Numpy, \Scipy,
+\pack{Matplotlib}, \pack{Pandas}, etc.).
+%
 Another strategy is to add a JIT to CPython through an external package
 (\pack{Numba}).
 %
@@ -737,8 +739,7 @@ introduced a syntax and a related \codeinline{typing} module to add
 type-hints, typically for function parameters and return types.
 %
 Static type checkers like \href{http://mypy-lang.org/}{Mypy} and
-\href{https://github.com/google/pytype}{pytype}
-%
+\href{https://github.com/google/pytype}{pytype}%
 \footnote{We plan to add type hinting in the most important FluidDyn modules to
 investigate how we can take advantage of type-checking with Mypy.}
 %
@@ -753,14 +754,14 @@ reliable codes.
 Dynamical languages rely a lot on unit tests so it is very important to put at
 least a little bit of time and energy to write a decent battery of tests.
 
-\subsubsection{Achieving computational parallelism}
+\subsubsection{Multi-core computational parallelism}
 
 At any rate, threads using the interpreter do not use the CPU at the same time
 so it is not possible to use threads to do multi-core computational parallelism
 with pure python code to accelerate CPU bounded tasks.
 %
 Note however, that threads can be (and are widely) used in Python for
-concurrency, i.e.\ to perform I/O tasks (which does not need CPU) concurrently.
+concurrency, i.e.\ to perform I/O tasks, which does not need CPU, concurrently.
 %
 To do proper computational parallelism for CPU bounded tasks with the GIL, one
 has to use other strategies: extensions (fine grain parallelism),
@@ -804,11 +805,9 @@ not succeed, at least not in the near future.
 The limited scope of the language is likely the reason why the community
 around Fortran and Julia are not widespread outside academia.
 %
-It seems that a very important aspect in the future will be interoperability
+An important aspect in the future would very likely be interoperability
 between coexisting tools\footnote{See for example the cross-language development
 platform for in-memory data, \href{https://arrow.apache.org/}{Apache Arrow}.}.
-%
-Knowledge of Python is also an advantage in terms of employability these days.
 %
 Considering what we have presented on Python, we think that it is reasonable to
 bet that it will become one of the \textit{lingua franca} in science and in
@@ -859,7 +858,7 @@ conflicts when choosing between different technologies.
 We study fluid mechanics via laboratory experiments, in situ measurements,
 analytic tools, numerical simulations and data processing.
 %
-Nowadays, programming is involved in all methods, and thus it is difficult to do
+Nowadays, programming is involved in all methods, and is usually difficult to do
 fluid mechanics without software development.
 %
 However, the level in software engineering is on average very low in the
@@ -892,8 +891,8 @@ Despite the reliance on commercial software for research in fluid mechanics,
 %
 there are also a lot of codes produced by scientists in fluid mechanics. But
 without the technical knowledge on how to work collectively, such codes
-are often of bad quality (compared to the information technology
-industry standard) and are basically doomed to be abandoned after their use.
+are often substandard (compared to the information technology
+industry standards) and are basically doomed to be abandoned after their use.
 %
 However, it is natural to try to reuse codes or at least to build the next steps
 on what has been done already. Thousands of hours of highly qualified people
@@ -908,7 +907,7 @@ control of physical objects and acquisition. Fortran is often used to implement
 solvers and post-processing algorithms. Matlab is used for data processing and
 visualization.
 %
-Often, languages are used for things for which they are not adapted.
+Often, languages are used for purposes which they are not adapted for.
 %
 Fortran, C or C++ have not been designed for fast prototyping of complex
 programs.
@@ -1034,7 +1033,7 @@ implementation of its functions.
 Matlab is not free. The price for one license for non-commercial use is not
 very expensive for most research and teaching institutes. However, when we
 start to add up the price of the toolboxes necessary to run most codes, it
-starts to become substantially large for some institutions.  The price of
+starts to become substantial for some institutions.  The price of
 Matlab quickly escalates when deployed on a cluster with MPI, since a licence
 is \fnref{%
 	https://www.nas.nasa.gov/hecc/support/kb/running-matlab-applications-in-parallel_522.html}{%
@@ -1047,8 +1046,7 @@ research projects rely on such illegal methods?
 It is also unfair in education when students have to work on course projects and
 assignments, with a Matlab code as a starting point and not a free alternative.
 
-
-The same remarks can be made for Labview. It is a graphical programming
+The same remarks are applicable for Labview. It is a graphical programming
 language and the programs are saved as binary files. As a result, it is
 impossible to read a Labview program without Labview and to apply version
 control, crippling collaborative possibilities.
@@ -1061,8 +1059,8 @@ Python}.
 Note that open-source Matlab interpreters do exist, such as Octave and Scilab.
 %
 With some minimal effort, one can port existing Matlab codes using either
-Julia which by design uses Matlab-like syntax, or Python's \codeinline{pylab}
-package provided via \pack{matplotlib} and the command-line tool
+Julia which, by design, uses a Matlab-like syntax, or Python's \codeinline{pylab}
+package provided via \pack{Matplotlib} and the command-line tool
 \codeinline{fluidmat2py} in \pack{fluiddyn}.
 %
 For symbolic computation, some specialists use Maple or Mathematica, which are
@@ -1079,18 +1077,17 @@ It is normal that Mathworks, the company which makes money with Matlab, spreads
 against Python and its scientific ecosystem}.  Some of them are valid, for
 example the issue of the lively, huge and thus complicated scientific ecosystem
 that we have already discussed. Other arguments are unfair or no longer valid
-nowadays\footnote{See also \url{http://www.pyzo.org/python\_vs\_matlab.html}
-or \url{https://www.linkedin.com/pulse/matlab-vs-python-jan-rhebergen}}.
+nowadays\footnote{See also \url{http://www.pyzo.org/python\_vs\_matlab.html} or
+\url{https://www.linkedin.com/pulse/matlab-vs-python-jan-rhebergen}}.
 %
 The Python scientific ecosystem can now compete in nearly all domains, but this
 was not the case typically 5 years ago.
 %
-It would be interesting to estimate what could be done with open-source
-solutions with a part of the amount paid by public research institutes. How
-many developers could be paid to improve the alternative open-source solutions?
+It would be interesting to estimate what open-source solutions could benefit
+from using the amount paid by public research institutes. How many
+developers could be paid to improve the alternative open-source solutions?
 %
 This question raises the issue of funding scientific open-source software.
-
 
 \subsection{Different models for software development in fluid mechanics}
 
@@ -1249,8 +1246,8 @@ The project envisages to provide the technical framework to allow collaborative
 development of tools useful for the fluid mechanics community, and to do better
 science with open methods.
 %
-What have not been ``reinventing the wheel'', but rather have been ``standing
-on the shoulders of giants''. In other words we have utilized and extended
+We have not been ``reinventing the wheel'', but rather have been ``standing
+on the shoulders of giants''. In other words, we have utilized and extended
 existing and mature packages and libraries to create packages in FluidDyn as
 demonstrated in figure \ref{fig:dependency}. We have designed them such that
 the packages are generic enough for a wider audience and are maintainable in
