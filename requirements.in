@@ -6,6 +6,9 @@ pygments
 networkx
 nxviz>=0.6.1
 matplotlib
+panflute
+pypdf2
+imageio
 # Optional
 pyqt5
 bibtexparser
