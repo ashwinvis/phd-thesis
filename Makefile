@@ -66,6 +66,9 @@ AUXS = $(kappa).aux \
 BBLS = $(main).bbl \
        $(main).bcf
 
+IMGS = imgs/cascade.pdf \
+       imgs/dependency.pdf
+
 MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 # Rules:
@@ -75,7 +78,7 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 all: log
 #
-$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
@@ -104,6 +107,10 @@ chapter_%.latex: chapter_%.md
 		-F pandoc-crossref \
 		--natbib \
 		$< -o $@
+
+imgs/%.pdf: imgs/%/plot.py
+	python $<
+
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	$(call cprint,"building $@ with pandoc")

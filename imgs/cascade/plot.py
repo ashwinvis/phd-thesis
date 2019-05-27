@@ -1,6 +1,10 @@
 # coding: utf-8
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
+
+
+root = Path(__file__).parent.parent
 
 plt.style.use("ggplot")
 plt.rc("text", usetex=True)
@@ -88,5 +92,5 @@ for ax in ax1, ax2:
     #  ax.get_yaxis().set_visible(False)
 
 fig.tight_layout()
-fig.savefig("../cascade.pdf")
+fig.savefig(root / "cascade.pdf")
 # plt.show()
