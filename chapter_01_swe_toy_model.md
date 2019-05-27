@@ -1,13 +1,5 @@
 \chapter{Atmospheric turbulence and Shallow Water and Toy Model Equations}
 
-Atmospheric turbulence is characterized by a huge scale separation of fluid
-motion, ranging from the order of a hundred metres to several thousands of
-kilometres. The knowledge of how energy is distributed across such scales in
-the atmosphere and what kind of interactions leads to the energy cascade
-between large and small scales is essential to improve our general circulation
-models (GCM) while also recognizing the limits of predictability [see
-@lorenz_predictability_1969;@vallis_atmospheric_2017 pp. 433--447].
-
 This chapter introduces the work done to come up with the simplest possible
 model which can emulate the atmospheric kinetic energy spectrum and the
 advances which motivated this study. Before we delve into the details of the
@@ -119,10 +111,10 @@ demonstrate the existence of -3 spectra.
 
 ### Energy cascade in synoptic and mesoscale flows
 
-![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade might
-simultaneously occur in two-dimensional turbulence. Right: A schematic of
+![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade
+might simultaneously occur in two-dimensional turbulence. Right: A schematic of
 observed energy spectra in the atmosphere [@NastromGage1985]
-](imgs/cascade.pdf){#fig:cascade}
+](imgs/cascade.pdf){#fig:cascade width=100%}
 
 Nowadays, it is largely agreed upon that the -3 spectra in the _synoptic_
 scales (typically, for wavelengths over a thousand kilometres) are
@@ -171,3 +163,14 @@ In the early
 The question of direction of the mesoscale energy cascade has remained an
 unsettled debate for a long time [@vallgren_possible_2011-1], however today one
 can say the majority of results tend to favour the forward-cascade hypothesis.
+
+### Outlook
+
+Atmospheric turbulence is characterized by a huge scale separation of fluid
+motion, ranging from the order of a hundred metres to several thousands of
+kilometres. The knowledge of how energy is distributed across such scales in
+the atmosphere and what kind of interactions leads to the energy cascade
+between large and small scales is essential to improve our general circulation
+models (GCM) while also recognizing the limits of predictability [see
+@lorenz_predictability_1969;@vallis_atmospheric_2017 pp. 433--447].
+
