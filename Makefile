@@ -30,9 +30,12 @@ define cprint =
 	@echo -e $(red)$(1)$(end)
 endef
 
+ifndef ${CI_JOB_ID}
 REDIRECT := | tail -n 2
 # REDIRECT := 1> /dev/null
-# REDIRECT := # no redirect
+else
+REDIRECT := # no redirect
+endif
 
 RUBBER_INFO := $(shell command -v rubber-info 2> /dev/null)
 
@@ -158,10 +161,10 @@ opentex:
 	$(VIM) $(chapter).tex $(VIM_FLAGS) 2> /dev/null &
 
 openpdf:
-	zathura $(chapter).pandoc.pdf &
+	zathura $(chapter).pandoc.pdf 2> /dev/null &
 
 openthesis:
-	zathura $(main).pdf &
+	zathura $(main).pdf 2> /dev/null &
 
 openmkdwn:
 	$(VIM) $(chapter).md $(VIM_FLAGS)
