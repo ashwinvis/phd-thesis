@@ -89,4 +89,4 @@ for ax in ax1, ax2:
 
 fig.tight_layout()
 fig.savefig("../cascade.pdf")
-plt.show()
+# plt.show()
