@@ -93,23 +93,23 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $<")
 
 %.bbl: %.bcf %.aux $(BIB_FILE)
-	$(call cprint,"building $@ with $(BIB)")
+	$(call cprint,"building $@ with $(BIB) on $(BIB_FILE)")
 	@$(BIB) $(BIB_FLAGS) $(main) $(REDIRECT)
 
 %.tex: %.yml $(TEMPLATE_PAPER)
 	$(call cprint,"building $@ with python templates/utils_render.py")
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 
-
 imgs/%.pdf: imgs/%/plot.py
 	$(call cprint,"building $@ with $<")
 	python $<
 
 chapter_%.md: $(IMGS)
-	$(call cprint,"building $@ with $<")
+	$(call cprint,"building $@ with $^")
 
+# MKDWN2TEX
 chapter_%.latex: chapter_%.md
-	$(call cprint,"building $@ with pandoc")
+	$(call cprint,"building $@ with pandoc $<")
 	pandoc \
 		-F ./scripts/pandoc_filters.py \
 		-F pandoc-crossref \
@@ -117,7 +117,7 @@ chapter_%.latex: chapter_%.md
 		$< -o $@
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
-	$(call cprint,"building $@ with pandoc")
+	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
