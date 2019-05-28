@@ -114,7 +114,7 @@ demonstrate the existence of -3 spectra.
 ![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade
 might simultaneously occur in two-dimensional turbulence. Right: A schematic of
 observed energy spectra in the atmosphere [@NastromGage1985]
-](imgs/cascade.pdf){#fig:cascade width=100%}
+](imgs/cascade.pdf){#fig:cascade}
 
 Nowadays, it is largely agreed upon that the -3 spectra in the _synoptic_
 scales (typically, for wavelengths over a thousand kilometres) are

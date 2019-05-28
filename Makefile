@@ -119,6 +119,7 @@ chapter_%.latex: chapter_%.md
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
+		-F ./scripts/pandoc_filters.py \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
 		--bibliography $(BIB_FILE) \
