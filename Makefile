@@ -102,9 +102,11 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 
 
 imgs/%.pdf: imgs/%/plot.py
+	$(call cprint,"building $@ with $<")
 	python $<
 
 chapter_%.md: $(IMGS)
+	$(call cprint,"building $@ with $<")
 
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc")
