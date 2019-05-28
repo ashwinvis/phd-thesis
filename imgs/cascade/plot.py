@@ -77,17 +77,13 @@ def arrow(ax, x, y, arrowroot=0.1, exp=-3):
 arrow(ax1, 0.1, 0.8, 6, -5/3)
 arrow(ax1, 100, 80)
 
-ax1.set_ylabel("$E(k)$")
-ax1.set_xlabel("$k$")
-
-
 for ax in ax1, ax2:
     #  ax.get_xaxis().set_ticks([])
     #  ax.get_yaxis().set_ticks([])
     ax.get_xaxis().set_ticklabels([])
     ax.get_yaxis().set_ticklabels([])
-    ax.set_ylabel("$E(k)$")
-    ax.set_xlabel("$k$")
+    ax.set_ylabel(r"$E(k)$")
+    ax.set_xlabel(r"$k$")
     #  ax.get_xaxis().set_visible(False)
     #  ax.get_yaxis().set_visible(False)
 
