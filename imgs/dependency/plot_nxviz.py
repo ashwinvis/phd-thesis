@@ -55,7 +55,8 @@ c = CircosPlot(
     node_color="value",
     node_order="value",
     node_labels=True,
-    #, node_color=node_color
+    # , node_color=node_color
+    fontfamily="monospace",
 )
 c.draw()
 plt.tight_layout()

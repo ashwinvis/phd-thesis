@@ -22,6 +22,8 @@ _minted*
 
 # compiled files
 *.pdf
+chapter*.latex
+chapter*.pandoc.*
 
 # benchmarking files
 paper**/*.pstats
@@ -30,6 +32,8 @@ paper**/.json
 *.dio
 paper**/*.dot
 paper**/*.xml
+paper**/*.pdf
+paper**/*.eps
 paper**/old
 # generated from yml
 paper*/paper.tex
