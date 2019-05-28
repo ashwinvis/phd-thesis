@@ -78,14 +78,14 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 all: log
 #
-$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(IMGS)
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) 
 	$(call cprint,"building $@ with $(TEX)")
 	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(main).aux
 
-$(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
+$(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
@@ -100,6 +100,12 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
 	$(call cprint,"building $@ with python templates/utils_render.py")
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 
+
+imgs/%.pdf: imgs/%/plot.py
+	python $<
+
+chapter_%.md: $(IMGS)
+
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc")
 	pandoc \
@@ -107,10 +113,6 @@ chapter_%.latex: chapter_%.md
 		-F pandoc-crossref \
 		--natbib \
 		$< -o $@
-
-imgs/%.pdf: imgs/%/plot.py
-	python $<
-
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	$(call cprint,"building $@ with pandoc")
