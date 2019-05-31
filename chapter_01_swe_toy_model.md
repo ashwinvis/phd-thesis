@@ -1,4 +1,13 @@
-\chapter{Atmospheric turbulence and Shallow Water and Toy Model Equations}
+\chapter{Shallow Water and Toy Model Equations}
+
+Atmospheric turbulence is characterized by a wide range of scales, ranging from
+the order of a few metres to several thousands of kilometres. Understanding how
+energy is distributed across the spectrum, and the underlying interactions
+behind the energetics are essential to improve general circulation models (GCM)
+while also recognizing the limits of predictability [see
+@lorenz_predictability_1969;@vallis_atmospheric_2017 pp. 433--447].
+
+For 
 
 This chapter introduces the work done to come up with the simplest possible
 model which can emulate the atmospheric kinetic energy spectrum and the
@@ -163,14 +172,4 @@ In the early
 The question of direction of the mesoscale energy cascade has remained an
 unsettled debate for a long time [@vallgren_possible_2011-1], however today one
 can say the majority of results tend to favour the forward-cascade hypothesis.
-
-### Outlook
-
-Atmospheric turbulence is characterized by a huge scale separation of fluid
-motion, ranging from the order of a hundred metres to several thousands of
-kilometres. The knowledge of how energy is distributed across such scales in
-the atmosphere and what kind of interactions leads to the energy cascade
-between large and small scales is essential to improve our general circulation
-models (GCM) while also recognizing the limits of predictability [see
-@lorenz_predictability_1969;@vallis_atmospheric_2017 pp. 433--447].
 
