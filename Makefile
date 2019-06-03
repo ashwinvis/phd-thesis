@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_00_open_science
+chapter := chapter_01_swe_toy_model
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -66,6 +66,9 @@ AUXS = $(kappa).aux \
 BBLS = $(main).bbl \
        $(main).bcf
 
+IMGS = imgs/cascade.pdf \
+       imgs/dependency.pdf
+
 MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 # Rules:
@@ -75,14 +78,14 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
 all: log
 #
-$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS)
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) 
 	$(call cprint,"building $@ with $(TEX)")
 	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(main).aux
 
-$(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
+$(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
@@ -90,23 +93,33 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX)
 	$(call cprint,"building $@ with $<")
 
 %.bbl: %.bcf %.aux $(BIB_FILE)
-	$(call cprint,"building $@ with $(BIB)")
+	$(call cprint,"building $@ with $(BIB) on $(BIB_FILE)")
 	@$(BIB) $(BIB_FLAGS) $(main) $(REDIRECT)
 
 %.tex: %.yml $(TEMPLATE_PAPER)
 	$(call cprint,"building $@ with python templates/utils_render.py")
 	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
 
+imgs/%.pdf: imgs/%/plot.py
+	$(call cprint,"building $@ with $<")
+	python $<
+
+chapter_%.md: $(IMGS)
+	$(call cprint,"building $@ with $^")
+
+# MKDWN2TEX
 chapter_%.latex: chapter_%.md
-	$(call cprint,"building $@ with pandoc")
-	@pandoc \
-		--natbib \
+	$(call cprint,"building $@ with pandoc $<")
+	pandoc \
+		-F ./scripts/pandoc_filters.py \
 		-F pandoc-crossref \
+		--natbib \
 		$< -o $@
 
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
-	$(call cprint,"building $@ with pandoc")
+	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
+		-F ./scripts/pandoc_filters.py \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
 		--bibliography $(BIB_FILE) \
@@ -173,9 +186,11 @@ watch:
 	$(call cprint,"watching for changes")
 	watchmedo \
 		shell-command \
-		--patterns="*.tex;*.md"  \
-		--command='make -j' \
+		--patterns="*.md"  \
+		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
 		--drop
+		# --patterns="*.tex;"  \
+		# --command='make -j' \
 
-doit: opentex openthesis watch
-# doit: $(chapter).pandoc.pdf openpdf openmkdwn
+# doit: opentex openthesis watch
+doit: openpdf openmkdwn watch

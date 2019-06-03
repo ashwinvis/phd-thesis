@@ -1,6 +1,10 @@
 # coding: utf-8
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
+
+
+root = Path(__file__).parent.parent
 
 plt.style.use("ggplot")
 plt.rc("text", usetex=True)
@@ -73,20 +77,16 @@ def arrow(ax, x, y, arrowroot=0.1, exp=-3):
 arrow(ax1, 0.1, 0.8, 6, -5/3)
 arrow(ax1, 100, 80)
 
-ax1.set_ylabel("$E(k)$")
-ax1.set_xlabel("$k$")
-
-
 for ax in ax1, ax2:
     #  ax.get_xaxis().set_ticks([])
     #  ax.get_yaxis().set_ticks([])
     ax.get_xaxis().set_ticklabels([])
     ax.get_yaxis().set_ticklabels([])
-    ax.set_ylabel("$E(k)$")
-    ax.set_xlabel("$k$")
+    ax.set_ylabel(r"$E(k)$")
+    ax.set_xlabel(r"$k$")
     #  ax.get_xaxis().set_visible(False)
     #  ax.get_yaxis().set_visible(False)
 
 fig.tight_layout()
-fig.savefig("../cascade.pdf")
-plt.show()
+fig.savefig(root / "cascade.pdf")
+# plt.show()

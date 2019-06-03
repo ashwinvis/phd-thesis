@@ -16,9 +16,11 @@ cache:
 
 build:
   before_script:
+    - tlmgr update --self
     - tlmgr install biblatex biber xcolor lineno etoolbox fvextra fancyvrb
         upquote ifplatform xstring framed caption outlines booktabs enumitem
         babel-swedish microtype csquotes logreq setspace
+        type1cm
     - python -m venv venv
     - source venv/bin/activate
     - pip install -r requirements.txt

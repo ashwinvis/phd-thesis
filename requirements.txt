@@ -7,45 +7,51 @@
 argh==0.26.2              # via watchdog
 asn1crypto==0.24.0        # via cryptography
 atomicwrites==1.3.0       # via pytest
-attrs==18.2.0             # via hypothesis, pytest
+attrs==19.1.0             # via hypothesis, pytest
 bibtexparser==1.1.0
-certifi==2018.11.29       # via requests
-cffi==1.12.1              # via cryptography
+certifi==2019.3.9         # via requests
+cffi==1.12.3              # via cryptography
 chardet==3.0.4            # via requests
+click==7.0                # via panflute
 cryptography==2.6.1       # via nxviz
 cycler==0.10.0            # via matplotlib
-decorator==4.3.2          # via networkx
+decorator==4.4.0          # via networkx
 docopt==0.6.2
-future==0.17.1            # via bibtexparser
+future==0.17.1            # via bibtexparser, panflute
 hypothesis==4.14.0        # via nxviz
 idna==2.8                 # via requests
-jinja2==2.10
-kiwisolver==1.0.1         # via matplotlib
-markupsafe==1.1.0         # via jinja2
+imageio==2.5.0
+jinja2==2.10.1
+kiwisolver==1.1.0         # via matplotlib
+markupsafe==1.1.1         # via jinja2
 matplotlib==3.0.3
 more-itertools==6.0.0     # via nxviz, pytest
 networkx==2.2
-numpy==1.16.2             # via matplotlib, nxviz, pandas, scipy, seaborn
+numpy==1.16.2             # via imageio, matplotlib, nxviz, pandas, scipy, seaborn
 nxviz==0.6.1
 palettable==3.1.1         # via nxviz
 pandas==0.24.2            # via nxviz, seaborn
+panflute==1.11.2
 pathtools==0.1.2          # via watchdog
-pluggy==0.8.1             # via pytest
+pillow==6.0.0             # via imageio
+pluggy==0.11.0            # via pytest
 py==1.8.0                 # via pytest
 pycparser==2.19           # via cffi
-pygments==2.3.1
-pyparsing==2.3.1          # via bibtexparser, matplotlib
-pyqt5-sip==4.19.14        # via pyqt5
-pyqt5==5.12
+pygments==2.4.1
+pyparsing==2.4.0          # via bibtexparser, matplotlib
+pypdf2==1.26.0
+pyqt5-sip==4.19.17        # via pyqt5
+pyqt5==5.12.2
 pytest==4.3.1             # via nxviz
 python-dateutil==2.8.0    # via matplotlib, pandas
-pytz==2018.9              # via pandas
-pyyaml==5.1               # via nxviz, watchdog
-requests==2.21.0
-ruamel.yaml==0.15.88
-scipy==1.2.1              # via seaborn
+pytz==2019.1              # via pandas
+pyyaml==5.1               # via nxviz, panflute, watchdog
+requests==2.22.0
+ruamel.yaml==0.15.96
+scipy==1.3.0              # via seaborn
 seaborn==0.9.0            # via nxviz
+shutilwhich==1.1.0        # via panflute
 six==1.12.0               # via cryptography, cycler, pytest, python-dateutil
 sphinxcontrib-fulltoc==1.2.0  # via nxviz
-urllib3==1.24.1           # via requests
+urllib3==1.25.3           # via requests
 watchdog==0.9.0
