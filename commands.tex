@@ -58,13 +58,17 @@
 
 % other
 \newcommand{\p}{\partial}
+\newcommand{\Dt}[1]{\ensuremath{\frac{D #1}{Dt}}}
 
 % Wikipedia-style "citation needed" macro
 \newcommand{\citationneeded}[1][]{\textsuperscript{\color{blue} [citation needed: #1]}}
 
-\newcommand{\paragraphbf}[1]{\subparagraph{\bf #1.}}
+\newcommand{\paragraphbf}[1]{\subparagraph{\bf #1}}
 
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\textit{#1}}
+
+% Extend href with footnote url
+\newcommand{\fnref}[2]{\href{#1}{#2}\footnote{\url{#1}}}
 
 % ！Undefined control sequence.
 % https://tex.stackexchange.com/questions/8361/latex-ieeetran-cls-use-titlesec-package
@@ -76,3 +80,76 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\epsK}{\varepsilon_{\!\scriptscriptstyle K}}
 \newcommand{\epsA}{\varepsilon_{\!\scriptscriptstyle A}}
+% From shallow water paper
+\newcommand\shalf{\ensuremath{{\scriptstyle\frac{1}{2}}}}
+\newcommand\sh{\ensuremath{^{\shalf}}}
+\newcommand\smh{\ensuremath{^{-\shalf}}}
+\newcommand\squart{\ensuremath{{\textstyle\frac{1}{4}}}}
+\newcommand\thalf{\ensuremath{{\textstyle\frac{1}{2}}}}
+\newcommand\Gat{\ensuremath{\widetilde{G_a}}}
+\newcommand\ttz{\ensuremath{\rightarrow 0}}
+\newcommand\ndq{\ensuremath{\frac{\mbox{$\partial$}}{\mbox{$\partial$} n_q}}}
+\newcommand\sumjm{\ensuremath{\sum_{j=1}^{M}}}
+\newcommand\pvi{\ensuremath{\int_0^{\infty}%
+  \mskip \ifCUPmtlplainloaded -30mu\else -33mu\fi -\quad}}
+
+
+\newcommand{\uu}{\textbf{u}}
+\newcommand{\xx}{\textbf{x}}
+\newcommand{\kk}{\textbf{k}}
+\newcommand{\JJ}{\textbf{J}}
+\newcommand{\rr}{\textbf{r}}
+\newcommand{\ff}{\textbf{f}}
+\newcommand{\FF}{\textbf{F}}
+\newcommand{\baa}{\textbf{a}}
+\newcommand{\bb}{\textbf{b}}
+\newcommand{\NN}{\textbf{N}}
+
+
+
+
+
+\newcommand{\ErtelPV}{\mathcal{Q}}
+
+\newcommand{\fdiss}{f_{\mbox{\scriptsize diss}}}
+
+\newcommand{\D}{\mbox{D}}
+
+\newcommand{\eez}{\boldsymbol{e_z}}
+\newcommand{\scalarprod}[2]{\big( #1 \, , \ #2 \big)_{\kk}}
+
+\newcommand{\mean}[1]{\langle #1 \rangle}
+
+\newcommand{\meane}[1]{\langle #1 \rangle}
+% \newcommand{\meane}[1]{{\langle #1 \rangle_{\hspace{-0.4mm}e}}}
+
+\newcommand{\meanx}[1]{{\langle #1 \rangle_{\hspace{-0.4mm}\mbox{\scriptsize$\xx$}}}}
+
+\newcommand{\meant}[1]{{\langle #1 \rangle_{\hspace{-0.4mm}\theta}}}
+
+\newcommand{\means}[1]{{\langle #1 \rangle_{\hspace{-0.4mm}s}}}
+
+\newcommand{\shocks}{ {\mbox{\tiny shocks}} }
+
+\newcommand{\kmax}{k_{\mbox{\scriptsize max}}}
+\newcommand{\kdiss}{k_{\mbox{\scriptsize diss}}}
+
+
+\newcommand{\mA}{\mathcal{A}}
+
+
+\newlength{\halfwidth}
+\setlength{\halfwidth}{2.6in}
+
+\newcommand{\PA}[1]{{\color{green}#1}}
+
+\newcommand{\Add}[1]{{\color{blue}#1}}
+% \newcommand{\Add}[1]{#1}
+\newcommand{\Remove}[1]{{\color{red}\st{#1}}}
+% \newcommand{\Remove}[1]{}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+% Personal
+\newcommand{\mfivethird}{\ensuremath{\frac{-5}{3}}}

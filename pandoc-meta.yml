@@ -1,0 +1,5 @@
+documentclass: scrartcl
+header-includes:
+  - "\\usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}"
+  - "\\newcommand{\\chapter}[1]{\\section{\\underline{#1}}}"
+  - "\\input{commands}"

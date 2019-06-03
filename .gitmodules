@@ -1,3 +1,3 @@
 [submodule "templates/mechthesis"]
 	path = templates/mechthesis
-	url = git@github.com:ashwinvis/mechthesis.git
+	url = https://github.com/ashwinvis/mechthesis.git

@@ -32,11 +32,12 @@
 % Thesis information
 %-------------------------------------------------------------------------------
 %
-\title[Studies in Geophysical Fluid Mechanics]% Title used in the abstract (optional)
+\title[%
+  Advancing stratified flows through simulations, experiments and open research software development%
+]% Title used in the abstract (optional)
 {% Title of the thesis
-	Studies in \\ Geophysical Fluid Mechanics
-        % or \\
-        % Scales and Energetics of Geophysical Turbulence%
+  Advancing stratified flows through \\ simulations, experiments and open
+  research software development%
 }%
 
 \author{Ashwin Vishnu Mohanan}% Author
@@ -49,7 +50,8 @@
 
 \titel
 {% Swedish title (for swedish abstract)
-    Studier i \\ Geofysikalisk Strömnmekanik
+  Fr\"amja stratifierade fl\"oden genom simuleringar, experiment och
+  \"oppen forskning mjukvaruutveckling
 }%
 
 \anslutning
@@ -106,6 +108,8 @@
 %===============================================================================
 
 % \includeonly{overview}
+% \includeonly{paper_03_toy_model/paper,paper_04_shallow_water/paper}
+% \includeonly{paper_04_shallow_water/paper}
 
 \begin{document}
 
@@ -131,7 +135,7 @@
 % Overview and summary
 %
 \begin{refsection}
-\include{overview}
+  \include{overview}
 \end{refsection}
 
 %-------------------------------------------------------------------------------
@@ -154,16 +158,11 @@
 \cleardoublepage
 
 %-------------------------------------------------------------------------------
-% Paper 1
+% Papers
 %
 \begin{refsection}
  \include{paper_00_fluiddyn_meta/paper}
 \end{refsection}
-
-%-------------------------------------------------------------------------------
-% Paper 2
-%
-%\include{paper2/paper}
 
 \begin{refsection}
  \include{paper_01_fluidfft/paper}
@@ -171,6 +170,14 @@
 
 \begin{refsection}
  \include{paper_02_fluidsim/paper}
+\end{refsection}
+
+\begin{refsection}
+ \include{paper_03_toy_model/paper}
+\end{refsection}
+
+\begin{refsection}
+ \include{paper_04_shallow_water/paper}
 \end{refsection}
 
 
