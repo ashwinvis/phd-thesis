@@ -50,9 +50,17 @@ def get_options_from_yaml(path):
     if "dir" not in options or options["dir"] is None:
         options["dir"] = path.parent
 
-    options["authors_short"] = [
-        name_in_initials(name) for name in options["authors"]
-    ]
+    if len(options["authors"]) < 4:
+        options["authors_short"] = [
+            name_in_initials(name) for name in options["authors"][:-1]
+        ]
+        options["authors_short"].extend([
+            r'\&',
+            name_in_initials(options["authors"][-1])
+        ])
+    else:
+        options["authors_short"] = [name_in_initials(options["authors"][0]), "et al."]
+
 
     uniq_affiliations = list(set(options["affiliations"]))  # unique
     options["authors_aff"] = []
@@ -63,7 +71,6 @@ def get_options_from_yaml(path):
     options["enum_affiliations"] = [
         f"$^{i+1}$ {aff}" for i, aff in enumerate(uniq_affiliations)
     ]
-    
 
     return options
 

@@ -8,7 +8,7 @@
 \papertoctitle{\VAR{title_toc | default(title)}} % Title for toc
 %
 % Short authors used in headlines and List Of Papers
-\paperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
+\paperauthor[\VAR{authors_short | join(' ')}]
 {%
   \VAR{authors_aff[:-1] | join(', ')} and \VAR{authors_aff | last} % Short authors used in headlines and List Of Papers
 }%

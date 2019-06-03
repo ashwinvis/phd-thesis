@@ -1,0 +1,47 @@
+title: "First report of the MILESTONE experiment: strongly stratified turbulence and mixing efficiency in the Coriolis platform"
+authors:
+ - Antoine Campagne
+ - Henrik Alfredsson
+ - R\'emi Chassagne
+ - Diane Micard
+ - Nicolas Mordant
+ - Antonio Segalini
+ - Joel Sommeria
+ - Samuel Viboud
+ - Ashwin Vishnu Mohanan
+ - Erik Lindborg
+ - Pierre Augier
+affiliations:
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+ - Royal Institute of Technology (KTH), Department of Mechanics, Stockholm, Sweden
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+ - LMFA, \'Ecole Centrale de Lyon, France
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+ - Royal Institute of Technology (KTH), Department of Mechanics, Stockholm, Sweden
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+ - Royal Institute of Technology (KTH), Department of Mechanics, Stockholm, Sweden
+ - Royal Institute of Technology (KTH), Department of Mechanics, Stockholm, Sweden
+ - LEGI, Universit\'e Grenoble Alpes, CNRS, France
+pub_short: VIIIth Int. Symp. on Stratified Flows
+pub: VIIIth International Symposium on Stratified Flows, San Diego, USA
+volume: 1
+number: 1
+pages: 1--10
+year: 2016
+dir: paper_05_milestone_issf
+abstract: |
+  Strongly stratified turbulence is a possible interpretation of oceanic and
+  atmospheric measurements. However, this regime has never been produced in a
+  laboratory experiment because of the two conditions of very small horizontal
+  Froude number $F_h$ and large buoyancy Reynolds number $\R$ which require a
+  very large experimental facility. We
+  present a new attempt to study strongly stratified turbulence experimentally in
+  the Coriolis platform. The flow is forced by a slow periodic movement of an
+  array of six vertical cylinders of 25\ cm diameter with a mesh of 75\ cm.
+  Five cameras are used for 3D-2C scanned horizontal particles image velocimetry
+  (PIV) and stereo 2D vertical PIV.  Five density-temperature probes are used to
+  measure vertical and horizontal profiles and signals at fixed positions.
+  The first preliminary results indicate that we manage to produce strongly
+  stratified turbulence at very small $F_h$ and large $\R$ in a laboratory
+  experiment.
