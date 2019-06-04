@@ -40,8 +40,7 @@ pycparser==2.19           # via cffi
 pygments==2.4.1
 pyparsing==2.4.0          # via bibtexparser, matplotlib
 pypdf2==1.26.0
-pyqt5-sip==4.19.17        # via pyqt5
-pyqt5==5.12.2
+pyside2==5.12.3
 pytest==4.3.1             # via nxviz
 python-dateutil==2.8.0    # via matplotlib, pandas
 pytz==2019.1              # via pandas
@@ -50,6 +49,7 @@ requests==2.22.0
 ruamel.yaml==0.15.96
 scipy==1.3.0              # via seaborn
 seaborn==0.9.0            # via nxviz
+shiboken2==5.12.3         # via pyside2
 shutilwhich==1.1.0        # via panflute
 six==1.12.0               # via cryptography, cycler, pytest, python-dateutil
 sphinxcontrib-fulltoc==1.2.0  # via nxviz

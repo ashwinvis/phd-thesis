@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_swe_toy_model
+chapter := $(basename $(wildcard chapter_00*))
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -16,7 +16,7 @@ TEX := pdflatex
 DRAFT_FLAGS := -draftmode -interaction=nonstopmode -shell-escape
 FINAL_FLAGS := -interaction=nonstopmode -shell-escape
 
-VIM := nvim-gtk
+VIM := nvim-qt
 VIM_FLAGS := -- +'set backupcopy=yes'
 
 BIB := biber
@@ -102,7 +102,7 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 
 imgs/%.pdf: imgs/%/plot.py
 	$(call cprint,"building $@ with $<")
-	python $<
+	PYTHONSTARTUP=imgs/pythonrc.py python $<
 
 chapter_%.md: $(IMGS)
 	$(call cprint,"building $@ with $^")
@@ -173,24 +173,30 @@ todo:
 opentex:
 	$(VIM) $(chapter).tex $(VIM_FLAGS) 2> /dev/null &
 
-openpdf:
+openmkdwn:
+	$(VIM) $(chapter).md $(VIM_FLAGS)
+
+openchapter:
 	zathura $(chapter).pandoc.pdf 2> /dev/null &
 
 openthesis:
 	zathura $(main).pdf 2> /dev/null &
 
-openmkdwn:
-	$(VIM) $(chapter).md $(VIM_FLAGS)
+watchtex:
+	$(call cprint,"watching for changes")
+	watchmedo \
+		shell-command \
+		--patterns="*.tex;*/*/jfm.bbx"  \
+		--command='make -j' \
+		--drop
 
-watch:
+watchmkdwn:
 	$(call cprint,"watching for changes")
 	watchmedo \
 		shell-command \
 		--patterns="*.md"  \
 		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
 		--drop
-		# --patterns="*.tex;"  \
-		# --command='make -j' \
 
-# doit: opentex openthesis watch
-doit: openpdf openmkdwn watch
+doit: opentex openthesis watchtex
+# doit: openmkdwn openchapter watchmkdwn
