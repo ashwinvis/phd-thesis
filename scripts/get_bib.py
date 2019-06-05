@@ -1,7 +1,7 @@
 """Receive file served by Zotero + Better BibTeX plugin."""
-import requests
 import time
 
+import requests
 
 FORMAT = "biblatex"
 SRC = "thesis." + FORMAT

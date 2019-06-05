@@ -8,11 +8,12 @@ Notes:
     See https://github.com/AKuederle/Py-Tex-automation-example
 
 """
-import re
-import jinja2
 import os
+import re
 import sys
 from pathlib import Path
+
+import jinja2
 
 
 def get_options_from_file(path):
@@ -54,13 +55,14 @@ def get_options_from_yaml(path):
         options["authors_short"] = [
             name_in_initials(name) for name in options["authors"][:-1]
         ]
-        options["authors_short"].extend([
-            r'\&',
-            name_in_initials(options["authors"][-1])
-        ])
+        options["authors_short"].extend(
+            [r"\&", name_in_initials(options["authors"][-1])]
+        )
     else:
-        options["authors_short"] = [name_in_initials(options["authors"][0]), "et al."]
-
+        options["authors_short"] = [
+            name_in_initials(options["authors"][0]),
+            "et al.",
+        ]
 
     uniq_affiliations = list(set(options["affiliations"]))  # unique
     options["authors_aff"] = []
@@ -115,6 +117,7 @@ def render_template(template, insert_variables, out_path):
 if __name__ == "__main__":
     try:
         from docopt import docopt
+
         argv = docopt(__doc__)
         options_file = Path(argv["<options_file>"])
         template_file = Path(argv["<template_file>"])
@@ -122,7 +125,6 @@ if __name__ == "__main__":
         argv = sys.argv
         options_file = Path(argv[1])
         template_file = Path(argv[2])
-
 
     options = get_options_from_yaml(options_file)
     template = get_template(template_file)
