@@ -10,6 +10,6 @@ panflute
 pypdf2
 imageio
 # Optional
-pyqt5
+pyside2
 bibtexparser
 watchdog
