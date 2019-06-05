@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := $(basename $(wildcard chapter_00*))
+chapter := $(basename $(wildcard chapter_01*))
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -148,10 +148,11 @@ else
 endif
 
 clean: clean_papers clean_thesis
+	$(call cprint,"basic cleaning done")
 
 cleanall: clean
-	$(call cprint,"cleaning generated ps,dvi,pdf,paper.tex,pandoc.tex")
-	@rm -f  *.{ps,dvi,pdf,pandoc.tex}
+	$(call cprint,"cleaning generated documents")
+	@rm -f  *.{ps,dvi,pdf,pandoc.*}
 	@rm -f paper*/paper.tex
 
 clean_minted:
