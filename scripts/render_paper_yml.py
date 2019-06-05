@@ -2,7 +2,7 @@
 """Render a latex jinja template
 
 Usage:
-    utils_render.py <options_file> <template_file>
+    render_paper_yml.py <options_file> <template_file>
 
 Notes:
     See https://github.com/AKuederle/Py-Tex-automation-example

@@ -98,11 +98,11 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 
 %.tex: %.yml $(TEMPLATE_PAPER)
 	$(call cprint,"building $@ with python templates/utils_render.py")
-	@python templates/utils_render.py $< $(TEMPLATE_PAPER)
+	@python scripts/render_paper_yml.py $< $(TEMPLATE_PAPER)
 
 imgs/%.pdf: imgs/%/plot.py
 	$(call cprint,"building $@ with $<")
-	PYTHONSTARTUP=imgs/pythonrc.py python $<
+	PYTHONSTARTUP=scripts/pythonrc.py python $<
 
 chapter_%.md: $(IMGS)
 	$(call cprint,"building $@ with $^")
