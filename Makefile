@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := $(basename $(wildcard chapter_01*))
+chapter := chapter_01_swe_toy_model
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -74,20 +74,24 @@ MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
-.NOPARALLEL: $(main).pdf $(main).bbl log watch
+.NOPARALLEL: $(main).pdf $(main).bbl $(main).gls log watch
 
 all: log
 #
-$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) 
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(main).gls
 	$(call cprint,"building $@ with $(TEX)")
 	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(main).aux
+	$(call cprint,"building $@ with $<")
 
 $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+
+$(main).gls: $(main).aux
+	@makeindex $(main).glo -s $(main).ist -t $(main).glg -o $(main).gls
 
 %.bcf: %.aux
 	$(call cprint,"building $@ with $<")
@@ -161,7 +165,7 @@ clean_minted:
 
 clean_thesis:
 	$(call cprint,"cleaning thesis")
-	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml}
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist}
 
 clean_papers:
 	$(call cprint,"cleaning papers")
@@ -199,5 +203,5 @@ watchmkdwn:
 		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
 		--drop
 
-doit: opentex openthesis watchtex
-# doit: openmkdwn openchapter watchmkdwn
+# doit: opentex openthesis watchtex
+doit: openmkdwn openchapter watchmkdwn
