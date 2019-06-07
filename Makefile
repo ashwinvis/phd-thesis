@@ -96,8 +96,8 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
 $(main).gls: $(AUXS) $(BBLS)
-	$(call cprint,"building $@ with makeindex")
-	@makeindex $(main).glo -s $(main).ist -t $(main).log -o $(main).gls
+	$(call cprint,"building $@ with makeglossaries")
+	@makeglossaries -t $(main).log $(main)
 
 %.bcf: %.aux
 	$(call cprint,"building $@ with $<")
