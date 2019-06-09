@@ -1,31 +1,50 @@
 \chapter{Shallow Water and Toy Model Equations}
 
 Atmospheric turbulence is characterized by a wide range of scales, ranging from
-the order of a few metres to several thousands of kilometres. Understanding how
+the order of a metres to several thousands of kilometres. Understanding how
 energy is distributed across the spectrum, and the underlying interactions
 behind the energetics are essential to improve general circulation models (GCM)
 while also recognizing the limits of predictability [see
-@lorenz_predictability_1969;@vallis_atmospheric_2017 pp. 433--447]. As a
-general rule of thumb, as our capabilities of modelling of the smaller scales
-improve, so does the predictability. This intention has motivated researchers to
-further our understanding of mesoscale flows. Of particular interest is
-the direction of the mesoscale cascade, which has remained an open question
-for a long time [@kitamura_energy_2010]. The first section in this chapter
-presents a brief account of the theoretical, experimental and computation
-works attempted towards modelling the mesoscale range. The studies described
-below have led us towards an emerging consensus, which favours the forward energy
-cascade explanation.
+@lorenz_predictability_1969; @vallis_atmospheric_2017 pp. 433--447]. As a
+general rule of thumb, as our capabilities of modelling of the
+smaller scales improve, so does the predictability. This intention has
+motivated researchers to further our understanding of mesoscale flows. Of
+particular interest was the direction of the mesoscale energy cascade, which has
+remained an open question for a long time [@kitamura_energy_2010]. Two mutually
+exclusive hypotheses -- one suggesting a forward cascade [@Dewan:1979] and
+another suggesting an inverse cascade [@Gage:1979; @Lilly:1983] have been at the
+centre of this debate.
 
-Relevant to this thesis were the theoretical predictions which estimated the
-vertical resolution required for reproducing the mesoscale spectra. In
+
+Also relevant to this thesis were the theoretical predictions, which estimated
+the vertical resolution required for reproducing the mesoscale spectra. In
 @Lindborg2006 and @Waite-Bartello:2004 the vertical resolution was estimated
 from the vertical length scale of the elongated structures in stratified
-turbulence, i.e.  $l_v \sim u/N \approx 1 \text{km}$.
-On the other hand, @Callies-Buhler-Ferrari:2016 suggested a finer resolution
-would be needed to resolve the gravity waves
-to resolve the elongated structures as seen in stratified turbulence
-simulations.  @AugierLindborg2013, wherein this result was produced by running
-a GCM using 
+turbulence, i.e.  $l_v \sim u/N \approx 1 \text{km}$. On the other hand, the
+results in @Callies-Buhler-Ferrari:2016 implied a finer resolution of the order
+of 100 meters would be needed to resolve the gravity waves and thus the
+mesoscale flows. Contrary to these expectations, in @AugierLindborg2013, some
+GCM runs reproduced the essential dynamics of both synoptic and mesoscale
+flows, using a coarse vertical resolution of 24 pressure levels. This result
+prompted the question, why was this possible despite the theories predicting a
+finer resolution requirement. And to answer this in this thesis, we have
+simulated the most extreme case: a quasi-two dimensional model which
+accommodates both waves and vortices, equivalent to simulating a single layer.
+The first candidate for this exercise were the classical shallow water
+equations. The shock dominated turbulence in the shallow water equations
+presented a different dynamics and this resulted in some novel results in
+@augier_shallow_2019. The study can be potentially extended to other domains
+such as acoustics and cosmology, but is unlikely to find application in
+geophysical turbulence. This prompted a second study [@LindborgMohanan2017]
+wherein we modified the shallow water equations into a toy model, which does
+not cause waves to evolve into shocks and has nice properties such as a
+quadratic expression for kinetic energy.
+
+In the first section in this chapter, we present a background of the theoretical,
+experimental and computational attempts towards understanding mesoscale energy
+cascade. The next section describes some properties of the shallow water and
+toy model equations. The subsequent sections showcases some interesting results
+from @augier_shallow_2019 and @LindborgMohanan2017.
 
 
 # Background
@@ -55,8 +74,8 @@ $E(k) \sim \epsilon^{2/3} k^{-5/3}$. A smaller-scale spectra characterized by
 forward enstrophy cascade was also predicted, which scales as $E(k) \sim
 \eta^{2/3} k^{-3}$. One way to deduce these power laws was to invoke similar
 assumptions as @Kolmogorov1941. It was assumed that the $\mfivethird$ inertial
-range only depends on wavenumber $k$ and mean energy dissipation rate
-$\epsilon$, and likewise `the -3 range would depend on $k$ and mean enstrophy
+range solely depends on wavenumber $k$ and mean energy dissipation rate
+$\epsilon$, and likewise the -3 range would depend on $k$ and mean enstrophy
 dissipation rate $\eta$. A more formal approach relying on statistical
 mechanics arguments were put forth to arrive at the same conclusion and
 additionally, predict the direction of cascade.

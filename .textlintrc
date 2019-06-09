@@ -1,0 +1,7 @@
+{
+  "filters": {},
+  "rules": {
+    "no-todo": true,
+    "write-good": true
+  }
+}
