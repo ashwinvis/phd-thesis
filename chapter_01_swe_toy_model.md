@@ -1,7 +1,7 @@
 \chapter{Shallow Water and Toy Model Equations}
 
 Atmospheric turbulence is characterized by a wide range of scales, ranging from
-the order of a metres to several thousands of kilometres. Understanding how
+the order of a few metres to several thousands of kilometres. Understanding how
 energy is distributed across the spectrum, and the underlying interactions
 behind the energetics are essential to improve general circulation models (GCM)
 while also recognizing the limits of predictability [see
@@ -21,7 +21,7 @@ Also relevant to this thesis were the theoretical predictions, which estimated
 the vertical resolution required for reproducing the mesoscale spectra. In
 @Lindborg2006 and @Waite-Bartello:2004 the vertical resolution was estimated
 from the vertical length scale of the elongated structures in stratified
-turbulence, i.e.  $l_v \sim u/N \approx 1 \text{km}$. On the other hand, the
+turbulence, i.e. $l_v \sim u/N \approx 1 \text{km}$. On the other hand, the
 results in @Callies-Buhler-Ferrari:2016 implied a finer resolution of the order
 of 100 meters would be needed to resolve the gravity waves and thus the
 mesoscale flows. Contrary to these expectations, in @AugierLindborg2013, some
@@ -32,7 +32,7 @@ finer resolution requirement. And to answer this in this thesis, we have
 simulated the most extreme case: a quasi-two dimensional model which
 accommodates both waves and vortices, equivalent to simulating a single layer.
 The first candidate for this exercise were the classical shallow water
-equations. The shock dominated turbulence in the shallow water equations
+equations. Shock dominated turbulence in the shallow water equations
 presented a different dynamics and this resulted in some novel results in
 @augier_shallow_2019. The study can be potentially extended to other domains
 such as acoustics and cosmology, but is unlikely to find application in
@@ -85,7 +85,6 @@ Kraichnan studied how triad interactions would function in the context of
 two-dimensional turbulence, using incompressible Navier-Stokes equations, which
 would have to conserve both energy and scalar enstrophy. The spectral energy
 and enstrophy fluxes expressed as,
-<!-- -->
 \begin{align}
   \Pi(k) &= \
     \frac{1}{2} \int_0^k dk' \int dp \int dq T(k', p, q) - \
@@ -95,7 +94,6 @@ and enstrophy fluxes expressed as,
     \frac{1}{2} \int_0^k k'^2 dk' \int dp \int dq T(k', p, q) - \
     \frac{1}{2} \int_k^\infty k'^2 dk' \int dp \int dq T(k', p, q)
 \end{align}
-<!-- -->
 respectively. Thus, the fluxes were analysed as two classes of mutually
 exclusive interactions, the range $k' \in [k, \infty)$ would interact with all
 the wavenumbers $p, q < k$ and similarly the range $k' \in [0, k]$ would
@@ -124,19 +122,17 @@ Despite the firm foundations that the theory of @Kraichnan1967 presented, a gap
 left to be bridged -- to connect the ideal two-dimensional turbulence to
 atmospheric turbulence. @Charney1971 pondered if it was possible to realize the
 predictions at all and if so, at what limits can the atmosphere be considered
-two-dimensional. It is well-known that most turbulence, especially in
+two-dimensional. It is well-known that most turbulence in
 planetary scales, originates from baroclinic instabilities. The effects of
 rotation and stratification were not considered in @Kraichnan1967. These
 "shortcomings" were addressed to some extent in @Charney1971, wherein the $k^{-3}$
 spectra scaling was derived by analysing the so-called quasi-geostrophic (QG)
 equations which conserves an approximate expression for potential vorticity:
-
-$$ \Dt{} \left[ \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left( \frac{\tilde \rho}{N^2}
-\p_z \psi \right) + \beta y  \right] = 0 $${#eq:quasigeo}
-
+$$ \Dt{} \left[\nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left(\frac{\tilde \rho}{N^2}
+\p_z \psi \right) + \beta y \right] = 0 $${#eq:quasigeo}
 where, $\psi$ is the horizontal stream function, $f$ is the solid body rotation
 speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
-the Brunt-V\text{\"a}isala frequency and $\beta \approx \p_y f$ is the beta
+the Brunt-\text{V\"ais\"al\"a} frequency and $\beta \approx \p_y f$ is the beta
 parameter. These equations are valid when the certain criteria are met such as:
 
 * Rossby number $Ro < O(1)$, indicating strong rotation,
@@ -194,7 +190,7 @@ to study the interactions of waves and stratification with an initial state of
 isotropic turbulence with a $k^{-2}$ spectrum. It was hypothesized that the
 stratified turbulence would then transfer energy to larger scale, resulting in
 a shallower $\mfivethird$ spectrum. These ideas were also revisited
-recently by @Xia2011 through experiments, wherein a large scale planar vortex
+by @Xia2011 through experiments, wherein a large scale planar vortex
 was forced from the small scales electromagnetically to generate a
 $\mfivethird$ spectrum.
 
