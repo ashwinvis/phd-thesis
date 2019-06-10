@@ -43,7 +43,7 @@ quadratic expression for kinetic energy.
 In the first section in this chapter, we present a background of the theoretical,
 experimental and computational attempts towards understanding mesoscale energy
 cascade. The next section describes some properties of the shallow water and
-toy model equations. The subsequent sections showcases some interesting results
+toy model equations. The subsequent sections showcase some interesting results
 from @augier_shallow_2019 and @LindborgMohanan2017.
 
 
@@ -54,7 +54,7 @@ from @augier_shallow_2019 and @LindborgMohanan2017.
 
 The latter half of the twentieth century presented exciting insights into how
 energy scales in the atmosphere. Several researchers in the 1960s found that
-large-scale or *synoptic* circulation in the atmosphere, and especially the
+large-scale or *synoptic* circulation in the atmosphere and the associated
 kinetic energy spectra, behaves differently when compared with well-known
 theories for three-dimensional (3D) homogeneous and isotropic turbulence by
 Kolmogorov. It was identified through observational evidences
@@ -78,7 +78,7 @@ range solely depends on wavenumber $k$ and mean energy dissipation rate
 $\epsilon$, and likewise the -3 range would depend on $k$ and mean enstrophy
 dissipation rate $\eta$. A more formal approach relying on statistical
 mechanics arguments were put forth to arrive at the same conclusion and
-additionally, predict the direction of cascade.
+predict the direction of cascade.
 
 Kraichnan studied how triad interactions would function in the context of
 two-dimensional turbulence, using incompressible Navier-Stokes equations, which
@@ -95,7 +95,7 @@ and enstrophy fluxes expressed as,
     \frac{1}{2} \int_k^\infty k'^2 dk' \int dp \int dq T(k', p, q)
 \end{align}
 <!-- -->
-respectively. Thus the fluxes were analysed as two classes of mutually
+respectively. Thus, the fluxes were analysed as two classes of mutually
 exclusive interactions, the range $k' \in [k, \infty)$ would interact with all
 the wavenumbers $p, q < k$ and similarly the range $k' \in [0, k]$ would
 interact with all wavenumbers $p, q > k$. Using this as a starting point, it
@@ -107,12 +107,12 @@ The directions of cascade, i.e. the signs of the fluxes used in scaling the
 inertial ranges, were estimated using statistical mechanics arguments [see also
 @kraichnan_two-dimensional_1980]. It stated that a Gaussian initial state with
 an energy spectra $E(k) = \pi k U(k)$ would reach an equilibrium distribution
-which scales as $U(k)~k^{n}$  where $n \notin [0, 2]$. Therefore it implies a
+which scales as $U(k)~k^{n}$  where $n \notin [0, 2]$. Therefore, it implies a
 bidirectional transfer of energy starting from the initial intermediate scale.
 
 Of particular interest was also the note that while the $\mfivethird$ spectrum
 could arise from local interactions, the -3 spectrum would be non-local in
-nature. Kraichnan correctly identified that these results would have deep
+nature. Kraichnan identified that these results would have deep
 impact in our understanding of mesoscale turbulence.
 
 ## Turbulence in atmosphere
@@ -123,7 +123,7 @@ Despite the firm foundations that the theory of @Kraichnan1967 presented, a gap
 left to be bridged -- to connect the ideal two-dimensional turbulence to
 atmospheric turbulence. @Charney1971 pondered if it was possible to realize the
 predictions at all and if so, at what limits can the atmosphere be considered
-two-dimensional. It is well known that most of turbulence, especially in
+two-dimensional. It is well-known that most turbulence, especially in
 planetary scales, originates from baroclinic instabilities. The effects of
 rotation and stratification were not considered in @Kraichnan1967. These
 "shortcomings" were addressed to some extent in @Charney1971, wherein the -3
@@ -133,7 +133,7 @@ equations which conserves an approximate expression for potential vorticity:
 $$ \Dt{} \left[ \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left( \frac{\tilde \rho}{N^2}
 \p_z \psi \right) + \beta y  \right] = 0 $${#eq:quasigeo}
 
-where $\psi$ is the horizontal stream function, $f$ is the solid body rotation
+where, $\psi$ is the horizontal stream function, $f$ is the solid body rotation
 speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
 the Brunt-V\text{\"a}isala frequency and $\beta \approx \p_y f$ is the beta
 parameter. These equations are valid when the certain criteria are met such as:
@@ -146,7 +146,7 @@ and some other scale restrictions [see chapter 5 in @vallis_atmospheric_2017].
 Using this equation and the result that energy and QG enstrophy are a conserved
 quantity it was shown that, for a sufficiently high Reynolds number flow the
 energy cascade can be inhibited by the geostrophic constraint, thus behaving
-like two-dimensional flow. Also the -3 scaling law was derived for the QG
+like two-dimensional flow. Also, the -3 scaling law was derived for the QG
 equations. Observational results from @wellck_effect_1971 was then used to
 demonstrate the existence of -3 spectra.
 
@@ -157,7 +157,7 @@ might simultaneously occur in two-dimensional turbulence. Right: A schematic of
 observed energy spectra in the atmosphere [@NastromGage1985]
 ](imgs/cascade.pdf){#fig:cascade}
 
-Nowadays, it is largely agreed upon that the -3 spectra in the _synoptic_
+Nowadays, it is understood that the -3 spectra in the _synoptic_
 scales (typically, for wavelengths over a thousand kilometres) are
 characterized by Kraichnan-type turbulence, with a constant enstrophy flux
 cascading downscale. The left plot of @fig:cascade shows how Kraichnan
@@ -165,7 +165,7 @@ anticipated the two scaling laws would coexist -- a stirring force would inject
 rotational energy at intermediate scales which would then cascade towards
 either extrema. In contrast to this picture, a study by @NastromGage1985, which
 compiled data from over 6000 aircraft flights spanning several years, revealed
-a spectra that is similar to the sketch on the right plot of @fig:cascade. One
+spectra that were similar to the sketch on the right plot of @fig:cascade. One
 should note that, the -3 range dominates in terms of energy and spans across
 the synoptic scales, whereas a lesser yet substantial $\mfivethird$ range
 characterizes the _mesoscale_ flows.
@@ -192,14 +192,14 @@ Boussinesq equation into waves and vortices from @riley_direct_1981, was used
 to study the interactions of waves and stratification with an initial state of
 isotropic turbulence with a $k^{-2}$ spectrum. It was hypothesized that the
 stratified turbulence would then transfer energy to larger scale, resulting in
-a shallower $\mfivethird$ spectrum. These ideas were also revisited fairly
+a shallower $\mfivethird$ spectrum. These ideas were also revisited
 recently by @Xia2011 through experiments, wherein a large scale planar vortex
 was forced from the small scales electromagnetically to generate a
 $\mfivethird$ spectrum.
 
 ### Stratified turbulence
 
-In the early 
+In the early 2000s a new theory of stratified turbulence 
 
 The question of direction of the mesoscale energy cascade has remained an
 unsettled debate for a long time [@vallgren_possible_2011-1], however today one
