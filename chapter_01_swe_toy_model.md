@@ -9,8 +9,9 @@ while also recognizing the limits of predictability [see
 general rule of thumb, as our capabilities of modelling of the
 smaller scales improve, so does the predictability. This intention has
 motivated researchers to further our understanding of mesoscale flows. Of
-particular interest was the direction of the mesoscale energy cascade, which has
-remained an open question for a long time [@kitamura_energy_2010]. Two mutually
+particular interest was the direction of the mesoscale energy cascade, which
+has remained an open question for a long time [@kitamura_energy_2010;
+@vallgren_possible_2011-1]. Two mutually
 exclusive hypotheses -- one suggesting a forward cascade [@Dewan:1979] and
 another suggesting an inverse cascade [@Gage:1979; @Lilly:1983] have been at the
 centre of this debate.
@@ -75,7 +76,7 @@ forward enstrophy cascade was also predicted, which scales as $E(k) \sim
 \eta^{2/3} k^{-3}$. One way to deduce these power laws was to invoke similar
 assumptions as @Kolmogorov1941. It was assumed that the $\mfivethird$ inertial
 range solely depends on wavenumber $k$ and mean energy dissipation rate
-$\epsilon$, and likewise the -3 range would depend on $k$ and mean enstrophy
+$\epsilon$, and likewise the k^{-3} range would depend on $k$ and mean enstrophy
 dissipation rate $\eta$. A more formal approach relying on statistical
 mechanics arguments were put forth to arrive at the same conclusion and
 predict the direction of cascade.
@@ -101,7 +102,7 @@ the wavenumbers $p, q < k$ and similarly the range $k' \in [0, k]$ would
 interact with all wavenumbers $p, q > k$. Using this as a starting point, it
 was shown that one would obtain a constant energy flux $\Pi(k)$ for all $k$
 when energy spectra scales with the exponent $\mfivethird$ and a constant enstrophy flux
-for all $k$ when the energy spectra scales as -3.
+for all $k$ when the energy spectra scales as $k^{-3}$.
 
 The directions of cascade, i.e. the signs of the fluxes used in scaling the
 inertial ranges, were estimated using statistical mechanics arguments [see also
@@ -111,7 +112,7 @@ which scales as $U(k)~k^{n}$  where $n \notin [0, 2]$. Therefore, it implies a
 bidirectional transfer of energy starting from the initial intermediate scale.
 
 Of particular interest was also the note that while the $\mfivethird$ spectrum
-could arise from local interactions, the -3 spectrum would be non-local in
+could arise from local interactions, the $k^{-3}$ spectrum would be non-local in
 nature. Kraichnan identified that these results would have deep
 impact in our understanding of mesoscale turbulence.
 
@@ -126,7 +127,7 @@ predictions at all and if so, at what limits can the atmosphere be considered
 two-dimensional. It is well-known that most turbulence, especially in
 planetary scales, originates from baroclinic instabilities. The effects of
 rotation and stratification were not considered in @Kraichnan1967. These
-"shortcomings" were addressed to some extent in @Charney1971, wherein the -3
+"shortcomings" were addressed to some extent in @Charney1971, wherein the $k^{-3}$
 spectra scaling was derived by analysing the so-called quasi-geostrophic (QG)
 equations which conserves an approximate expression for potential vorticity:
 
@@ -146,9 +147,9 @@ and some other scale restrictions [see chapter 5 in @vallis_atmospheric_2017].
 Using this equation and the result that energy and QG enstrophy are a conserved
 quantity it was shown that, for a sufficiently high Reynolds number flow the
 energy cascade can be inhibited by the geostrophic constraint, thus behaving
-like two-dimensional flow. Also, the -3 scaling law was derived for the QG
+like two-dimensional flow. Also, the $k^{-3}$ scaling law was derived for the QG
 equations. Observational results from @wellck_effect_1971 was then used to
-demonstrate the existence of -3 spectra.
+demonstrate the existence of $k^{-3}$ spectra.
 
 ### Energy cascade in synoptic and mesoscale flows
 
@@ -157,7 +158,7 @@ might simultaneously occur in two-dimensional turbulence. Right: A schematic of
 observed energy spectra in the atmosphere [@NastromGage1985]
 ](imgs/cascade.pdf){#fig:cascade}
 
-Nowadays, it is understood that the -3 spectra in the _synoptic_
+Nowadays, it is understood that the $k^{-3}$ spectra in the _synoptic_
 scales (typically, for wavelengths over a thousand kilometres) are
 characterized by Kraichnan-type turbulence, with a constant enstrophy flux
 cascading downscale. The left plot of @fig:cascade shows how Kraichnan
@@ -166,7 +167,7 @@ rotational energy at intermediate scales which would then cascade towards
 either extrema. In contrast to this picture, a study by @NastromGage1985, which
 compiled data from over 6000 aircraft flights spanning several years, revealed
 spectra that were similar to the sketch on the right plot of @fig:cascade. One
-should note that, the -3 range dominates in terms of energy and spans across
+should note that, the $k^{-3}$ range dominates in terms of energy and spans across
 the synoptic scales, whereas a lesser yet substantial $\mfivethird$ range
 characterizes the _mesoscale_ flows.
 
@@ -199,9 +200,46 @@ $\mfivethird$ spectrum.
 
 ### Stratified turbulence
 
-In the early 2000s a new theory of stratified turbulence 
+The term stratified turbulence was coined by @Lilly:1983 for flows affected by
+a stable, vertical gradient in density or temperature, resulting in
+quasi-horizontal motions consisting of large eddies and gravity waves.
+Stratification is characterized by the Brunt-\text{V\"ais\"al\"a} frequency,
+$N=\sqrt{\frac{-g}{\rho_0} \pder[\rho(z)]{z}}$ and the Froude number based on
+horizontal velocity and length scale $Fr_h = u / (Nl_h)$. In the 2000s,
+stratified turbulence theory found a new direction starting with @Billant2001
+wherein, the strongly stratified flows ($Fr_h \ll 1$) with sufficiently high
+Reynolds number would undergo a shear instability with alternating elongated
+pancake-like horizontal structures. The vertical length scale of the
+turbulence, that this instability leads to, was postulated to scale as, $l_v =
+u / N$. This result was also reproduced in decaying [@riley_dynamics_2003] and
+forced [@Lindborg2006] simulations of stratified turbulence. In @Lindborg2006,
+it was also shown that the energy cascade is analogous to Kolmogorov's
+homogeneous isotropic turbulence picture, due to the fact that the spectrum is
+determined by the rate of dissipation and the wavenumber as:
+\begin{align}
+E_K(k_h) &= C_K \epsilon_K^{2/3} k_h^{-5/3} \\
+E_P(k_h) &= C_P \epsilon_K^{-1/3} \epsilon_P k_h^{-5/3}
+\end{align}
+where, $\epsilon_K$ and $\epsilon_P$ are rates of dissipation of kinetic and
+potential energies respectively and the coefficients were found from
+simulations to be $C_K \approx C_P \approx 0.5$. Initially an equipartition,
+$E_K \sim E_P$ and $\epsilon_K \sim \epsilon_P$ was assumed and total
+dissipation was expected to scale as, $\epsilon = \epsilon_K + \epsilon_P \sim
+u^3 / l_h$ [@taylor_statistical_1935]. For flow structures smaller than the
+Ozmidov length scale, $l_0 = \epsilon^{1/2} / N^{3/2}$, stratified turbulence
+transitions to local patches of isotropic turbulence.
 
-The question of direction of the mesoscale energy cascade has remained an
-unsettled debate for a long time [@vallgren_possible_2011-1], however today one
-can say the majority of results tend to favour the forward-cascade hypothesis.
-
+@Lindborg2006 argued the stratified turbulence theory can explain the mesoscale
+spectra reported in @NastromGage1985 for wavelengths between 1 and 500 km.  The
+spectral energy fluxes were positive for all wavenumbers in the simulation
+implying a forward cascade of energy as @Dewan:1979 initially anticipated.
+However, with $E_K(k_h) \sim 3 E_P(k_h)$ there was no equipartition of energy,
+which suggests the physical mechanism was not linear gravity waves but
+nonlinear layered motions resulting from stratified turbulence.
+In the light of these new results, one can say the majority of results tend to
+favour the forward-cascade hypothesis. Stratified turbulence might be a
+possible explanation of mesoscale $\mfivethird$ spectra, but as observed from the
+GCM simulations of @AugierLindborg2013, it might not be necessary to simulate a
+fully resolved stratified flow to mimic its dynamics. We shall now see how a
+simpler shallow water model is used in the present thesis to study geophysical
+turbulence.
