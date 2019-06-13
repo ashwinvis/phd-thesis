@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_swe_toy_model
+chapter := chapter_01_decomposition
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -122,7 +122,7 @@ chapter_%.md: $(IMGS)
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
 	pandoc \
-		-F ./scripts/pandoc_filters.py \
+		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		--natbib \
 		$< -o $@
@@ -130,7 +130,7 @@ chapter_%.latex: chapter_%.md
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
-		-F ./scripts/pandoc_filters.py \
+		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
 		--bibliography $(BIB_FILE) \
@@ -211,4 +211,4 @@ watchmkdwn:
 		--drop
 
 # doit: opentex openthesis watchtex
-doit: openmkdwn openchapter watchmkdwn
+doit: openmkdwn $(chapter).pandoc.pdf openchapter watchmkdwn

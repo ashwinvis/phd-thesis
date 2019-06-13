@@ -5,7 +5,7 @@ import panflute as pf
 
 def create_citation(label, prefix=""):
     pandoc_label = f"[@{prefix}{label}]"
-    elem = pf.Cite(pf.Str(pandoc_label))
+    elem = pf.RawInline(pandoc_label)
     #  pf.debug(elem)
     return elem
 
@@ -23,7 +23,7 @@ def extract_latex_labels(text):
     if labels:
         return labels
     else:
-        pf.debug(f"No label in {text}")
+        return []  # "No label in {text}"
 
 
 def action(elem, doc):
@@ -41,24 +41,33 @@ def action(elem, doc):
     """
     if isinstance(elem, pf.Math) and elem.format == "DisplayMath":
         text = pf.stringify(elem)
-        if r"\label" in text:
-            env = "align"
-        else:
-            env = "align*"
-            # labels = extract_latex_labels(text)
+
+        for label in extract_latex_labels(text):
+            if not label.startswith("eq:"):
+                text = text.replace(rf'\label{{{label}}}', rf'\label{{eq:{label}}}')
 
         if r"\begin{aligned}" in text:
+            if r"\label" in text:
+                env = "align"
+            else:
+                env = "align*"
+
             return pf.RawInline(
                 "\n" + text.replace("{aligned}", f"{{{env}}}") + "\n", format="tex"
             )
+        else:
+            return pf.Math(text, format=elem.format)
 
     if doc.format.startswith("markdown"):
+        label = ""
         if isinstance(elem, pf.RawInline) and elem.format == "tex":
             label = pf.stringify(elem).lstrip(r"\eqref{").rstrip("}")
-            return create_citation(label)
+            return create_citation(label, 'eq:')
         elif isinstance(elem, pf.Link) and "reference-type" in elem.attributes:
-            if elem.attributes["reference-type"] in ("eqref", "ref"):
-                label = elem.url.lstrip("#")
+            label = elem.url.lstrip("#")
+            if elem.attributes["reference-type"] == "eqref":
+                return create_citation(label, "eq:")
+            elif elem.attributes["reference-type"] == "ref":
                 return create_citation(label)
 
 
