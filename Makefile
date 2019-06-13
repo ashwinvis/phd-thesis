@@ -77,6 +77,7 @@ IMGS = imgs/cascade.pdf \
 
 MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
+PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit

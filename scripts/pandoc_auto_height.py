@@ -29,9 +29,9 @@ def detect_height(url):
     return height
 
 
-def action_auto_height(elem, doc):
+def action(elem, doc):
     """Automatically determines height attribute for images."""
-    if isinstance(elem, pf.Image):
+    if doc.format == 'latex' and isinstance(elem, pf.Image):
         # pf.debug(elem)
         if "width" in elem.attributes and "height" not in elem.attributes:
             elem.attributes["height"] = detect_height(elem.url)
@@ -40,7 +40,7 @@ def action_auto_height(elem, doc):
 
 
 def main(doc=None):
-    return pf.run_filter(action_auto_height, doc=doc)
+    return pf.run_filter(action, doc=doc)
 
 
 if __name__ == '__main__':
