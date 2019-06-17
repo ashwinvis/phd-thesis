@@ -8,13 +8,18 @@
 #
 kappa := overview
 main := thesis
-chapter := $(basename $(wildcard chapter_00*))
+chapter := chapter_01_decomposition
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
 TEX := pdflatex
 DRAFT_FLAGS := -draftmode -interaction=nonstopmode -shell-escape
 FINAL_FLAGS := -interaction=nonstopmode -shell-escape
+ifdef CI
+TEX := texliveonfly --terminal_only -f
+DRAFT_FLAGS := -a "$(DRAFT_FLAGS)"
+FINAL_FLAGS := -a "$(FINAL_FLAGS)"
+endif
 
 VIM := nvim-qt
 VIM_FLAGS := -- +'set backupcopy=yes'
@@ -30,12 +35,11 @@ define cprint =
 	@echo -e $(red)$(1)$(end)
 endef
 
-ifndef ${CI_JOB_ID}
+# ifndef CI
 REDIRECT := | tail -n 2
-# REDIRECT := 1> /dev/null
-else
-REDIRECT := # no redirect
-endif
+# else
+# REDIRECT := # no redirect
+# endif
 
 RUBBER_INFO := $(shell command -v rubber-info 2> /dev/null)
 
@@ -59,9 +63,11 @@ DEPS = $(TEMPLATE_DIR)/MechThesis.cls       \
        $(BIB_FILE)
 
 AUXS = $(kappa).aux \
-       $(subst /,/paper.aux,$(wildcard $(paper)/))
+       $(subst /,/paper.aux,$(wildcard $(paper)/)) \
+       $(main).toc  \
+       $(main).glo \
+       $(main).ist
        # $(main).aux \
-       # $(main).toc  \
 
 BBLS = $(main).bbl \
        $(main).bcf
@@ -71,23 +77,28 @@ IMGS = imgs/cascade.pdf \
 
 MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
 
+PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 # Rules:
 #
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
-.NOPARALLEL: $(main).pdf $(main).bbl log watch
+.NOPARALLEL: $(main).pdf $(main).bbl $(main).gls log watch
 
 all: log
 #
-$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) 
+$(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(main).gls
 	$(call cprint,"building $@ with $(TEX)")
 	@sed -i -e 's/toPaper/Paper/g' thesis.out
-	@$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
+	$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
 
 $(AUXS): $(main).aux
 
 $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
-	@$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+	$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+
+$(main).gls: $(AUXS) $(BBLS)
+	$(call cprint,"building $@ with makeglossaries")
+	@makeglossaries -t $(main).log $(main)
 
 %.bcf: %.aux
 	$(call cprint,"building $@ with $<")
@@ -105,13 +116,13 @@ imgs/%.pdf: imgs/%/plot.py
 	PYTHONSTARTUP=scripts/pythonrc.py python $<
 
 chapter_%.md: $(IMGS)
-	$(call cprint,"building $@ with $^")
+	$(call cprint,"ensuring $^ required for $@")
 
 # MKDWN2TEX
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
 	pandoc \
-		-F ./scripts/pandoc_filters.py \
+		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		--natbib \
 		$< -o $@
@@ -119,7 +130,7 @@ chapter_%.latex: chapter_%.md
 chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
-		-F ./scripts/pandoc_filters.py \
+		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		-F pandoc-citeproc \
 		--bibliography $(BIB_FILE) \
@@ -148,10 +159,11 @@ else
 endif
 
 clean: clean_papers clean_thesis
+	$(call cprint,"basic cleaning done")
 
 cleanall: clean
-	$(call cprint,"cleaning generated ps,dvi,pdf,paper.tex,pandoc.tex")
-	@rm -f  *.{ps,dvi,pdf,pandoc.tex}
+	$(call cprint,"cleaning generated documents")
+	@rm -f  *.{ps,dvi,pdf,pandoc.*}
 	@rm -f paper*/paper.tex
 
 clean_minted:
@@ -160,7 +172,7 @@ clean_minted:
 
 clean_thesis:
 	$(call cprint,"cleaning thesis")
-	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml}
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist}
 
 clean_papers:
 	$(call cprint,"cleaning papers")
@@ -198,5 +210,5 @@ watchmkdwn:
 		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
 		--drop
 
-doit: opentex openthesis watchtex
-# doit: openmkdwn openchapter watchmkdwn
+# doit: opentex openthesis watchtex
+doit: openmkdwn $(chapter).pandoc.pdf openchapter watchmkdwn
