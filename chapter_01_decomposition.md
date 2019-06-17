@@ -1,7 +1,7 @@
 Shallow water equations
 =======================
 
-**The text below needs to be given a proper structure!**
+This 
 
 Governing Equations
 -------------------
@@ -9,8 +9,9 @@ Governing Equations
 The governing equations for a shallow layer of fluid are:
 \begin{align}
     \label{eq:dtu0} \partial_t \mathbf u & = - (\mathbf{u}.\nabla) \mathbf{u} - c^2 \nabla h - f\mathbf{e_z} \times \mathbf u \\
-    \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf u)\end{align}
- Equation [@eq:dtu0] may also be written in the *rotational form* as:
+    \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf u)
+\end{align}
+Equation [@eq:dtu0] may also be written in the *rotational form* as:
 $$\label{eq:dtu}
     \partial_t \mathbf u
     = - \nabla |\mathbf u|^2/2 - c^2 \nabla h - \zeta \times \mathbf u$$
