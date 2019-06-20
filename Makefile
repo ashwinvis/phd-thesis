@@ -35,6 +35,11 @@ define cprint =
 	@echo -e $(red)$(1)$(end)
 endef
 
+define watchdog =
+	@echo -e "Execute watchdog: on pattern $(1): run $(2)"
+	watchmedo shell-command --patterns=$(1) --command=$(2) --drop
+endef
+
 # ifndef CI
 REDIRECT := | tail -n 2
 # else
@@ -121,7 +126,7 @@ chapter_%.md: $(IMGS)
 # MKDWN2TEX
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
-	pandoc \
+	@pandoc \
 		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		--natbib \
@@ -140,7 +145,6 @@ chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 		--from markdown+table_captions \
 		--metadata-file=pandoc-meta.yml \
 		$< -o $@
-		# --biblatex \
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
@@ -196,19 +200,11 @@ openthesis:
 
 watchtex:
 	$(call cprint,"watching for changes")
-	watchmedo \
-		shell-command \
-		--patterns="*.tex;*/*/jfm.bbx"  \
-		--command='make -j' \
-		--drop
+	$(call watchdog,"*.tex;*/*/jfm.bbx",'make -j')
 
 watchmkdwn:
 	$(call cprint,"watching for changes")
-	watchmedo \
-		shell-command \
-		--patterns="*.md"  \
-		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
-		--drop
+	$(call watchdog,"*.md",'make $(chapter).pandoc.pdf $(chapter).latex')
 
 # doit: opentex openthesis watchtex
 doit: openmkdwn $(chapter).pandoc.pdf openchapter watchmkdwn
