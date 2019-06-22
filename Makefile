@@ -32,7 +32,7 @@ red:="\033[0;31m"
 end:="\033[0m"
 
 define cprint =
-	@echo -e $(red)$(1)$(end)
+	@echo -e $(red)[$(shell date)] $(1)$(end)
 endef
 
 define watchdog =
