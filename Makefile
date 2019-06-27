@@ -134,7 +134,7 @@ chapter_%.latex: chapter_%.md
 		--natbib \
 		$< -o $@
 
-chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
+chapter_%.pandoc.tex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
 		$(PANDOC_FILTERS) \
@@ -148,7 +148,7 @@ chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 		--metadata-file=pandoc-meta.yml \
 		$< -o $@
 
-chapters.pandoc.tex: $(MKDWN) templates/mkdwn-header.tex
+chapters.pandoc.tex: $(MKDWN)
 	$(call cprint,"building $@ with pandoc $^")
 	@pandoc \
 		$(PANDOC_FILTERS) \
@@ -205,7 +205,8 @@ clean_papers:
 
 todo:
 	@# grep -r --color=tty '%.*[Tt][Oo][Dd][Oo]:'
-	@ack '%.*[Tt][Oo][Dd][Oo]:'
+	@# ack --nomake '[Tt][Oo][Dd][Oo]:'
+	rg -Tmake '[Tt][Oo][Dd][Oo]:'
 
 opentex:
 	$(VIM) $(chapter).tex $(VIM_FLAGS) 2> /dev/null &
