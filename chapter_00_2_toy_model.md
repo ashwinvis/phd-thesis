@@ -1,4 +1,4 @@
-
+# Toy-model equations
 
 $$\frac{\partial {\bf u}} {\partial t} + {{\bf u}\cdot \nabla} {\bf u} +  f {\bf e}_z \times {\bf u} = -c^2 \nabla \eta $${#eq:swe_u}
 $$\frac{\partial \eta}{\partial t}+ {{\bf u} \cdot \nabla} \eta   = \red{- (1+\eta) \nabla \cdot {\bf u}}$${#eq:swe_eta}
@@ -27,24 +27,15 @@ $$\frac{\partial \theta}{\partial t}+ \green{{\bf u}_r \cdot \nabla} \theta   = 
 
 where, $\theta = c\eta$
 
-<!-- #endregion -->
-
-<!-- #region {"slideshow": {"slide_type": "-"}} -->
 * Pros: No shocks, KE and APE are quadratic and conserved, linearised potential vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$
 
 * Cons: Full potential vorticity $Q$ is not exactly conserved
 <!-- #endregion -->
 
-* Replaced \eta with a proportional \theta variable. Takes the form of potential temperature.
+* Replaced $\eta$ with a proportional $\theta$ variable. Takes the form of potential temperature.
 * Advantages and disadvantages
-<div align="center">
-</div>
-<br/>
 
  * ${\bf u}_r  = -\nabla \times ( {\bf e_z} \Psi)$ is the rotational component
  * $\bf {u}_d = \nabla \chi$ is the divergent component
  
 with $\Psi$ and $\chi$ being the stream function and the velocity potential respectively.
-
-of of 
-
