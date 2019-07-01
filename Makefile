@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_00_0_swe_toy_model
+chapter := chapter_00_1_decomposition
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -233,7 +233,7 @@ watchchapters:
 
 watchthesis:
 	$(call cprint,"watching for changes")
-	$(call watchdog,"*.tex;*/*/jfm.bbx",'make -j')
+	$(call watchdog,"*.tex",'make -j')
 
 
 # doit: opentex openthesis watchthesis

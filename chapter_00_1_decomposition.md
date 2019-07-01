@@ -1,38 +1,41 @@
 Shallow water equations
 =======================
 
-
-
-
-Governing Equations
--------------------
+## Governing Equations
 
 The governing equations for a shallow layer of fluid are:
 \begin{align}
-    \label{eq:dtu0} \partial_t \mathbf u & = - (\mathbf{u}.\nabla) \mathbf{u} - c^2 \nabla h - f\mathbf{e_z} \times \mathbf u \\
-    \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf u)
+    \label{eq:dtu0} \partial_t \mathbf{u} & = - (\mathbf{u}.\nabla) \mathbf{u}
+    - c^2 \nabla h - f\mathbf{e_z} \times \mathbf{u} \\
+    \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf{u})
 \end{align}
-Equation [@eq:dtu0] may also be written in the *rotational form* as:
+where $\bf u$ is two-dimensional horizontal velocity vector, $h$ is the scalar height
+field, $c$ is the phase speed of gravity waves, $f$ is the system rotation
+responsible for the Coriolis force. Equation [@eq:dtu0] may also be written in
+the *rotational form* as:
 $$\label{eq:dtu}
-    \partial_t \mathbf u
-    = - \nabla |\mathbf u|^2/2 - c^2 \nabla h - \zeta \times \mathbf u$$
-where, [zeta]{acronym-label="zeta" acronym-form="singular+short"}
+    \partial_t \mathbf{u}
+    = - \nabla |\mathbf{u}|^2/2 - c^2 \nabla h - \zeta \mathbf{\hat{e}}_z
+    \times \mathbf{u}
+$$
+where, [$\zeta$]{acronym-label="zeta" acronym-form="singular+short"}
 represents absolute vorticity, i.e. the sum of vorticity and system
 rotation. Furthermore, equations [@eq:dtu0] and [@eq:dth] can be
 combined to form an equation for the *total mass flux*,
 [J]{acronym-label="J" acronym-form="singular+short"} $= h\mathbf{u}$:
 $$\label{eq:dtJ}
-    \partial_t \mathbf J = -(\mathbf{u}.\nabla)\mathbf{J} - \nabla(c^2h^2)/2 -
-    \zeta \times \mathbf J - (\nabla. \mathbf J)\mathbf u$$ Similarly,
-an equation for the *displaced mass flux*, [M]{acronym-label="M"
+    \partial_t \mathbf{J} = -(\mathbf{u}.\nabla)\mathbf{J} - \nabla(c^2h^2)/2 -
+    \zeta \mathbf{\hat{e}}_z \times \mathbf{J} - (\nabla.
+    \mathbf{J})\mathbf{u}$$
+Similarly, an equation for the *displaced mass flux*, [M]{acronym-label="M"
 acronym-form="singular+short"} $=
     \eta\mathbf{u}$ is: $$\label{eq:dtM}
     \partial_t \mathbf M = -(\mathbf{u}.\nabla)\mathbf{M} - \nabla(c^2\eta^2)/2 -
-    \zeta \times \mathbf M - (\nabla.\mathbf{u} + \nabla.\mathbf{M})\mathbf u$$
+    \zeta \mathbf{\hat{e}}_z \times \mathbf M - (\nabla.\mathbf{u} + \nabla.\mathbf{M})\mathbf u$$
 For a divergence free flow, a Poisson equation for *h* can be
-formulated. Taking divergence of [@eq:dtu], yields the Poisson equation:
+formulated. Taking divergence of [@eq:dtu0], yields the Poisson equation:
 $$\label{eq:poisson}
-    \nabla^2 h = \frac{1}{c^2} \left[ \nabla.(\zeta \times \mathbf u )
+    \nabla^2 h = \frac{1}{c^2} \left[ \nabla.(\zeta \mathbf{\hat{e}}_z \times \mathbf u )
         - \nabla^2 \frac{|u|^2}{2} \right]$$ Applying fourier transform,
 the spectral counterpart for [@eq:poisson] in tensor notation is:
 $$\label{eq:poisson_fft}
@@ -40,8 +43,7 @@ $$\label{eq:poisson_fft}
             u_k})
         + \kappa^2 \frac{\widehat{u_i u_i}}{2} \right]$$
 
-Helmholtz Decomposition
------------------------
+## Helmholtz Decomposition
 
 ### For velocity field, u
 
@@ -52,68 +54,64 @@ irrotational) vector field and a transverse (solenoidal, curling,
 rotational, non-diverging) vector field. This allows us to express the
 velocity field as:
 \begin{align}
-    \label{eq:helm_u}
-    \mathbf u & = -\nabla \times (e_z \Psi) + \nabla \Phi \\
-              & =  -\nabla \times \Psi_z + \nabla \Phi\end{align}
-
-For the sake of clarity, we shall denote the rotational (vortical) and
-divergent (wave) parts of the velocity with the suffix *r* and *d*
-respectively. Thus,
+$$    \label{eq:helm_u}
+    \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}
+\end{align}
+<!-- & =  -\nabla \times \Psi_z + \nabla \Phi -->
+For the sake of clarity, we shall denote the rotational and divergent parts of
+the velocity with the suffix *r* and *d* respectively. Thus,
 \begin{align*}
-    \mathbf u_r & = -\nabla \times \Psi_z ; & \mathbf u_d =   \nabla \Phi\end{align*}
- And therefore, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
-
-To find the projection operators for the divergent part, taking
-divergence of [@eq:helm_u] gives $\nabla .\mathbf{u} = \nabla^2 \Phi$.
-This transforms in the spectral plane as, $ik_j \hat{u}_j = -\kappa^2
-    \hat{\Phi}$, implying:
+    \mathbf{u}_r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}_d =
+    \nabla {\bf \Phi}
+\end{align*}
+and therefore, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
+To find the projection operators for the divergent parts, take the
+divergence of [@eq:helm_u] giving $\nabla .\mathbf{u} = \nabla^2 {\bf \Phi}$.
+This transforms into spectral space as, $ik_j \hat{u}_j = -\kappa^2 \hat{\Phi}$, implying:
 \begin{align*}
-    \mathbf{\hat{u}}_d = & ik_i \hat{\Phi} = \frac{k_i k_j}{\kappa^2} \hat{u}_j       \\
-    \mathbf{\hat{u}}_r = & \mathbf{\hat{u}} - \mathbf{\hat{u}}_d = \left( \delta_{ij}
-    - \frac{k_i k_j}{\kappa^2} \right) \hat{u}_j\end{align*}
-
-Thus, for two-dimensions the decomposed velocity are represented as
-follows,
-
-
+    {\hat{u}}_d_i = & ik_i \hat{\Phi} = \frac{k_i k_j}{\kappa^2} \hat{u}_j       \\
+    {\hat{u}}_r_i = & \hat{u}_i - {\hat{u}}_d_i = \left( \delta_{ij}
+    - \frac{k_i k_j}{\kappa^2} \right) \hat{u}_j
+\end{align*}
+where, $\kappa = |\mathbf{k}|$, magnitude of the wavenumber vector.
+Thus, for two-dimensions the decomposed velocity are represented in vector
+notation as follows,
 \begin{align*}
-    \mathbf{\hat{u}}_d^x = & \frac{k_x (k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2}                \\
-    \mathbf{\hat{u}}_r =   & \hat{u}_{x} - \frac{k_x  (k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2}\end{align*}
-
-### For fluid depth, h
-
-To obtain a similar decomposition, $h = h_r + h_d$, one should use the
-Poisson equation [@eq:poisson_fft]. Since Poisson equation requires a
-divergence free flow, the LHS of [@eq:poisson_fft] would correspond to
-the rotational part of the flow in the transformed plane, i.e.
-$\hat{h}_r$. Henceforth, the divergent part, $\hat{h}_d$ can be obtained
-by subtracting $\hat{h}_r$ from $\hat{h}$.
+    \mathbf{\hat{u}}_d = & 
+    \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k} \\
+    \mathbf{\hat{u}}_r =   & \mathbf{\hat u} - \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k}
+\end{align*}
+To obtain a similar decomposition, $h = h_r + h_d$, for the fluid depth one can
+use the Poisson equation [@eq:poisson_fft]. Since Poisson equation requires a
+divergence free flow, the LHS of [@eq:poisson_fft] would correspond to the
+rotational part of the flow in the transformed plane, i.e.  $\hat{h}_r$.
+Henceforth, the divergent part, $\hat{h}_d$ can be obtained by subtracting
+$\hat{h}_r$ from $\hat{h}$.
 
 Normal mode decomposition
 -------------------------
 
 ### Following Bartello 1995
 
-In order to isolate oscillating fast modes that display no nonlinearity,
+In order to isolate oscillating fast modes,
 one can adopt a linearization approach followed by a normal mode
-decomposition. As a result of linearization, from [@eq:dtu] and
+decomposition. As a result of linearization of [@eq:dtu0] and
 [@eq:dth]:
 \begin{align}
     \label{eq:dtu_l}
     \partial_t \mathbf u = & - c^2 \nabla \eta - f\mathbf{e_z} \times \mathbf u \\
     \label{eq:dth_l}
     \partial_t \eta =      & - \nabla.  \mathbf u\end{align}
- Taking curl and divergence of the linearized equation for momentum
-[@eq:dtu_l] gives the following evolution equations with change of
-variables:
+ Taking the curl and divergence of the linearized equation for momentum
+[@eq:dtu_l] gives the following evolution equations:
 \begin{align}
     \partial_t \zeta =  & - f \delta
     \label{eq:dtcurl_l}                                                  \\
     \partial_t \delta = & f \zeta - c^2 \nabla^2 \eta \label{eq:dtdiv_l} \\
     \partial_t \eta =   & - \delta \label{eq:dteta_l}\end{align}
- where $\zeta$ and $\delta$ are relative vorticity and divergence as
-functions of $\mathbf{r}$ and $t$ respectively. Representing the
-dependent flow quantities in terms of Fourier modes:
+where $\zeta$ and $\delta$ are relative vorticity and divergence 
+respectively. Representing the dependent flow quantities in terms of Fourier
+modes:
 \begin{align*}
     \begin{pmatrix}
         u \\ v \\ \eta \\ \zeta \\ \delta
@@ -122,7 +120,7 @@ dependent flow quantities in terms of Fourier modes:
     \begin{pmatrix}
         \hat{u} \\ \hat{v} \\ \hat{\eta} \\ \hat{\zeta} \\ \hat{\delta}
     \end{pmatrix} e^{i(\mathbf k . \mathbf{r} - \omega t)} \mathbf{dk} d\omega\end{align*}
- allows to rewrite the system of equations [@eq:dtcurl_l] to
+allows us to rewrite the system of equations [@eq:dtcurl_l] to
 [@eq:dteta_l] as an eigenvalue problem:
 \begin{align*}
     i\omega
@@ -138,10 +136,8 @@ dependent flow quantities in terms of Fourier modes:
     \begin{Bmatrix}
         \hat{\zeta} \\ \hat{\delta} \\c\kappa\hat{\eta}
     \end{Bmatrix}\end{align*}
- where, $\kappa = |\mathbf{k}|$.
-
 Let us define $A$ as the Hermitian matrix operating on the vector
-$\mathbf{W} = \{\hat{\zeta}, \hat{\delta} ,c\kappa \hat{\eta} \}^T$.which
+$\mathbf{W} = \{\hat{\zeta}, \hat{\delta} ,c\kappa \hat{\eta} \}^T$ which
 yields the familiar dispersion relation for the slow geostrophic mode
 and fast Poincaré wave modes:
 $$\omega^{(0)} = 0;\quad \omega^{(\pm)}=\pm \sigma$$ where,
@@ -187,11 +183,10 @@ modes are given by:
         f\hat{\zeta} + c^2\kappa^2\hat{\eta} - i\sigma\hat{\delta} \\
         f\hat{\zeta} + c^2\kappa^2\hat{\eta} + i\sigma\hat{\delta}
     \end{Bmatrix}\end{align*}
-
-The first mode represents *linearised potential vorticity* which is
-conserved in this framework. The remaining two are the *linearised
-ageostrophic or wave modes*. In the absence of system rotation, i.e.
-$f=0$, the normal modes are simply, $$\label{eq:nmode}
+The first mode represents *linearised potential vorticity* . The remaining two
+are the *linearised ageostrophic or wave modes*. In the absence of system
+rotation, i.e.  $f=0$, the normal modes are simply,
+$$\label{eq:nmode}
     \mathbf{N} =
     \begin{Bmatrix}
         \hat \zeta                                              \\
@@ -261,8 +256,7 @@ Thus,
         \kappa \left(c^{2} \eta + f \psi + i \phi \sigma\right) \\
         \kappa \left(c^{2} \eta + f \psi - i \phi \sigma\right)
     \end{Bmatrix}\end{align*}
-
-The $\mathbf{B}$ vector can also be related to the primitive variable
+The vector can also be related to the primitive variable
 vector, $\mathbf{U} = \{\hat{u},\hat{v},c\hat{\eta}\}^T$ using
 transformation matrices as follows:
 \begin{align*}
@@ -279,10 +273,10 @@ equals the total energy as:
     = & \frac{1}{\kappa^2} \mathbf{\bar U}^T
     [\bar P]^T[{X}_n]  [\bar{X}_n]^T [P] \mathbf{U} \\
     = & \mathbf{\bar U}^T\mathbf{U}\end{align*}
- implying, $$2(E_K+E_P)=\sum_i B^{(i)}\bar{B}^{(i)}=\kappa^{2} \psi
-    \overline{\psi} +\kappa^{2} \phi \overline{\phi} + c^{2}
-    \eta \overline{\eta}
-    = u\bar{u} + v\bar{v} + c^2\eta\bar{\eta}$$ This allows us to
+ implying,
+ $$(E_K+E_P)=\frac{1}{2}\sum_i B^{(i)}{B}^{*(i)}=
+ \frac{1}{2}\kappa^{2}(\psi {\psi}^* +\kappa^{2} \phi {\phi}^* + c^{2} \eta {\eta}^*)
+    = \frac{1}{2}(uu* + vv* + c^2\eta\eta*)$$ This allows us to
 represent the primitive variables in terms of normal modes as
 $$\mathbf{U} = [Q]\mathbf{B}$$ where, the inversion matrix is
 \begin{align*}
