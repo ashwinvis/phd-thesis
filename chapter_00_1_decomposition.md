@@ -3,19 +3,6 @@ Shallow water equations
 
 
 
-<div id="fig:atmo">
-![Layers of the atmosphere and the (source:
-UCAR)](imgs/atmosphere_layers.jpg){#fig:atmo_layer width=60%}
-
-![Annual zonal mean potential temperature - troposphere perspective (source:
-ERA-40 atlas)](imgs/pot_temp_tropo_mean.eps){#fig:atmo_tropo width=45%}
-![Annual zonal mean temperature - stratosphere perspective (source: ERA-40
-atlas)](imgs/temp_strato_mean.eps){#fig:atmo_strat width=45%}
-
-Stratification in atmosphere
-</div>
-
-The shallow-water equations are 
 
 Governing Equations
 -------------------
