@@ -32,7 +32,7 @@ region where these two ranges blend.
 <!--  -->
 Prior to this study the $k^{-3}$ scaling was well-known [@Charney1971] and
 explained using theories for two-dimensional turbulence theory
-[@Kraichnan1967]. However the theoretical explanation for \mfivethird mesoscale
+[@Kraichnan1967]. However the theoretical explanation of \mfivethird mesoscale
 spectra and the direction of energy cascade has remained an unsettled debate
 for several decades  [@kitamura_energy_2010; @vallgren_possible_2011-1]. Two
 hypotheses -- one suggesting a forward energy cascade [@Dewan:1979] and another
@@ -70,7 +70,7 @@ simulations plotted against the forcing Froude number $(F_f)$. The Froude
 number is inversely proportional to the wave phase-speed, $c$. The theoretical
 prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.  Source:
 @augier_shallow_2019.
-](./paper_04_shallow_water/Pyfig/fig_shock_sep.pdf){#fig:shock-sep width=60%}
+](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=60%}
 
 The first candidate for this exercise was the classical shallow water
 equations. Large scale wave forcing in a narrow band of wavenumbers (forcing
