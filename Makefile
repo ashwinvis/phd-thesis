@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_decomposition
+chapter := chapter_00_1_decomposition
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -32,7 +32,12 @@ red:="\033[0;31m"
 end:="\033[0m"
 
 define cprint =
-	@echo -e $(red)$(1)$(end)
+	@echo -e $(red)[$(shell date)] $(1)$(end)
+endef
+
+define watchdog =
+	@echo -e "Execute watchdog: on pattern $(1): run $(2)"
+	watchmedo shell-command --patterns=$(1) --command=$(2) --drop
 endef
 
 # ifndef CI
@@ -75,7 +80,9 @@ BBLS = $(main).bbl \
 IMGS = imgs/cascade.pdf \
        imgs/dependency.pdf
 
-MKDWN2TEX = $(subst .md,.latex,$(wildcard chapter*.md))
+MKDWN = $(sort $(wildcard chapter*.md))
+MKDWN2TEX = $(subst .md,.latex,$(MKDWN))
+MKDWN2PANDOCTEX = $(subst .md,.pandoc.tex,$(MKDWN))
 
 PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 # Rules:
@@ -121,13 +128,13 @@ chapter_%.md: $(IMGS)
 # MKDWN2TEX
 chapter_%.latex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
-	pandoc \
+	@pandoc \
 		$(PANDOC_FILTERS) \
 		-F pandoc-crossref \
 		--natbib \
 		$< -o $@
 
-chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
+chapter_%.pandoc.tex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
 		$(PANDOC_FILTERS) \
@@ -140,9 +147,26 @@ chapter_%.pandoc.tex: chapter_%.md templates/mkdwn-header.tex
 		--from markdown+table_captions \
 		--metadata-file=pandoc-meta.yml \
 		$< -o $@
-		# --biblatex \
+
+chapters.pandoc.tex: $(MKDWN)
+	$(call cprint,"building $@ with pandoc $^")
+	@pandoc \
+		$(PANDOC_FILTERS) \
+		-F pandoc-crossref \
+		-F pandoc-citeproc \
+		--bibliography $(BIB_FILE) \
+		--csl templates/journal-of-fluid-mechanics.csl \
+		--standalone \
+		--top-level-division=chapter \
+		--from markdown+table_captions \
+		--metadata-file=pandoc-meta.yml \
+		$(MKDWN) -o $@
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
+	$(call cprint,"building $@ with latexmk")
+	@latexmk -silent -use-make -pdf $<
+
+chapters.pandoc.pdf: chapters.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
 	@latexmk -silent -use-make -pdf $<
 
@@ -163,7 +187,8 @@ clean: clean_papers clean_thesis
 
 cleanall: clean
 	$(call cprint,"cleaning generated documents")
-	@rm -f  *.{ps,dvi,pdf,pandoc.*}
+	@rm -f  *.{ps,dvi,pdf,pandoc.pdf}
+	@rm -f chapter*.latex
 	@rm -f paper*/paper.tex
 
 clean_minted:
@@ -172,7 +197,7 @@ clean_minted:
 
 clean_thesis:
 	$(call cprint,"cleaning thesis")
-	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist}
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist,pandoc.tex}
 
 clean_papers:
 	$(call cprint,"cleaning papers")
@@ -180,7 +205,8 @@ clean_papers:
 
 todo:
 	@# grep -r --color=tty '%.*[Tt][Oo][Dd][Oo]:'
-	@ack '%.*[Tt][Oo][Dd][Oo]:'
+	@# ack --nomake '[Tt][Oo][Dd][Oo]:'
+	@rg -Tmake '[Tt][Oo][Dd][Oo]:'
 
 opentex:
 	$(VIM) $(chapter).tex $(VIM_FLAGS) 2> /dev/null &
@@ -188,27 +214,28 @@ opentex:
 openmkdwn:
 	$(VIM) $(chapter).md $(VIM_FLAGS)
 
-openchapter:
-	zathura $(chapter).pandoc.pdf 2> /dev/null &
+openchapter: $(chapter).pandoc.pdf 
+	zathura $< 2> /dev/null &
 
-openthesis:
-	zathura $(main).pdf 2> /dev/null &
+openchapters: chapters.pandoc.pdf
+	zathura $< 2> /dev/null &
 
-watchtex:
+openthesis: $(main).pdf
+	zathura $< 2> /dev/null &
+
+watchchapter:
 	$(call cprint,"watching for changes")
-	watchmedo \
-		shell-command \
-		--patterns="*.tex;*/*/jfm.bbx"  \
-		--command='make -j' \
-		--drop
+	$(call watchdog,"*.md",'make $(chapter).pandoc.pdf $(chapter).latex')
 
-watchmkdwn:
+watchchapters:
 	$(call cprint,"watching for changes")
-	watchmedo \
-		shell-command \
-		--patterns="*.md"  \
-		--command='make $(chapter).pandoc.pdf $(chapter).latex ' \
-		--drop
+	$(call watchdog,"*.md",'make chapters.pandoc.pdf')
 
-# doit: opentex openthesis watchtex
-doit: openmkdwn $(chapter).pandoc.pdf openchapter watchmkdwn
+watchthesis:
+	$(call cprint,"watching for changes")
+	$(call watchdog,"*.tex",'make -j')
+
+
+# doit: opentex openthesis watchthesis
+# doit: openmkdwn $(chapter).pandoc.pdf openchapter watchchapter
+doit: openmkdwn openchapters watchchapters
