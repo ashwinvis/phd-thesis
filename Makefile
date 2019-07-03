@@ -37,7 +37,7 @@ endef
 
 define watchdog =
 	@echo -e "Execute watchdog: on pattern $(1): run $(2)"
-	watchmedo shell-command --patterns=$(1) --command=$(2) --drop
+	nohup watchmedo shell-command --patterns=$(1) --command=$(2) --drop 2>watch.log&
 endef
 
 # ifndef CI
@@ -87,7 +87,7 @@ MKDWN2PANDOCTEX = $(subst .md,.pandoc.tex,$(MKDWN))
 PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 # Rules:
 #
-.PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit
+.PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit red end
 .NOPARALLEL: $(main).pdf $(main).bbl $(main).gls log watch
 
 all: log

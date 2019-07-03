@@ -2,7 +2,7 @@
 <!-- \chapter{Shallow Water and Toy Model Equations} -->
 
 Atmospheric turbulence is characterized by a wide range of scales, ranging from
-the order of a millimetres to several thousands of kilometres. Understanding the
+the order of millimetres to several thousands of kilometres. Understanding the
 underlying interactions behind the energetics are essential to improve general
 circulation models (GCM) while also recognizing the limits of predictability
 [see @lorenz_predictability_1969; @vallis_atmospheric_2017 pp. 433--447]. As a
@@ -27,12 +27,12 @@ activity is concentrated. The spectra thus calculated, shown in
 @fig:nastromgage, identified that there were two separate ranges: energy in a
 narrow synoptic range (wavelengths between 1000 and 3000 km) scaling as
 $k^{-3}$, and in the mesoscale range (wavelengths between 2 and 500 km) scaling
-as \mfivethird. For wavelengths just above 500  km there is also an overlap
+as \kfivethird. For wavelengths just above 500  km there is also an overlap
 region where these two ranges blend.
 <!--  -->
 Prior to this study the $k^{-3}$ scaling was well-known [@Charney1971] and
 explained using theories for two-dimensional turbulence theory
-[@Kraichnan1967]. However the theoretical explanation of \mfivethird mesoscale
+[@Kraichnan1967]. However the theoretical explanation of \kfivethird\ mesoscale
 spectra and the direction of energy cascade has remained an unsettled debate
 for several decades  [@kitamura_energy_2010; @vallgren_possible_2011-1]. Two
 hypotheses -- one suggesting a forward energy cascade [@Dewan:1979] and another
@@ -142,7 +142,7 @@ where $\epsilon$ is the energy dissipation. At smaller-scales there is a
 forward enstrophy cascade with an associated spectrum, $E(k) \sim \eta^{2/3}
 k^{-3}$, where $\eta$ is the enstrophy dissipation. One way to deduce these
 power laws was to invoke similar assumptions as @Kolmogorov1941. It was assumed
-that the $\mfivethird$ inertial range solely depends on wavenumber $k$ and mean
+that the \kfivethird\ inertial range solely depends on wavenumber $k$ and mean
 energy dissipation rate $\epsilon$, and likewise the $k^{-3}$ range would
 depend on $k$ and mean enstrophy dissipation rate $\eta$. A more formal
 approach relying on statistical mechanics arguments was formulated to arrive at
@@ -167,7 +167,7 @@ mutually exclusive interactions, the range $k' \in [k, \infty)$ would interact
 with all the wavenumbers $p, q < k$ and similarly the range $k' \in [0, k]$
 would interact with all wavenumbers $p, q > k$. Using this as a starting point,
 it was shown that one would obtain a constant energy flux $\Pi(k)$
-when energy spectra scales as $\mfivethird$ and a constant enstrophy flux
+when energy spectra scales as \kfivethird\ and a constant enstrophy flux
 $Z(k)$ when the energy spectra scales as $k^{-3}$. The directions of cascade,
 i.e. the signs of the fluxes used in scaling the inertial ranges, were then
 determined using statistical mechanics arguments [see also
@@ -177,7 +177,7 @@ determined using statistical mechanics arguments [see also
 <!-- U(k)$ would reach an equilibrium distribution which scales as $U(k)~k^{n}$ -->
 <!-- where $n \notin [0, 2]$. Therefore, it implies a bidirectional transfer of -->
 <!-- energy starting from the initial intermediate scale. -->
-<!-- Of particular interest was also the note that while the $\mfivethird$ spectrum -->
+<!-- Of particular interest was also the note that while the \kfivethird\ spectrum -->
 <!-- could arise from local interactions, the $k^{-3}$ spectrum would be non-local in -->
 <!-- nature. Kraichnan identified that these results would have deep -->
 <!-- impact in our understanding of mesoscale turbulence. -->
@@ -232,12 +232,12 @@ contrast to this picture, a study by @NastromGage1985, which compiled data from
 over 6000 aircraft flights spanning several years, revealed spectra that were
 similar to the sketch on the right plot of @fig:cascade. One should note that,
 the $k^{-3}$ range dominates in terms of energy and spans across the synoptic
-scales, whereas a lesser yet substantial $\mfivethird$ range characterizes the
-_mesoscale_ flows. @Frisch described the appearance of the \mfivethird scaling
+scales, whereas a lesser yet substantial \kfivethird\ range characterizes the
+Umesoscale_ flows. @Frisch described the appearance of the \kfivethird\ scaling
 at mesoscales as "paradoxical". For the two-dimensional turbulence
 interpretation to be valid in such scales,
 
-What the mechanism behind the $\mfivethird$ mesoscale spectra is, has been an
+What the mechanism behind the \kfivethird\ mesoscale spectra is, has been an
 open question ever since, and competing theories were put forth to address
 this. @Dewan:1979 analysed the energy spectrum of velocity fluctuations in the
 stratosphere up to wavelength of \order{10} kilometres and suggested that
@@ -253,17 +253,17 @@ process would be similar to Kraichnan's prediction of inverse energy cascade.
 To confirm the power law, the two-point temporal structure functions of winds
 was derived and applied on data from balloon sounding measurements. Through
 Taylor's transformation the author linked this to the spatial structure
-function equivalent of $\mfivethird$ spectrum. In a contemporary paper,
+function equivalent of \kfivethird\ spectrum. In a contemporary paper,
 @Lilly:1983 also made a similar inference of inverse energy cascade, while
 studying decaying stably-stratified turbulence and its tendency to evolve into
 enlarged vortices. A scale based decomposition of the Boussinesq equation into
 waves and vortices by @riley_direct_1981, was used to study the interactions of
 waves and stratification with an initial state of isotropic turbulence with a
 $k^{-2}$ spectrum. It was hypothesized that the stratified turbulence would
-then transfer energy to larger scale, resulting in a shallower $\mfivethird$
+then transfer energy to larger scale, resulting in a shallower $\kfivethird$
 spectrum. The inverse energy cascade was revisited by @Xia2011 through
 experiments, wherein a large scale planar vortex was forced from the small
-scales electromagnetically to generate a $\mfivethird$ spectrum.
+scales electromagnetically to generate a \kfivethird\ spectrum.
 
 @Lindborg1999 contains a detailed review of the above and other hypotheses,
 proposed in the light of the @nastrom_kinetic_1984 results, along with a
@@ -276,7 +276,7 @@ acting as a sink near the synoptic to mesoscale transition range as suggested
 in @gage_theoretical_1986, since the transition appears rather smooth in the
 spectrum, as noted by the same authors in the GASP analysis. Nevertheless,
 @Lindborg1999 argues that, it is still possible to accommodate both $k^{-3}$
-and $\mfivethird$ ranges without adding a sink at intermediate scales.  He
+and \kfivethird\ ranges without adding a sink at intermediate scales.  He
 demonstrates the possibility of a inertial range determined by both
 constant-energy and enstrophy fluxes, by allowing both a large scale and a
 small energy source to exists.
