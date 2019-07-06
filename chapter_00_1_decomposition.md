@@ -9,10 +9,10 @@ The governing equations for a shallow layer of fluid are:
     - c^2 \nabla h - f\mathbf{e_z} \times \mathbf{u} \\
     \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf{u})
 \end{align}
-where $\bf u$ is two-dimensional horizontal velocity vector, $h$ is the scalar height
-field, $c$ is the phase speed of gravity waves, $f$ is the system rotation
-responsible for the Coriolis force. Equation [@eq:dtu0] may also be written in
-the *rotational form* as:
+where $\bf u$ is two-dimensional horizontal velocity vector, $h$ is the
+non-dimensional scalar height field, $c$ is the phase speed of gravity waves,
+$f$ is the system rotation responsible for the Coriolis force. Equation
+[@eq:dtu0] may also be written in the *rotational form* as:
 $$\label{eq:dtu}
     \partial_t \mathbf{u}
     = - \nabla |\mathbf{u}|^2/2 - c^2 \nabla h - \zeta \mathbf{\hat{e}}_z
@@ -33,54 +33,46 @@ acronym-form="singular+short"} $=
     \partial_t \mathbf M = -(\mathbf{u}.\nabla)\mathbf{M} - \nabla(c^2\eta^2)/2 -
     \zeta \mathbf{\hat{e}}_z \times \mathbf M - (\nabla.\mathbf{u} + \nabla.\mathbf{M})\mathbf u$$
 For a divergence free flow, a Poisson equation for *h* can be
-formulated. Taking divergence of [@eq:dtu0], yields the Poisson equation:
+formulated. Taking the divergence of [@eq:dtu0], yields the Poisson equation:
 $$\label{eq:poisson}
     \nabla^2 h = \frac{1}{c^2} \left[ \nabla.(\zeta \mathbf{\hat{e}}_z \times \mathbf u )
-        - \nabla^2 \frac{|u|^2}{2} \right]$$ Applying fourier transform,
-the spectral counterpart for [@eq:poisson] in tensor notation is:
+        - \nabla^2 \frac{|u|^2}{2} \right]$$
+The spectral counterpart for [@eq:poisson] in tensor notation is:
 $$\label{eq:poisson_fft}
     -\kappa^2 \hat{h} = \frac{1}{c^2} \left[ ik_i (\widehat{\epsilon_{ijk} \zeta_j
             u_k})
         + \kappa^2 \frac{\widehat{u_i u_i}}{2} \right]$$
+where the $\widehat{\text{ }}$ denotes the Fourier transform.
 
 ## Helmholtz Decomposition
 
 ### For velocity field, u
 
 The Helmholtz decomposition theorem, or the fundamental theorem of
-vector calculus, states that any well-behaved vector field can be
-decomposed into the sum of a longitudinal (diverging, non-curling,
-irrotational) vector field and a transverse (solenoidal, curling,
-rotational, non-diverging) vector field. This allows us to express the
-velocity field as:
+vector calculus [@baird_helmholtz_2012], states that any well-behaved vector
+field can be decomposed into the sum of a longitudinal (diverging, non-curling,
+irrotational) vector field and a transverse (solenoidal, curling, rotational,
+non-diverging) vector field. This allows us to express the velocity field as:
 \begin{align}
 $$    \label{eq:helm_u}
     \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}
 \end{align}
 <!-- & =  -\nabla \times \Psi_z + \nabla \Phi -->
 For the sake of clarity, we shall denote the rotational and divergent parts of
-the velocity with the suffix *r* and *d* respectively. Thus,
+the velocity with the suffix *r* and *d* respectively,
 \begin{align*}
     \mathbf{u}_r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}_d =
     \nabla {\bf \Phi}
 \end{align*}
-and therefore, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
+and, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
 To find the projection operators for the divergent parts, take the
 divergence of [@eq:helm_u] giving $\nabla .\mathbf{u} = \nabla^2 {\bf \Phi}$.
-This transforms into spectral space as, $ik_j \hat{u}_j = -\kappa^2 \hat{\Phi}$, implying:
+This transforms into spectral space as, $i{\bf k}.\hat{\bf u} = -\kappa^2 \hat{\Phi}$, implying:
 \begin{align*}
-    {\hat{u}}_d_i = & ik_i \hat{\Phi} = \frac{k_i k_j}{\kappa^2} \hat{u}_j       \\
-    {\hat{u}}_r_i = & \hat{u}_i - {\hat{u}}_d_i = \left( \delta_{ij}
-    - \frac{k_i k_j}{\kappa^2} \right) \hat{u}_j
+    {\hat{\bf u}}_d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}.\hat{\bf u}}{\kappa^2} {\bf k}       \\
+    {\hat{\bf u}}_r = & \hat{\bf u} - {\hat{\bf u}}_d
 \end{align*}
 where, $\kappa = |\mathbf{k}|$, magnitude of the wavenumber vector.
-Thus, for two-dimensions the decomposed velocity are represented in vector
-notation as follows,
-\begin{align*}
-    \mathbf{\hat{u}}_d = & 
-    \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k} \\
-    \mathbf{\hat{u}}_r =   & \mathbf{\hat u} - \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k}
-\end{align*}
 To obtain a similar decomposition, $h = h_r + h_d$, for the fluid depth one can
 use the Poisson equation [@eq:poisson_fft]. Since Poisson equation requires a
 divergence free flow, the LHS of [@eq:poisson_fft] would correspond to the
@@ -109,7 +101,7 @@ decomposition. As a result of linearization of [@eq:dtu0] and
     \label{eq:dtcurl_l}                                                  \\
     \partial_t \delta = & f \zeta - c^2 \nabla^2 \eta \label{eq:dtdiv_l} \\
     \partial_t \eta =   & - \delta \label{eq:dteta_l}\end{align}
-where $\zeta$ and $\delta$ are relative vorticity and divergence 
+where $\zeta$ and $\delta$ are relative vorticity and divergence
 respectively. Representing the dependent flow quantities in terms of Fourier
 modes:
 \begin{align*}
