@@ -7,7 +7,7 @@ The shallow water equations (SWE) have found utility as a academic tool to study
 and explain numerous fundamental geophysical wave phenomena [see chapter 3,
 @vallis_atmospheric_2017] and also as the "dynamical core" of some numerical
 weather prediction models [for eg., flux vector splitting scheme based on
-@lin_explicit_1997 was used in NOAA's GFS model until very recently[^FV3]].
+@lin_explicit_1997 was used in NOAA's GFS model until very recently][^FV3].
 The governing equations for a single layer shallow layer of fluid are:
 \begin{align}
     \label{eq:dtu0} \partial_t \mathbf{u} & = - (\mathbf{u}.\nabla) \mathbf{u}
@@ -28,7 +28,7 @@ mass-conservation equation for advection of $\rho$, and also because a Mach
 number can derived from SWE
 [@Baines1998;@augier_shallow_2019;@vallis_atmospheric_2017].
 
-[^FV3]: See https://www.gfdl.noaa.gov/fv3/
+[^FV3]: See [https://www.gfdl.noaa.gov/fv3/](https://www.gfdl.noaa.gov/fv3/)
 
 [@Eq:dtu0] may also be written in the *rotational form* as:
 $$\label{eq:dtu}
@@ -73,7 +73,7 @@ field can be decomposed into the sum of a longitudinal (diverging, non-curling,
 irrotational) vector field and a transverse (solenoidal, curling, rotational,
 non-diverging) vector field. This allows us to express the velocity field as:
 \begin{align}
-$$    \label{eq:helm_u}
+    \label{eq:helm_u}
     \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}
 \end{align}
 <!-- & =  -\nabla \times \Psi_z + \nabla \Phi -->

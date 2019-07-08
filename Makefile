@@ -179,7 +179,7 @@ log: $(main).pdf
 ifndef RUBBER_INFO
 	cat $(main).log
 else
-	rubber-info $(main).log | ccze -m ansi
+	rubber-info $(main).tex | ccze -m ansi
 endif
 
 clean: clean_papers clean_thesis
@@ -214,7 +214,7 @@ opentex:
 openmkdwn:
 	$(VIM) $(chapter).md $(VIM_FLAGS)
 
-openchapter: $(chapter).pandoc.pdf 
+openchapter: $(chapter).pandoc.pdf
 	zathura $< 2> /dev/null &
 
 openchapters: chapters.pandoc.pdf

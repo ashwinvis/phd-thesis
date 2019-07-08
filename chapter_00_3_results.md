@@ -1,3 +1,5 @@
+# Research highlights
+
 ![Comparison of the divergence fields ($\mathbf{\nabla.u}$) from a shallow
 water simulation (left) and a similar toy-model simulation (right). $L_f$ is
 the forcing length scale. Source:
@@ -7,7 +9,7 @@ width=100%}
 In the right plot of
 @fig:shallow-toy, the divergence field consists of ripples of alternative
 positive and negative values, indicating that simulation results in gravity
-waves and not shocks. 
+waves and not shocks.
 
 ![Average shock separation distance $(d)$ in a series of shallow water
 simulations plotted against the forcing Froude number $(F_f)$. The Froude
