@@ -3,25 +3,43 @@ Shallow water equations
 
 ## Governing Equations
 
-The governing equations for a shallow layer of fluid are:
+The shallow water equations (SWE) have found utility as a academic tool to study
+and explain numerous fundamental geophysical wave phenomena [see chapter 3,
+@vallis_atmospheric_2017] and also as the "dynamical core" of some numerical
+weather prediction models [for eg., flux vector splitting scheme based on
+@lin_explicit_1997 was used in NOAA's GFS model until very recently][^FV3].
+The governing equations for a single layer shallow layer of fluid are:
 \begin{align}
     \label{eq:dtu0} \partial_t \mathbf{u} & = - (\mathbf{u}.\nabla) \mathbf{u}
     - c^2 \nabla h - f\mathbf{e_z} \times \mathbf{u} \\
     \label{eq:dth} \partial_t h         & = - \nabla. (h \mathbf{u})
 \end{align}
-where $\bf u$ is two-dimensional horizontal velocity vector, $h$ is the scalar height
-field, $c$ is the phase speed of gravity waves, $f$ is the system rotation
-responsible for the Coriolis force. Equation [@eq:dtu0] may also be written in
-the *rotational form* as:
+where $\bf u$ is two-dimensional horizontal velocity vector, $h$ is the
+non-dimensional scalar height field, $c$ is the phase speed of gravity waves,
+$f$ is the system rotation responsible for the Coriolis force. [@Eq:dtu0]
+conserves momentum and kinetic energy and [@eq:dth] conserves mass and
+potential energy. In comparison with the QG equation which conserves
+quasi-geostrophic potential vorticity, SWE permits both quasi-geostrophic
+(vortices) and ageostrophic (gravity waves) modes. On one hand, QG equation is
+analogous to incompressible 2D Navier-Stokes equations, and on the other hand,
+the SWE system is comparable to compressible 2D Navier-Stokes equations -- due to
+fact that [@eq:dth] has the same mathematical structure as the
+mass-conservation equation for advection of $\rho$, and also because a Mach
+number can derived from SWE
+[@Baines1998;@augier_shallow_2019;@vallis_atmospheric_2017].
+
+[^FV3]: See [https://www.gfdl.noaa.gov/fv3/](https://www.gfdl.noaa.gov/fv3/)
+
+[@Eq:dtu0] may also be written in the *rotational form* as:
 $$\label{eq:dtu}
     \partial_t \mathbf{u}
     = - \nabla |\mathbf{u}|^2/2 - c^2 \nabla h - \zeta \mathbf{\hat{e}}_z
     \times \mathbf{u}
 $$
-where, [$\zeta$]{acronym-label="zeta" acronym-form="singular+short"}
-represents absolute vorticity, i.e. the sum of vorticity and system
-rotation. Furthermore, equations [@eq:dtu0] and [@eq:dth] can be
-combined to form an equation for the *total mass flux*,
+where, [$\zeta$]{acronym-label="zeta" acronym-form="singular+short"} represents
+absolute vorticity, i.e. the sum of vorticity and system rotation.
+Furthermore, some auxiliary equations can be derived from the SWE.  [@Eq:dtu0]
+and [@eq:dth] can be combined to form an equation for the *total mass flux*,
 [J]{acronym-label="J" acronym-form="singular+short"} $= h\mathbf{u}$:
 $$\label{eq:dtJ}
     \partial_t \mathbf{J} = -(\mathbf{u}.\nabla)\mathbf{J} - \nabla(c^2h^2)/2 -
@@ -33,70 +51,65 @@ acronym-form="singular+short"} $=
     \partial_t \mathbf M = -(\mathbf{u}.\nabla)\mathbf{M} - \nabla(c^2\eta^2)/2 -
     \zeta \mathbf{\hat{e}}_z \times \mathbf M - (\nabla.\mathbf{u} + \nabla.\mathbf{M})\mathbf u$$
 For a divergence free flow, a Poisson equation for *h* can be
-formulated. Taking divergence of [@eq:dtu0], yields the Poisson equation:
-$$\label{eq:poisson}
+formulated. Taking the divergence of [@eq:dtu0], yields the Poisson equation:
+$$
     \nabla^2 h = \frac{1}{c^2} \left[ \nabla.(\zeta \mathbf{\hat{e}}_z \times \mathbf u )
-        - \nabla^2 \frac{|u|^2}{2} \right]$$ Applying fourier transform,
-the spectral counterpart for [@eq:poisson] in tensor notation is:
+        - \nabla^2 \frac{|u|^2}{2} \right]
+$${#eq:poisson}
+The spectral counterpart for [@eq:poisson] in tensor notation is:
 $$\label{eq:poisson_fft}
     -\kappa^2 \hat{h} = \frac{1}{c^2} \left[ ik_i (\widehat{\epsilon_{ijk} \zeta_j
             u_k})
         + \kappa^2 \frac{\widehat{u_i u_i}}{2} \right]$$
+where the $\widehat{\text{ }}$ denotes the Fourier transform. To study
+interactions within SW turbulence it is useful to decompose the equations.
+There are two possibilities: Helmholtz and normal-mode decomposition.
 
 ## Helmholtz Decomposition
 
-### For velocity field, u
-
 The Helmholtz decomposition theorem, or the fundamental theorem of
-vector calculus, states that any well-behaved vector field can be
-decomposed into the sum of a longitudinal (diverging, non-curling,
-irrotational) vector field and a transverse (solenoidal, curling,
-rotational, non-diverging) vector field. This allows us to express the
-velocity field as:
+vector calculus [@baird_helmholtz_2012], states that any well-behaved vector
+field can be decomposed into the sum of a longitudinal (diverging, non-curling,
+irrotational) vector field and a transverse (solenoidal, curling, rotational,
+non-diverging) vector field. This allows us to express the velocity field as:
 \begin{align}
-$$    \label{eq:helm_u}
+    \label{eq:helm_u}
     \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}
 \end{align}
 <!-- & =  -\nabla \times \Psi_z + \nabla \Phi -->
 For the sake of clarity, we shall denote the rotational and divergent parts of
-the velocity with the suffix *r* and *d* respectively. Thus,
+the velocity with the suffix *r* and *d* respectively,
 \begin{align*}
     \mathbf{u}_r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}_d =
     \nabla {\bf \Phi}
 \end{align*}
-and therefore, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
+and, $\mathbf u  = \mathbf u_r + \mathbf u_d$.
 To find the projection operators for the divergent parts, take the
 divergence of [@eq:helm_u] giving $\nabla .\mathbf{u} = \nabla^2 {\bf \Phi}$.
-This transforms into spectral space as, $ik_j \hat{u}_j = -\kappa^2 \hat{\Phi}$, implying:
+This transforms into spectral space as, $i{\bf k}.\hat{\bf u} = -\kappa^2 \hat{\Phi}$, implying:
 \begin{align*}
-    {\hat{u}}_d_i = & ik_i \hat{\Phi} = \frac{k_i k_j}{\kappa^2} \hat{u}_j       \\
-    {\hat{u}}_r_i = & \hat{u}_i - {\hat{u}}_d_i = \left( \delta_{ij}
-    - \frac{k_i k_j}{\kappa^2} \right) \hat{u}_j
+    {\hat{\bf u}}_d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}.\hat{\bf u}}{\kappa^2} {\bf k}       \\
+    {\hat{\bf u}}_r = & \hat{\bf u} - {\hat{\bf u}}_d
 \end{align*}
 where, $\kappa = |\mathbf{k}|$, magnitude of the wavenumber vector.
-Thus, for two-dimensions the decomposed velocity are represented in vector
-notation as follows,
-\begin{align*}
-    \mathbf{\hat{u}}_d = & 
-    \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k} \\
-    \mathbf{\hat{u}}_r =   & \mathbf{\hat u} - \frac{(k_x \hat{u}_x + k_y \hat{u}_y)}{\kappa^2} \mathbf{k}
-\end{align*}
 To obtain a similar decomposition, $h = h_r + h_d$, for the fluid depth one can
 use the Poisson equation [@eq:poisson_fft]. Since Poisson equation requires a
 divergence free flow, the LHS of [@eq:poisson_fft] would correspond to the
 rotational part of the flow in the transformed plane, i.e.  $\hat{h}_r$.
 Henceforth, the divergent part, $\hat{h}_d$ can be obtained by subtracting
-$\hat{h}_r$ from $\hat{h}$.
+$\hat{h}_r$ from $\hat{h}$. While Helmholtz decomposition is simple to compute
+and provide insightful results, it would be more accurate to extract
+normal-modes -- especially in the case of flows under the presence of system
+rotation, where vorticity and potential vorticity deviates in meaning.
 
 Normal mode decomposition
 -------------------------
 
-### Following Bartello 1995
-
-In order to isolate oscillating fast modes,
-one can adopt a linearization approach followed by a normal mode
-decomposition. As a result of linearization of [@eq:dtu0] and
-[@eq:dth]:
+@bartello_geostrophic_1995 demonstrated an approach for decomposing the
+Boussinesq equation into its normal modes. Here, we follow the same procedure
+for the SWE. In order to isolate oscillating fast modes, we linearize the SWE
+followed by a normal mode or eigenvector decomposition. As a result of
+linearization of [@eq:dtu0] and [@eq:dth] transforms to,
 \begin{align}
     \label{eq:dtu_l}
     \partial_t \mathbf u = & - c^2 \nabla \eta - f\mathbf{e_z} \times \mathbf u \\
@@ -109,7 +122,7 @@ decomposition. As a result of linearization of [@eq:dtu0] and
     \label{eq:dtcurl_l}                                                  \\
     \partial_t \delta = & f \zeta - c^2 \nabla^2 \eta \label{eq:dtdiv_l} \\
     \partial_t \eta =   & - \delta \label{eq:dteta_l}\end{align}
-where $\zeta$ and $\delta$ are relative vorticity and divergence 
+where $\zeta$ and $\delta$ are relative vorticity and divergence
 respectively. Representing the dependent flow quantities in terms of Fourier
 modes:
 \begin{align*}
@@ -194,60 +207,57 @@ $$\label{eq:nmode}
         \frac{1}{\sqrt{2}} (c\kappa \hat{\eta} + i\hat{\delta})
     \end{Bmatrix}$$
 
-### Following Farge & Sadourny 1989
-
-Instead of finding the normal modes for the vorticity, divergence and
-displacement field of the flow, we shall make use of the Helmholtz
-decomposition described in [@eq:helm_u]. The shallow water equations
-then transform to:
-\begin{align}
-    \partial_t \psi = & f \phi
-    \label{eq:dtpsi_l}                                        \\
-    \partial_t \phi = & -f \psi - c^2 \eta \label{eq:dtphi_l} \\
-    \partial_t \eta = & - \nabla^2 \phi \label{eq:dteta_l2}\end{align}
- where $\psi$ and $\psi$ are stream function and velocity potential as
-functions of $\mathbf{r}$ and $t$ respectively. By substituting the
-dependent variables with the respective Fourier transform, this reduces
-to the eigenvalue problem:
-\begin{align*}
-    i\omega
-    \begin{Bmatrix}
-        \hat{\psi} \\ \hat{\phi} \\ \hat{\eta}
-    \end{Bmatrix}
-    = i
-    \begin{bmatrix}
-        0   & if         & 0    \\
-        -if & 0          & ic^2 \\
-        0   & -i\kappa^2 & 0
-    \end{bmatrix}
-    \begin{Bmatrix}
-        \hat{\psi} \\ \hat{\phi} \\ \hat{\eta}
-    \end{Bmatrix}\end{align*}
- the square matrix is not Hermitian and this would result in complex
-eigenvalues. By adopting the following change of variables:
-$$\hat{\psi} \to \kappa^2\hat \psi = \hat{\zeta} ; \quad
-    \hat{\phi} \to -\kappa^2\hat \phi = \hat{\delta}; \quad
-    \hat{\eta} \to c\kappa\hat \eta$$ it falls back to the previous
-eigenvalue problem as demonstrated in the previous section. In other
-words, we can use the same eigenvector matrix, $X_n$ to find the normal
-modes of:
-
-$$\mathbf{H} = \{\hat \psi,\; \hat \phi,\;  \eta  \}^T$$ which is
-closely related to: $$\mathbf{W}
-    = \{\kappa^2\hat \psi,\; -\kappa^2\hat
-    \phi,\; c\kappa\hat \eta  \}^T
-    = \{\hat \zeta;\; \hat \delta;\;  c\kappa \hat \eta \}^T$$
+<!-- ### Following Farge & Sadourny 1989 -->
+<!--  -->
+<!-- Instead of finding the normal modes for the vorticity, divergence and -->
+<!-- displacement field of the flow, we shall make use of the Helmholtz -->
+<!-- decomposition described in [@eq:helm_u]. The shallow water equations -->
+<!-- then transform to: -->
+<!-- \begin{align} -->
+<!--     \partial_t \psi = & f \phi -->
+<!--     \label{eq:dtpsi_l}                                        \\ -->
+<!--     \partial_t \phi = & -f \psi - c^2 \eta \label{eq:dtphi_l} \\ -->
+<!--     \partial_t \eta = & - \nabla^2 \phi \label{eq:dteta_l2}\end{align} -->
+<!--  where $\psi$ and $\psi$ are stream function and velocity potential as -->
+<!-- functions of $\mathbf{r}$ and $t$ respectively. By substituting the -->
+<!-- dependent variables with the respective Fourier transform, this reduces -->
+<!-- to the eigenvalue problem: -->
+<!-- \begin{align*} -->
+<!--     i\omega -->
+<!--     \begin{Bmatrix} -->
+<!--         \hat{\psi} \\ \hat{\phi} \\ \hat{\eta} -->
+<!--     \end{Bmatrix} -->
+<!--     = i -->
+<!--     \begin{bmatrix} -->
+<!--         0   & if         & 0    \\ -->
+<!--         -if & 0          & ic^2 \\ -->
+<!--         0   & -i\kappa^2 & 0 -->
+<!--     \end{bmatrix} -->
+<!--     \begin{Bmatrix} -->
+<!--         \hat{\psi} \\ \hat{\phi} \\ \hat{\eta} -->
+<!--     \end{Bmatrix}\end{align*} -->
+<!--  the square matrix is not Hermitian and this would result in complex -->
+<!-- eigenvalues. By adopting the following change of variables: -->
+<!-- $$\hat{\psi} \to \kappa^2\hat \psi = \hat{\zeta} ; \quad -->
+<!--     \hat{\phi} \to -\kappa^2\hat \phi = \hat{\delta}; \quad -->
+<!--     \hat{\eta} \to c\kappa\hat \eta$$ it falls back to the previous -->
+<!-- eigenvalue problem as demonstrated in the previous section. In other -->
+<!-- words, we can use the same eigenvector matrix, $X_n$ to find the normal -->
+<!-- modes of: -->
+<!--  -->
+<!-- $$\mathbf{H} = \{\hat \psi,\; \hat \phi,\;  \eta  \}^T$$ which is -->
+<!-- closely related to: $$\mathbf{W} -->
+<!--     = \{\kappa^2\hat \psi,\; -\kappa^2\hat -->
+<!--     \phi,\; c\kappa\hat \eta  \}^T -->
+<!--     = \{\hat \zeta;\; \hat \delta;\;  c\kappa \hat \eta \}^T$$ -->
 
 ### Normal mode inversion to primitive variables
 
-To begin with, we shall form a new vector
-$\mathbf{B} = \mathbf{N}/\kappa$ which will have the same dimensions as
-velocity. It has been shown before that the normal modes can be
-represented by $\mathbf{N}
-    = \bar{X}_n^T \mathbf{W}$. Now, we shall form a new vector
-$\mathbf{B} =
-    \mathbf{N}/\kappa$ which will have the same dimensions as velocity.
-Thus,
+To study spectral energy budget, normal modes have to be transformed
+back to the primitive variable using another matrix operation, say $Q$.  It has
+been shown before that the normal modes can be represented by $\mathbf{N} =
+\bar{X}_n^T \mathbf{W}$. Now, we shall form a new vector $\mathbf{B} =
+\mathbf{N}/\kappa$ which will have the same dimensions as velocity.  Thus,
 \begin{align*}
     \mathbf{B}
     = & \frac{1}{\sqrt{2}\sigma}
@@ -375,45 +385,26 @@ $\mathbf M = \eta \mathbf{u}$ respectively,
         - \hat{u_i}^* \widehat{(u_i \partial_j({u}_j+
             M_j))}
         \right]\end{align*}
- Hence,
+The transfer terms may be classified as follows:
 \begin{align*}
     T_K^{NQ}=       & -\frac{1}{2}\left[\hat{M}_i(\widehat{ u_j\partial_j u_i })^*
         + \hat{u}_i^* \widehat{(u_j\partial_j M_i) }
         + \hat{u_i}^* \widehat{(u_i \partial_j{M}_j)}
         \right]                                                                    \\
-    T_{K,K}^{NQ,Q}= & -\frac{1}{2}\left[ \hat{u_i}^* \widehat{(u_i
+    C_{K}^{NQ}= & -\frac{1}{2}\left[ \hat{u_i}^* \widehat{(u_i
             \partial_j{u}_j)}
         \right]                                                                    \\
-    T_{K,P}^{NQ,Q}= & -\frac{1}{2}\left[c^2 \hat{M}_i (ik_i \hat{\eta})^*
+    C_{P}^{NQ}= & -\frac{1}{2}\left[c^2 \hat{M}_i (ik_i \hat{\eta})^*
         + c^2\hat{u}_i^*ik_i\widehat{\eta\eta} /2
-        \right]\end{align*}
+        \right]
+\end{align*}
+where the $T_K^{NQ}$ represents fourth order self interactions terms,
+$C_K^{NQ}$ and $C_P^{NQ}$ represents exchange with quadratic K.E. and P.E.,
+respectively. Numerically these terms have been observed to have a tiny, yet
+non-negligible contribution in the spectral energy budget.
 
-Furthermore, using Helmholtz decomposition to substitute for $\mathbf u$
-in the expression for *mean kinetic energy*,
-
-
-\begin{align*}
-    \braket{ E_K}
-     & = \frac{1}{2} \braket{ h\mathbf u.\mathbf u}                          \\
-     & = \frac{1}{2} \braket{h(\mathbf{u_r} + \mathbf{u_d} ).(\mathbf{u_r} +
-        \mathbf{u_d} )}                                                      \\
-     & = \frac{1}{2}\braket{ h |\mathbf{u_r} | ^2}
-    -\braket{ \mathbf{u_r}.h\mathbf{u_d}}
-    +  \frac{1}{2} \braket{ h | \mathbf{u_d}| ^2}\end{align*}
- where, $h = 1 + \eta$ and, $\eta$ is the surface displacement of the
-shallow water layer. In the limit for small displacements i.e.,
-$\eta \to 0$ or $h \to
-    1$, invoking orthogonality,
-
-$$\lim_{h \to 1} \braket{E_K} = \braket{E_K^{Q}}
-    =  \frac{1}{2}\braket{|\mathbf{u_r}  | ^2 + | \mathbf{u_d} | ^2}$$
-The spectral equivalent of the above expression will be:
-$$\braket{E_K^{Q} }
-    =  \frac{1}{2}\braket{ \mathbf{\hat{u}_r}.\mathbf{\hat{u}_r}^* +
-        \mathbf{\hat{u}_d}.\mathbf{\hat{u}_d}^* }$$
 
 ### Available potential energy
-
 
 \begin{align*}
     \braket{ E_P}
@@ -447,3 +438,4 @@ Following [@eq:dth], equation [@eq:dtPE] expands as:
     =    & +\text{Re}\left[c^2\hat{\eta} ik_i\hat{u_i }^*\right]\end{align*}
  thus, $C^Q_K = -C_P$ which, in turn, makes the assertion that
 equivalent conversion occurs between quadratic K.E. and A.P.E.
+

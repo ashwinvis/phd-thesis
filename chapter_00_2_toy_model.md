@@ -13,7 +13,7 @@ $$\frac{\partial \eta}{\partial t}+ {{\bf u} \cdot \nabla} \eta   = \red{- (1+\e
    <!-- Use Helmoltz decomposition to make this distinction. -->
    Use Helmholtz decomposition to calculate $\bf{u}_r$, ${\bf u} = \bf{u}_r + \bf{u}_d$
    i.e. in the advection term we use rotational velocity. Reason: large scale motions dominated by rotation.
-   Replace  $\red{{\bf u} \cdot \nabla}$  with $\green{{\bf u_r} \cdot \nabla}$ 
+   Replace  $\red{{\bf u} \cdot \nabla}$  with $\green{{\bf u_r} \cdot \nabla}$
 
 While allowing, $|\zeta| \sim |d|$ in contrast with QG where $|\zeta| >> |d|$.
 Apply two modifications on the classical shallow water equations
@@ -24,18 +24,16 @@ Apply two modifications on the classical shallow water equations
 $$\frac{\partial {\bf u}} {\partial t} + \green{{\bf u}_r\cdot \nabla} {\bf u} + f {\bf e}_z\times {\bf u} = -c \nabla \theta $$
 
 $$\frac{\partial \theta}{\partial t}+ \green{{\bf u}_r \cdot \nabla} \theta   = -  c\green{\nabla \cdot {\bf u}} $$
+where,
 
-where, $\theta = c\eta$
+ * $\theta = c\eta$, replaces $\eta$ with a proportional $\theta$ variable. Takes the form of potential temperature.
+ * ${\bf u}_r  = -\nabla \times ( {\bf e_z} \Psi)$ is the rotational component
+ * $\bf {u}_d = \nabla \chi$ is the divergent component
+
+\noindent with $\Psi$ and $\chi$ being the stream function and the velocity potential respectively.
 
 * Pros: No shocks, KE and APE are quadratic and conserved, linearised potential vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$
 
 * Cons: Full potential vorticity $Q$ is not exactly conserved
 <!-- #endregion -->
 
-* Replaced $\eta$ with a proportional $\theta$ variable. Takes the form of potential temperature.
-* Advantages and disadvantages
-
- * ${\bf u}_r  = -\nabla \times ( {\bf e_z} \Psi)$ is the rotational component
- * $\bf {u}_d = \nabla \chi$ is the divergent component
- 
-with $\Psi$ and $\chi$ being the stream function and the velocity potential respectively.

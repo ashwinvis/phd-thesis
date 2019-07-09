@@ -315,7 +315,7 @@ downscale cascade. Based on the SW equations we developed another two-dimensiona
 model  \cite[]{LindborgMohanan2017} that is absent of shocks and can reproduce the
 energy cascade in the GCM quite well, including a $ k^{-5/3}  $-spectrum.
 
-The shocks we observed in the SW simulations left us in a state of curiosity. In some simulations they appeared to be pretty strong and in others rather weak. In some simulations they were densely packed and in others sparsely distributed. 
+The shocks we observed in the SW simulations left us in a state of curiosity. In some simulations they appeared to be rather strong and in others rather weak. In some simulations they were densely packed and in others sparsely distributed.
 In what way  do the input parameters regulate these variations? Will there always be shocks or will they disappear in the limit of weak nonlinearities?  Such questions made us to shift our theoretical focus and pursue the study, despite the fact that the answer to the question that originally motived it turned out to be negative.  
  
 Some predictions  based on the weak wave turbulence formalism
@@ -644,7 +644,7 @@ We have carried out a set of twenty forced-dissipative simulations of the SW
 equations in a quadratic domain with periodic boundary conditions using the
 standard open-source pseudo-spectral code FluidSim \cite[]{fluiddyn, fluidfft,
 fluidsim}. In these twenty simulations we used an eight order diffusion operator to act as the agent of dissipation. 
- On the request from the reviewers we have also carried out a set of thirteen simulation with  Laplacian diffusion. The results from the latter set, which are similar to the results from the first set,  are presented in Appendix A.
+ On the request from the reviewers we have also carried out a set of nineteen simulations with  Laplacian diffusion. The results from the latter set, which are similar to the results from the first set,  are presented in Appendix A.
 
 The simulations were started from zero initial
 conditions and were run till a statistically stationary state was reached. The
@@ -958,7 +958,7 @@ $R_2 = 2$, $R_3 = 3\pi/4$,  $R_4 = 8/3$, $ R_5 = 15 \pi /16 $ and $ R_6 = 16/5 $
 \centerline{\includegraphics[]{paper_04_shallow_water/Pyfig/fig9}}
 \caption{ Top: Flatness factor of transverse velocity increments. Bottom: Ratio between transverse and longitudinal flatness factor. Left: runs with $ n=3840 $: W3,
 W7, W11,  W14 and W18. Right: runs with $ n = 7860 $: W4, W8 and W15.  The dotted straight lines indicate the value 1.5 predicted by the shock model.  }
-\label{fig9}
+\label{fig_flatness}
 \end{figure}
 
 \begin{figure}
@@ -1022,7 +1022,7 @@ agreement with the predicted values in a limited range of separations, $ r >
 becomes more narrow with increasing $ p $, an observation that we cannot
 explain. It may also be noted that $ R_2 \rightarrow 3 $ in the limit of small
 $ r $, which is the theoretical single point limit for an irrotational
-isotropic field. In figure~\ref{fig9} we see the flatness factor, $
+isotropic field. In figure~\ref{fig_flatness} we see the flatness factor, $
 F_T $, of the transverse structure functions at the top and the ratio, $
 F_T/F_L $, at the bottom. The figures to the left show the results from the
 five simulations with $ n = 3840 $ and the figures to the right show the
@@ -1147,9 +1147,9 @@ that the mean energy dissipation rate, $ \epsilon $, is replaced by $ \epsilon +
 Acoustic turbulence is an example of a wave breaking system where the concepts and methods we have developed to analyse SW water turbulence can be applied in a fruitful way.  We believe that there may be other such examples.
 
 
-\vskip 0.5 cm
+\vskip 0.3 cm
 
-\noindent The authors would like to thank Gregory Falkovich and Sergey Nazaranko for  fruitful criticism of an early version of the manuscript and three anonymous reviewers for useful comments. Financial
+\noindent The authors would like to thank Gregory Falkovich and Sergey Nazarenko for  fruitful criticism of an early version of the manuscript, Sebastien Galtier for making a check of the final manuscript and three anonymous reviewers for useful comments. Financial
 support from the Swedish Research Council (VR) is gratefully
 acknowledged. The simulations were performed
 on resources provided by the Swedish National Infrastructure
@@ -1171,30 +1171,41 @@ The simulations are listed in table 2.
 
 
 
+
+
 \begin{table}
 \begin{center}
 
-\label{Table2}
-
 \begin{tabular}{lrrrrrrrrr}
 \toprule
-{} &  $n$ &  $c$ &  $\nu $ &  $\epsilon$ &  $\frac{k_{diss}}{k_f}$ &   $F_f$ &  $\; Re$ &  $ReF_f^{2/3} $ &  $t_{\max}$ \\
+{} &   $n$ &  $c$ &  $\nu_2$ &  $\epsilon$ &  $\frac{k_{diss}}{k_f}$ &   $F_f$ &  $Re$ &  $ReF_f^{2/3}$ &  $t_{\max}$ \\
 \midrule
-WL1  &  960 &   10 &   0.0985 &       0.998 &                    22.6 &   0.16 &  68.0 &           20 &          25 \\
-WL2  & 1920 &   10 &   0.0492 &       0.985 &                    45.3 &    0.16 &  136 &           40 &          25 \\
-WL3  & 2880 &   10 &   0.0328 &       0.984 &                    67.9 &    0.16 &    204 &           60 &          25 \\
-WL4  & 3840 &   10 &   0.0246 &       0.993 &                    90.5 &   0.16 &   273 &            80 &          25 \\
-WL5  & 7680 &   10 &   0.0123 &       1.000 &                     181 &   0.16 &   545 &           160 &          25 \\
-WL6  &  960 &   20 &   0.0985 &       0.994 &                    22.6 &  0.08 &  68.1&            13 &          25 \\
-WL7  & 2880 &   20 &   0.0328 &       0.982 &                    67.9 &    0.08 &  204 &           38 &          25 \\
-WL8  &  960 &   40 &   0.0985 &       0.985 &                    22.6 &    0.04 &  68.0 &           8.0 &          25 \\
-WL9  & 2880 &   40 &   0.0328 &       0.981 &                    67.9 &    0.04 &  204 &            24 &          25 \\
-WL10 &  960 &  100 &   0.0985 &       0.976 &                    22.6 &   0.016 &  67.5 &            4.3 &          25 \\
-WL11 & 2880 &  100 &   0.0328 &       0.961 &                    67.9 &  0.016 &  202 &           13 &          25 \\
-WL12 &  960 &  200 &   0.0985 &       0.988 &                    22.6 & 0.0080 &  67.8 &          2.7 &          25 \\
-WL13 & 2880 &  200 &   0.0328 &       0.928 &                    67.9 & 0.0079 &  200 &           7.9&          25 \\
+WL1  &   960 &   10 &   0.0985 &       0.998 &                    22.6 &   0.161 &  68.0 &           20.1 &          25 \\
+WL2  &  1920 &   10 &   0.0492 &       0.985 &                    45.3 &   0.160 &   136 &           40.0 &          25 \\
+WL3  &  2880 &   10 &   0.0328 &       0.984 &                    67.9 &   0.160 &   203 &           59.9 &          25 \\
+WL4  &  3840 &   10 &   0.0246 &       0.993 &                    90.5 &   0.161 &   272 &           80.3 &          25 \\
+WL5  &  7680 &   10 &   0.0123 &        1.00 &                     181 &   0.161 &   545 &            161 &          25 \\
+WL6  &   960 &   20 &   0.0985 &       0.994 &                    22.6 &  0.0803 &  68.0 &           12.6 &          25 \\
+WL7  &  2880 &   20 &   0.0328 &       0.982 &                    67.9 &  0.0800 &   203 &           37.7 &          25 \\
+WL8  &  3840 &   20 &   0.0246 &       0.983 &                    90.5 &  0.0800 &   271 &           50.3 &          25 \\
+WL9  &  7680 &   20 &   0.0123 &        1.00 &                     181 &  0.0805 &   545 &            102 &          25 \\
+WL10 &   960 &   40 &   0.0985 &       0.985 &                    22.6 &  0.0400 &  67.7 &           7.93 &          25 \\
+WL11 &  2880 &   40 &   0.0328 &       0.981 &                    67.9 &  0.0400 &   203 &           23.7 &          25 \\
+WL12 &  3840 &   40 &   0.0246 &       0.978 &                    90.5 &  0.0399 &   270 &           31.6 &          25 \\
+WL13 &  7680 &   40 &   0.0123 &       0.991 &                     181 &  0.0401 &   543 &           63.6 &          25 \\
+WL14 &   960 &  100 &   0.0985 &       0.976 &                    22.6 &  0.0160 &  67.5 &           4.28 &          25 \\
+WL15 &  2880 &  100 &   0.0328 &       0.961 &                    67.9 &  0.0159 &   202 &           12.7 &          25 \\
+WL16 &  3840 &  100 &   0.0246 &       0.972 &                    90.5 &  0.0159 &   270 &           17.1 &          25 \\
+WL17 &   960 &  200 &   0.0985 &       0.988 &                    22.6 & 0.00801 &  67.8 &           2.72 &          25 \\
+WL18 &  2880 &  200 &   0.0328 &       0.928 &                    67.9 & 0.00785 &   199 &           7.87 &          25 \\
+WL19 &  3840 &  200 &   0.0246 &       0.934 &                    90.5 & 0.00786 &   266 &           10.5 &          25 \\
 \bottomrule
 \end{tabular}
+
+
+\label{Table2}
+
+
 
 \caption{Parameters for all the simulations executed with laplacian viscosity.
 $ n $: number of nodes in each direction, $ c $: wave speed, $ \nu  $:  viscosity, $ \epsilon $: time
@@ -1228,7 +1239,7 @@ $ for different $ c $.}
 
 \begin{figure}
 \centerline{\includegraphics[]{paper_04_shallow_water/Pyfig/fig15}}
-\caption{$ \nabla \cdot {\bf u} $ for four different runs. Upper left: WL1, $ Re = 68 $, $ F_f = 0.16 $; Upper right: WL4,  $ Re = 273 $, $ F_f = 0.16 $; Lower left: WL12, $ Re = 68 $, $ F_f = 0.008 $; Lower right: WL13,  $ Re = 200 $, $ F_f = 0.008 $.}
+\caption{$ \nabla \cdot {\bf u} $ for four different runs. Upper left: WL1, $ Re = 68 $, $ F_f = 0.16 $; Upper right:  { WL3,  $ Re = 203 $, $ F_f = 0.16 $;} Lower left: WL17, $ Re = 68 $, $ F_f = 0.008 $; Lower right: WL18,  $ Re = 199 $, $ F_f = 0.008 $.}
 \label{Physical_lap}
 \end{figure}
 
@@ -1236,11 +1247,12 @@ $ for different $ c $.}
 
 
 The dynamics of the runs with Laplacian diffusion were similar to the runs with higher order diffusion. In figure \ref{MeanE2} we see mean energy in the stationary state versus $ c $ to the left and versus $ n $ to the right. 
-The variation of mean energy with $ c $ seems to be a little bit weaker for these runs as compared to the runs with hyper diffusion. However, the series of runs with $ n = 2280 $ (green crosses) is pretty close to approaching the $ c^{1/2} $-scaling.
+The variation of mean energy with $ c $ seems to be a little bit weaker for these runs as compared to the runs with hyper diffusion.  { However, the higher resolution runs are relatively close to approaching the $ c^{1/2} $-scaling.}
 The variation of mean energy with resolution, or Reynolds number, is quite similar to what is seen in the corresponding plot \ref{MeanE}. For each $ c $ there is a monotonic increase of mean energy with resolution, and the increase is becoming stronger as $ c $ is increased, with comparable but not equal values of the exponent $ \alpha $.  
 
 
-In figure \ref{fig_distance_lap} we see the mean distance between the shocks as a function of $ F_f $, together with a straight line indicating $ F_f^{1/2} $. There is a reasonable agreement between $ F_f ^{1/2} $ and each of the two series of simulations at $ Re \approx 70 $ (blue dots) and $ Re \approx 200$ (yellow triangles). However, there is a gap between the two series. This gap may be explained by the fact that the shock detection algorithm is much more sensitive to the threshold value which is used for $ \nabla \cdot {\bf u} $ in these simulations than in the simulations with hyperviscosity.  In particular, this is true in the lower Reynolds number runs. In figure \ref{FlatnessDiv} we see the flatness of the divergence, multiplied by $ \nu $, versus $ F_f $. According to (\ref{FD}) we should have $ F_{\partial u} \nu \propto  d^{4/3} $ and if $ d \propto Fr^{1/2} $, the points should collapse on a single line, $ F_f^{2/3} $.  The three runs at highest $ Re $ and the lowest value of $ F_f $ fall on top of each other in the upper right corner, supporting the scaling $ \nu^{-1} $ in the high Reynolds number limit. For the three highest $ F_f $ there is a reasonable agreement with $ F_f^{2/3} $, although the lower Reynolds number runs (blue dots) fall below the higher Reynolds number runs, which we interpret as a low Reynolds number effect. The points corresponding to the two lowest values of $ F_f $ fall below the prediction. This can be explained by the fact that the shocks are on the verge of fading away in these runs. Clearly, a necessary condition for shocks to be present is that the mean distance between them is much larger than their  width, that is
+In figure \ref{fig_distance_lap} we see the mean distance between the shocks as a function of $ F_f $, together with a straight line indicating $ F_f^{1/2} $. { As compared to the runs with hyperviscosity there is a larger spread of the points and the $ F_f^{1/2} $ scaling is not as clear. The lower Reynolds number series ($ Re \approx 70 $ blue dots) falls below the higher Reynolds number series. This may be explained by the fact that the shock detection algorithm is much more sensitive to the threshold value which is used for $ \nabla \cdot {\bf u} $ in these simulations than in the simulations with hyperviscosity.  In particular, this is true in the lower Reynolds number runs. } In figure \ref{FlatnessDiv} we see the flatness of the divergence, multiplied by $ \nu $, versus $ F_f $. According to (\ref{FD}) we should have $ F_{\partial u} \nu \propto  d^{4/3} $ and if $ d \propto Fr^{1/2} $, the points should collapse on a single line, $ F_f^{2/3} $.  {For the three largest $ F_f $, there is a relatively good collapse of the points from the three highest  Reynolds numbers series, supporting both the $ \nu^{-1} $-scaling and the $ F_f^{2/3} $-scaling. }
+ The lower Reynolds number runs (blue dots) fall below the higher Reynolds number runs, which we interpret as a low Reynolds number effect. The points corresponding to the two lowest values of $ F_f $ fall below the prediction $ F_f^{2/3} $. This can be explained by the fact that the shocks are on the verge of fading away in these runs. Clearly, a necessary condition for shocks to be present is that the mean distance between them is much larger than their  width, that is
 \begin{equation} \label{Condition} 
 \frac{d}{\delta x} \gg  1\, .
 \end{equation} 
@@ -1248,7 +1260,7 @@ Since $ F_{\partial u} \propto d/\delta x $, this means that the flatness of div
 \begin{equation}  \label{SCond}
 Re F_f^{2/3} \gg 1 \, .
 \end{equation} 
-If this condition is not fulfilled the shocks will fade away.  In figure \ref{Physical_lap} we have plotted the divergence for four different runs with different $ Re $ and $ F_f $. It should be pointed out again, that the area of the computational domain is sixteen times larger than area of the outcuts shown in the figures.  The two upper plots are from simulations with  $ F_f = 0.16 $ but different $ Re $ ($ Re = 68 $ to the left and $ Re = 273 $ to the right). As can be seen, the shocks are wider in the lower Reynolds number run to the left than in the higher Reynolds number run to the right, as expected. The lower left plot is from a simulation with the same $ Re $ as in the upper left plot, but with a much smaller $ F_f $. In this simulation we have $ Re F_f^{2/3} = 2.7 $, so the condition (\ref{SCond}) is not fulfilled, and the shocks have almost faded away. The lower right plot is from a simulation with the same $ F_f $ as in the lower left plot, but with a higher $ Re $. Here, $ Re F_f^{2/3} = 7.8 $ and  the shocks are clearly discernible.
+If this condition is not fulfilled the shocks will fade away.  In figure \ref{Physical_lap} we have plotted the divergence for four different runs with different $ Re $ and $ F_f $. It should be pointed out again, that the area of the computational domain is sixteen times larger than area of the outcuts shown in the figures.  The two upper plots are from simulations with  $ F_f = 0.16 $ but different $ Re $ ($ Re = 68 $ to the left and { $ Re = 203 $ } to the right). As can be seen, the shocks are wider in the lower Reynolds number run to the left than in the higher Reynolds number run to the right, as expected. The lower left plot is from a simulation with the same $ Re $ as in the upper left plot, but with a much smaller $ F_f $. In this simulation we have $ Re F_f^{2/3} = 2.7 $, so the condition (\ref{SCond}) is not fulfilled, and the shocks have almost faded away. The lower right plot is from a simulation with the same $ F_f $ as in the lower left plot, but with a higher $ Re = 199 $. Here, $ Re F_f^{2/3} = 7.8 $ and  the shocks are clearly discernible. { Comparing the two right plots with each other, they have approximately the same $ Re $, while the lower one has a considerably lower $ F_f $.  In this run the shocks are denser and straighter as compared to the higher $ F_f $-run.}
 
 
 
