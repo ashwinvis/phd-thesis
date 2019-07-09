@@ -9,10 +9,10 @@ affiliations:
  - KTH Mechanics, SE-100 44 Stockholm, Sweden
 pub_short: J. Fluid Mech.
 pub: Journal of Fluid Mechanics
-volume: Under revision
+volume: Accepted
 # number: 2
 # pages: 1--10
-# year: 3639
+year: 2019
 dir: paper_04_shallow_water/Latex
 abstract: |
   The dynamics of irrotational shallow water wave turbulence forced in large
@@ -30,7 +30,8 @@ abstract: |
   speed. In all simulations a stationary state is reached in which there is a
   constant spectral energy flux and equipartition between kinetic and potential
   energy in the constant flux range. The third order structure function relation
-  is satisfied with a high degree of accuracy. Mean energy is found to scale approximately as $
+  is satisfied with a high degree of accuracy. Mean energy is found to scale
+  approximately as $
   E \sim \sqrt{\epsilon  L_f  c} $, and is also dependent on resolution, indicating
   that shallow water wave turbulence does not fit into the paradigm of a
   Richardson-Kolmogorov cascade. In all simulations shocks develop, displayed as

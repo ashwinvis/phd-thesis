@@ -13,10 +13,10 @@ affiliations:
  - Univ. Grenoble Alpes, CNRS, Grenoble INP, LEGI, 38000 Grenoble, France
 pub_short: J. Open Res. Softw.
 pub: Journal of Open Research Software
-volume: Accepted
+volume: 7
 number: 1
-pages: 1--10
-year: 2014
+pages: 9
+year: 2019
 #dir:
 abstract: |
   \href{http://fluiddyn.readthedocs.io}{FluidDyn} is a project to foster
