@@ -22,7 +22,8 @@ Copyright 2012, AMS, @nikurashin_theory_2012).
 ](./imgs/moc-nik-vallis.jpg){#fig:moc}
 
 The MOC is thought to be driven by a combination of wind forcing, changes in
-buoyancy and diapycnal mixing, as shown in @fig:moc for the Atlantic MOC. The
+buoyancy and diapycnal mixing, as shown in @fig:moc, a simplified sketch of the
+Atlantic MOC. The
 exact contribution of these three forces remain an open question [see chapter
 21 in @vallis_atmospheric_2017]. It should be noted that the circulation
 happens within a ocean with varying degrees of stable stratification in both
@@ -177,7 +178,7 @@ to get more illumination from the particles seeded and potentially increased
 resolution.
 
 Secondly, a vertical plane is measured using a two-dimensional, three-component
-(2D-3C) stereoscopic PIV system. This system captures a field of are $0.45
+(2D-3C) stereoscopic PIV system. This system captures a field of area $0.45
 \times 0.45 \text{ m}^2$.
 
 For both the PIV systems, up to 1300 images per oscillation of the carriage are
