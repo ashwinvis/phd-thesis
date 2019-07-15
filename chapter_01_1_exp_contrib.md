@@ -1,6 +1,6 @@
 # Software stack
 
-This project also an exercise in developing an reproducible, open-source
+This project was also an exercise in developing an reproducible, open-source
 workflow. This was motivated by the fact that experiments in fluid mechanics
 typically rely on a combination of proprietary software which includes: bundled image
 processing software by vendors such as Dantec and LaVision, virtual
@@ -15,9 +15,16 @@ the best of our knowledge did not exist. Hence a path off the beaten track was
 pursued during the course of MILESTONE project to develop three software
 package and apply them into the project.
 
-## FluidLab: a generic API for laboratory devices
+## FluidLab
 
-## FluidCoriolis: utilities for calibrating and conducting experiments
+FluidLab is a generic API for orchestrating laboratory experiments. An
+experiment in the simplest level can be thought of as a network of
+interconnected devices awaiting commands and also sending and receiving data.
+FluidLab leverages the object-oriented programming features in Python to model
+similar vi
+
+
+FluidCoriolis: utilities for calibrating and conducting experiments
 
 ## FluidImage: a scalable image processing framework
 
