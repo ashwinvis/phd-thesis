@@ -1,0 +1,51 @@
+digraph {
+rankdir = LR
+compound=true
+
+node [shape="record"]
+"couples of names"                       [label="<f0> couples of names|<f1>|<f2>|<f3>|<f4>"]
+"paths"                                  [label="<f0> paths|<f1>|<f2>|<f3>|<f4>"]
+"arrays"                                 [label="<f0> arrays|<f1>|<f2>|<f3>|<f4>"]
+"couples of arrays"                      [label="<f0> couples of arrays|<f1>|<f2>|<f3>|<f4>"]
+"piv"                                    [label="<f0> piv|<f1>|<f2>|<f3>|<f4>"]
+
+node [shape="ellipse"]
+"fill (couples of names, paths)"         [label="fill (couples of names, paths)",color = "Black"]
+"read array"                             [label="read array",color = "DarkGreen"]
+"make couples of arrays"                 [label="make couples of arrays",color = "Black"]
+"compute piv"                            [label="compute piv",color = "Black"]
+"save piv"                               [label="save piv",color = "DarkGreen"]
+
+"fill (couples of names, paths)"         -> "couples of names" [arrowhead = "odiamond", style = "filled", color = "Black"]
+"fill (couples of names, paths)"         -> "paths" [arrowhead = "odiamond", style = "filled", color = "Black"]
+"paths"                                  -> "read array" [arrowhead = "normal", style = "dashed", color = "DarkGreen"]
+"read array"                             -> "arrays" [arrowhead = "normal", style = "dashed", color = "DarkGreen"]
+"couples of names"                       -> "make couples of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"arrays"                                 -> "make couples of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"make couples of arrays"                 -> "couples of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"couples of arrays"                      -> "compute piv" [arrowhead = "normal", style = "dashed", color = "Black"]
+"compute piv"                            -> "piv" [arrowhead = "normal", style = "dashed", color = "Black"]
+"piv"                                    -> "save piv" [arrowhead = "normal", style = "dashed", color = "DarkGreen"]
+
+ subgraph cluster_01 {
+ node [height="0px", width="0px",shape=none,];
+ edge [ minlen = 1,];
+ label = "Legend";
+ key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+ <tr><td align="right" port="i1">Global</td></tr>
+ <tr><td align="right" port="i2">One Shot</td></tr>
+ <tr><td align="right" port="i3">Multiple Shot</td></tr>
+ <tr><td align="right" port="i4">I/O</td></tr>
+ </table>>]
+ key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+<tr><td port="i1">&nbsp;</td></tr>
+<tr><td port="i2">&nbsp;</td></tr>
+<tr><td port="i3">&nbsp;</td></tr>
+<tr><td port="i4">&nbsp;</td></tr>
+ </table>>]
+  key:i1:e -> key2:i1:w [arrowhead = "odiamond"]
+  key:i2:e -> key2:i2:w [arrowhead = "none"]
+  key:i3:e -> key2:i3:w [style = "dashed", arrowhead = "none"]
+  key:i4:e -> key2:i4:w [arrowhead = "none", color="DarkGreen"]
+ }
+}
