@@ -1,0 +1,51 @@
+digraph {
+rankdir = LR
+compound=true
+
+node [shape="record"]
+"subsets of filenames"                   [label="<f0> subsets of filenames|<f1>|<f2>|<f3>|<f4>"]
+"image paths"                            [label="<f0> image paths|<f1>|<f2>|<f3>|<f4>"]
+"arrays"                                 [label="<f0> arrays|<f1>|<f2>|<f3>|<f4>"]
+"subsets of arrays"                      [label="<f0> subsets of arrays|<f1>|<f2>|<f3>|<f4>"]
+"preproc results"                        [label="<f0> preproc results|<f1>|<f2>|<f3>|<f4>"]
+
+node [shape="ellipse"]
+"fill (subsets_of_names, paths)"         [label="fill (subsets_of_names, paths)",color = "Black"]
+"imread"                                 [label="imread",color = "Green"]
+"make subsets of arrays"                 [label="make subsets of arrays",color = "Black"]
+"preproc a subset of arrays"             [label="preproc a subset of arrays",color = "Black"]
+"save images"                            [label="save images",color = "Green"]
+
+"fill (subsets_of_names, paths)"         -> "subsets of filenames" [arrowhead = "odiamond", style = "filled", color = "Black"]
+"fill (subsets_of_names, paths)"         -> "image paths" [arrowhead = "odiamond", style = "filled", color = "Black"]
+"image paths"                            -> "imread" [arrowhead = "normal", style = "dashed", color = "Green"]
+"imread"                                 -> "arrays" [arrowhead = "normal", style = "dashed", color = "Green"]
+"subsets of filenames"                   -> "make subsets of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"arrays"                                 -> "make subsets of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"make subsets of arrays"                 -> "subsets of arrays" [arrowhead = "odiamond", style = "dashed", color = "Black"]
+"subsets of arrays"                      -> "preproc a subset of arrays" [arrowhead = "normal", style = "dashed", color = "Black"]
+"preproc a subset of arrays"             -> "preproc results" [arrowhead = "normal", style = "dashed", color = "Black"]
+"preproc results"                        -> "save images" [arrowhead = "normal", style = "dashed", color = "Green"]
+
+ subgraph cluster_01 {
+ node [height="0px", width="0px",shape=none,];
+ edge [ minlen = 1,];
+ label = "Legend";
+ key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+ <tr><td align="right" port="i1">Global</td></tr>
+ <tr><td align="right" port="i2">One Shot</td></tr>
+ <tr><td align="right" port="i3">Multiple Shot</td></tr>
+ <tr><td align="right" port="i4">I/O</td></tr>
+ </table>>]
+ key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+<tr><td port="i1">&nbsp;</td></tr>
+<tr><td port="i2">&nbsp;</td></tr>
+<tr><td port="i3">&nbsp;</td></tr>
+<tr><td port="i4">&nbsp;</td></tr>
+ </table>>]
+  key:i1:e -> key2:i1:w [arrowhead = "odiamond"]
+  key:i2:e -> key2:i2:w [arrowhead = "none"]
+  key:i3:e -> key2:i3:w [style = "dashed", arrowhead = "none"]
+  key:i4:e -> key2:i4:w [arrowhead = "none", color="Green"]
+ } 
+}

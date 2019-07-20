@@ -5,7 +5,8 @@ $$\frac{\partial \eta}{\partial t}+ {{\bf u} \cdot \nabla} \eta   = \red{- (1+\e
 
 
 1. Assumption #1: Surface displacement much smaller compared to the mean fluid layer height, $\eta << 1$.
-   Replace the right hand side of the scalar equation to make it linear. Reason: \eta << 1 when Fr -> 0
+   Replace the right hand side of the scalar equation to make it linear.
+   Reason: $\eta << 1$ when $Fr -> 0$
    Replace $\red{-(1+\eta) \nabla \cdot  {\bf u}}$ with $\green{-\nabla \cdot {\bf u}}$.
 
 1. Assumption #2: Velocities in the large scale are dominated by rotational
