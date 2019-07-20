@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_00_1_decomposition
+chapter := chapter_01_1_exp_contrib
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -21,8 +21,10 @@ DRAFT_FLAGS := -a "$(DRAFT_FLAGS)"
 FINAL_FLAGS := -a "$(FINAL_FLAGS)"
 endif
 
-VIM := nvim-qt
-VIM_FLAGS := -- +'set backupcopy=yes'
+VIM := nvim
+VIM_FLAGS := +'set backupcopy=yes'
+# VIM := nvim-qt
+# VIM_FLAGS := -- +'set backupcopy=yes'
 
 BIB := biber
 BIB_FLAGS :=
@@ -32,7 +34,7 @@ red:="\033[0;31m"
 end:="\033[0m"
 
 define cprint =
-	@echo -e $(red)[$(shell date)] $(1)$(end)
+	@echo -e $(red)[$(shell date +'%H.%M.%S')] $(1)$(end)
 endef
 
 define watchdog =
@@ -235,7 +237,15 @@ watchthesis:
 	$(call cprint,"watching for changes")
 	$(call watchdog,"*.tex",'make -j')
 
+watchstop:
+	@pgrep -f watchmedo | xargs kill
 
-# doit: opentex openthesis watchthesis
-# doit: openmkdwn $(chapter).pandoc.pdf openchapter watchchapter
-doit: openmkdwn openchapters watchchapters
+# doit: openthesis watchthesis opentex
+doit: $(chapter).pandoc.pdf openchapter watchchapter openmkdwn
+# doit: openchapters watchchapters openmkdwn
+
+%.txt: %.in
+	pip-compile $<
+
+venv: requirements.txt dev-requirements.txt
+	pip-sync $^

@@ -13,7 +13,9 @@ def extract_image_from_pdf_page(xObject):
             return extract_image_from_pdf_page(o)
 
 
-def detect_height(url):
+def detect_height(elem):
+    url = elem.url
+    width = int(elem.attributes["width"].rstrip('%'))
     if url.endswith(".pdf"):
         from PyPDF2 import PdfFileReader
         with open(url, "rb") as fp:
@@ -25,7 +27,7 @@ def detect_height(url):
         import imageio
         w, h, colors = imageio.imread(url).shape
 
-    height = f"{100*h/w}%"
+    height = f"{width*h/w}%"
     return height
 
 
@@ -34,7 +36,7 @@ def action(elem, doc):
     if doc.format == 'latex' and isinstance(elem, pf.Image):
         # pf.debug(elem)
         if "width" in elem.attributes and "height" not in elem.attributes:
-            elem.attributes["height"] = detect_height(elem.url)
+            elem.attributes["height"] = detect_height(elem)
 
         return elem
 

@@ -1,0 +1,7 @@
+# pydap==3.2.2
+git+https://github.com/pydap/pydap
+ipython
+ipykernel
+xarray
+cftime
+numpy==1.16.2
