@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_1_exp_contrib
+chapter := chapter_00_3_results
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -148,6 +148,7 @@ chapter_%.pandoc.tex: chapter_%.md
 		--top-level-division=chapter \
 		--from markdown+table_captions \
 		--metadata-file=pandoc-meta.yml \
+		--number-sections \
 		$< -o $@
 
 chapters.pandoc.tex: $(MKDWN)
@@ -162,6 +163,7 @@ chapters.pandoc.tex: $(MKDWN)
 		--top-level-division=chapter \
 		--from markdown+table_captions \
 		--metadata-file=pandoc-meta.yml \
+		--number-sections \
 		$(MKDWN) -o $@
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
@@ -241,8 +243,8 @@ watchstop:
 	@pgrep -f watchmedo | xargs kill
 
 # doit: openthesis watchthesis opentex
-doit: $(chapter).pandoc.pdf openchapter watchchapter openmkdwn
-# doit: openchapters watchchapters openmkdwn
+# doit: $(chapter).pandoc.pdf openchapter watchchapter openmkdwn
+doit: openchapters watchchapters openmkdwn
 
 %.txt: %.in
 	pip-compile $<
