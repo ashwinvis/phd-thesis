@@ -42,6 +42,20 @@ define watchdog =
 	nohup watchmedo shell-command --patterns=$(1) --command=$(2) --drop 2>watch.log&
 endef
 
+define pandoc_standalone =
+	@pandoc \
+		$(PANDOC_FILTERS) \
+		-F pandoc-crossref \
+		-F pandoc-citeproc \
+		--bibliography $(BIB_FILE) \
+		--csl templates/journal-of-fluid-mechanics.csl \
+		--standalone \
+		--from markdown+table_captions \
+		--metadata-file=pandoc-meta.yml \
+		--number-sections \
+		$(1) -o $(2)
+endef
+
 # ifndef CI
 REDIRECT := | tail -n 2
 # else
@@ -138,33 +152,11 @@ chapter_%.latex: chapter_%.md
 
 chapter_%.pandoc.tex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
-	@pandoc \
-		$(PANDOC_FILTERS) \
-		-F pandoc-crossref \
-		-F pandoc-citeproc \
-		--bibliography $(BIB_FILE) \
-		--csl templates/journal-of-fluid-mechanics.csl \
-		--standalone \
-		--top-level-division=chapter \
-		--from markdown+table_captions \
-		--metadata-file=pandoc-meta.yml \
-		--number-sections \
-		$< -o $@
+	$(call pandoc_standalone,$<,$@)
 
 chapters.pandoc.tex: $(MKDWN)
 	$(call cprint,"building $@ with pandoc $^")
-	@pandoc \
-		$(PANDOC_FILTERS) \
-		-F pandoc-crossref \
-		-F pandoc-citeproc \
-		--bibliography $(BIB_FILE) \
-		--csl templates/journal-of-fluid-mechanics.csl \
-		--standalone \
-		--top-level-division=chapter \
-		--from markdown+table_captions \
-		--metadata-file=pandoc-meta.yml \
-		--number-sections \
-		$(MKDWN) -o $@
+	$(call pandoc_standalone,$^,$@)
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
