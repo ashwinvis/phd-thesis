@@ -1,5 +1,9 @@
 # Research highlights
 
+![Comparison of spectral energy budget from a toy model simulation with two
+different forcing schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf)a
+
+
 ![Comparison of the divergence fields ($\mathbf{\nabla.u}$) from a shallow
 water simulation (left) and a similar toy-model simulation (right). $L_f$ is
 the forcing length scale. Source:
