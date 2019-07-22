@@ -106,9 +106,9 @@ Grenoble Alpes, which is 13 metres in diameter and is mounted on motors
 allowing the entire platform to rotate. Both rotating and non-rotating
 experiments were conducted in this project. The platform was filled with a
 linear stratification of salinity up to a height of 81 cm using a double-bucket
-method. A rectangular enclosure as shown in @fig:scheme-coriolis was $9 \times
-6 \text{ m}^2$ area contains most of the equipment, including the oscillating carriage
-which forces the fluid.
+method. A 9 m long and 6 m wide rectangular enclosure, as shown in
+@fig:scheme-coriolis, contained most of the equipment, including the
+oscillating carriage which forces the fluid.
 
 ## Carriage
 
@@ -146,16 +146,16 @@ width=60%}
 ### Density probes
 
 Five conductometric probes calibrated for ambient temperature conditions and
-expected salinity range were installed at different locations, indicated with
+the expected salinity range were installed at different locations, indicated with
 blue dots in @fig:scheme-coriolis. The probes $P_p^1$ and $P_p^2$ are mounted
 on vertical profilers and these dive into the fluid at even time intervals at a
 moderate speed, providing us with accurate one-dimensional estimate of the
 stratification. Probe $P_c$ is attached on the carriage, at a constant height
-of 0.395 meters. Since $P_c$ makes measurements along an asymmetric direction
-during oscillation, its data is decomposed and interpreted differently: when it
-is ahead of the carriage it measures a decaying turbulence and when it is in
+of 0.395 meters. Since $P_c$ makes measurements along the direction of the
+carriage oscillation, its data is decomposed and interpreted differently: when it
+is ahead of the carriage it measures decaying turbulence and when it is in
 the wake of the carriage it measures forced turbulence. $P_f^1$ and $P_f^2$ are
-stationary probes and they are placed at the top and bottom of the fluid to
+stationary probes which are placed at the top and bottom of the fluid to
 measure temporal evolution of the mixed layer.
 
 ### Particle Image Velocimetry (PIV)
@@ -165,13 +165,13 @@ two-dimensional, two-component (2D-2C) scanning PIV system is used for
 measuring velocities along quasi-horizontal planes with a maximum tilt of
 1.5$^\circ$ about the true horizontal plane. This system relies on a single
 laser sheet deflected by an oscillating mirror controlled by a servo motor. For
-the same experimental parameters two sets of measurements are done, one with
+the same experimental parameters two sets of measurements are carried out, one with
 five horizontal planes and small scan amplitudes to obtain fine vertical
 resolution, and another with typically eight planes and wider scan angles which
 tend to be vertically decorrelated. The images are captured by three cameras,
-one placed at a high altitude capture the largest field ($2.2 \times 2.5 \text{ m}^2$),
+one placed at a high altitude capturing a large field ($2.2 \times 2.5 \text{ m}^2$),
 a second one placed at an intermediate altitude capturing a smaller field ($1.3
-\times 1.0 \text{ m}^2$) and a third one placed under the platform capturing a small
+\times 1.0 \text{ m}^2$) and a third one placed under the platform capturing an even smaller
 field ($1.18 \times 0.53 \text{ m}^2$).  The fields of vision are demarcated in pink in
 @fig:scheme-coriolis.  The cameras are placed progressively closer to the fluid
 to get more illumination from the particles seeded and potentially increased

@@ -1,21 +1,15 @@
 # Software systems
 
-This project was also an exercise in developing an reproducible, open-source
+This project was also an exercise in developing a reproducible, open-source
 workflow. This was motivated by the fact that experiments in fluid mechanics
 typically rely on a combination of proprietary software which includes: bundled
 image processing software by vendors such as Dantec[^d] and LaVision[^la], virtual
 instrumentation development environment LabVIEW[^lv] and a collection of MATLAB
-Utilities. The most obvious advantage is use of such software is that these
+Utilities. The most obvious advantage of such software is that these
 have been developed over several years and have advanced capabilities. Since most
-laboratories have invested in developing expertise in such software, the easier
-approach would have been to reuse existing tools.
-
-[^d]: [https://www.dantecdynamics.com/particle-image-velocimetry](https://www.dantecdynamics.com/particle-image-velocimetry)
-[^la]: [https://www.lavision.de/en/techniques/piv-ptv](https://www.lavision.de/en/techniques/piv-ptv)
-[^lv]:
-  [http://www.ni.com/en-us/shop/labview.html](http://www.ni.com/sv-se/shop/labview.html)
-
-However, this model is restrictive and cannot be transformed into a
+laboratories have invested in developing expertise in such software, the most
+conventional approach would have been to reuse existing tools.
+However, this such an approach is restrictive and cannot be transformed into a
 reproducible and collaborative workflow, for example making use of a version
 control systems. Algorithms are not entirely transparent and the closed-source
 nature prevents customizations.  Hence a path off the beaten track was pursued
@@ -24,18 +18,22 @@ software packages, extend them to meet the project goals and use them for
 executing the project. We will now look at the capabilities of the packages
 that were used.
 
+[^d]: [https://www.dantecdynamics.com/particle-image-velocimetry](https://www.dantecdynamics.com/particle-image-velocimetry)
+[^la]: [https://www.lavision.de/en/techniques/piv-ptv](https://www.lavision.de/en/techniques/piv-ptv)
+[^lv]: [http://www.ni.com/en-us/shop/labview.html](http://www.ni.com/sv-se/shop/labview.html)
+
 ## Fluidlab
 
-`Fluidlab` is a generic API for orchestrating laboratory experiments. The
-software leverages the object-oriented programming features in Python to model
-real life instrumentation. An experiment in the simplest level can be thought
-of as a network of interconnected instruments awaiting commands and also
-sending and receiving data. Being one of the oldest packages within the
-FluidDyn project [@fluiddyn], prior to the commencement of MILESTONE,
-`fluidlab` had this structure in place. The package had to be, nevertheless,
-extended to support the hardware used in the experiment. Thus, the team
-involved in the MILESTONE project implemented signals for controlling the
-motors of the carriage, for calibrating and data acquisition with
+The package `fluidlab` was designed as a generic API for orchestrating
+laboratory experiments. The software leverages the object-oriented programming
+features in Python to model real life instrumentation. An experiment in the
+simplest level can be thought of as a network of interconnected instruments
+awaiting commands and also sending and receiving data. Being one of the oldest
+packages within the FluidDyn project [@fluiddyn], prior to the commencement of
+MILESTONE, `fluidlab` had this structure in place. Nevertheless, the package had to be
+extended to support the hardware used in the experiment. Thus,
+the team involved in the MILESTONE project developed software for controlling
+the motors of the carriage, for calibrating and data acquisition with
 conductometric probes.
 
 ## Fluidimage
@@ -47,7 +45,7 @@ of inspiration behind this project. UVMAT offers a GUI built on
 MATLAB, which gives valuable interactive experience while setting parameters
 for PIV. However, license restrictions and the GUI-first design inhibits
 scalability of its execution in high performance clusters.  Furthermore, since
-MILESTONE project involves terabytes of image data, there was a clear need for
+the MILESTONE project involves terabytes of image data, there was a clear need for
 a scalable image processing framework. This was a collaborative effort and the
 work involved was divided between the group of developers. The following design
 goals guided the development of `fluidimage`:
