@@ -6,13 +6,14 @@
 
 # Variables:
 #
-kappa := overview
-main := thesis
-chapter := chapter_00_3_results
+chapter := chapters/00_3_results
 paper := paper_0*
-TEMPLATE_DIR := ./templates/mechthesis/
+DIR := latex
+TEMPLATE_DIR := templates/mechthesis
+main := $(DIR)/thesis
+kappa := $(DIR)/overview
 
-TEX := pdflatex
+TEX := pdflatex -output-directory=$(DIR)
 DRAFT_FLAGS := -draftmode -interaction=nonstopmode -shell-escape
 FINAL_FLAGS := -interaction=nonstopmode -shell-escape
 ifdef CI
@@ -69,10 +70,10 @@ RUBBER_INFO := $(shell command -v rubber-info 2> /dev/null)
 TEMPLATE_PAPER = templates/template_mechthesis_paper.tex
 META_PAPER = $(wildcard $(paper)/paper.yml)
 SRCS_PAPER = $(subst /,/paper.tex,$(wildcard $(paper)/))
-SRCS = packages.tex         \
-       commands.tex         \
-       frontmatter.tex      \
-       acknowledgements.tex \
+SRCS = $(DIR)/packages.tex         \
+       $(DIR)/commands.tex         \
+       $(DIR)/frontmatter.tex      \
+       $(DIR)/acknowledgements.tex \
        $(kappa).tex         \
        $(main).tex          \
        $(SRCS_PAPER)
@@ -93,20 +94,37 @@ AUXS = $(kappa).aux \
 BBLS = $(main).bbl \
        $(main).bcf
 
-IMGS = imgs/cascade.pdf \
-       imgs/dependency.pdf
+IMGS = chapters/imgs/cascade.pdf \
+       chapters/imgs/dependency.pdf
 
-MKDWN = $(sort $(wildcard chapter*.md))
+MKDWN = $(sort $(wildcard chapters/*.md))
 MKDWN2TEX = $(subst .md,.latex,$(MKDWN))
 MKDWN2PANDOCTEX = $(subst .md,.pandoc.tex,$(MKDWN))
 
 PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 # Rules:
 #
-.PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit red end
+.PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit red end list
 .NOPARALLEL: $(main).pdf $(main).bbl $(main).gls log watch
 
 all: log
+
+list: $(SRCS_PAPER)
+	@ls $(SRCS)
+	@ls $(DEPS)
+	@ls $(MKDWN)
+	@ls $(IMGS)
+	@ls $(PANDOC_FILTERS)
+
+listall: list $(AUXS) $(BBLS) $(MKDWN2TEX)
+	@echo Generated files
+	ls $(AUXS)
+	ls $(BBLS)
+	ls $(main).gls
+	ls $(MKDWN2TEX)
+
+debug: list $(main).aux
+	cd $(DIR) && rubber-info thesis | ccze -m ansi
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(main).gls
 	$(call cprint,"building $@ with $(TEX)")
@@ -138,11 +156,11 @@ imgs/%.pdf: imgs/%/plot.py
 	$(call cprint,"building $@ with $<")
 	PYTHONSTARTUP=scripts/pythonrc.py python $<
 
-chapter_%.md: $(IMGS)
+chapters/%.md: $(IMGS)
 	$(call cprint,"ensuring $^ required for $@")
 
 # MKDWN2TEX
-chapter_%.latex: chapter_%.md
+chapters/%.latex: chapters/%.md
 	$(call cprint,"building $@ with pandoc $<")
 	@pandoc \
 		$(PANDOC_FILTERS) \
@@ -150,19 +168,19 @@ chapter_%.latex: chapter_%.md
 		--natbib \
 		$< -o $@
 
-chapter_%.pandoc.tex: chapter_%.md
+chapters/%.pandoc.tex: chapters/%.md
 	$(call cprint,"building $@ with pandoc $<")
 	$(call pandoc_standalone,$<,$@)
 
-chapters.pandoc.tex: $(MKDWN)
+chapters/all.pandoc.tex: $(MKDWN)
 	$(call cprint,"building $@ with pandoc $^")
 	$(call pandoc_standalone,$^,$@)
 
-chapter_%.pandoc.pdf: chapter_%.pandoc.tex
+chapters/%.pandoc.pdf: chapters/%.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
 	@latexmk -silent -use-make -pdf $<
 
-chapters.pandoc.pdf: chapters.pandoc.tex
+chapters/all.pandoc.pdf: chapters/all.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
 	@latexmk -silent -use-make -pdf $<
 
@@ -213,7 +231,7 @@ openmkdwn:
 openchapter: $(chapter).pandoc.pdf
 	zathura $< 2> /dev/null &
 
-openchapters: chapters.pandoc.pdf
+openchapters: chapters/all.pandoc.pdf
 	zathura $< 2> /dev/null &
 
 openthesis: $(main).pdf
@@ -225,7 +243,7 @@ watchchapter:
 
 watchchapters:
 	$(call cprint,"watching for changes")
-	$(call watchdog,"*.md",'make chapters.pandoc.pdf')
+	$(call watchdog,"*.md",'make chapters/all.pandoc.pdf')
 
 watchthesis:
 	$(call cprint,"watching for changes")

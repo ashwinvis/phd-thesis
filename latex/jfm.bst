@@ -1,1 +1,1 @@
-templates/mechthesis/jfm.bst
+../templates/mechthesis/jfm.bst

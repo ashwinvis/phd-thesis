@@ -1,4 +1,4 @@
-\documentclass{./templates/mechthesis/MechThesis}
+\documentclass{../templates/mechthesis/MechThesis}
 %
 % Default options:
 % [thesissizeG5,twoside,onecolumn,10pt,reqno,tbtags,globalpagenum,final]
@@ -19,7 +19,7 @@
 % Packages
 %
 % insert in this file any additional package
-\input{packages}
+% \input{latex/packages}
 %
 %
 % Commands
@@ -48,7 +48,7 @@
 	Linn\'e FLOW Centre, KTH Royal Institute of Technology, Department of Mechanics\\
 	SE--100 44 Stockholm, Sweden%
 }%
-
+%
 \titel
 {% Swedish title (for swedish abstract)
   Framsteg inom stratifieradefl\"oden genom simulering, experiment och
@@ -100,7 +100,8 @@
 
 \printer{Universitetsservice US--AB, Stockholm}% Printer informations
 
-\bibliography{thesis}
+% \bibliography{thesis}
+\bibliography{latex/thesis}
 
 %===============================================================================
 %===============================================================================
@@ -112,7 +113,7 @@
 % \includeonly{paper_03_toy_model/paper,paper_04_shallow_water/paper}
 % \includeonly{paper_04_shallow_water/paper}
 
-\input{glossary}
+\input{latex/glossary}
 
 \begin{document}
 
@@ -123,7 +124,7 @@
 %
 \frontmatter
 
-\input{frontmatter}
+\input{latex/frontmatter}
 
 \printglossary
 
