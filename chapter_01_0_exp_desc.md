@@ -3,11 +3,10 @@
 ![Schematic of the global MOC conveyor
 belt](./imgs/thermohaline-nasa.jpg){#fig:thermohaline-global width=80%}
 
-The meridional overturning circulation (MOC) or the thermohaline circulation
-refers to the ocean currents resulting from the melting of ice near the polar
-region and upwelling elsewhere as shown in @fig:thermohaline-global. This
-circulation is responsible for the bulk of heat transport from the equator to
-the poles across the globe. Without this global conveyor belt, shown in
+The meridional overturning circulation (MOC) is a global circuit of ocean
+currents spanning all ocean basins in depth and breadth.
+This circulation is responsible for the bulk of heat transport from the equator
+to the poles across the globe. Without this global conveyor belt, shown in
 @fig:thermohaline-global, the temperatures at latitudes away from the equator
 would be considerably lesser [@bryden_slowing_2005]. It is also responsible for
 replenishing the surface water with nutrients and critical to the sustenance of
@@ -21,13 +20,17 @@ the red arrow represents the downward diapycnal heat flux due to mixing. (©
 Copyright 2012, AMS, @nikurashin_theory_2012).
 ](./imgs/moc-nik-vallis.jpg){#fig:moc}
 
-The MOC is thought to be driven by a combination of wind forcing, changes in
-buoyancy and diapycnal mixing, as shown in @fig:moc, a simplified sketch of the
-Atlantic MOC. The
+The MOC was also known as the thermohaline circulation, due to the misconception
+that heat and salinity fluxes due to melting of ice near the polar region and
+evaporation elsewhere as shown in @fig:thermohaline-global.
+Today, the MOC is thought to be driven by a combination of wind forcing,
+changes in buoyancy and diapycnal mixing, as shown in @fig:moc, a simplified
+sketch of the Atlantic MOC. The
 exact contribution of these three forces remain an open question [see chapter
-21 in @vallis_atmospheric_2017]. It should be noted that the circulation
-happens within a ocean with varying degrees of stable stratification in both
-temperature and salinity. For illustrating this the time averaged temperature
+21 in @vallis_atmospheric_2017].
+It should be noted that the circulation happens within a ocean with varying
+degrees of stable stratification in both temperature and salinity. For
+illustrating this the time averaged temperature
 and salinity in the Atlantic ocean [calculated from @carton_soda3_2018] are
 plotted in @fig:atlantic-salt-temp. It is understood that through mixing,
 kinetic energy is converted into available potential energy which allows the
