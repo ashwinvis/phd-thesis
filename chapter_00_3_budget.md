@@ -81,7 +81,7 @@ represents the energy converted from APE into KE.
 ## Available potential energy (APE)
 Available potential energy is defined as
 $$
-     E_P(\mathbf{r}, t) & = \frac{1}{2} { \theta^2 }
+     E_P(\mathbf{r}, t) = \frac{1}{2} { \theta^2 }
 $$
 Following [@eq:toy_theta], the rate of change of APE is given by,
 \begin{align*}
@@ -127,13 +127,13 @@ described below:
   mode decomposition of the primitive variables $\bf U$.
 - Take the expressions for the transfer terms, $T_K$ and $T_P$ (@eq:TK and
   @eq:TP), and expand the primitive variables $\bf U$ using the decomposition
-  calculated in the previous step. The result be a linear combination of
+  calculated in the previous step. The result is a linear combination of
   $B^{(0)}, B^{(+)}$ and $B^{(-)}$, the normal modes as shown in @eq:decomp_tensor_u
   and @eq:decomp_tensor_eta.
 - Compute the transfer terms using the expanded expression for primitive
-  variables term-by-term. Note that some of the multiplication can be done in
-  spectral space, and where derivatives are involved a couple of FFT and inverse
-  FFT would have to be used.
+  variables term-by-term. While few terms can be computed in spectral space
+  ($C_K, C_P$), where derivatives are involved ($T_K, T_P$) a couple of FFT and
+  inverse FFT would have to be used.
 - Classify the expanded transfer terms into four groups based on the kind of
   normal modes they are product of: $T_{VVV}, T_{VVW}, T_{VWW}$ and $T_{WWW}$.
   It is classified such that $V$ represent the potential vorticity mode

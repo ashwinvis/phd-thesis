@@ -35,11 +35,11 @@ where,
  * ${\bf u}^r$  is the rotational component of velocity obtained by applying
    the Helmholtz decomposition.
 
-Compared with SWE, there are certain
+\noindent Compared with SWE, there are certain benefits and compromises. These are:
 
-* pros: no shocks, KE and APE are quadratic and conserved, linearised potential
-* vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$; and
-* cons: full potential vorticity $Q$ is not exactly conserved.
+* Pros: no shocks, KE and APE are quadratic and conserved, linearised potential
+  vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$; and
+* Cons: full potential vorticity $Q$ is not exactly conserved.
 <!-- #endregion -->
 
 
@@ -49,7 +49,8 @@ The toy model introduces modification to the nonlinear terms and therefore, in
 its linearised form it would be identical to the linearised SWE. Hence the
 eigenvalues of the system would be exactly the same and thus the inversion
 matrix $Q$ can be reused. However, an extra consideration should be made while
-decomposing rotational velocities, $u^r$ and $v^r$. The corresponding normal
-mode vector should be calculated, starting from the $\mathbf{U}^r = \{ \hat{u}^r,
-\hat{v}^r, \theta \}^T$. In the next section, we shall see an application of
-the normal mode decomposition to interpret the spectral energy budget.
+decomposing rotational velocities, $u^r$ and $v^r$. When the corresponding
+normal mode vector should be calculated, a modified vector should be used as
+input which is, $\mathbf{U}^r = \{ \hat{u}^r, \hat{v}^r, \theta \}^T$. In the
+next section, we shall see an application of the normal mode decomposition to
+interpret the spectral energy budget.
