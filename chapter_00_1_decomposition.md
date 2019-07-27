@@ -7,7 +7,7 @@ The shallow water equations (SWE) have found utility as a academic tool to study
 and explain numerous fundamental geophysical wave phenomena [see chapter 3,
 @vallis_atmospheric_2017] and also as the "dynamical core" of some numerical
 weather prediction models [for eg., a flux vector splitting scheme based
-formulation of the SWE [lin_explicit_1997] was used in NOAA's GFS model until
+formulation of the SWE [@lin_explicit_1997] was used in NOAA's GFS model until
 very recently][^FV3]. The governing equations for a single layer shallow layer
 of fluid are:
 \begin{align}
@@ -104,25 +104,25 @@ non-divergent vector field. This allows us to express the velocity field as:
 For the sake of clarity, we shall denote the rotational and divergent parts of
 the velocity with the suffix *r* and *d* respectively,
 \begin{align*}
-    \mathbf{u}_r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}_d =
+    \mathbf{u}^r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}^d =
     \nabla {\bf \Phi}
 \end{align*}
-<!-- and, $\mathbf u  = \mathbf u_r + \mathbf u_d$. -->
+<!-- and, $\mathbf u  = \mathbf u^r + \mathbf u^d$. -->
 To find the projection operators for the divergent parts, take the
 divergence of [@eq:helm_u] giving $\nabla \cdot \mathbf{u} = \nabla^2 {\bf \Phi}$.
 This equation transforms into spectral space as, $i{\bf k}.\hat{\bf u} =
 -\kappa^2 \hat{\Phi}$, implying:
 \begin{align*}
-    {\hat{\bf u}}_d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k}       \\
-    {\hat{\bf u}}_r = & \hat{\bf u} - {\hat{\bf u}}_d
+    {\hat{\bf u}}^d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k}       \\
+    {\hat{\bf u}}^r = & \hat{\bf u} - {\hat{\bf u}}^d
 \end{align*}
 where, $\kappa = |\mathbf{k}|$, magnitude of the wavenumber vector.
-To obtain a similar decomposition, $h = h_r + h_d$, for the fluid depth one can
+To obtain a similar decomposition, $h = h^r + h^d$, for the fluid depth one can
 use the Poisson equation [@eq:poisson_fft]. Since the Poisson equation requires a
 divergence free flow, the LHS of [@eq:poisson_fft] would correspond to the
-rotational part of the flow in the transformed plane, i.e.  $\hat{h}_r$.
-Henceforth, the divergent part, $\hat{h}_d$ can be obtained by subtracting
-$\hat{h}_r$ from $\hat{h}$. While the Helmholtz decomposition is simple to compute
+rotational part of the flow in the transformed plane, i.e.  $\hat{h}^r$.
+Henceforth, the divergent part, $\hat{h}^d$ can be obtained by subtracting
+$\hat{h}^r$ from $\hat{h}$. While the Helmholtz decomposition is simple to compute
 and provide insightful results, it may be more revealing to apply a
 normal-mode decomposition -- especially in the case of flows under the presence
 of system rotation, wherein potential vorticity is conserved and not vorticity.
@@ -334,12 +334,15 @@ where, the inversion matrix is
         c\kappa^{2}                                 &
         c\kappa^{2}
     \end{bmatrix}\end{align}
- In tensor notation,
-\begin{align*}
+In tensor notation,
+\begin{align}
+    \label{eq:decomp_tensor_u}
     \hat{u}_l =   & \epsilon_{lm3} ik_m\left[ -\frac{c}{\sigma} B^{(0)} +
         \frac{f}{\sqrt{2}\sigma\kappa} (B^{(+)} + B^{(-)})
         \right]
     + k_l \frac{1}{\sqrt{2}\kappa}  (B^{(+)} - B^{(-)})                       \\
+    \label{eq:decomp_tensor_eta}
     c\hat{\eta} = & \frac{f}{\sigma} B^{(0)} + \frac{c\kappa}{\sqrt{2}\sigma}
-    (B^{(+)} + B^{(-)})\end{align*}
+    (B^{(+)} + B^{(-)})
+\end{align}
 

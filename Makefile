@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_00_3_results
+chapter := chapter_00_3_budget
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 

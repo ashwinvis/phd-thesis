@@ -1,7 +1,11 @@
 # Toy-model equations
-
-$$\frac{\partial {\bf u}} {\partial t} + {{\bf u}\cdot \nabla} {\bf u} +  f {\bf e}_z \times {\bf u} = -c^2 \nabla \eta $${#eq:swe_u}
-$$\frac{\partial \eta}{\partial t}+ {{\bf u} \cdot \nabla} \eta   = \red{- (1+\eta) \nabla \cdot {\bf u}}$${#eq:swe_eta}
+$$
+\frac{\partial {\bf u}} {\partial t} + \red{{\bf u}\cdot \nabla} {\bf u} +
+f {\bf e}_z \times {\bf u} = -c^2 \nabla \eta
+$${#eq:swe_u}
+$$
+\frac{\partial \eta}{\partial t}+ \red{{\bf u} \cdot \nabla} \eta   = \red{- (1+\eta) \nabla \cdot {\bf u}}
+$${#eq:swe_eta}
 
 
 1. Assumption #1: Surface displacement much smaller compared to the mean fluid layer height, $\eta << 1$.
@@ -10,31 +14,42 @@ $$\frac{\partial \eta}{\partial t}+ {{\bf u} \cdot \nabla} \eta   = \red{- (1+\e
    Replace $\red{-(1+\eta) \nabla \cdot  {\bf u}}$ with $\green{-\nabla \cdot {\bf u}}$.
 
 1. Assumption #2: Velocities in the large scale are dominated by rotational
-   part, $|\bf u_r| >> |\bf u_d|$.
+   part, $|\bf u^r| >> |\bf u^d|$.
    <!-- Use Helmoltz decomposition to make this distinction. -->
-   Use Helmholtz decomposition to calculate $\bf{u}_r$, ${\bf u} = \bf{u}_r + \bf{u}_d$
+   Use Helmholtz decomposition to calculate $\bf{u}^r$, ${\bf u} = \bf{u}^r + \bf{u}^d$
    i.e. in the advection term we use rotational velocity. Reason: large scale motions dominated by rotation.
-   Replace  $\red{{\bf u} \cdot \nabla}$  with $\green{{\bf u_r} \cdot \nabla}$
+   Replace  $\red{{\bf u} \cdot \nabla}$  with $\green{{\bf u^r} \cdot \nabla}$
 
 While allowing, $|\zeta| \sim |d|$ in contrast with QG where $|\zeta| >> |d|$.
-Apply two modifications on the classical shallow water equations
-
-
-####  The toy model equations
-
-$$\frac{\partial {\bf u}} {\partial t} + \green{{\bf u}_r\cdot \nabla} {\bf u} + f {\bf e}_z\times {\bf u} = -c \nabla \theta $$
-
-$$\frac{\partial \theta}{\partial t}+ \green{{\bf u}_r \cdot \nabla} \theta   = -  c\green{\nabla \cdot {\bf u}} $$
+Applying these two modifications on the classical shallow water equations gives
+us,
+\begin{align}
+\label{eq:toy}
+\frac{\partial {\bf u}} {\partial t} + \green{{\bf u}^r\cdot \nabla} {\bf u} + f {\bf e}_z\times {\bf u} = -c \nabla \theta \\
+\label{eq:toy_theta}
+\frac{\partial \theta}{\partial t}+ \green{{\bf u}^r \cdot \nabla} \theta   = -  c\green{\nabla \cdot {\bf u}}
+\end{align}
 where,
 
  * $\theta = c\eta$, replaces $\eta$ with a proportional $\theta$ variable. Takes the form of potential temperature.
- * ${\bf u}_r  = -\nabla \times ( {\bf e_z} \Psi)$ is the rotational component
- * $\bf {u}_d = \nabla \chi$ is the divergent component
+ * ${\bf u}^r$  is the rotational component of velocity obtained by applying
+   the Helmholtz decomposition.
 
-\noindent with $\Psi$ and $\chi$ being the stream function and the velocity potential respectively.
+Compared with SWE, there are certain
 
-* Pros: No shocks, KE and APE are quadratic and conserved, linearised potential vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$
-
-* Cons: Full potential vorticity $Q$ is not exactly conserved
+* pros: no shocks, KE and APE are quadratic and conserved, linearised potential
+* vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$; and
+* cons: full potential vorticity $Q$ is not exactly conserved.
 <!-- #endregion -->
 
+
+## Normal modes
+
+The toy model introduces modification to the nonlinear terms and therefore, in
+its linearised form it would be identical to the linearised SWE. Hence the
+eigenvalues of the system would be exactly the same and thus the inversion
+matrix $Q$ can be reused. However, an extra consideration should be made while
+decomposing rotational velocities, $u^r$ and $v^r$. The corresponding normal
+mode vector should be calculated, starting from the $\mathbf{U}^r = \{ \hat{u}^r,
+\hat{v}^r, \theta \}^T$. In the next section, we shall see an application of
+the normal mode decomposition to interpret the spectral energy budget.
