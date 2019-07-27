@@ -70,11 +70,6 @@ $$\label{eq:dtJ}
     \partial_t \mathbf{J} = -(\mathbf{u}.\nabla)\mathbf{J} - \nabla(c^2h^2)/2 -
     \zeta \mathbf{\hat{e}}_z \times \mathbf{J} - (\nabla.
     \mathbf{J})\mathbf{u}$$
-Similarly, an equation for the *displaced mass flux*, [M]{acronym-label="M"
-acronym-form="singular+short"} $=
-    \eta\mathbf{u}$ is: $$\label{eq:dtM}
-    \partial_t \mathbf M = -(\mathbf{u}.\nabla)\mathbf{M} - \nabla(c^2\eta^2)/2 -
-    \zeta \mathbf{\hat{e}}_z \times \mathbf M - (\nabla.\mathbf{u} + \nabla.\mathbf{M})\mathbf u$$
 For a divergence free flow, a Poisson equation for *h* can be
 formulated. Taking the divergence of [@eq:dtu0], yields the Poisson equation:
 $$
