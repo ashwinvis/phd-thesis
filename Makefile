@@ -94,7 +94,8 @@ BBLS = $(main).bbl \
        $(main).bcf
 
 IMGS = imgs/cascade.pdf \
-       imgs/dependency.pdf
+	imgs/dependency.pdf \
+	imgs/spectral_flux.pdf
 
 MKDWN = $(sort $(wildcard chapter*.md))
 MKDWN2TEX = $(subst .md,.latex,$(MKDWN))
