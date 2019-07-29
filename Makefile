@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_01_1_exp_contrib
+chapter := chapter_00_4_results
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -40,6 +40,20 @@ endef
 define watchdog =
 	@echo -e "Execute watchdog: on pattern $(1): run $(2)"
 	nohup watchmedo shell-command --patterns=$(1) --command=$(2) --drop 2>watch.log&
+endef
+
+define pandoc_standalone =
+	@pandoc \
+		$(PANDOC_FILTERS) \
+		-F pandoc-crossref \
+		-F pandoc-citeproc \
+		--bibliography $(BIB_FILE) \
+		--csl templates/journal-of-fluid-mechanics.csl \
+		--standalone \
+		--from markdown+table_captions \
+		--metadata-file=pandoc-meta.yml \
+		--number-sections \
+		$(1) -o $(2)
 endef
 
 # ifndef CI
@@ -80,7 +94,8 @@ BBLS = $(main).bbl \
        $(main).bcf
 
 IMGS = imgs/cascade.pdf \
-       imgs/dependency.pdf
+	imgs/dependency.pdf \
+	imgs/spectral_flux.pdf
 
 MKDWN = $(sort $(wildcard chapter*.md))
 MKDWN2TEX = $(subst .md,.latex,$(MKDWN))
@@ -138,31 +153,11 @@ chapter_%.latex: chapter_%.md
 
 chapter_%.pandoc.tex: chapter_%.md
 	$(call cprint,"building $@ with pandoc $<")
-	@pandoc \
-		$(PANDOC_FILTERS) \
-		-F pandoc-crossref \
-		-F pandoc-citeproc \
-		--bibliography $(BIB_FILE) \
-		--csl templates/journal-of-fluid-mechanics.csl \
-		--standalone \
-		--top-level-division=chapter \
-		--from markdown+table_captions \
-		--metadata-file=pandoc-meta.yml \
-		$< -o $@
+	$(call pandoc_standalone,$<,$@)
 
 chapters.pandoc.tex: $(MKDWN)
 	$(call cprint,"building $@ with pandoc $^")
-	@pandoc \
-		$(PANDOC_FILTERS) \
-		-F pandoc-crossref \
-		-F pandoc-citeproc \
-		--bibliography $(BIB_FILE) \
-		--csl templates/journal-of-fluid-mechanics.csl \
-		--standalone \
-		--top-level-division=chapter \
-		--from markdown+table_captions \
-		--metadata-file=pandoc-meta.yml \
-		$(MKDWN) -o $@
+	$(call pandoc_standalone,$^,$@)
 
 chapter_%.pandoc.pdf: chapter_%.pandoc.tex
 	$(call cprint,"building $@ with latexmk")
@@ -241,8 +236,8 @@ watchstop:
 	@pgrep -f watchmedo | xargs kill
 
 # doit: openthesis watchthesis opentex
-doit: $(chapter).pandoc.pdf openchapter watchchapter openmkdwn
-# doit: openchapters watchchapters openmkdwn
+# doit: $(chapter).pandoc.pdf openchapter watchchapter openmkdwn
+doit: openchapters watchchapters openmkdwn
 
 %.txt: %.in
 	pip-compile $<
