@@ -3,7 +3,7 @@
 
 Atmospheric turbulence is characterized by a wide range of scales, ranging from
 the order of millimetres to several thousands of kilometres. Understanding the
-underlying interactions behind the energetics are essential to improve general
+underlying interactions behind the energetics is essential to improve general
 circulation models (GCM) while also recognizing the limits of predictability
 [see @lorenz_predictability_1969; @vallis_atmospheric_2017 pp. 433--447]. As a
 general rule of thumb, as our capabilities of modelling of the small scales
@@ -22,8 +22,8 @@ through the wind and temperature measurements made in Global Atmospheric
 Sampling Program (GASP, see @nastrom_kinetic_1984 and @NastromGage1985). In
 GASP, data spanning across the globe was collected using over 6900 commercial
 flights during the years 1975-79. At least 80% of the data was measured between
-altitudes of 9 and 14 kilometres, near the tropopause where most of the weather
-activity is concentrated. The spectra thus calculated, shown in
+altitudes of 9 and 14 kilometres, near the tropopause. The spectra thus
+calculated, shown in
 @fig:nastromgage, revealed that there are two separate ranges: energy in a
 narrow synoptic range (wavelengths between 1000 and 3000 km) scaling as
 $k^{-3}$, and in the mesoscale range (wavelengths between 2 and 500 km) scaling
@@ -70,7 +70,7 @@ than what is observed at
 mesoscales and the spectrum scaled as $k^{-2}$. Nevertheless, the dynamics of
 shock-dominated wave turbulence caught our interest and we derived novel
 scaling theories for spectra, shock separations, structure
-functions and other related statistics. This theory and the results are
+functions and other related statistics. These results are
 presented in @augier_shallow_2019. The study can be potentially extended to
 other domains such as acoustics, but is unlikely to find straightforward
 applications in geophysical turbulence. Therefore in a second study
@@ -93,22 +93,22 @@ from @augier_shallow_2019 and @LindborgMohanan2017.
 ## Two-dimensional turbulence
 
 The latter half of the twentieth century presented exciting insights into how
-kinetic energy is distributed among different scales in the atmosphere. Several
-researchers in the 1960s found that large-scale or *synoptic* circulation in
-the atmosphere and the associated kinetic energy spectra, behave differently
-when compared with well-known theories for three-dimensional (3D) homogeneous
-and isotropic turbulence by Kolmogorov. It was identified through observational
-evidences [@horn_analysis_1963] and later on by GCM calculations
-[@wellck_effect_1971] that the energy spectrum scales as $k^{-3}$. Therefore,
-the underlying mechanism is different in comparison with 3D isotropic
-turbulence, in which energy spectrum scales as $k^{-5/3}$.
+kinetic energy is distributed among different scales in the atmosphere.
+Several researchers in the 1960s found that  energy spectra associated with
+synoptic scales of motion ($\sim 1000-3000$) km are very different from
+spectra of small scale three-dimensional isotropic turbulence. Through
+observational evidence [@horn_analysis_1963] it and later on by GCM
+calculations [@wellck_effect_1971], it was found that the energy spectrum
+scales as $k^{-3}$ at synoptic scales.
+Therefore, the underlying mechanism is different in comparison with 3D
+isotropic turbulence, in which energy spectrum scales as $k^{-5/3}$.
 
 It was also realized that in two-dimensional turbulence, vorticity and
 enstrophy conservation places a
 strong constraint on the cascade [see for example, @fjortoft_changes_1953].
 This development led to the seminal work by @Kraichnan1967 wherein a theory
 for a coexistence of a dual cascade was formulated. A
-large scale inertial range dominated by an inverse-energy cascade was predicted
+large scale inverse-energy cascade was predicted
 wherein, the energy spectrum scales as $E(k) \sim \epsilon^{2/3} k^{-5/3}$,
 where $\epsilon$ is the energy dissipation. At smaller scales there is a
 forward enstrophy cascade with an associated spectrum, $E(k) \sim \eta^{2/3}
@@ -129,7 +129,7 @@ energy and enstrophy fluxes can be expressed as,
   \Pi(k) &= \
     \frac{1}{2} \int_0^k dk' \int dp \int dq T(k', p, q) - \
     \frac{1}{2} \int_{k}^\infty dk' \int dp \int dq T(k', p, q) \
-    \text{and,} \\
+    \\
   Z(k) &= \
     \frac{1}{2} \int_0^k k'^2 dk' \int dp \int dq T(k', p, q) - \
     \frac{1}{2} \int_k^\infty k'^2 dk' \int dp \int dq T(k', p, q)
@@ -160,52 +160,56 @@ determined using statistical mechanics arguments [see also
 Despite the firm foundations that the theory of @Kraichnan1967 presented, a gap
 left to be bridged -- to connect the ideal two-dimensional turbulence to
 atmospheric turbulence. @Charney1971 pondered if it was possible to realize the
-predictions at all and if so, at what limits can the atmosphere be considered
+predictions at all and if so, within what limits the atmosphere can be considered
 two-dimensional. It is well-known that most chaotic motions at planetary scales
 originates from baroclinic instability [@vallis_atmospheric_2017]. The effects of rotation and
 stratification were not considered in @Kraichnan1967. These "shortcomings" were
 addressed to some extent by @Charney1971, who derived the $k^{-3}$ spectrum by
-analysing the so-called quasi-geostrophic (QG) equation conserving an
+analysing the so-called quasi-geostrophic (QG) equation, conserving an
 approximate expression for potential vorticity:
-$$ \Dt{} \left[\nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left(\frac{\tilde \rho}{N^2}
-\p_z \psi \right) + \beta y \right] = 0 $${#eq:quasigeo}
-where, $\psi$ is the horizontal stream function, $f$ is the solid body rotation
+$$\Dt{q} = 0$$
+$$ q = \nabla^2 \psi + \frac{f_0^2}{\tilde \rho}\left(\frac{\tilde \rho}{N^2}
+\p_z \psi \right) + \beta y $${#eq:quasigeo}
+where, $\psi$ is the horizontal stream function, $f_0$ is the solid body rotation
 speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
 the Brunt-\text{V\"ais\"al\"a} frequency and $\beta \approx \p_y f$ is the beta
-parameter. This equation is valid when a certain criteria are met:
+parameter. This equation is valid when certain criteria are met:
 
-* Rossby number $Ro < \order{1}$, indicating strong rotation and the flow in
-  near-geostrophic balance,
-  <!-- -->
-* Characteristic length scales of motion are of the same order as Rossby radius
+ * strong rotation, implying that the Rossby number, $Ro = UL/f_0$ is much
+   smaller than unity, where $U$ and $L$ are characteristic horizontal
+   velocity and length scales, respectively,
+<!-- * Rossby number $Ro < \order{1}$, indicating strong rotation and the flow in -->
+<!--   near-geostrophic balance, -->
+* characteristic length scales of motion are of the same order as Rossby radius
   of deformation, i.e. $L \sim L_d = HN/f_0$ or $Ro (\frac{L}{L_d})^2 =
-  \order{Ro}$. Combining this with a scaling analysis of the hydrostatic
-  relation for a Boussinesq fluid, which is an equillibrium between pressure
-  gradient and Coriolis force,
-  \begin{align*}
-  | \nabla \phi' | &\sim | {\bf f} \times {\bf u} |\\
-  \phi' &\sim f_o U L \\
-  b' = \p_z{\phi'} &\sim \frac{f_0 U L}{H}\\
-  \frac{\p_zb'}{N^2} &\sim  \frac{f_0 U L}{H^2N^2}
-  \sim Ro \left( \frac{f_0L}{HN} \right)^2
-  \sim Ro \left( \frac{L}{L_d} \right)^2 \\
-  \therefore \frac{\p_zb'}{N^2} &\sim \order{Ro} < \order{1}
-  \end{align*}
-  where $b'$ stands for fluctuations in buoyancy and its evolution equation is
-  $\Dt b' = - N^2 w$.
-  This scaling would imply that variations in
-  stratification are small in comparison with background stratification.
-* Variations in the Coriolis force ($\beta$) are small, implying scales may not
+  \order{Ro}$. Here, $H$ is a characteristic vertical length scale,
+  <!-- Combining this with a scaling analysis of the hydrostatic -->
+  <!-- relation for a Boussinesq fluid, which is an equillibrium between pressure -->
+  <!-- gradient and Coriolis force, -->
+  <!-- \begin{align*} -->
+  <!-- | \nabla \phi' | &\sim | {\bf f} \times {\bf u} |\\ -->
+  <!-- \phi' &\sim f_o U L \\ -->
+  <!-- b' = \p_z{\phi'} &\sim \frac{f_0 U L}{H}\\ -->
+  <!-- \frac{\p_zb'}{N^2} &\sim  \frac{f_0 U L}{H^2N^2} -->
+  <!-- \sim Ro \left( \frac{f_0L}{HN} \right)^2 -->
+  <!-- \sim Ro \left( \frac{L}{L_d} \right)^2 \\ -->
+  <!-- \therefore \frac{\p_zb'}{N^2} &\sim \order{Ro} < \order{1} -->
+  <!-- \end{align*} -->
+  <!-- where $b'$ stands for fluctuations in buoyancy and its evolution equation is -->
+  <!-- $\Dt b' = - N^2 w$. -->
+  <!-- This scaling would imply that variations in -->
+  <!-- stratification are small in comparison with background stratification. -->
+* variations in the Coriolis force ($\beta$) are small, implying scales may not
   be as large as planetary length scales,
 
 \noindent and some other scale restrictions [see chapter 5 in
-@vallis_atmospheric_2017].  Using @eq:quasigeo and the result that both energy
-and QG enstrophy are conserved quantities it was shown that, for a
-sufficiently high Reynolds number flow the energy cascade can be inhibited by
-the geostrophic constraint. In this respect the QG equation behave similar to the
-2D Navier-Stokes equations.  The $k^{-3}$ scaling law was derived for the QG
-equations in @Charney1971 and observational results from @wellck_effect_1971 were used to
-confirm the existence of the $k^{-3}$ spectrum.
+@vallis_atmospheric_2017]. Using @eq:quasigeo and the result that both energy
+and QG enstrophy ($q^2 / 2 $) are conserved quantities it was shown that,
+the forward energy cascade can be inhibited by the geostrophic constraint. In
+this respect the QG equation behave similar to the 2D Navier-Stokes equations.
+The $k^{-3}$ scaling law was derived for the QG equations in @Charney1971 and
+GCM results from @wellck_effect_1971 were used to confirm the existence of the
+$k^{-3}$ spectrum.
 
 ## Energy cascade in synoptic and mesoscale flows{#sec:energy}
 
@@ -214,32 +218,30 @@ might simultaneously occur in two-dimensional turbulence. Right: A schematic of
 observed energy spectra in the atmosphere [@NastromGage1985]
 ](imgs/cascade.pdf){#fig:cascade}
 
-Nowadays, it is understood that the $k^{-3}$ spectrum in the _synoptic_ scales
+Nowadays, it is understood that the $k^{-3}$ spectrum at the _synoptic_ scales
 (typically, for wavelengths over a thousand kilometres) is an example of a
-Kraichnan-Charney type of turbulence, with a constant enstrophy flux cascading
+Kraichnan-Charney type of turbulence, with enstrophy cascading
 downscale. The left plot of @fig:cascade shows how @Kraichnan1967 anticipated
 the two scaling laws would coexist -- a "stirring force" would inject
 energy at intermediate scales, which would then cascade towards
 small wavenumbers, while enstrophy would cascade in the opposite direction. In
-contrast to this picture, the study by @NastromGage1985, which compiled data from
-over 6000 aircraft flights spanning several years, revealed spectra that were
-similar to the sketch on the right plot of @fig:cascade. One should note that,
-the $k^{-3}$ range dominates in terms of energy and spans across the synoptic
-scales, whereas a lesser yet substantial \kfivethird\ range characterizes the
-*mesoscale* flows. @Frisch described the appearance of the \kfivethird\ scaling
-at mesoscales as "paradoxical", since it appears at larger wavenumbers than the
-$k^{-3}$ range, contrary to the predictions of 2D turbulence.
+contrast to this picture, the study by @NastromGage1985,
+<!-- which compiled data from over 6000 aircraft flights spanning several years, -->
+revealed spectra that were similar to the sketch on the right plot of
+@fig:cascade.
+Here, the synoptic scale $k^{-3}$-range is found at larger scales than the
+mesoscale $k^{-5/3}$-range, an observation that @Frisch found 'paradoxical'.
 
-What the mechanism behind the \kfivethird\ mesoscale spectra, has been an
-open question ever since, and competing theories were put forth to address
-this. @Dewan:1979 analysed the energy spectrum of velocity fluctuations in the
-stratosphere up to wavelength of \order{10} kilometres and suggested that
+By what the mechanism the \kfivethird\ mesoscale spectrum is produced, has been
+an open question ever since, and competing theories were put forth to address
+this issue. @Dewan:1979 analysed the energy spectrum of velocity fluctuations in the
+stratosphere up to wavelengths of \order{10} kilometres and suggested that
 internal gravity waves, feeding on turbulent layers trapped by large scale
 shear flows, could be the driving mechanism behind the spectrum.
 He considered the mesoscale spectrum to be analogous to the ocean
 spectrum reported by @garrett_space-time_1972. It was also asserted that a
-Kolmogorov-type _forward_ cascade of wave scales could be involved. This was
-substantiated using a simple model for a shear flow due to a wave by @Phillips.
+Kolmogorov-type _forward_ energy cascade of waves is present. This
+was substantiated using a simple model for a shear flow by @Phillips.
 
 In @Gage:1979, a competing hypothesis was formulated assuming that the mesoscale cascade
 process would be similar to Kraichnan's prediction of inverse energy cascade.
