@@ -1,0 +1,100 @@
+In the recent years, there has been a call to reform the way we perform
+scientific research. This includes improving \emph{findability,
+accessibility, interoperabilty} and \emph{reusability} of research data,
+otherwise known as FAIR principles \citep{wilkinson_fair_2016}. This
+also allows for increased scrutiny and transparency in research results.
+
+MILESTONE project has therefore strived to make the project data openly
+available for everyone. The raw data which includes images and signals
+from density and temperature probes collectively amounts to several
+terabytes. Although solutions exist to share slices of very large
+datasets \citep{cornillon_opendap_2003}, the utility of the such data is
+limited without post-processing. Upon post-processing the total size of
+the data has been condensed to less than four gigabytes. A possible
+solution to share datasets of the order of few gigabytes is to upload
+them in general-purpose repositories such as Zenodo
+\citep{peters_zenodo_2017}. In this way, the dataset would be
+\emph{findable} via a date of issue identifier or the search interface
+of Zenodo, and \emph{accessible} for downloading through standard
+internet protocols. The dataset consists of HDF5 and XML files, which
+includes metadata describing experimental parameters. Use of descriptive
+and standardised data formats allows for \emph{interoperability} and
+\emph{reuse} in other research software.
+
+Results are deemed reproducible, when the source code used to operate on
+the data are accessible \citep{peng_reproducible_2011}. Therefore, a set
+of open-source packages programmed using Python were used to conduct a
+good majority of the tasks. The packages are now part of the FluidDyn
+project \citep{fluiddyn}. The code used to postprocess and analyse the
+data are archived in a package called \texttt{fluidcoriolis}. The
+package can be reused in the future, to load and interact with the data.
+Additionally the package contains scripts which were used to conduct the
+experiments and perform image processing using packages
+\texttt{fluidlab} and \texttt{fluidimage} respectively.
+
+The package \texttt{fluidlab} is designed as a generic API for
+orchestrating laboratory experiments. An experiment in the simplest
+level can be thought of as a network of interconnected instruments
+awaiting commands and also sending and receiving data. For example, the
+movement of the carriage and of the probes are controlled with a
+graphical application and scripts provided by \texttt{fluidlab} and
+\texttt{fluidcoriolis}. Horizontal scanning PIV is also made possible by
+controlling the rotating mirror and the triggers of the camera through
+functions provided in \texttt{fluidlab}. This allows anyone to
+replicate, a horizontal scanning PIV setup with a good camera (in this
+case, \emph{pco.edge}), a rotating mirror and an inexpensive acquisition
+board (\emph{T7 LabJack}) to trigger the camera.
+
+The computation of PIV is performed on the cluster at LEGI using
+\texttt{fluidimage}. The development of \texttt{fluidimage}
+\citep{augier_fluidimage_2016} as a scalable image processing framework,
+is one of the biggest undertakings during the project. Free software for
+processing PIV such as UVMAT \citep{sommeria_uvmat_2008} is a source of
+inspiration behind this project. UVMAT offers a graphical interface
+built on MATLAB, which gives valuable interactive experience while
+setting parameters for PIV. However, to process terabytes of image data,
+there is a clear need for a scalable image processing framework. Limited
+availability of MATLAB licenses inhibits scalability of UVMAT in high
+performance clusters. This led to the development of \texttt{fluidimage}
+and its current capabilities include,
+
+\begin{itemize}
+\item
+  asynchronous processing which allows massive parallelization, and
+\item
+  single tooling for all sorts of post-experiment workflows, including
+  calibration, preprocessing, PIV, post-processing of velocity fields.
+\end{itemize}
+
+\begin{figure}
+\hypertarget{fig:topopiv}{%
+\centering
+\includegraphics[width=0.4\textwidth,height=0.6\textheight]{./imgs/topology_piv.pdf}
+\caption{A flowchart describing PIV computation in \texttt{fluidimage}.
+The oval blocks signify a \emph{work} and the rectangles are the
+\emph{queues}. The black arrows represent which are handled by the main
+thread, and are classified as \emph{global}. A \emph{global} work can be
+invoked once (\emph{one shot}) or many times (\emph{multiple shots}).
+I/O bound and CPU bound \emph{works} are shown in green and orange
+respectively. Image and velocity arrays are shown as small blue and
+purple squares inside the \emph{queues}.}\label{fig:topopiv}
+}
+\end{figure}
+
+Parallelization in \texttt{fluidimage} is achieved by dividing a
+workflow into several tasks called \emph{works}. To allow the flow of
+data from one \emph{work} to another, which operate at various speeds,
+intermediate data structures called \emph{queues} are created. If a
+\emph{work} is fast enough, it is handled by the main thread. Slower
+\emph{works} are parallelized depending on the kind of operations
+involved. As shown in figure~\ref{fig:topopiv}, image file names are
+read and grouped in the form of couples by the main thread. Images are
+read as arrays using several threads. Thereafter based on the couples of
+names, couples of arrays are formed and through FFT based
+cross-correlation, the velocity field is computed. Saving velocity
+fields into the disk is also handled by a multithreaded \emph{work}. The
+package also includes \emph{topologies} for preprocessing images with
+filters. Other features of \texttt{fluidimage} include ability to
+calibrate cameras using camera models of \citet{tsai_versatile_1987} and
+\citet{zhang_flexible_2000}, and a postprocessing module for extracting
+statistics from computed velocity fields.
