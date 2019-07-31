@@ -176,7 +176,7 @@ log: $(main).pdf
 ifndef RUBBER_INFO
 	cat $(main).log
 else
-	rubber-info $(main).tex | ccze -m ansi
+	rubber-info $(main).tex # | ccze -m ansi
 endif
 
 clean: clean_papers clean_thesis
