@@ -69,7 +69,7 @@ and its current capabilities include,
 \begin{figure}
 \hypertarget{fig:topopiv}{%
 \centering
-\includegraphics[width=0.4\textwidth,height=0.6\textheight]{./imgs/topology_piv.pdf}
+\includegraphics[width=0.6\textwidth]{./imgs/topology_piv.pdf}
 \caption{A flowchart describing PIV computation in \texttt{fluidimage}.
 The oval blocks signify a \emph{work} and the rectangles are the
 \emph{queues}. The black arrows represent which are handled by the main

@@ -87,7 +87,7 @@ $\Gamma \approx 0.33$ was recorded. Also note that, as shown in
 
 ![In-situ measurements, experiments and numerical simulations classified by
 their regime according to stratified turbulence
-theory](./_paper_06_milestone/tmp/fig_R_vs_Fh_other_studies_with_milestone17.png){#fig:stratified-regime}
+theory](./paper_06_milestone/1st/tmp/fig_R_vs_Fh_other_studies_with_milestone17.png){#fig:stratified-regime}
 
 The question of what value the mixing coefficient would tend to at higher
 levels of stratification, is at the heart of the project titled Mixing and
