@@ -40,22 +40,18 @@ allowing for more modes for upscale energy cascade.
 ![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
 ![](./paper_03_toy_model/fig10.eps){width=43% #fig:sebtoy}
 
-A comparison of the spectral energy budgets from a GCM simulation\footnotemark{}
-[@AugierLindborg2013] and a toy model simulation
-[@LindborgMohanan2017]. The total spectral energy flux $\Pi$ has been
-decomposed into kinetic ($\Pi_K$) and available potential energy ($\Pi_A$)
-energy fluxes. The conversion from available potential energy to kinetic energy
-is represented by $C_{cum}$. The kinetic energy flux is further decomposed as
-$\Pi_{2D}$, the flux due to geostrophic modes and the difference $\Pi_K -
-\Pi_{2D}$.
+A comparison of the spectral energy budgets from a GCM simulation and a toy
+model simulation [@LindborgMohanan2017]. The total spectral energy flux $\Pi$
+has been decomposed into kinetic ($\Pi_K$) and available potential energy
+($\Pi_A$) energy fluxes. The conversion from available potential energy to
+kinetic energy is represented by $C_{cum}$. The kinetic energy flux is further
+decomposed as $\Pi_{2D}$, the flux due to geostrophic modes and the difference
+$\Pi_K - \Pi_{2D}$. The plot on the left is from @AugierLindborg2013 "A
+new formulation of the spectral energy budget of the atmosphere, with
+application to two high-resolution general circulation models" _J. Atmos.
+Sci._, **70**, 2293-2308. \textcopyright American Meteorological Society. Used
+with permission.
 </div>
-
-\footnotetext{%
-Augier, P., and Lindborg, E. 2013 "A new formulation of the spectral energy
-budget of the atmosphere, with application to two high-resolution general
-circulation models" J. Atmos. Sci., 70, 2293-2308. \textcopyright American
-Meteorological Society. Used with permission.
-}
 
 ![Comparison of the divergence fields ($\mathbf{\nabla.u}$) from a shallow
 water simulation (left) and a similar toy-model simulation (right). $L_f$ is
