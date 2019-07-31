@@ -9,7 +9,7 @@ wave modes, in particular, using the ageostrophic variable $a = f \zeta - c
 \nabla^2 \theta$. As a result the strong nonlinear wave energy cascade as shown
 by dominance of $\Pi_{VWW}$ in almost all scales and $\Pi_{WWW}$ in
 intermediate and small scales. On the right, we force in available potential
-energy $\E_P$, and due to system rotation, the potential-vortical modes are
+energy $E_P$, and due to system rotation, the potential-vortical modes are
 also excited. As a consequence we see that the large scales are dominated by
 $\Pi_{VVW}$ and smaller scales by $\Pi_{VWW}$.  The total energy flux $Pi$ is
 positive at scales smaller than $k_f$, which implies forward energy cascade.
@@ -40,14 +40,14 @@ allowing for more modes for upscale energy cascade.
 ![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
 ![](./paper_03_toy_model/fig10.eps){width=43% #fig:sebtoy}
 
-A comparison of the spectral energy budgets from a GCM simulation
+A comparison of the spectral energy budgets from a GCM simulation\footnotemark{}
 [@AugierLindborg2013] and a toy model simulation
 [@LindborgMohanan2017]. The total spectral energy flux $\Pi$ has been
 decomposed into kinetic ($\Pi_K$) and available potential energy ($\Pi_A$)
 energy fluxes. The conversion from available potential energy to kinetic energy
 is represented by $C_{cum}$. The kinetic energy flux is further decomposed as
 $\Pi_{2D}$, the flux due to geostrophic modes and the difference $\Pi_K -
-\Pi_{2D}$\footnotemark.
+\Pi_{2D}$.
 </div>
 
 \footnotetext{%

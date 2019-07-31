@@ -32,33 +32,33 @@ general consensus on the degree to which $ \Gamma $ should be regarded as a
 constant and -- if not being a constant -- how it should be parametrised. As
 discussed by \cite{IveyWinters}, apart from a possible dependence on Prandtl
 number, $ \Gamma $ may depend on two independent parameters which can be taken
-to be the buoyancy Reynolds number, $ {\cal{R}} $, and a turbulent Froude
-number, $ F_h $, defined as \begin{equation} {\cal{R}} = \frac{\epsilon_K}{\nu
+to be the buoyancy Reynolds number, $ {\mathcal{R}} $, and a turbulent Froude
+number, $ F_h $, defined as \begin{equation} {\mathcal{R}} = \frac{\epsilon_K}{\nu
 N^2} \, , \;\;\;\;\; F_h = \frac{U_h}{N L_h} \, , \end{equation} where $ U_h $
 and $ L_h $ are characteristic horizontal turbulent velocity and length scales,
 respectively, $ \nu $ is the kinematic viscosity and $ N $ the
 Brunt-V\"ais\"al\"a frequency. Alternatively, one may assume that $ \Gamma $
 depends on the Reynolds number, $ Re = U_h L_h / \nu $, and $ F_h $. The use of
-$ {\cal{R}} $ instead of $ Re $ has a clear advantage in the limit of strong
-stratification, where $ {\cal{R}} $ may become very small, while $ Re $ still
+$ {\mathcal{R}} $ instead of $ Re $ has a clear advantage in the limit of strong
+stratification, where $ {\mathcal{R}} $ may become very small, while $ Re $ still
 is large. It is generally agreed
 (e.g. \cite{BrethouwerBillantLindborg2007}) that turbulence is very weak
-in flows with $ {\cal{R}} $ of the order of unity and smaller. Therefore, $
-\Gamma $ will go to zero in the limit of small $ {\cal{R}} $, even though $ Re
-$ may be large. On the other hand, it can be argued that the use of $ {\cal{R}}
+in flows with $ {\mathcal{R}} $ of the order of unity and smaller. Therefore, $
+\Gamma $ will go to zero in the limit of small $ {\mathcal{R}} $, even though $ Re
+$ may be large. On the other hand, it can be argued that the use of $ {\mathcal{R}}
 $ can lead to confusions when the limit of weak stratification is considered.
 Analysing results from direct numerical simulations, Shih et al. \cite{Shih} argued
-that $ \Gamma $ goes to zero as $ {\cal{R}} ^{-1/2} $ in the limit of large $
-{\cal{R}} $, a hypothesis which has been widely referenced
+that $ \Gamma $ goes to zero as $ {\mathcal{R}} ^{-1/2} $ in the limit of large $
+{\mathcal{R}} $, a hypothesis which has been widely referenced
 (e.g. \cite{IveyWinters}). Plotting mixing efficiency calculated as a function
-of $ {\cal{R}} $ using data from a tank experiments of grid generated
+of $ {\mathcal{R}} $ using data from a tank experiments of grid generated
 turbulence Barry et al. \cite{Barry} concluded that $ \Gamma \sim
-{\cal{R}}^{-2/3} $ for large $ {\cal{R}} $. The problem with such
+{\mathcal{R}}^{-2/3} $ for large $ {\mathcal{R}} $. The problem with such
 interpretations is that the supposed decrease of $ \Gamma $ at large $
-{\cal{R}} $ is likely to be an effect of weak stratification (large $ F_h $)
+{\mathcal{R}} $ is likely to be an effect of weak stratification (large $ F_h $)
 rather than an effect of an increasing $ Re $. In general, turbulence
 quantities are expected to exhibit Reynolds number similarity for large
-Reynolds numbers, suggesting that $ \Gamma $ should not vary with $ {\cal{R}} $
+Reynolds numbers, suggesting that $ \Gamma $ should not vary with $ {\mathcal{R}} $
 if the degree of stratification is held constant, that is if $ F_h $ is held
 constant. Maffioli et al. \cite{Maffioli2016} suggested that $ \Gamma $ should
 become independent of the buoyancy Reynolds number as long as it is above a
@@ -71,7 +71,7 @@ these predictions by reporting on a series of direct numerical simulations
 other DNS data \cite{Garanaik2019}.
 
 The regime of strongly stratified turbulence, in which $ F_h $ is small and $
-{\cal{R}} $ is large, is highly relevant for applications in the
+{\mathcal{R}} $ is large, is highly relevant for applications in the
 ocean\cite[]{RileyDeBruynKops2003, Lindborg2006}, but is notoriously difficult
 to reproduce in experiments and simulations. In trying to reach the strongly
 stratified regime experimentally by increasing the degree of stratification,
@@ -87,11 +87,11 @@ numbers, $ \Gamma $, or the related Richardson flux coefficient [Osborn], is
 rapidly dropping below unity. In all likelihood, such observations are
 artefacts of the limitation which is present in all observational studies of
 strongly stratified turbulence, namely the severe difficulty in reaching the
-regime where $ F_h $ is small while $ {\cal{R}} $ still is above a certain
+regime where $ F_h $ is small while $ {\mathcal{R}} $ still is above a certain
 limit. In the present study, we make an effort to push the limits further and
 measure the mixing coefficient in a parameter regime which previously has not
 been reached in laboratory studies. In particular, we focus on the regime, $ 10
-< {\cal R} < 200 $, with $ F_h $ being as small as possible.
+< \mathcal{R} < 200 $, with $ F_h $ being as small as possible.
 
 
 \section{Introduction bis}
@@ -175,7 +175,7 @@ In this case, the mixing coefficient can be evaluated as $\Gamma =
 \frac{|\Delta E_{Pb}|}{\Delta E_K}$, where $\Delta E_K$ is the kinetic energy
 dissipation and $\Delta E_{Pb}$ the increase background potential energy.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_scheme_mixing}
 \caption{Scheme representing the effect of mixing on the density profile and the center of mass.}
 \label{fig:average:mixing}
@@ -214,7 +214,7 @@ experiments (M17), the carriage is accelerated over 0.5 cm and travels at
 constant speed over 5~m. The constant speed is varied from 1 cm/s up to 24
 cm/s.
 
-\begin{figure}[htb]
+\begin{figure}[htp!]
 \centering
 \includegraphics[width=80mm]{../figs/scheme_milestone17}\\[5mm]
 \includegraphics[width=80mm]{../figs/milestone17_top}
@@ -243,13 +243,13 @@ cameras in the M16 campain, for M17 experiments, we use only 3 cameras. One is
 dedicated to record images for horizontal scanning PIV with up to 16 vertical
 levels. The two other cameras are used for stereoscopic vertical 2D PIV.
 
-\input{tmp/table.tex}
+\input{paper_06_milestone/1st/tmp/table.tex}
 
 \subsection{Open-data and open-source}
 
 % Ashwin can write this part...
 
-\input{sec_open_science.latex}
+\input{paper_06_milestone/1st/sec_open_science.latex}
 % An interesting particularity of the MILESTONE experiment is to be based on
 % open-source method and to provide open datasets and open-source packages to
 % load and analyze them.
@@ -297,7 +297,7 @@ levels and periods of the carriage), we can evaluate the averaged time
 evolution of the kinetic energy after one stroke and finally the averaged
 kinetic energy dissipation.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=80mm]{tmp/fig_energy_vs_time}
 \label{fig:energy:vs:time}
 
@@ -309,7 +309,7 @@ Figure~\ref{fig:energy:vs:time} shows the time evolution of the mean kinetic
 energy in the region scanned by the horizontal PIV. For this experiment
 (M16-73), the carriage oscillates during 4 periods and is then stopped.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=80mm]{tmp/fig_fit_EK}
 \label{fig:fit:EK}
 
@@ -327,7 +327,7 @@ compute by averaging over time for $t < 0.5 T$, $\eps_m= \mean{d_t E_{Kh}}$, an
 estimation of the kinetic energy dissipation averaged over few turnover times
 after the strokes.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_R_vs_Fh}
 \label{fig:RvsFh}
 
@@ -350,7 +350,7 @@ the strongly stratified turbulence regime. However, some experiments are close t
 the thresholds and we have to stress that these estimates of $E_{Kh}$ and
 $\eps_K$ are computed from a time average for $t < 0.5 T$.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_R_vs_Fh_other_studies_with_milestone17}
 \label{fig:RvsFh:other}
 
@@ -373,7 +373,7 @@ compute the local available potential energy dissipation. In order to estimate
 the mixing, we measure the rate of increase of the average background potential
 energy.
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_rho_vs_time}\\
 \includegraphics[width=\figwidth]{tmp/fig_rho_vs_time_corrected}
 \label{fig:rho:vs:time}
@@ -395,7 +395,7 @@ that some probes do not give accurate measurements of the density, so we
 correct these measurements with the more precise probes as show in
 figure~\ref{fig:rho:vs:time}(b).
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_profiles_mixing}\\
 \includegraphics[width=\figwidth]{tmp/fig_profiles_probe_averaged}
 \label{fig:profiles:mixing}
@@ -413,7 +413,7 @@ density very close to the top and bottom boundaries. The profiles are extended
 with values computed from their extrema values as presented in
 figure~\ref{fig:profiles:mixing}(b).
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_energy_pot_vs_time}
 \label{fig:energy:pot:vs:time}
 
@@ -434,7 +434,7 @@ increasement of the average background potential energy $\eps_P$ during an
 experiment.
 
 
-\begin{figure}
+\begin{figure}[htp!]
 \includegraphics[width=\figwidth]{tmp/fig_dt_pot_energy}
 \label{fig:dt:pot:energy}
 
