@@ -3,12 +3,12 @@ Shallow water equations
 
 ## Governing Equations
 
-The shallow water equations (SWE) have found utility as a academic tool to study
-and explain numerous fundamental geophysical wave phenomena [see chapter 3,
+The shallow water equations (SWE) have found utility as an academic tool to study
+and explain fundamental geophysical wave phenomena [see chapter 3,
 @vallis_atmospheric_2017] and also as the "dynamical core" of some numerical
 weather prediction models [for eg., a flux vector splitting scheme based
 formulation of the SWE [@lin_explicit_1997] was used in NOAA's GFS model until
-very recently][^FV3]. The governing equations for a single layer shallow layer
+recently][^FV3]. The governing equations for a single layer shallow layer
 of fluid are:
 \begin{align}
     \label{eq:dtu0} \partial_t \mathbf{u} & = - (\mathbf{u}.\nabla) \mathbf{u}
@@ -16,41 +16,44 @@ of fluid are:
     \label{eq:dth} \partial_t h         & = - \nabla \cdot (h \mathbf{u})
 \end{align}
 where $\bf u$ is two-dimensional horizontal velocity vector, $c$ is the phase
-speed of gravity waves, $f$ is the system rotation responsible for the Coriolis
-force, $h = (1 + \eta)$ is the non-dimensional scalar height field, and $\eta$
-is surface displacement.  In this inviscid formulation, the system of equations
-[@Eq:dtu0] and [@eq:dth] conserves the sum of kinetic and potential energy,
-defined as $E_K = h|\bf u|^2$ and $E_P = c^2h^2 / 2$. Expanding the expression
-for $E_P$ in $h$ we get,
-$$E_P = c^2(1/2 + \eta + \eta^2/2).$$
-Of the two positive-definite terms in the above expression, the first term
-$c^2/2$ is invariant. The last term $E_A = c^2\eta^2/2$ is a measure of the
-potential energy due to surface displacement and this would through fluid
-motion be converted back to kinetic energy. This term is called available
-potential energy (APE) [@Lorenz:1955], and the SWE also conserves the
-sum $E_K + E_A$. As a matter of fact, wave motions in SWE is characterized by
-equipartition of energy between kinetic and available potential energy.
+speed of gravity waves, $f$ is the system rotation, $h = (1 + \eta)$ is the
+non-dimensional scalar height field, and $\eta$ is surface displacement.  In
+this inviscid formulation, the system of equations [@Eq:dtu0] and [@eq:dth]
+conserves the sum of kinetic and potential energy, defined as $E_K = h|\bf
+u|^2$ and $E_P = c^2h^2 / 2$. Expanding the expression for $E_P$ in $\eta$ we
+get,
+$$
+E_P = c^2(1/2 + \eta + \eta^2/2).
+$$
+The first term is the constant background potential energy, while
+the two remaining terms are the potential energy associates with
+surface displacements. The second term, which is linear in $\eta$,
+is conserved by @eq:dtu0. The third term, $E_A = c^2n^2/2$,
+may be called available potential energy (APE), a concept introduce
+by @Lorenz:1955. The SWE also conserves the sum $E_K + E_A$. As a matter of
+fact, wave motions in SWE is characterized by equipartition of energy between
+kinetic and available potential energy.
 
 The inviscid SWE has another materially conserved invariant which is potential
-vorticity, $Q = (\zeta + f)/h$, which accounts for Coriolis force and can be
-interpreted as conservation of angular momentum in a rotating frame of
-reference. Conservation of potential vorticity is crucial to explain several
-geophysical fluid motions [@vallis_atmospheric_2017]. This would naturally mean that
-higher powers of $Q$ would be conserved, including the quadratic $Q^2$
-potential enstrophy. However, from a turbulence perspective
-[@Warn1986;@LindborgMohanan2017], the non-quadratic nature of potential
-enstrophy restricts our interpretation of potential enstrophy cascade, but in
-the limit of strong rotation or QG limit, we can study its linearized form, $q
-= \zeta - f\eta$, and its quadratic which would be approximately conserved.
+vorticity, $Q = (\zeta + f)/h$.
+Conservation of potential vorticity is crucial to explain several
+geophysical fluid motions [@vallis_atmospheric_2017].
+Since $Q$ is a materially conserved quantity, so are higher powers of $Q$,
+including the quadratic potential enstrophy.
+From a turbulence perspective [@Warn1986;@LindborgMohanan2017], the
+non-quadratic nature of potential enstrophy restricts our interpretation of a
+potential enstrophy cascade. However, in the limit of strong rotation or QG
+limit, we can study its linearized form, $q = \zeta - f\eta$, which is
+approximately conserved.
 
 In comparison with the QG equation which conserves quasi-geostrophic
-potential vorticity, SWE permits both quasi-geostrophic (vortices) and
-ageostrophic (gravity waves) modes. On one hand, QG equation is analogous to
-incompressible 2D Navier-Stokes equations, and on the other hand, the SWE
-system is comparable to compressible 2D Navier-Stokes equations -- due to fact
-that [@eq:dth] has the same mathematical structure as the mass-conservation
-equation for advection of $\rho$, and also because a Mach number can derived
-from SWE
+potential vorticity, the SWE permits both quasi-geostrophic (vortices) and
+ageostrophic (gravity waves) modes. On one hand, the QG equation is similar to
+the incompressible 2D Navier-Stokes equations, and on the other hand, the SWE
+system has some similarities with the compressible 2D Navier-Stokes equations
+-- due to fact that [@eq:dth] has the same mathematical structure as the
+mass-conservation equation for advection of density $\rho$, and because shock
+waves are produced in the SWE
 [@Baines1998;@augier_shallow_2019;@vallis_atmospheric_2017].
 
 [^FV3]: See [https://www.gfdl.noaa.gov/fv3/](https://www.gfdl.noaa.gov/fv3/)
@@ -63,7 +66,7 @@ $$\label{eq:dtu}
 $$
 where, [$\zeta$]{acronym-label="zeta" acronym-form="singular+short"} represents
 absolute vorticity, i.e. the sum of vorticity and system rotation.
-Furthermore, some auxiliary equations can be derived from the SWE.  [@Eq:dtu0]
+Furthermore, some auxiliary equations are derived from the SWE.  [@Eq:dtu0]
 and [@eq:dth] can be combined to form an equation for the *total mass flux*,
 [J]{acronym-label="J" acronym-form="singular+short"} $= h\mathbf{u}$:
 $$\label{eq:dtJ}
@@ -77,20 +80,21 @@ $$
         - \nabla^2 \frac{|u|^2}{2} \right]
 $${#eq:poisson}
 The spectral counterpart for [@eq:poisson] in tensor notation is:
-$$\label{eq:poisson_fft}
+$$
     -\kappa^2 \hat{h} = \frac{1}{c^2} \left[ ik_i (\widehat{\epsilon_{ijk} \zeta_j
             u_k})
-        + \kappa^2 \frac{\widehat{u_i u_i}}{2} \right]$$
+        + \kappa^2 \frac{\widehat{u_i u_i}}{2} \right]
+$${#eq:poisson_fft}
 where the $\widehat{\text{ }}$ denotes the Fourier transform. To study
 interactions within SW turbulence it is useful to decompose the flow field. We
 consider two decompositions: the Helmholtz and the normal-mode decomposition.
 
 ## Helmholtz Decomposition
 
-The Helmholtz decomposition theorem, or the fundamental theorem of vector
-calculus [@baird_helmholtz_2012], states that any well-behaved vector field can
-be decomposed into the sum of an irrotational vector field and a rotational or
-non-divergent vector field. This allows us to express the velocity field as:
+The fundamental theorem of vector calculus [@baird_helmholtz_2012], states that
+any well-behaved vector field can be decomposed into the sum of an irrotational
+vector field and a rotational or non-divergent vector field. This allows us to
+express the velocity field as:
 \begin{align}
     \label{eq:helm_u}
     \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}
@@ -99,19 +103,19 @@ non-divergent vector field. This allows us to express the velocity field as:
 For the sake of clarity, we shall denote the rotational and divergent parts of
 the velocity with the suffix *r* and *d* respectively,
 \begin{align*}
-    \mathbf{u}^r & = -\nabla \times \mathbf{\hat{e}}_z\Psi; & \mathbf{u}^d =
-    \nabla {\bf \Phi}
+    \mathbf{u}^r & = -\nabla \times \mathbf{\hat{e}}_z\Psi, & \mathbf{u}^d =
+    \nabla {\bf \Phi}.
 \end{align*}
 <!-- and, $\mathbf u  = \mathbf u^r + \mathbf u^d$. -->
-To find the projection operators for the divergent parts, take the
-divergence of [@eq:helm_u] giving $\nabla \cdot \mathbf{u} = \nabla^2 {\bf \Phi}$.
-This equation transforms into spectral space as, $i{\bf k}.\hat{\bf u} =
+To find the projection operator for the divergent part, take the
+divergence of [@eq:helm_u], giving $\nabla \cdot \mathbf{u} = \nabla^2 {\bf \Phi}$.
+This equation transforms into spectral space as $i{\bf k} \cdot \hat{\bf u} =
 -\kappa^2 \hat{\Phi}$, implying:
 \begin{align*}
-    {\hat{\bf u}}^d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k}       \\
-    {\hat{\bf u}}^r = & \hat{\bf u} - {\hat{\bf u}}^d
+    {\hat{\bf u}}^d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k},       \\
+    {\hat{\bf u}}^r = & \hat{\bf u} - {\hat{\bf u}}^d,
 \end{align*}
-where, $\kappa = |\mathbf{k}|$, magnitude of the wavenumber vector.
+where, $\kappa = |\mathbf{k}|$, is the magnitude of the wavenumber vector.
 To obtain a similar decomposition, $h = h^r + h^d$, for the fluid depth one can
 use the Poisson equation [@eq:poisson_fft]. Since the Poisson equation requires a
 divergence free flow, the LHS of [@eq:poisson_fft] would correspond to the
@@ -126,26 +130,26 @@ Normal mode decomposition
 -------------------------
 
 @bartello_geostrophic_1995 demonstrated how the
-Boussinesq equation can be analysed using a normal-mode decomposition.  Here,
-we follow the same procedure for the SWE. In order to isolate oscillating fast
-modes, we linearize the SWE followed by a normal mode or eigenvector
-decomposition. As a result of the linearization of [@eq:dtu0] and [@eq:dth]
-transforms to,
+Boussinesq equations can be analysed using a normal-mode decomposition.  Here,
+we follow the same procedure for the SWE. In order to isolate the geostrophic
+modes from the oscillating fast modes, we linearize the SWE followed by a
+normal mode or eigenmode decomposition. The linearized [@eq:dtu0] and [@eq:dth]
+can be written as
 \begin{align}
     \label{eq:dtu_l}
-    \partial_t \mathbf u = & - c^2 \nabla \eta - f\mathbf{e_z} \times \mathbf u \\
+    \partial_t \mathbf u = & - c^2 \nabla \eta - f\mathbf{e_z} \times \mathbf u, \\
     \label{eq:dth_l}
-    \partial_t \eta =      & - \nabla \cdot  \mathbf u\end{align}
- Taking the curl and divergence of the linearized equation for momentum
-[@eq:dtu_l] gives the following evolution equations:
+    \partial_t \eta =      & - \nabla \cdot  \mathbf u.
+\end{align}
+Taking the curl and divergence of @eq:dtu_l gives the following evolution
+equations:
 \begin{align}
-    \partial_t \zeta =  & - f \delta
-    \label{eq:dtcurl_l}                                                  \\
+    \partial_t \zeta =  & - f \delta \label{eq:dtcurl_l} \\
     \partial_t \delta = & f \zeta - c^2 \nabla^2 \eta \label{eq:dtdiv_l} \\
-    \partial_t \eta =   & - \delta \label{eq:dteta_l}\end{align}
+    \partial_t \eta =   & - \delta \label{eq:dteta_l}
+\end{align}
 where $\zeta$ is the relative vorticity and $\delta$ is the divergence.
-Representing the dependent flow quantities in terms of Fourier
-modes:
+Representing the dependent flow quantities in terms of Fourier modes:
 \begin{align*}
     \begin{pmatrix}
         u \\ v \\ \eta \\ \zeta \\ \delta
@@ -154,8 +158,8 @@ modes:
     \begin{pmatrix}
         \hat{u} \\ \hat{v} \\ \hat{\eta} \\ \hat{\zeta} \\ \hat{\delta}
     \end{pmatrix} e^{i(\mathbf k \cdot \mathbf{r} - \omega t)} \mathbf{dk} d\omega\end{align*}
-allows us to rewrite the system of equations [@eq:dtcurl_l] to
-[@eq:dteta_l] as an eigenvalue problem:
+allows us to rewrite the system of equations
+[@eq:dtcurl_l;@eq:dtdiv_l;@eq:dteta_l] as an eigenvalue problem:
 \begin{align*}
     i\omega
     \begin{Bmatrix}
@@ -169,7 +173,8 @@ allows us to rewrite the system of equations [@eq:dtcurl_l] to
     \end{bmatrix}
     \begin{Bmatrix}
         \hat{\zeta} \\ \hat{\delta} \\c\kappa\hat{\eta}
-    \end{Bmatrix}\end{align*}
+    \end{Bmatrix}
+\end{align*}
 Let us define $A$ as the Hermitian matrix operating on the vector
 $\mathbf{W} = \{\hat{\zeta}, \hat{\delta} ,c\kappa \hat{\eta} \}^T$ which
 yields the familiar dispersion relation for the slow geostrophic mode
@@ -189,16 +194,16 @@ eigenvectors are orthogonal and these are normalized as follows
     \begin{Bmatrix}
         f \\ \mp i\sigma \\ c\kappa
     \end{Bmatrix}\end{align*}
- Let $X_n$ be the eigenvector matrix, which follows the property
-$X_n \bar{X}_n^{T}=I$. It can, then, be applied to diagonalize the
-system of equations as follows:
+Let $X_n$ be the eigenvector matrix, which follows the property $X_n X_n^*=I$,
+where $^*$ represents the Hermitian transpose. It can be applied to
+diagonalize the system of equations as follows:
 \begin{align*}
     \partial_t \mathbf{W} =               & [A] \mathbf{W}                    \\
-    \partial_t (\bar{X}_n^T \mathbf{W}) = & \bar{X}_n^T[A]X_n
-    \bar{X}_n^T\mathbf{W}                                                     \\
-    =                                     & [\Lambda] (\bar{X}_n^T\mathbf{W})\end{align*}
- Thus, the alternate diagonalized system of equations for the normal
-modes are given by:
+    \partial_t (X_n^* \mathbf{W}) = & X_n^*[A]X_n
+    X_n^*\mathbf{W}                                                     \\
+    =                                     & [\Lambda] (X_n^*\mathbf{W})\end{align*}
+where $\Lambda$ is the diagonal eigenvalue matrix. Thus, the alternate
+diagonalized system of equations for the normal modes are given by:
 \begin{align*}
     \partial_t
     \mathbf{N}
@@ -208,75 +213,36 @@ modes are given by:
         0 & -i\sigma & 0       \\
         0 & 0        & i\sigma
     \end{bmatrix}
-    \mathbf{N}                   \\
-    \text{where},
-    \mathbf{N} = \bar{X}_n^T \mathbf{W}
+    \mathbf{N}
+\end{align*}
+where,
+\begin{align}
+  \label{eq:nmode}
+    \mathbf{N} = X_n^* \mathbf{W}
     = & \frac{1}{\sqrt{2}\sigma}
     \begin{Bmatrix}
         -\sqrt{2}c\kappa(\hat{\zeta} -f \hat{\eta})                \\
         f\hat{\zeta} + c^2\kappa^2\hat{\eta} - i\sigma\hat{\delta} \\
         f\hat{\zeta} + c^2\kappa^2\hat{\eta} + i\sigma\hat{\delta}
-    \end{Bmatrix}\end{align*}
-The first mode represents *linearised potential vorticity* . The remaining two
-are the *linearised ageostrophic or wave modes*. In the absence of system
-rotation, i.e.  $f=0$, the normal modes are simply,
-$$\label{eq:nmode}
+    \end{Bmatrix}
+\end{align}
+The first mode represents *linearized potential vorticity*. The remaining two
+are the *linearized ageostrophic or wave modes*. In the absence of system
+rotation, i.e. $f=0$, the normal modes reduce to,
+$$
     \mathbf{N} =
     \begin{Bmatrix}
         \hat \zeta                                              \\
         \frac{1}{\sqrt{2}} (c\kappa \hat{\eta} - i\hat{\delta}) \\
         \frac{1}{\sqrt{2}} (c\kappa \hat{\eta} + i\hat{\delta})
-    \end{Bmatrix}$$
-
-<!-- ### Following Farge & Sadourny 1989 -->
-<!--  -->
-<!-- Instead of finding the normal modes for the vorticity, divergence and -->
-<!-- displacement field of the flow, we shall make use of the Helmholtz -->
-<!-- decomposition described in [@eq:helm_u]. The shallow water equations -->
-<!-- then transform to: -->
-<!-- \begin{align} -->
-<!--     \partial_t \psi = & f \phi -->
-<!--     \label{eq:dtpsi_l}                                        \\ -->
-<!--     \partial_t \phi = & -f \psi - c^2 \eta \label{eq:dtphi_l} \\ -->
-<!--     \partial_t \eta = & - \nabla^2 \phi \label{eq:dteta_l2}\end{align} -->
-<!--  where $\psi$ and $\psi$ are stream function and velocity potential as -->
-<!-- functions of $\mathbf{r}$ and $t$ respectively. By substituting the -->
-<!-- dependent variables with the respective Fourier transform, this reduces -->
-<!-- to the eigenvalue problem: -->
-<!-- \begin{align*} -->
-<!--     i\omega -->
-<!--     \begin{Bmatrix} -->
-<!--         \hat{\psi} \\ \hat{\phi} \\ \hat{\eta} -->
-<!--     \end{Bmatrix} -->
-<!--     = i -->
-<!--     \begin{bmatrix} -->
-<!--         0   & if         & 0    \\ -->
-<!--         -if & 0          & ic^2 \\ -->
-<!--         0   & -i\kappa^2 & 0 -->
-<!--     \end{bmatrix} -->
-<!--     \begin{Bmatrix} -->
-<!--         \hat{\psi} \\ \hat{\phi} \\ \hat{\eta} -->
-<!--     \end{Bmatrix}\end{align*} -->
-<!--  the square matrix is not Hermitian and this would result in complex -->
-<!-- eigenvalues. By adopting the following change of variables: -->
-<!-- $$\hat{\psi} \to \kappa^2\hat \psi = \hat{\zeta} ; \quad -->
-<!--     \hat{\phi} \to -\kappa^2\hat \phi = \hat{\delta}; \quad -->
-<!--     \hat{\eta} \to c\kappa\hat \eta$$ it falls back to the previous -->
-<!-- eigenvalue problem as demonstrated in the previous section. In other -->
-<!-- words, we can use the same eigenvector matrix, $X_n$ to find the normal -->
-<!-- modes of: -->
-<!--  -->
-<!-- $$\mathbf{H} = \{\hat \psi,\; \hat \phi,\;  \eta  \}^T$$ which is -->
-<!-- closely related to: $$\mathbf{W} -->
-<!--     = \{\kappa^2\hat \psi,\; -\kappa^2\hat -->
-<!--     \phi,\; c\kappa\hat \eta  \}^T -->
-<!--     = \{\hat \zeta;\; \hat \delta;\;  c\kappa \hat \eta \}^T$$ -->
+    \end{Bmatrix}.
+$${#eq:nmode_f0}
 
 ### Normal mode inversion to primitive variables
 
 To study the spectral energy budget, normal modes have to be transformed
 back to the primitive variable using another matrix operation, say $Q$.
-The normal modes can be represented by $\mathbf{N} = \bar{X}_n^T \mathbf{W}$.
+The normal modes can be represented by $\mathbf{N} = X_n^* \mathbf{W}$.
 Now, we form a new vector $\mathbf{B} = \mathbf{N}/\kappa$ which has the same
 dimension as velocity.  Thus,
 \begin{align}
@@ -292,8 +258,8 @@ The vector can also be related to the primitive variable
 vector, $\mathbf{U} = \{\hat{u},\hat{v},c\hat{\eta}\}^T$ using
 transformation matrices as follows:
 \begin{align*}
-    \mathbf{B} = & \frac{1}{\kappa}[\bar{X}_n]^T W              \\
-    =            & \frac{1}{\kappa}[\bar{X}_n]^T [P] \mathbf{U}\end{align*}
+    \mathbf{B} = & \frac{1}{\kappa}X_n^* \mathbf{W} \\
+    =            & \frac{1}{\kappa}X_n^* [P] \mathbf{U}\end{align*}
  where, $$P=
     \begin{bmatrix}- i k_{y} & i k_{x} & 0 \\ i k_{x} &  i
         k_{y}     &
@@ -301,21 +267,23 @@ transformation matrices as follows:
 also straightforward to show that the magnitude of the normal modes
 equals the total energy as:
 \begin{align*}
-    \mathbf{\bar B}^T\mathbf{B}
-    = & \frac{1}{\kappa^2} \mathbf{\bar U}^T
-    [\bar P]^T[{X}_n]  [\bar{X}_n]^T [P] \mathbf{U} \\
-    = & \mathbf{\bar U}^T\mathbf{U}\end{align*}
- implying,
- $$(E_K+E_P)=\frac{1}{2}\sum_i B^{(i)}{B}^{*(i)}=
+    \mathbf{B}^*\mathbf{B}
+    = & \frac{1}{\kappa^2} \mathbf{U}^* [P]^*X_n  X_n^* [P] \mathbf{U} \\
+    = & \mathbf{U}^*\mathbf{U}
+\end{align*}
+implying,
+$$
+(E_K+E_P)=\frac{1}{2}\sum_i B^{(i)}{B}^{*(i)}=
  \frac{1}{2}\kappa^{2}(\psi {\psi}^* +\kappa^{2} \phi {\phi}^* + c^{2} \eta {\eta}^*)
-    = \frac{1}{2}(uu* + vv* + c^2\eta\eta*)$$ This allows us to
-represent the primitive variables in terms of normal modes as
+    = \frac{1}{2}(uu^* + vv^* + c^2\eta\eta^*)
+$$
+The primitive variables can be represented in terms of normal modes as,
 $$\mathbf{U} = [Q]\mathbf{B}$${#eq:uqmatb}
 where, the inversion matrix is
 \begin{align}
 \label{eq:qmat}
     Q
-    = & \kappa [P]^{-1}[\bar{X}_n]^{T^{-1}} \\
+    = & \kappa [P]^{-1}{X_n}^{*^{-1}} \\
     = & \frac{1}{\sqrt{2}\sigma\kappa}
     \begin{bmatrix}
         -i\sqrt{2}c\kappa  k_{y}                    &

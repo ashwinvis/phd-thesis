@@ -1,4 +1,8 @@
 # Toy-model equations
+
+The toy model was formulated as a modification of the SWE
+[@LindborgMohanan2017]. Below we write the SWE equations, with the terms that
+are modified highlighted in red:
 $$
 \frac{\partial {\bf u}} {\partial t} + \red{{\bf u}\cdot \nabla} {\bf u} +
 f {\bf e}_z \times {\bf u} = -c^2 \nabla \eta
@@ -8,21 +12,19 @@ $$
 $${#eq:swe_eta}
 
 
-1. Assumption #1: Surface displacement much smaller compared to the mean fluid layer height, $\eta << 1$.
-   Replace the right hand side of the scalar equation to make it linear.
-   Reason: $\eta << 1$ when $Fr -> 0$
-   Replace $\red{-(1+\eta) \nabla \cdot  {\bf u}}$ with $\green{-\nabla \cdot {\bf u}}$.
+- Assumption #1: Surface displacement is small compared to the mean fluid
+   layer height, $\eta << 1$.  Replace $\red{-(1+\eta) \nabla \cdot  {\bf u}}$
+   by $\green{-\nabla \cdot {\bf u}}$.
 
-1. Assumption #2: Velocities in the large scale are dominated by rotational
-   part, $|\bf u^r| >> |\bf u^d|$.
-   <!-- Use Helmoltz decomposition to make this distinction. -->
-   Use Helmholtz decomposition to calculate $\bf{u}^r$, ${\bf u} = \bf{u}^r + \bf{u}^d$
-   i.e. in the advection term we use rotational velocity. Reason: large scale motions dominated by rotation.
-   Replace  $\red{{\bf u} \cdot \nabla}$  with $\green{{\bf u^r} \cdot \nabla}$
+- Assumption #2: Velocities in the large scale are dominated by rotational
+   part, $|\bf u^r| >> |\bf u^d|$. Replace $\red{{\bf u} \cdot \nabla}$ by
+   $\green{{\bf u^r} \cdot \nabla}$
 
-While allowing, $|\zeta| \sim |d|$ in contrast with QG where $|\zeta| >> |d|$.
+\noindent while allowing, $|\zeta| \sim |d|$ in contrast with QG where $|\zeta|
+>> |d|$.
+
 Applying these two modifications on the classical shallow water equations gives
-us,
+us the toy model equation, with the modifications highlighted in blue:
 \begin{align}
 \label{eq:toy}
 \frac{\partial {\bf u}} {\partial t} + \green{{\bf u}^r\cdot \nabla} {\bf u} + f {\bf e}_z\times {\bf u} = -c \nabla \theta \\
@@ -31,26 +33,30 @@ us,
 \end{align}
 where,
 
- * $\theta = c\eta$, replaces $\eta$ with a proportional $\theta$ variable. Takes the form of potential temperature.
+ * $\theta = c\eta$, replaces $\eta$ with a proportional $\theta$ variable
+   and takes the form of potential temperature.
  * ${\bf u}^r$  is the rotational component of velocity obtained by applying
    the Helmholtz decomposition.
 
-\noindent Compared with SWE, there are certain benefits and compromises. These are:
+\noindent Compared with SWE, there are certain benefits and drawbacks. These are:
 
-* Pros: no shocks, KE and APE are quadratic and conserved, linearised potential
-  vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta - f\eta$; and
-* Cons: full potential vorticity $Q$ is not exactly conserved.
-<!-- #endregion -->
-
+* Benefits: no shocks, KE and APE are quadratic and conserved, linearised
+  potential vorticity conserved in the limit $Ro \rightarrow 0$: $q = \zeta -
+  f\eta$; and
+* Drawbacks: full potential vorticity $Q$ is not exactly conserved.
 
 ## Normal modes
 
 The toy model introduces modification to the nonlinear terms and therefore, in
-its linearised form it would be identical to the linearised SWE. Hence the
+its linearised form, it would be identical to the linearised SWE. Hence the
 eigenvalues of the system would be exactly the same and thus the inversion
 matrix $Q$ can be reused. However, an extra consideration should be made while
-decomposing rotational velocities, $u^r$ and $v^r$. When the corresponding
-normal mode vector should be calculated, a modified vector should be used as
-input which is, $\mathbf{U}^r = \{ \hat{u}^r, \hat{v}^r, \theta \}^T$. In the
-next section, we shall see an application of the normal mode decomposition to
-interpret the spectral energy budget.
+computing normal modes of rotational velocities, $u^r$ and $v^r$. When the
+doing this, a modified primitive variable vector should be used as input which
+is, $\mathbf{U}^r = \{ \hat{u}^r, \hat{v}^r, \theta \}^T$.
+
+The normal mode decomposition has served multiple purposes in
+@LindborgMohanan2017: to reformulate the governing equations in terms of normal
+modes while numerically solving the toy model, to distinguish the wave and
+vortical energy spectra, and to interpret the spectral energy budget.
+In the next section we describe the latter in detail.
