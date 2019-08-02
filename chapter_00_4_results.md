@@ -2,17 +2,18 @@
 
 @Fig:flux_decomp is an example which shows normal decomposition of spectral
 energy fluxes. The figure is plotted from two toy model simulations with
-different forcing schemes. In both cases, the forcing is narrow band in space,
-around a wavenumber $k_f$, and random in time. This is indicated by the steep
-positive jump at $k/k_f = 1$.  The run on the left is primarily forced in the
-wave modes, in particular, using the ageostrophic variable $a = f \zeta - c
-\nabla^2 \theta$. As a result the strong nonlinear wave energy cascade as shown
-by dominance of $\Pi_{VWW}$ in almost all scales and $\Pi_{WWW}$ in
-intermediate and small scales. On the right, we force in available potential
-energy $E_P$, and due to system rotation, the potential-vortical modes are
-also excited. As a consequence we see that the large scales are dominated by
-$\Pi_{VVW}$ and smaller scales by $\Pi_{VWW}$.  The total energy flux $Pi$ is
-positive at scales smaller than $k_f$, which implies forward energy cascade.
+different forcing schemes. In both cases, all energy which is injected at
+$k_f$ is transferred to smaller scales, and the normalised total energy flux
+(black curve) is equal to unity in a broad range of wavenumbers. The plot to
+the left is from a run were we force in wave modes alone. As a result, the flux
+is dominated by the contribution from vortical-wave-wave interactions, $\Pi_
+{VWW}$, with a minor contribution from wave-wave-wave interactions,
+$\Pi_{WWW}$, at large wave numbers. The plot to the right is from a run in
+which we only force in vortical modes. As a result, the flux is dominated by
+the contribution from vortical-vortical-wave interactions $\Pi_{VVW}$, at small
+wave numbers, and by vortical-wave-wave interactions, $\Pi_{VWW}$ at large wave
+numbers. In both cases, vortical-wave-wave interactions make an important
+contribution to the downscale energy cascade.
 
 ![Comparison of spectral energy budget from a toy model simulation with two
 different forcing
@@ -25,16 +26,16 @@ to wavenumbers $k$ in Cartesian coordinates. Th GCM is forced at planetary
 scales $l < 3$ in APE, indicated by the large bump in $\Pi_A$.  Around $l =
 [8, 30]$, baroclinic instability is responsible for conversion from APE to KE.
 This is reflected also in $C_{cum}$ curve. At $l > 50$ the total fluxes are
-reasonably flat, implying a net forward energy cascade. There is also signs of
+reasonably flat, implying a net forward energy cascade. There is also an
 inverse energy cascade shown by $\Pi_{2D}$, which is essentially $\Pi_{VVV}$
 following the terminology we used previously. $\Pi_{2D}$ becomes particularly
 dominant at large scales. Similar dynamics are displayed by the toy model as
-shown in @fig:sebtoy. It is more idealized, and a difference we see here is
-that the fluxes of KE and APE are equipartitioned at larger scales.  When
-compared with @fig:flux_decomp, the inverse energy cascade is more pronounced
-in @fig:sebtoy because, in the former case, a forcing wavenumber $k_f = 6
-\delta k$ was used and here it was increased to $k_f = 30 \delta k$, thus
-allowing for more modes for upscale energy cascade.
+shown in @fig:sebtoy. Of course, the toy model is more idealized, and a
+difference we see here is that the fluxes of KE and APE are equipartitioned at
+larger scales.  When compared with @fig:flux_decomp, the inverse energy cascade
+is more pronounced in @fig:sebtoy because, in the former case, a forcing
+wavenumber $k_f = 6 \delta k$ was used and here it was increased to $k_f = 30
+\delta k$, thus allowing for more modes for upscale energy cascade.
 
 <div id="fig:sebgcmtoy">
 ![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
@@ -61,8 +62,7 @@ width=100%}
 
 The toy model is visibly different from the SWE which exhibits shock dominated
 wave turbulence as shown in @fig:shallow-toy. Both simulations are forced using
-similar parameters. Note that the magnitudes should be compared, but the
-pattern shows what kind of waves were produced.  The plot on the left shows
+similar parameters. The plot on the left shows
 sharp thin lines of negative divergence which are characteristic of shock
 waves. There is always a sudden dip in the velocity if we follow along the
 direction of shock propagation, which is reflected as negative values of
@@ -95,9 +95,9 @@ Another interesting feature of the toy model was revealad in
 @fig:anticyclone-toy-model, a visualization of run 3 in @LindborgMohanan2017.
 This figure shows that coherent vortices, predominantly anticyclonic emerge
 during the course of the simulation. As shown in @fig:spatial_means, at time $t
-/ \tau \approx 600$ potential vortical energy start to dominate over wave
+/ \tau \approx 600$ vortical energy start to dominate over wave
 energy and immediately after this event, such anticyclones become visible.
-Although Earth's atmosphere most of the climate is driven by cyclones, a
+Although in Earth's atmosphere there is a dominance of cyclones, a
 noteworthy example of an anticyclone is the Great Red Spot in the planet
 Jupiter shown in @fig:red-spot. Moreover, cyclonic-anticyclonic asymmetry has
 been also studied in other shallow water simulations
@@ -105,7 +105,7 @@ been also studied in other shallow water simulations
 dominate over cyclones.
 
 ![Spatially averaged energy of run 3 in
-@lindborg_two-dimensional_2017](./imgs/fig_spatialmeans.eps){#fig:spatial_means
+@LindborgMohanan2017](./imgs/fig_spatialmeans.eps){#fig:spatial_means
 width=70%}
 
 ![Spectral energy flux and third-order structure functions from a SWE
@@ -119,8 +119,8 @@ prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.  Source:
 @augier_shallow_2019.
 ](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=70%}
 
-Now we turn our attention back to shallow water turbulence. Some interesting
-scaling relations were developed in @AugierMohananLindborg2017 which provide
+Now we turn our attention to shallow water wave turbulence. Some interesting
+scaling relations were developed in @AugierMohananLindborg2017 providing
 insights into shock dominated turbulence. A Kolmogorov law for isotropic,
 irrotational shallow water wave turbulence was derived which gives the
 third-order structure functions,
@@ -131,7 +131,7 @@ third-order structure functions,
 where $J_L \equiv \JJ\cdot\rr / |\rr|$ and $u_L \equiv \uu\cdot\rr / |\rr|$ are
 longitudinal increments. This law was also verified accurately with numerical
 simulation as shown in @fig:flux-struct. Using @eq:Kolmo and the central
-assumptions that shocks dominate structure functions, a simple model was
+assumptions that the dynamics is dominated by shocks, a simple model was
 developed with which scaling relations for higher order structure functions and
 their ratios, skewness, flatness etc. were derived. These relations depend on
 an estimate for the mean separation distance between shocks. This was

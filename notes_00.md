@@ -95,3 +95,95 @@ simplify the Boussinesq equations into a set of dimensionless equations
 describing stratified turbulence. Furthermore, enforcing
 the aspect ratio parameter $\delta = l_v / l_h = Fr_h$ at the limit of strong
 stratification $Fr \to 0$, a set of self-similar
+
+# SWE
+
+Of the two positive-definite terms in the above expression, the first term
+$c^2/2$ is invariant.
+The last term $E_A = c^2\eta^2/2$ is a measure of the
+potential energy due to surface displacement and this would through fluid
+motion be converted back to kinetic energy. This term is called available
+potential energy (APE) [@Lorenz:1955].
+This would naturally mean that higher powers of $Q$ would be conserved,
+including the quadratic $Q^2$ potential enstrophy.
+
+### Following Farge & Sadourny 1989
+
+Instead of finding the normal modes for the vorticity, divergence and
+displacement field of the flow, we shall make use of the Helmholtz
+decomposition described in [@eq:helm_u]. The shallow water equations
+then transform to:
+\begin{align}
+    \partial_t \psi = & f \phi
+    \label{eq:dtpsi_l}                                        \\
+    \partial_t \phi = & -f \psi - c^2 \eta \label{eq:dtphi_l} \\
+    \partial_t \eta = & - \nabla^2 \phi \label{eq:dteta_l2}\end{align}
+ where $\psi$ and $\psi$ are stream function and velocity potential as
+functions of $\mathbf{r}$ and $t$ respectively. By substituting the
+dependent variables with the respective Fourier transform, this reduces
+to the eigenvalue problem:
+\begin{align*}
+    i\omega
+    \begin{Bmatrix}
+        \hat{\psi} \\ \hat{\phi} \\ \hat{\eta}
+    \end{Bmatrix}
+    = i
+    \begin{bmatrix}
+        0   & if         & 0    \\
+        -if & 0          & ic^2 \\
+        0   & -i\kappa^2 & 0
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \hat{\psi} \\ \hat{\phi} \\ \hat{\eta}
+    \end{Bmatrix}\end{align*}
+ the square matrix is not Hermitian and this would result in complex
+eigenvalues. By adopting the following change of variables:
+$$\hat{\psi} \to \kappa^2\hat \psi = \hat{\zeta} ; \quad
+    \hat{\phi} \to -\kappa^2\hat \phi = \hat{\delta}; \quad
+    \hat{\eta} \to c\kappa\hat \eta$$ it falls back to the previous
+eigenvalue problem as demonstrated in the previous section. In other
+words, we can use the same eigenvector matrix, $X_n$ to find the normal
+modes of:
+
+$$\mathbf{H} = \{\hat \psi,\; \hat \phi,\;  \eta  \}^T$$ which is
+closely related to: $$\mathbf{W}
+    = \{\kappa^2\hat \psi,\; -\kappa^2\hat
+    \phi,\; c\kappa\hat \eta  \}^T
+    = \{\hat \zeta;\; \hat \delta;\;  c\kappa \hat \eta \}^T$$
+
+## Toy model
+
+Replace the right hand side of the scalar equation to make it linear.
+Reason: $\eta << 1$ when $Fr -> 0$
+
+Use Helmholtz decomposition to calculate
+$\bf{u}^r$, ${\bf u} = \bf{u}^r + \bf{u}^d$ i.e. in the advection term we
+use rotational velocity. Reason: large scale motions dominated by rotation.
+
+## Spectral energy budget
+
+Spectral energy budget is a statistical analysis of the direction of energy
+cascade, or in other words energy flux as a function of wavenumber and also
+conversion of energy between different modes.
+
+While using pseudospectral methods is advantageous to to solve the shallow
+water equations in normal-modes, for a more accurate representation of the
+viscous term[^viscous] and faster computation. Therefore note that the we have
+
+
+[^viscous]: [See https://fluidsim.readthedocs.io/en/latest/generated/fluidsim.base.time_stepping.pseudo_spect.html#module-fluidsim.base.time_stepping.pseudo_spect](https://fluidsim.readthedocs.io/en/latest/generated/fluidsim.base.time_stepping.pseudo_spect.html#module-fluidsim.base.time_stepping.pseudo_spect)
+
+## Results
+
+
+In both cases, the forcing is narrow band in space,
+around a wavenumber $k_f$, and random in time. This is indicated by the steep
+positive jump at $k/k_f = 1$.  The run on the left is primarily forced in the
+wave modes, in particular, using the ageostrophic variable $a = f \zeta - c
+\nabla^2 \theta$. As a result the strong nonlinear wave energy cascade as shown
+by dominance of $\Pi_{VWW}$ in almost all scales and $\Pi_{WWW}$ in
+intermediate and small scales. On the right, we force in available potential
+energy $E_P$, and due to system rotation, the potential-vortical modes are
+also excited. As a consequence we see that the large scales are dominated by
+$\Pi_{VVW}$ and smaller scales by $\Pi_{VWW}$.  The total energy flux $Pi$ is
+positive at scales smaller than $k_f$, which implies forward energy cascade.
