@@ -8,7 +8,7 @@
 #
 kappa := overview
 main := thesis
-chapter := chapter_00_4_results
+chapter := chapter_01_0_intro
 paper := paper_0*
 TEMPLATE_DIR := ./templates/mechthesis/
 
@@ -23,8 +23,6 @@ endif
 
 VIM := nvim
 VIM_FLAGS := +'set backupcopy=yes'
-# VIM := nvim-qt
-# VIM_FLAGS := -- +'set backupcopy=yes'
 
 BIB := biber
 BIB_FLAGS :=

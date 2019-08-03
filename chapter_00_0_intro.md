@@ -1,4 +1,4 @@
-\chapter{Two-dimensional models of geophysical turbulence}
+\chapter{Two-dimensional models of geophysical turbulence}\label{ch:simul}
 
 Atmospheric turbulence is characterized by a wide range of scales, ranging from
 the order of millimetres to several thousands of kilometres. Understanding the
@@ -314,7 +314,7 @@ particular power law. These observations are perhaps the strongest evidence for
 the forward energy cascade hypothesis for the mesoscales.
 
 
-## Stratified turbulence
+## Stratified turbulence{#sec:strat}
 The term stratified turbulence was coined by @Lilly:1983 for flows affected by
 a stable, vertical gradient in density or temperature, resulting in
 quasi-horizontal motions consisting of large eddies
