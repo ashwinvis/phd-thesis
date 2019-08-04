@@ -67,6 +67,16 @@ for both the direction of cascade and two-dimensional turbulence. The analysis
 separated the data into troposphere and stratosphere and also into five
 latitudinal (or zonal) bands to account for inhomogeneities.
 
+The analysis strongly suggests that in the stratosphere, for the range $10 < r
+< 150$ km the third order structure function is generally negative and scales
+as $-r$, implying a forward energy cascade; and in the range $540 < r < 1400$
+km the same scales as $r^3$ with positive values, implying a forward enstrophy
+flux.
+The authors also indicate that the overall tropospheric structure function were
+negative for all mesoscales, although it did not converge to follow a
+particular power law. These observations are perhaps the strongest evidence for
+the forward energy cascade hypothesis for the mesoscales.
+
 Next, we turn to question of what resolution is required to reproduce the
 mesoscale spectrum and associated physics.
 
@@ -81,7 +91,7 @@ of fluid mechanics which studies such flows.
 Stratification is characterized by the
 Brunt-\text{V\"ais\"al\"a} frequency, $N=\sqrt{\frac{-g}{\rho_0}
 \pder[\rho(z)]{z}}$ and the Froude number based on horizontal velocity and
-length scale, $Fr_h = u / (Nl_h)$.
+length scale, $F_h = u / (Nl_h)$.
 
 vertical length scale must depend on characteristic properties of the flow.
 
@@ -89,11 +99,11 @@ vertical length scale must depend on characteristic properties of the flow.
 Zig-zag instability led @Billant2001 to propose a new scaling for stratified turbulence,
 wherein, the vertical length scale of the turbulence,
 leads to, was postulated to scale as, $l_v = u / N$. Using this result, along
-with two hypotheses: $Fr_h \ll 1$ and advective time scale based on horizontal
+with two hypotheses: $F_h \ll 1$ and advective time scale based on horizontal
 length scale $T = l_h / u$, the authors demonstrate that it is possible to
 simplify the Boussinesq equations into a set of dimensionless equations
 describing stratified turbulence. Furthermore, enforcing
-the aspect ratio parameter $\delta = l_v / l_h = Fr_h$ at the limit of strong
+the aspect ratio parameter $\delta = l_v / l_h = F_h$ at the limit of strong
 stratification $Fr \to 0$, a set of self-similar
 
 # SWE

@@ -71,7 +71,7 @@ respectively.  The regime of strongly stratified turbulence, in which $F_h$ is
 small and $\mathcal{R}$ is large, is highly relevant for applications in the
 ocean [@gargett_composite_1981;@RileyDeBruynKops2003;@Lindborg2006].  But, due
 to the fact that buoyancy Reynolds number relates to conventional horizontal
-Reynolds number ($Re_h$) as $\R = Re_hFr_h^2$, reaching this regime is an
+Reynolds number ($Re_h$) as $\R = Re_hF_h^2$, reaching this regime is an
 expensive proposition, both numerically and experimentally.
 In trying to reach the strongly stratified regime experimentally by increasing
 the degree of stratification, the buoyancy Reynolds number often becomes so low
@@ -82,7 +82,7 @@ tends to reduce stratification over time.
 In simulations, a
 high resolution DNS is required to reach the stratified turbulence regime.
 Despite these difficulties numerical simulations have pushed the limits to be
-as close to the predicted values of $Fr_h$ and $\R$ as possible
+as close to the predicted values of $F_h$ and $\R$ as possible
 [@Brethouwer2007;@BrethouwerLindborg2009;@Maffioli2016;@maffioli_mixing_2016]
 of which some are depicted on @fig:stratified-regime along with estimates of
 the values attained by MILESTONE experiment.
