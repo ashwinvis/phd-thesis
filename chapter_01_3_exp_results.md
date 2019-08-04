@@ -3,21 +3,15 @@
 The experiment was conducted as two campaigns in the years 2016 and 2017,
 hitherto referred to with the prefixes M16 and M17.
 The two experimental setups are nearly identical. They differ mainly on the
-precise location of the density and temperature probes, and on the number and
-location of the cameras used for PIV.
-In M16,
-the carriage is accelerated over a length of 0.25 cm and moved at constant
-speed over 5.5~m. The constant speed is varied from 2 cm/s to 16 cm/s in
-different runs.
-In M17,
-the carriage is accelerated over 0.5 cm and travels at constant speed over 5~m.
-The constant speed is varied from 1 cm/s up to 24 cm/s.  Here we highlight some
-of the important results reported in @campagne2016 and ongoing post-experiment
-analysis.
+precise location of the density and temperature probes, the number and
+location of the cameras used for PIV, and the stroke pattern of the oscillating
+comb.
+Here we highlight some of the important results reported in @campagne2016 and
+ongoing post-experiment analysis.
 
 The experiment with parameters $N = 0.8$ rad/s, $U_c = 6$ cm/s, $F_{hc} = 0.1$
 and $\R_c = 450$ from M16 campaign is described here. The oscillating comb was
-observed to inject kinetic energy $u^2 \approx 0.08 U_c^2$. The emergence of a
+observed to inject kinetic energy $u^2 \approx 0.08 U_c^2$. The emergence of
 layered structures with vertical length scale of \order{1} cm can be visually
 observed in the velocity fields plotted in @fig:field, thereby conforming to
 the prediction $l_v \sim u / N$.
@@ -51,8 +45,11 @@ with $S_{ij} = \langle\overline{(u_i({\bf x}+r{\bf e}_j)-u_i({\bf
 x}))^2}\rangle$, and $\overline{}$ as time average when the carriage is moving.
 For fully developed turbulence undergoing forward cascade we expect second
 order structure functions to scale as  $S_h(r) = C (\varepsilon r)^{2/3}$
-[@Lindborg2006;@AugierBillantChomaz2015]. This is shown to be true in @fig:S2
-in the inertial range.
+[@Lindborg2006;@AugierBillantChomaz2015]. In @fig:S2
+the normalized structure function $S_h(rU_c^3/M)^{-2/3}$ is plotted for
+different times after one stroke of the carriage. As can be seen, there is a
+range where the curves are flat conisistent with the prediction $S_h \sim
+r^{2/3}$.
 
 \begin{figure}[htb]
 \centerline{

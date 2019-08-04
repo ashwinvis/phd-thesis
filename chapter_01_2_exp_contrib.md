@@ -1,6 +1,6 @@
 # Software systems
 
-This project was also an exercise in developing a reproducible, open-source
+The project was also an exercise in developing a reproducible, open-source
 workflow. This was motivated by the fact that experiments in fluid mechanics
 typically rely on a combination of proprietary software which includes: bundled
 image processing software by vendors such as Dantec[^d] and LaVision[^la], virtual
@@ -9,7 +9,7 @@ Utilities. The most obvious advantage of such software is that these
 have been developed over several years and have advanced capabilities. Since most
 laboratories have invested in developing expertise in such software, the most
 conventional approach would have been to reuse existing tools.
-However, this such an approach is restrictive and cannot be transformed into a
+However, such an approach is restrictive and cannot be transformed into a
 reproducible and collaborative workflow, for example making use of a version
 control systems. Algorithms are not entirely transparent and the closed-source
 nature prevents customizations.  Hence a path off the beaten track was pursued
@@ -58,9 +58,10 @@ goals guided the development of `fluidimage`:
 Parallelism for a image-processing framework is perhaps the most attractive
 feature of `fluidimage`. This was implemented using _data_ or _task
 parallelism_ for time consuming operations. Any such particular workflow can be
-regarded as a set of data arrays undergoing a series of operations, which
-when slow are either CPU bound or input/output (I/O) bound. As the name
-suggests, I/O bound operations do not require heavy computation and are limited
+regarded as a set of data arrays undergoing a series of operations, of which
+the slow operations are parallelized. Slow operations are either CPU bound or
+input/output (I/O) bound. As the name suggests, I/O bound operations do not
+require heavy computation and are limited
 by storage or memory read/write access speed. Python's standard library support
 multithreading, which are lightweight in terms of memory and useful for I/O
 bound tasks. For CPU bound tasks we need to spawning multiple processes, which
@@ -125,7 +126,8 @@ succession within a single _topology_.
 
 To achieve the second goal of unifying the workflow, some efficient operations
 were implemented in Python within `fluidimage`. This means that it can leverage
-mathematical operations like cross-correlation Being a young project, a limited
+mathematical operations from mature third party packages or written clearly
+using Python's expressive syntax. Being a young project, a limited
 set of algorithms were implemented initially, such as 2D-2C planar PIV,
 stereographic reconstruction for 2D-3C PIV, simple 2D camera calibration and
 camera calibration algorithm of @tsai_versatile_1987 which also accounts for
@@ -158,7 +160,7 @@ Software controlling the carriage
 
 Since `fluidlab` was intended to be a library, several details specific to the
 requirements of MILESTONE were separately developed into a package called
-`fluidcoriolis`, named after the experimental facility, the Coriolis platform.
+`fluidcoriolis`, named after the experimental facility.
 The package `fluidcoriolis` is composed of a graphical user interface shown in
 @fig:software to operate the carriage, calibrate the probes were constructed by
 utilizing the `fluidlab` API. Scripts to launch pre-processing, PIV and
