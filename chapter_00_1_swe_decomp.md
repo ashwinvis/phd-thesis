@@ -278,11 +278,11 @@ P=
 $$
 It is also straightforward to show that the magnitude of the normal modes
 equals the total energy as:
-\begin{align*}
-    \mathbf{B}^*\mathbf{B}
-    = & \frac{1}{\kappa^2} \mathbf{U}^* [P]^*X_n  X_n^* [P] \mathbf{U}
-    = & \mathbf{U}^*\mathbf{U},
-\end{align*}
+$$
+\mathbf{B}^*\mathbf{B}
+= \frac{1}{\kappa^2} \mathbf{U}^* [P]^*X_n  X_n^* [P] \mathbf{U}
+= \mathbf{U}^*\mathbf{U},
+$$
 implying,
 $$
 (E_K+E_P)=\frac{1}{2}\sum_i B^{(i)}{B}^{*(i)}=

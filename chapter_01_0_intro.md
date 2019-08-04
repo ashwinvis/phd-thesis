@@ -2,7 +2,7 @@
 
 This chapter describes the experiment, _Mixing and Length Scales in
 Stratified Turbulence_ [MILESTONE, @campagne2016] which aimed at testing the
-theory of stratified turbulence theories [@Billant2001;@Lindborg2006]. The
+theory of stratified turbulence [@Billant2001;@Lindborg2006]. The
 development of this theory is briefly reviewed in @sec:strat. In particular this
 experiment intended to:
 
@@ -95,5 +95,5 @@ cascade, and of what parametrizations of mixing are appropriate,
 which can greatly benefit modelling of ocean turbulence.  In the following
 sections, the experimental setup and the open-source software stack which was
 developed to perform the experiment and post-process the data are briefly
-described , whereafter we
+described, whereafter we
 highlight some of the results.

@@ -69,25 +69,24 @@ consists of ripples of alternative positive and negative values, indicating
 that there are no shocks.
 
 <div id="fig:anticyclones">
-![The Great Red Spot in the Jupiter, an example of an anticyclone (Courtesy:
-[NASA/JPL/Space Science
-Institute](https://www.nasa.gov/feature/goddard/jupiter-s-great-red-spot-a-swirling-mystery)
-).](./imgs/red-spot-nasa.jpg){#fig:red-spot width=65%}\hfill
-![Numerous cyclones and anticyclones with diameters of \order{1000} km
-photgraphed in the south pole of Jupiter (Courtesy:
-[NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio
-Robles](https://www.nasa.gov/press-release/a-whole-new-jupiter-first-science-results-from-nasa-s-juno-mission).)
+![[The Great Red Spot in the Jupiter, an example of an
+anticyclone.](https://www.nasa.gov/feature/goddard/jupiter-s-great-red-spot-a-swirling-mystery)
+](./imgs/red-spot-nasa.jpg){#fig:red-spot width=65%}\hfill
+![[Numerous cyclones and anticyclones with diameters of \order{1000} km
+photographed in the south pole of
+Jupiter.](https://www.nasa.gov/press-release/a-whole-new-jupiter-first-science-results-from-nasa-s-juno-mission)
 ](./imgs/jupiter-pole-nasa.jpg){#fig:Jupiter-pole width=30%}
+
+Anticyclones and coherent vortices in Jupiter (Courtesy:
+NASA/JPL-Caltech/Space Science Institute/SwRI/MSSS/Betsy Asher Hall/Gervasio
+Robles)
+</div>
 
 ![Coherent anticyclonic vortices from a simulation using the toy model. On
 left: linearised potential vorticity ($q$); on right: one of the
 ageostrophic mode ($a^+$) model representing the wave field
 [@LindborgMohanan2017].](./imgs/anticyclone-toy-model.jpg){#fig:anticyclone-toy-model
 width=95%}
-
-Anticyclones and coherent vortices in nature and from a simulation in
-@LindborgMohanan2017
-</div>
 
 Another interesting feature of the toy model is revealed in
 @fig:anticyclone-toy-model, a visualization of run 3 in @LindborgMohanan2017.

@@ -4,7 +4,7 @@ Spectral energy budget
 A spectral energy budget is a statistical analysis of energy exchanges between
 different forms and different scales, carried out in spectral space.
 The energy flux $\Pi(\mathbf{k}, t)$ is computed by integrating a transfer function
-$T(\mathbf{k'}, t)$ in all wavenumbers in the interval $[\mathbf{k},
+$T(\mathbf{k'}, t)$ over all wavenumbers in the interval $[\mathbf{k},
 \mathbf{k}_{max}]$. The numerical equivalent of the integration is a cumulative
 sum over the wavenumbers in the same range. The range of integration and the
 direction of energy flux for a positive value of $\Pi$ is depicted in
@@ -30,7 +30,7 @@ In turbulence studies, we conventionally encounter a quadratic
 expression for KE and a cubic expression for the transfer function. It was
 observed while performing the study on SWE [@augier_shallow_2019] that the
 contribution from the fourth-order transfer terms were small but not
-negligible. This complicates the interpretation of spectral energy budget in
+negligible. This complicates the interpretation of the spectral energy budget in
 the case of the SWE. In the toy model, the analysis is greatly simplified since
 the expression for energy is quadratic. To identify the transfer terms, we
 start from the governing equations for the toy model. The rate of
@@ -58,7 +58,7 @@ Thus the rate of change of KE, without any approximations can be written as:
     \pder{t}E_K(\mathbf{k},t) = T_K + C_K,
 \end{equation}
 where $T_K$ and $C_K$ represent the transfer and conversion spectral
-functions respectively.
+functions respectively,
 \begin{align}
     \label{eq:TK}
     T_K= & -\Re\left[\hat{u}_i (\widehat{ u^r_j\partial_j u_i })^* \right], \\
@@ -93,7 +93,7 @@ $$
 \label{eq:dtPE}
     \pder{t}E_P(\mathbf{k},t) = T_P + C_P,
 $$
-where, $T_P$ and $C_P$ represent the transfer and conversion spectral
+where $T_P$ and $C_P$ represent the transfer and conversion spectral
 functions of APE. Thus,
 \begin{align}
     \label{eq:TP}
@@ -110,7 +110,7 @@ Using the normal modes ($\bf N$ as shown in @eq:nmode) in spectral space as
 input, the spectral energy budget can be computed as described below:
 
 1. Compute the inversion matrix $Q$ using @eq:qmat.
-1. Divide the normal modes vector, $\bf N$, with the magnitude of Fourier modes, $\kappa$,
+1. Divide the normal modes vector, $\bf N$, by the magnitude of Fourier modes, $\kappa$,
    to obtain $\bf B$ (@eq:bvec).
 1. Apply matrix multiplication of $Q$ on $\bf B$ (@eq:uqmatb) to obtain the normal
    mode decomposition of the primitive variables $\bf U$.

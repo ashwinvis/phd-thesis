@@ -32,7 +32,7 @@ as \kfivethird. For wavelengths just above 500  km there is also an overlap
 region where these two ranges blend.
 <!--  -->
 Prior to this study the $k^{-3}$ scaling was well-known [@Charney1971] and
-explained using theories for two-dimensional turbulence theory
+explained using theories for two-dimensional turbulence
 [@Kraichnan1967]. However the theoretical explanation of the \kfivethird\ mesoscale
 spectra and the direction of the energy cascade has remained under debate
 for several decades  [@kitamura_energy_2010; @vallgren_possible_2011-1]. Two
@@ -176,7 +176,7 @@ parameter. This equation is valid when certain criteria are met:
 * Variations in the Coriolis force ($\beta$) are small, implying scales may not
   be as large as planetary length scales.
 
-\noindent Apart from the criteria there are some other scale restrictions [see
+\noindent Apart from these criteria there are some other scale restrictions [see
 chapter 5 in
 @vallis_atmospheric_2017]. Using @eq:quasigeo and the result that both energy
 and QG enstrophy ($q^2 / 2$) are conserved quantities it was shown that
