@@ -1,6 +1,7 @@
 # Research highlights
 
-@Fig:flux_decomp is an example which shows normal decomposition of spectral
+@Fig:flux_decomp is an example which shows a normal mode decomposition of the
+spectral
 energy fluxes. The figure is plotted from two toy model simulations with
 different forcing schemes. In both cases, all energy which is injected at
 $k_f$ is transferred to smaller scales, and the normalised total energy flux
@@ -21,8 +22,8 @@ schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf){#fig:flux_decomp}
 
 The analysis also proved to be useful to compare with the energetics of a
 GCM. The spectral energy budget of the GCM is shown in @fig:sebgcm as a
-function $l$, the degree of spherical harmonics function which
-to wavenumbers $k$ in Cartesian coordinates. Th GCM is forced at planetary
+function $l$, the degree of spherical harmonics function which is similar
+to wavenumbers $k$ in Cartesian coordinates. The GCM is forced at planetary
 scales $l < 3$ in APE, indicated by the large bump in $\Pi_A$.  Around $l =
 [8, 30]$, baroclinic instability is responsible for conversion from APE to KE.
 This is reflected also in $C_{cum}$ curve. At $l > 50$ the total fluxes are
@@ -32,10 +33,7 @@ following the terminology we used previously. $\Pi_{2D}$ becomes particularly
 dominant at large scales. Similar dynamics are displayed by the toy model as
 shown in @fig:sebtoy. Of course, the toy model is more idealized, and a
 difference we see here is that the fluxes of KE and APE are equipartitioned at
-larger scales.  When compared with @fig:flux_decomp, the inverse energy cascade
-is more pronounced in @fig:sebtoy because, in the former case, a forcing
-wavenumber $k_f = 6 \delta k$ was used and here it was increased to $k_f = 30
-\delta k$, thus allowing for more modes for upscale energy cascade.
+smaller scales.
 
 <div id="fig:sebgcmtoy">
 ![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
@@ -65,10 +63,10 @@ wave turbulence as shown in @fig:shallow-toy. Both simulations are forced using
 similar parameters. The plot on the left shows
 sharp thin lines of negative divergence which are characteristic of shock
 waves. There is always a sudden dip in the velocity if we follow along the
-direction of shock propagation, which is reflected as negative values of
+direction of shock propagation, which is reflected as negative values of the
 divergence. On the right, the divergence field of the toy model simulation
 consists of ripples of alternative positive and negative values, indicating
-that simulation results in gravity waves and not shocks.
+that there are no shocks.
 
 <div id="fig:anticyclones">
 ![The Great Red Spot in the Jupiter, an example of an anticyclone (Courtesy:
@@ -91,22 +89,19 @@ Anticyclones and coherent vortices in nature and from a simulation in
 @LindborgMohanan2017
 </div>
 
-Another interesting feature of the toy model was revealad in
+Another interesting feature of the toy model is revealed in
 @fig:anticyclone-toy-model, a visualization of run 3 in @LindborgMohanan2017.
 This figure shows that coherent vortices, predominantly anticyclonic emerge
-during the course of the simulation. As shown in @fig:spatial_means, at time $t
+during the course of the simulation. At time $t
 / \tau \approx 600$ vortical energy start to dominate over wave
-energy and immediately after this event, such anticyclones become visible.
+energy and immediately after this, such anticyclones become visible.
 Although in Earth's atmosphere there is a dominance of cyclones, a
 noteworthy example of an anticyclone is the Great Red Spot in the planet
-Jupiter shown in @fig:red-spot. Moreover, cyclonic-anticyclonic asymmetry has
+Jupiter shown in @fig:red-spot. Cyclonic-anticyclonic asymmetry has
 been also studied in other shallow water simulations
 [@showman_numerical_2007;@Polvani1994] in which, anticyclones were observed to
 dominate over cyclones.
 
-![Spatially averaged energy of run 3 in
-@LindborgMohanan2017](./imgs/fig_spatialmeans.eps){#fig:spatial_means
-width=70%}
 
 ![Spectral energy flux and third-order structure functions from a SWE
 simulation run W7 in
@@ -132,20 +127,10 @@ where $J_L \equiv \JJ\cdot\rr / |\rr|$ and $u_L \equiv \uu\cdot\rr / |\rr|$ are
 longitudinal increments. This law was also verified accurately with numerical
 simulation as shown in @fig:flux-struct. Using @eq:Kolmo and the central
 assumptions that the dynamics is dominated by shocks, a simple model was
-developed with which scaling relations for higher order structure functions and
+developed and scaling relations for higher order structure functions and
 their ratios, skewness, flatness etc. were derived. These relations depend on
-an estimate for the mean separation distance between shocks. This was
+the mean separation distance between shocks. This was
 numerically found to scale as, $d \propto F_f ^ {1/2}$, as shown in
-@fig:shock-sep. As a final note, the study shows that shocks tend to be densely
-populated with low $F_f$ (@fig:Physical_lap (c, d)) and are stronger and easier
-to detect for high $Re$ simulations (@fig:Physical_lap (b, d)).
-
-\begin{figure}
-\centerline{\includegraphics[]{paper_04_shallow_water/Pyfig/fig15}}
-\caption{$ \nabla \cdot {\bf u} $ for four different runs. Upper left: WL1, $ Re = 68 $, $ F_f = 0.16 $; Upper right:  { WL3,  $ Re = 203 $, $ F_f = 0.16 $;} Lower left: WL17, $ Re = 68 $, $ F_f = 0.008 $; Lower right: WL18,  $ Re = 199 $, $ F_f = 0.008 $.}
-\label{fig:Physical_lap}
-\end{figure}
-
-
+@fig:shock-sep.
 
 
