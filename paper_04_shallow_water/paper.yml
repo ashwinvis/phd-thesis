@@ -9,9 +9,9 @@ affiliations:
  - KTH Mechanics, SE-100 44 Stockholm, Sweden
 pub_short: J. Fluid Mech.
 pub: Journal of Fluid Mechanics
-volume: Accepted
-# number: 2
-# pages: 1--10
+volume: 874
+# number:
+pages: 1169-1196
 year: 2019
 dir: paper_04_shallow_water/Latex
 abstract: |

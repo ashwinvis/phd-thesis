@@ -40,6 +40,12 @@ def name_in_initials(name):
     return " ".join(name)
 
 
+def ordered_set(iterable):
+    from collections import OrderedDict
+
+    return OrderedDict.fromkeys(iterable).keys()
+
+
 def get_options_from_yaml(path):
     """Read a options YAML file."""
     import ruamel.yaml as yaml
@@ -51,11 +57,11 @@ def get_options_from_yaml(path):
     if "dir" not in options or options["dir"] is None:
         options["dir"] = path.parent
 
-    if len(options["authors"]) < 4:
-        options["authors_short"] = [
+    if len(options["authors"]) <= 3:
+        authors_short = ', '.join(
             name_in_initials(name) for name in options["authors"][:-1]
-        ]
-        options["authors_short"].extend(
+        )
+        options["authors_short"] = [authors_short] + (
             [r"\&", name_in_initials(options["authors"][-1])]
         )
     else:
@@ -64,7 +70,7 @@ def get_options_from_yaml(path):
             "et al.",
         ]
 
-    uniq_affiliations = list(set(options["affiliations"]))  # unique
+    uniq_affiliations = list(ordered_set(options["affiliations"]))  # unique
     options["authors_aff"] = []
     for author, affiliation in zip(options["authors"], options["affiliations"]):
         options["authors_aff"].append(

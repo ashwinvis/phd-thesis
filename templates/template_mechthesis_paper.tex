@@ -14,7 +14,7 @@
 }%
 %
 % (optional) Short authors used in List Of Papers
-% \listpaperauthor[\VAR{authors_short[:-1] | join(', ')} \& \VAR{authors_short | last}]
+% \listpaperauthor[\VAR{authors_short | join(' ')}]
 %
 \paperaffiliation
 {%
@@ -38,7 +38,7 @@
 \paperyear{\VAR{year}}%
 %
 \papersummary%
-{% Insert summary of the paper here (used in introduction) 
+{% Insert summary of the paper here (used in introduction)
     \VAR{abstract_short | default(abstract)}
 }%
 %
@@ -77,8 +77,9 @@
 %\bibliographystyle{jfm}
 %\bibliography{thesis}
 %\IfFileExists{\VAR{dir}/paper.bbl}{\input{\VAR{dir}/paper.bbl}}{}
+\begin{refcontext}[sorting=nyt]
 \printbibliography[heading=subbibliography]
-
+\end{refcontext}
 %===============================================================================
 %                            END PAPER
 %===============================================================================
