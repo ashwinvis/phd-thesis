@@ -6,11 +6,9 @@ theory of stratified turbulence theories [@Billant2001;@Lindborg2006]. The
 development of this theory is briefly reviewed in @sec:strat. In particular this
 experiment intended to:
 
-1. verify the layered structure with a vertical length scale of $u/N$, which
-   can emerge upon forcing a volume of stratified fluid from an initially
-   quiescent state,
+1. verify that layered structures emerge with a vertical length scale of $u/N$,
 
-1. verify forward energy cascade with spectrum scaling as $E(k) \sim
+1. verify that there is a forward energy cascade with spectrum scaling as $E(k) \sim
    \epsilon^{2/3} k^{-5/3}$, or alternatively the second order structure
    function scaling as $\braket{\delta \mathbf{u}. \delta \mathbf{u}} \sim
    \epsilon^{2/3} r^{2/3}$, and
@@ -42,7 +40,7 @@ $$
 - \nabla \cdot (\uu b) \simeq \kappa_\tau \nabla^2 b
 $$
 In the literature, there are different but closely related quantities which
-characterize mixing:
+characterize mixing [@Gregg]:
 
 - mixing efficiency, a ratio of dissipation of potential energy and total
   energy $\eta = \epsP / (\epsK + \epsP)$,
@@ -56,7 +54,7 @@ Conventionally ocean models rely on a nominal value of $\Gamma = 0.2$ due to
 [@BrethouwerLindborg2009;@Salehipour-diapycnal-2015;@maffioli_mixing_2016] have
 shown that mixing efficiency is not a constant and depends on the strength of
 stratification. In the limit of strong stratification it approaches a constant
-value, and approaches zero with weakly stratified turbulence, scaling with
+value, and approaches zero in the limit of weakly stratified turbulence, scaling with
 horizontal Froude number as $\Gamma \propto F_h ^{-2}$ [@maffioli_mixing_2016].
 At intermediate levels of stratification, it is found to vary in the
 interval $\Gamma \in [0.26, 0.51]$ and peaking at $F_f \approx 0.33$.
@@ -69,10 +67,10 @@ $$
 a Froude number based on horizontal velocity and buoyancy Reynolds number
 respectively.  The regime of strongly stratified turbulence, in which $F_h$ is
 small and $\mathcal{R}$ is large, is highly relevant for applications in the
-ocean [@gargett_composite_1981;@RileyDeBruynKops2003;@Lindborg2006].  But, due
-to the fact that buoyancy Reynolds number relates to conventional horizontal
-Reynolds number ($Re_h$) as $\R = Re_hF_h^2$, reaching this regime is an
-expensive proposition, both numerically and experimentally.
+ocean [@gargett_composite_1981;@RileyDeBruynKops2003;@Lindborg2006].  However, due
+to the fact that the buoyancy Reynolds number relates to the conventional
+Reynolds number ($Re_h$) as $\R = Re_hF_h^2$, reaching this regime is a
+challenging task, both numerically and experimentally.
 In trying to reach the strongly stratified regime experimentally by increasing
 the degree of stratification, the buoyancy Reynolds number often becomes so low
 that turbulence is totally suppressed.
@@ -85,16 +83,17 @@ Despite these difficulties numerical simulations have pushed the limits to be
 as close to the predicted values of $F_h$ and $\R$ as possible
 [@Brethouwer2007;@BrethouwerLindborg2009;@Maffioli2016;@maffioli_mixing_2016]
 of which some are depicted on @fig:stratified-regime along with estimates of
-the values attained by MILESTONE experiment.
+the values attained by the MILESTONE experiment.
 
 ![In-situ measurements, experiments and numerical simulations classified by
 their regime according to stratified turbulence
 theory](./paper_06_milestone/1st/tmp/fig_R_vs_Fh_other_studies_with_milestone17.png){#fig:stratified-regime}
 
-Thus by validating stratified turbulence theory, one can be certain of the
-vertical length scales, direction of energy cascade, and parametrization of
-mixing which can greatly benefit modelling of ocean turbulence.  This chapter
-is presented as follows: the first section briefly describes the experimental
-setup; the second section introduces the open-source software stack which was
-developed to perform the experiment and post-process the data; and lastly we
+Thus by testing the validity of the stratified turbulence theory, one can
+have a good picture of the vertical length scales, the direction of energy
+cascade, and of what parametrizations of mixing are appropriate,
+which can greatly benefit modelling of ocean turbulence.  In the following
+sections, the experimental setup and the open-source software stack which was
+developed to perform the experiment and post-process the data are briefly
+described , whereafter we
 highlight some of the results.
