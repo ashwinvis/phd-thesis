@@ -66,4 +66,13 @@ $\Gamma \approx 0.33$ was recorded. Also note that, as shown in
 
 The question of what value the mixing coefficient would tend to at higher
 levels of stratification, is at the heart of the project titled Mixing and
-Length Scales in Stratified Turbulence (MILESTONE) [@ISSF2016]. 
+Length Scales in Stratified Turbulence (MILESTONE) [@ISSF2016].
+
+## Preliminary results
+In M16,
+the carriage is accelerated over a length of 0.25 cm and moved at constant
+speed over 5.5~m. The constant speed is varied from 2 cm/s to 16 cm/s in
+different runs.
+In M17,
+the carriage is accelerated over 0.5 cm and travels at constant speed over 5~m.
+The constant speed is varied from 1 cm/s up to 24 cm/s.
