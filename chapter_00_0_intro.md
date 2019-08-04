@@ -376,10 +376,10 @@ in decaying [@riley_dynamics_2003] and forced
 Kolmogorov's turbulence picture, and that the kinetic and potential energy
 spectra scale as:
 $$
-E_K(k_h) = C_K \epsilon_K^{2/3} k_h^{-5/3}
+E_K(k_h) = C_K \epsilon_K^{2/3} k_h^{-5/3},
 $${#eq:EKspectra}
 $$
-E_P(k_h) = C_P \epsilon_K^{-1/3} \epsilon_P k_h^{-5/3}
+E_P(k_h) = C_P \epsilon_K^{-1/3} \epsilon_P k_h^{-5/3},
 $${#eq:EPspectra}
 where, $\epsilon_K$ and $\epsilon_P$ are rates of dissipation of kinetic and
 potential energies respectively and the coefficients were found from
