@@ -24,7 +24,7 @@ Anticipating a forward energy cascade [@riley_dynamics_2003;@Lindborg2006], we
 chose to force at large scales. In the literature, various approaches can be
 found to inject KE into the system. For instance in
 @AugierBillantNegrettiChomaz2013 a series of flapping plates stationed along
-the boundary ere used to generate dipoles. A drawback of this method is that it
+the boundary are used to generate dipoles. A drawback of this method is that it
 also produces smaller scales of motion in comparison with the size of the plate. In
 @PraudFinchamSommeria2005, a rake consisting of series of flat plates were
 towed through the fluid which also has the same drawback. Here we replaced the
@@ -33,7 +33,7 @@ diameter 0.25 metre, attached to a motor-driven carriage towed through the
 fluid. The oscillating comb injects kinetic energy in the form of eddies as
 shown in @fig:eddies.  The wake of the comb has a characteristic
 length scale of the cylinder diameter.
-In contrast to @PraudFinchamSommeria2005, which involved decaying
+In contrast to @PraudFinchamSommeria2005, who carried out decaying
 turbulence studies, here we make measurements while the carriage oscillates
 back and forth along the rectangular enclosure as shown in @fig:movement.
 Several experiments with different levels of stratification ($N$) and
