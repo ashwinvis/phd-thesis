@@ -10,11 +10,11 @@
 % Short authors used in headlines and List Of Papers
 \paperauthor[A. Beta, G. Delta \& E. Phi]
 {%
-  Alpha Beta$^1$, Gamma Delta$^2$ and Epsilon Phi$^2$] % Short authors used in headlines and List Of Papers
+  Alpha Beta$^1$, Gamma Delta$^2$ and Epsilon Phi$^2$ % Short authors used in headlines and List Of Papers
 }%
 %
 % (optional) Short authors used in List Of Papers
-\listpaperauthor[A. Beta, G. Delta \& E. Phi]
+% \listpaperauthor[A. Beta, G. Delta \& E. Phi]
 %
 \paperaffiliation
 {%
@@ -36,7 +36,7 @@
 \paperyear{3639}%
 %
 \papersummary%
-{% Insert summary of the paper here (used in introduction) 
+{% Insert summary of the paper here (used in introduction)
     The implications of concurrent archetypes have been far-reaching and
 pervasive. Given the current status of heterogeneous technology,
 cyberinformaticians daringly desire the key unification of the Turing
@@ -82,11 +82,12 @@ which we call Tuna.
 %------------------------------------------------------------------------------
 %
 %\clearpage
-\bibliographystyle{jfm}
-\bibliography{thesis}
-%
-\IfFileExists{paper1/paper.bbl}{\input{paper1/paper.bbl}}{}
-
+%\bibliographystyle{jfm}
+%\bibliography{thesis}
+%\IfFileExists{paper1/paper.bbl}{\input{paper1/paper.bbl}}{}
+\begin{refcontext}[sorting=nyt]
+\printbibliography[heading=subbibliography]
+\end{refcontext}
 %===============================================================================
 %                            END PAPER
 %===============================================================================
