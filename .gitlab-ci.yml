@@ -20,9 +20,12 @@ build:
     - tlmgr install texliveonfly
         type1cm braket
         glossaries datatool xfor textcase xkeyval mfirstuc substr fp
+        ccicons
         # biblatex biber xcolor lineno etoolbox fvextra fancyvrb
         # upquote ifplatform xstring framed caption outlines booktabs enumitem
         # babel-swedish microtype csquotes logreq setspace
+    - texhash
+    - updmap-sys --enable Map=ccicons.map
     - python -m venv venv
     - source venv/bin/activate
     - pip install -r requirements.txt
