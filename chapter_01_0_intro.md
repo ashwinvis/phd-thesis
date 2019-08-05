@@ -57,7 +57,7 @@ stratification. In the limit of strong stratification it approaches a constant
 value, and approaches zero in the limit of weakly stratified turbulence, scaling with
 horizontal Froude number as $\Gamma \propto F_h ^{-2}$ [@maffioli_mixing_2016].
 At intermediate levels of stratification, it is found to vary in the
-interval $\Gamma \in [0.26, 0.51]$ and peaking at $F_f \approx 0.33$.
+interval $\Gamma \in [0.26, 0.51]$ and peaking at $F_h \approx 0.33$.
 
 The strongly stratified turbulence regime is characterized by two
 non-dimensional numbers [@Brethouwer2007],
