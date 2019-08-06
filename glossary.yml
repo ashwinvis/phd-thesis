@@ -1,0 +1,98 @@
+acr_2D: Two Dimensional
+acr_3D: Three Dimensional
+acr_AOT: Ahead Of Time
+acr_APE: Available Potential Energy
+acr_API: Application Programming Interface
+acr_CFD: Computational Fluid Dynamics
+acr_CI: Continuous Integration
+acr_CPU: Central Processing Unit
+acr_DNS: Direct Numerical Simulation
+acr_DVCS: Distributed Version Control System
+acr_FFT: Fast Fourier Transform
+acr_GASP: Global Atmospheric Sampling Program
+acr_GCM: General Circulation Model
+acr_GIL: Global Interpreter Lock
+acr_GUI: Graphical User Interface
+acr_I/O: Input-Output
+acr_JIT: Just In Time
+acr_KE: Kinetic Energy
+acr_MILESTONE: Mixing and Length Scales in Stratified Turbulence
+acr_MOZAIC: Measurement of Ozone by Airbus in-service aircraft
+acr_MPI: Message Passing Interface
+acr_PIV: Particle Image Velocimetry
+acr_QG: Quasi-Geostrophic
+acr_SWE: Shallow Water Equations
+\beta: gradient of $f$
+C_K: spectral exchange function for kinetic energy
+c: phase speed of gravity waves
+C_P: spectral exchange function for potential energy
+D_c: diameter of the cylinder
+\delta: divergence
+d: mean shock seperation distance
+E_A: available potential energy
+E: energy
+E_K: kinetic energy
+E_P: potential energy
+\epsilon: energy flux or energy dissipation rate
+\eta: enstrophy flux or enstrophy dissipation rate / scalar displacement field for shallow water equations / mixing efficiency for stratified turbulence
+E_V: vortical energy
+E_W: wave energy
+F_h: Froude number based on horizontal length scale
+F_L: longitudinal flatness factor
+f: solid body rotation
+F_T: transverse flatness factor
+F_v: Froude number based on vertical length scale
+\Gamma: mixing coefficient
+h: scalar height field
+H: vertical length scale
+\kappa: magnitude of wavenumber
+k: wavenumber
+l: degree of spherical harmonics
+L_d: Rossby radius of deformation
+l_h: horizontal length scale
+L: horizontal length scale
+l_v: vertical length scale
+\mathbf{B}: normal mode vector with dimension of velocity
+\mathbf{\hat{e}}_z: unit vector in z-direction
+\mathbf{J}: mass flux, $h\mathbf{u}$
+# \mathbf{M}: displaced mass flux, $\eta\mathbf{u}$
+\mathbf{N}: normal mode vector with dimension of vorticity
+\mathcal{O}: order
+\mathbf{\Phi}: velocity potential
+\mathbf{\Psi}: stream function
+\mathbf{r}: seperation vector for calculating structure functions
+\mathbf{U}: primitive variable vector
+\mathbf{u}: velocity vector
+\mathbf{W}: derived variable vector
+M: characterisitic size of vortices
+N: 'Brunt V\"ais\"al\"a frequency'
+n: number of grid points in one direction
+\nu: kinematic viscosity
+\Pi: spectral energy flux
+P: transformation matrix from $\mathbf{W}$ to $\mathbf{U}$
+q: linearized potential vorticity
+Q: transformation matrix from $\mathbf{U}$ to $\mathbf{B}$ / potential vorticity
+\R: buoyancy Reynolds number
+Re_b: buoyancy Reynolds number
+Re_h: Reynolds number based on horizontal length scale
+\Re: real part
+Ri_f: flux Richardson number
+Ro: Rossby number
+r: seperation distance
+\sigma: frequency of gravity waves, $\sqrt{f^2+(c\kappa)^2}$
+S: structure function
+\tau: time scale
+\theta: potential temperature
+T_K: spectral transfer function for kinetic energy
+T_P: spectral transfer function for potential energy
+T: spectral transfer function
+U_c: carriage velocity
+u^d: divergent velocity component
+u_L: longitudinal velocity component
+u^r: rotational velocity component
+u_T: transverse velocity component
+u: velocity length scale
+U: velocity length scale
+X_n: normalized eigenvector matrix
+\zeta: relative vorticity
+Z: spectral enstrophy flux
