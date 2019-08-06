@@ -118,7 +118,7 @@ $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
 
-$(main).gls: $(AUXS) $(BBLS)
+$(main).gls: $(AUXS) $(BBLS) glossary.tex
 	$(call cprint,"building $@ with makeglossaries")
 	@makeglossaries -t $(main).log $(main)
 
@@ -129,9 +129,13 @@ $(main).gls: $(AUXS) $(BBLS)
 	$(call cprint,"building $@ with $(BIB) on $(BIB_FILE)")
 	@$(BIB) $(BIB_FLAGS) $(main) $(REDIRECT)
 
-%.tex: %.yml $(TEMPLATE_PAPER)
-	$(call cprint,"building $@ with python templates/utils_render.py")
+%.tex: %.yml $(TEMPLATE_PAPER) scripts/render_paper_yml.py
+	$(call cprint,"building $@ with python $(TEMPLATE_PAPER)")
 	@python scripts/render_paper_yml.py $< $(TEMPLATE_PAPER)
+
+glossary.tex: glossary.yml scripts/render_glossary_yml.py
+	$(call cprint,"building $@ with python scripts/render_glossary_yml.py")
+	@python scripts/render_glossary_yml.py $< templates/template_glossary.tex
 
 imgs/%.pdf: imgs/%/plot.py
 	$(call cprint,"building $@ with $<")
@@ -192,7 +196,7 @@ clean_minted:
 
 clean_thesis:
 	$(call cprint,"cleaning thesis")
-	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist,pandoc.tex}
+	@rm -f *.{aux,toc,log,out,bbl,bcf,blg,pls,psm,synctex.gz,fls,fdb_latexmk,run.xml,gl?,ist,pandoc.tex,acn,acr}
 
 clean_papers:
 	$(call cprint,"cleaning papers")

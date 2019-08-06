@@ -4,8 +4,17 @@
 % Definitions
 % ------------
 
-%% for label, name, description in entries
-\newglossaryentry{\VAR{label}}{name=\VAR{name}, description={\VAR{description}}}
+%% for label, name, description in glossary
+\newglossaryentry{\VAR{label}}
+{%
+name=\VAR{name},
+description={\VAR{description}},
+sort=\VAR{label}
+}
+%% endfor
+
+%% for label, name, description in acronym
+\newacronym{\VAR{label}}{\VAR{name}}{\VAR{description}}
 %% endfor
 
 % \glossarystyle{mcolindex}
