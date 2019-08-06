@@ -104,7 +104,7 @@ express the velocity field as:
 For the sake of clarity, we shall denote the rotational and divergent parts of
 the velocity with the suffix *r* and *d* respectively,
 $$
-    \mathbf{u}^r & = -\nabla \times \mathbf{\hat{e}}_z\Psi, \quad \mathbf{u}^d =
+    \mathbf{u}^r = -\nabla \times \mathbf{\hat{e}}_z\Psi, \quad \mathbf{u}^d =
     \nabla {\bf \Phi}.
 $$
 <!-- and, $\mathbf u  = \mathbf u^r + \mathbf u^d$. -->
