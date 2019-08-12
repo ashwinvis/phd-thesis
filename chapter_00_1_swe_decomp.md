@@ -98,22 +98,22 @@ vector field and a rotational or non-divergent vector field. This allows us to
 express the velocity field as:
 \begin{align}
     \label{eq:helm_u}
-    \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \mathbf{\Phi}.
+    \mathbf{u} & = -\nabla \times (\mathbf{\hat{e}}_z \Psi) + \nabla \chi.
 \end{align}
-<!-- & =  -\nabla \times \Psi_z + \nabla \Phi -->
+<!-- & =  -\nabla \times \Psi_z + \nabla \chi -->
 For the sake of clarity, we shall denote the rotational and divergent parts of
 the velocity with the suffix *r* and *d* respectively,
 $$
     \mathbf{u}^r = -\nabla \times \mathbf{\hat{e}}_z\Psi, \quad \mathbf{u}^d =
-    \nabla {\bf \Phi}.
+    \nabla \chi.
 $$
 <!-- and, $\mathbf u  = \mathbf u^r + \mathbf u^d$. -->
 To find the projection operator for the divergent part, take the
-divergence of [@eq:helm_u], giving $\nabla \cdot \mathbf{u} = \nabla^2 {\bf \Phi}$.
+divergence of [@eq:helm_u], giving $\nabla \cdot \mathbf{u} = \nabla^2 {\bf \chi}$.
 This equation transforms into spectral space as $i{\bf k} \cdot \hat{\bf u} =
--\kappa^2 \hat{\Phi}$, implying:
+-\kappa^2 \hat{\chi}$, implying:
 \begin{align*}
-    {\hat{\bf u}}^d = & i {\bf k}\hat{\Phi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k},       \\
+    {\hat{\bf u}}^d = & i {\bf k}\hat{\chi} = \frac{{\bf k}\cdot\hat{\bf u}}{\kappa^2} {\bf k},       \\
     {\hat{\bf u}}^r = & \hat{\bf u} - {\hat{\bf u}}^d,
 \end{align*}
 where, $\kappa = |\mathbf{k}|$, is the magnitude of the wavenumber vector.
