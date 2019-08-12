@@ -41,11 +41,11 @@ change of kinetic energy can be calculated from [@eq:toy],
     = \frac{1}{2}\left[ \mathbf{\hat u} \cdot\pder[\mathbf{\hat u^*}]{t}
         + \mathbf{\hat u^*}\cdot \pder[\mathbf{\hat u}]{t}\right]          \\
     = & \frac{1}{2}\left[ -\hat{u}_i (\widehat{ u_j^r\partial_j u_i })^*
-        - \hat{u}_i (ik_i \hat{\theta})^*
+        - c \hat{u}_i (ik_i \hat{\theta})^*
         - \hat{u}_i (\epsilon_{i3k} f \hat{u}_k)^*
         - ... \text{hermitian conjugate terms}  \right] \\
     = & -\Re\left[ \hat{u}_i (\widehat{ u^r_j\partial_j u_i })^*
-        + \hat{u}_i (ik_i \hat{\theta})^*
+        + c \hat{u}_i (ik_i \hat{\theta})^*
         + \hat{u}_i (\epsilon_{i3k} f \hat{u}_k)^* \right],
 \end{align*}
 where $^*$ represents the hermitian conjugate, and $u_j^r$ represents the
@@ -61,23 +61,28 @@ where $T_K$ and $C_K$ represent the transfer and conversion spectral
 functions respectively,
 \begin{align}
     \label{eq:TK}
-    T_K= & -\Re\left[\hat{u}_i (\widehat{ u^r_j\partial_j u_i })^* \right], \\
+    T_K= & -\Re\left[\hat{u}_i (\widehat{ u^r_j\partial_j u_i })^* \right]
+         = -\Re\left[\hat{u}_i^* ik_j \widehat{u^r_j u_i}\right]
+         =  \Im\left[\hat{u}_i^* k_j \widehat{u^r_j u_i}\right] ,\\
     \label{eq:CK}
-    C_K= & -\Re\left[   \hat{u}_i (ik_i \hat{\theta})^*  \right]
-       = +\Re\left[   \hat{\theta} (ik_i \hat{u}_i)^* \right].
+    C_K= & -\Re\left[c \hat{u}_i (ik_i \hat{\theta})^*  \right]
+          = \Re\left[c \hat{\theta} (ik_i \hat{u}_i)^* \right]
+          = \Re\left[c \kappa^2 \hat{\theta}\hat{\chi}^*\right].
 \end{align}
-In the last step, the property that Fourier transforms of real functions are
-hermitian is used [@bracewell_fourier_2014]. The conversion function $C_K$
+In @eq:TK the property that $\Re(iz) = -\Im(z)$ is used. In @eq:CK, the
+property that Fourier transforms of real functions are hermitian is used
+[@bracewell_fourier_2014]. In [@eq:TK;@eq:CK] the property that rotational
+velocity is divergence-free is also used. The conversion function $C_K$
 represents the energy converted from APE into KE.
 
 ## Available potential energy (APE)
 Available potential energy is defined as
 $$
-     E_P(\mathbf{r}, t) = \frac{1}{2} { \theta^2 }.
+     E_A(\mathbf{r}, t) = \frac{1}{2} { \theta^2 }.
 $$
 By @eq:toy_theta, the rate of change of APE is given by,
 \begin{align*}
-    \pder{t}E_P(\mathbf{k},t)
+    \pder{t}E_A(\mathbf{k},t)
     = & \frac{1}{2}\pder{t}({\hat \theta}{\hat \theta^*})
     =  \frac{1}{2}\left[ \hat{\theta} .\pder[\hat{\theta}^*]{t}+ \hat
         \theta^*.\pder[\hat \theta]{t}\right]                                 \\
@@ -88,20 +93,23 @@ By @eq:toy_theta, the rate of change of APE is given by,
     = & -\Re\left[\hat{\theta} (ik_i\hat{ u_i } + ik_i\widehat{
             \theta u^r_i })^* \right].
 \end{align*}
-Similar to equation [@eq:dtKE] we write the equation for $E_P$ as,
+Similar to equation [@eq:dtKE] we write,
 $$
 \label{eq:dtPE}
-    \pder{t}E_P(\mathbf{k},t) = T_P + C_P,
+    \pder{t}E_A(\mathbf{k},t) = T_A + C_A,
 $$
-where $T_P$ and $C_P$ represent the transfer and conversion spectral
+where $T_A$ and $C_A$ represent the transfer and conversion spectral
 functions of APE. Thus,
 \begin{align}
     \label{eq:TP}
-    T_P= & -\Re\left[\hat{\theta} (ik_i\widehat{ \theta u^r_i })^*  \right], \\
+    T_A= & -\Re\left[\hat{\theta} (ik_i\widehat{ \theta u^r_i })^*  \right]
+         = -\Re\left[\hat{\theta}^* ik_j \widehat{u^r_j \theta}\right]
+         =  \Im\left[\hat{\theta}^* k_j \widehat{u^r_j \theta}\right] ,\\
     \label{eq:CP}
-    C_P= & -\Re\left[\hat{\theta} (ik_i\hat{u_i })^*\right].
+    C_A= & -\Re\left[c\hat{\theta} (ik_i\hat{u_i })^*\right]
+         = -\Re\left[c \kappa^2 \hat{\theta}\hat{\chi}^*\right].
 \end{align}
-Comparing @eq:CP with @eq:CK, we see that $C_K = -C_P$, from which we can
+Comparing @eq:CP with @eq:CK, we see that $C_K = -C_A$, from which we can
 assert that, equivalent conversion occurs between KE and APE via these terms.
 
 ## Algorithm for computing spectral energy budget
@@ -114,14 +122,14 @@ input, the spectral energy budget can be computed as described below:
    to obtain $\bf B$ (@eq:bvec).
 1. Apply matrix multiplication of $Q$ on $\bf B$ (@eq:uqmatb) to obtain the normal
    mode decomposition of the primitive variables $\bf U$.
-1. Take the expressions for the transfer terms, $T_K$ and $T_P$ (@eq:TK and
+1. Take the expressions for the transfer terms, $T_K$ and $T_A$ (@eq:TK and
    @eq:TP), and expand the primitive variables $\bf U$ using the decomposition
    calculated in the previous step. The result is a linear combination of
    $B^{(0)}, B^{(+)}$ and $B^{(-)}$, the normal modes as shown in @eq:decomp_tensor_u
    and @eq:decomp_tensor_eta.
 1. Compute the transfer terms using the expanded expression for primitive
    variables term-by-term. While few terms can be computed in spectral space
-   ($C_K, C_P$), where derivatives are involved ($T_K, T_P$) a couple of FFT and
+   ($C_K, C_A$), where derivatives are involved ($T_K, T_A$) a couple of FFT and
    inverse FFT would have to be used.
 1. Classify the expanded transfer terms into four groups based on the kind of
    normal modes they are product of: $T_{VVV}, T_{VVW}, T_{VWW}$ and $T_{WWW}$,
