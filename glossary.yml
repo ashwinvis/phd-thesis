@@ -23,12 +23,12 @@ acr_PIV: Particle Image Velocimetry
 acr_QG: Quasi-Geostrophic
 acr_SWE: Shallow Water Equations
 \beta: gradient of $f$
-C_K: spectral exchange function for kinetic energy
+C_K: conversion spectral function for kinetic energy
 c: phase speed of gravity waves
-C_P: spectral exchange function for potential energy
+C_P: conversion spectral function for potential energy
 D_c: diameter of the cylinder
 \delta: divergence
-d: mean shock seperation distance
+d: mean shock separation distance
 E_A: available potential energy
 E: energy
 E_K: kinetic energy
@@ -45,6 +45,7 @@ F_v: Froude number based on vertical length scale
 \Gamma: mixing coefficient
 h: scalar height field
 H: vertical length scale
+\Im: imaginary part of a complex number
 \kappa: magnitude of wavenumber
 k: wavenumber
 l: degree of spherical harmonics
@@ -58,13 +59,13 @@ l_v: vertical length scale
 # \mathbf{M}: displaced mass flux, $\eta\mathbf{u}$
 \mathbf{N}: normal mode vector with dimension of vorticity
 \mathcal{O}: order
-\mathbf{\Phi}: velocity potential
-\mathbf{\Psi}: stream function
-\mathbf{r}: seperation vector for calculating structure functions
+\chi: velocity potential
+\Psi: stream function
+\mathbf{r}: separation vector for calculating structure functions
 \mathbf{U}: primitive variable vector
 \mathbf{u}: velocity vector
 \mathbf{W}: derived variable vector
-M: characterisitic size of vortices
+M: characteristic size of vortices
 N: 'Brunt V\"ais\"al\"a frequency'
 n: number of grid points in one direction
 \nu: kinematic viscosity
@@ -75,10 +76,10 @@ Q: transformation matrix from $\mathbf{U}$ to $\mathbf{B}$ / potential vorticity
 \R: buoyancy Reynolds number
 Re_b: buoyancy Reynolds number
 Re_h: Reynolds number based on horizontal length scale
-\Re: real part
+\Re: real part of a complex number
 Ri_f: flux Richardson number
 Ro: Rossby number
-r: seperation distance
+r: separation distance
 \sigma: frequency of gravity waves, $\sqrt{f^2+(c\kappa)^2}$
 S: structure function
 \tau: time scale
@@ -96,3 +97,4 @@ U: velocity length scale
 X_n: normalized eigenvector matrix
 \zeta: relative vorticity
 Z: spectral enstrophy flux
+# vim: spell on
