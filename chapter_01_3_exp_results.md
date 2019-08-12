@@ -14,7 +14,9 @@ and $\R_c = 450$ from M16 campaign is described here. The oscillating comb was
 observed to inject kinetic energy $u^2 \approx 0.08 U_c^2$. The emergence of
 layered structures with vertical length scale of \order{1} cm can be visually
 observed in the velocity fields plotted in @fig:field, thereby conforming to
-the prediction $l_v \sim u / N$.
+the prediction $l_v \sim u / N$. Note that, there is a time delay when similar
+dynamics are captured in the horizontal (top row) and vertical (bottom row) PIV
+fields.
 
 \begin{figure}[htb]
 \centerline{
@@ -77,7 +79,7 @@ The evolution of the background potential energy is shown in the left plot of
 @fig:dt:pot:energy for an experiment from M17-21 with parameters $N = 0.55$
 rad/s, $U_c = 12$ cm/s, $F_{hc} = 0.436$ and $\R_c = 11425$.  The value
 -1 would correspond to a linear stratification with the same initial
-Brunt-V\"ais\"al\"a frequency. Since the profiles at the beginning of the
+\text{Brunt-V\"ais\"al\"a} frequency. Since the profiles at the beginning of the
 experiment are already eroded from previous experiments, the initial normalized
 potential energy is slightly smaller than -0.6. We see that it increases
 approximately linearly with time while the fluid is stirred and stabilize at a

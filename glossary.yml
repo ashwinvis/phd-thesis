@@ -25,7 +25,7 @@ acr_SWE: Shallow Water Equations
 \beta: gradient of $f$
 C_K: conversion spectral function for kinetic energy
 c: phase speed of gravity waves
-C_P: conversion spectral function for potential energy
+C_A: conversion spectral function for available potential energy
 D_c: diameter of the cylinder
 \delta: divergence
 d: mean shock separation distance
@@ -85,7 +85,7 @@ S: structure function
 \tau: time scale
 \theta: potential temperature
 T_K: spectral transfer function for kinetic energy
-T_P: spectral transfer function for potential energy
+T_A: spectral transfer function for available potential energy
 T: spectral transfer function
 U_c: carriage velocity
 u^d: divergent velocity component
