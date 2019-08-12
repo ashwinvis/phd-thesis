@@ -167,7 +167,7 @@ speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
 the Brunt-\text{V\"ais\"al\"a} frequency and $\beta \approx \p_y f$ is the beta
 parameter. This equation is valid when certain criteria are met:
 
-* Strong rotation, implying that the Rossby number, $Ro = UL/f_0$, is much
+* Strong rotation, implying that the Rossby number, $Ro = U/f_0L$, is much
   smaller than unity, where $U$ and $L$ are characteristic horizontal
   velocity and length scales, respectively.
 * Characteristic length scales of motion are of the same order as Rossby radius
