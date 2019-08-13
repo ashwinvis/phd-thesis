@@ -86,11 +86,12 @@ approximately linearly with time while the fluid is stirred and stabilize at a
 constant value after the stop of the carriage. From this curve, we can evaluate
 the mean rate of increase of the average background potential energy
 $\eps_P$ during an experiment.
-This quantity normalized by an estimation of the dissipation of kinetic energy
-$3\times10^{-3} {U_c}^3/D_c$ where $D_c$ is the diameter of the cylinder.
-The quantity termed dimensionless $\eps_P$ is plotted as a function of the Froude number
-in figure~\ref{fig:dt:pot:energy} and is approximately proportional to the
-mixing coefficient $\Gamma$. The colors represent the buoyancy Reynolds number
+This quantity $\eps_P$ is normalized by an estimation of the dissipation of
+kinetic energy $3\times10^{-3} {U_c}^3/D_c$ where $D_c$ is the diameter of the
+cylinder and is approximately proportional to the mixing coefficient $\Gamma$.
+It is plotted as a function of the Froude number in
+figure~\ref{fig:dt:pot:energy}.
+The colors represent the buoyancy Reynolds number
 such that the yellow points correspond to $\R > 15$. We see that the yellow
 points fall on a power law fit of $F_h^{-1.2}$, while there are more variations
 for smaller values of buoyancy Reynolds number. The yellow points at high
