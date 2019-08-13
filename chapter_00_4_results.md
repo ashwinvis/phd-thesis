@@ -83,8 +83,8 @@ Robles)
 
 ![Coherent anticyclonic vortices from a simulation using the toy model. On
 left: linearised potential vorticity ($q$); on right: one of the
-ageostrophic mode ($a^+$) model representing the wave field
-[@LindborgMohanan2017].](./imgs/anticyclone-toy-model.jpg){#fig:anticyclone-toy-model
+ageostrophic mode ($a^+$) representing the wave field.
+](./imgs/anticyclone-toy-model.jpg){#fig:anticyclone-toy-model
 width=95%}
 
 Another interesting feature of the toy model is revealed in
