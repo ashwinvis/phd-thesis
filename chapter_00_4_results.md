@@ -1,9 +1,14 @@
 # Research highlights
 
+![Spectral energy budget from a toy model simulation with two
+different forcing
+schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf){#fig:flux_decomp}
+
 @Fig:flux_decomp is an example which shows a normal mode decomposition of the
 spectral
 energy fluxes. The figure is plotted from two toy model simulations with
-different forcing schemes. In both cases, all energy which is injected at
+different forcing schemes. In both cases, all energy which is injected at the
+forcing wavenumber
 $k_f$ is transferred to smaller scales, and the normalised total energy flux
 (black curve) is equal to unity in a broad range of wavenumbers. The plot to
 the left is from a run were we force in wave modes alone. As a result, the flux
@@ -16,9 +21,21 @@ wave numbers, and by vortical-wave-wave interactions, $\Pi_{VWW}$ at large wave
 numbers. In both cases, vortical-wave-wave interactions make an important
 contribution to the downscale energy cascade.
 
-![Comparison of spectral energy budget from a toy model simulation with two
-different forcing
-schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf){#fig:flux_decomp}
+<div id="fig:sebgcmtoy">
+![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
+![](./paper_03_toy_model/fig10.eps){width=43% #fig:sebtoy}
+
+Spectral energy budgets from a GCM simulation[^GCM] (left)
+and a toy model simulation (right). The total spectral energy flux $\Pi$
+has been decomposed into kinetic ($\Pi_K$) and available potential energy
+($\Pi_A$) energy fluxes. The conversion from available potential energy to
+kinetic energy is represented by $C_{cum}$. The kinetic energy flux is further
+decomposed as $\Pi_{2D}$, the flux due to geostrophic modes and the difference
+$\Pi_K - \Pi_{2D}$.
+</div>
+
+[^GCM]: \fullcite{AugierLindborg2013}. \textcopyright American Meteorological
+  Society. Used with permission.
 
 The analysis also proved to be useful to compare with the energetics of a
 GCM. The spectral energy budget of the GCM is shown in @fig:sebgcm as a
@@ -35,27 +52,9 @@ shown in @fig:sebtoy. Of course, the toy model is more idealized, and a
 difference we see here is that the fluxes of KE and APE are equipartitioned at
 smaller scales.
 
-<div id="fig:sebgcmtoy">
-![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
-![](./paper_03_toy_model/fig10.eps){width=43% #fig:sebtoy}
-
-A comparison of the spectral energy budgets from a GCM simulation and a toy
-model simulation [@LindborgMohanan2017]. The total spectral energy flux $\Pi$
-has been decomposed into kinetic ($\Pi_K$) and available potential energy
-($\Pi_A$) energy fluxes. The conversion from available potential energy to
-kinetic energy is represented by $C_{cum}$. The kinetic energy flux is further
-decomposed as $\Pi_{2D}$, the flux due to geostrophic modes and the difference
-$\Pi_K - \Pi_{2D}$. The plot on the left is from @AugierLindborg2013 "A
-new formulation of the spectral energy budget of the atmosphere, with
-application to two high-resolution general circulation models" _J. Atmos.
-Sci._, **70**, 2293-2308. \textcopyright American Meteorological Society. Used
-with permission.
-</div>
-
-![Comparison of the divergence fields ($\mathbf{\nabla.u}$) from a shallow
+![Divergence fields ($\mathbf{\nabla.u}$) from a shallow
 water simulation (left) and a similar toy-model simulation (right). $L_f$ is
-the forcing length scale. Source:
-@LindborgMohanan2017.](./paper_03_toy_model/fig9.pdf){#fig:shallow-toy
+the forcing length scale.](./paper_03_toy_model/fig9.pdf){#fig:shallow-toy
 width=100%}
 
 The toy model is visibly different from the SWE which exhibits shock dominated
@@ -109,8 +108,7 @@ simulation run W7 in
 ![Mean shock separation distance $(d)$ in a series of shallow water
 simulations plotted against the forcing Froude number $(F_f)$. The Froude
 number is inversely proportional to the wave phase-speed, $c$. The theoretical
-prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.  Source:
-@augier_shallow_2019.
+prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.
 ](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=70%}
 
 Now we turn our attention to shallow water wave turbulence. Some interesting
