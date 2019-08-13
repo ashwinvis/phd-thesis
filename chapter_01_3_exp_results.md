@@ -50,12 +50,12 @@ order structure functions to scale as  $S_h(r) = C (\varepsilon r)^{2/3}$
 [@Lindborg2006;@AugierBillantChomaz2015]. In @fig:S2
 the normalized structure function $S_h(rU_c^3/M)^{-2/3}$ is plotted for
 different times after one stroke of the carriage. As can be seen, there is a
-range where the curves are flat conisistent with the prediction $S_h \sim
+range where the curves are flat consistent with the prediction $S_h \sim
 r^{2/3}$.
 
 \begin{figure}[htb]
 \centerline{
-\includegraphics[height=7.5cm]{paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
+\includegraphics[width=0.7\textwidth]{paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
 \vspace{-2mm}
 \caption{Normalized second-order structure $S_h$ function as a function of
 $r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
@@ -68,9 +68,9 @@ $r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
 \includegraphics[width=0.45\textwidth]{paper_06_milestone/1st/tmp/fig_energy_pot_vs_time}
 \includegraphics[width=0.55\textwidth]{paper_06_milestone/1st/tmp/fig_dt_pot_energy}
 }
-\caption{Evolution of potential energy for M17-21 (left) and normalized mixing
-coefficient $\eps_P / (3\times10^{-3} {U_c}^3/D_c)$ for some MILESTONE 17
-experiments (right).}%
+\caption{Evolution of potential energy normalized by linear stratification for
+experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
+(3\times10^{-3} {U_c}^3/D_c)$ for some MILESTONE 17 experiments (right).}%
 \label{fig:dt:pot:energy}
 
 \end{figure}

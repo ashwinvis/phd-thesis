@@ -46,7 +46,7 @@ experiments we define a Froude number and a buoyancy Reynolds number,
 $$
 F_{hc} = \frac{U_c}{NM},\quad \R_c = \frac{U_c^3}{\nu N^2M}
 $$
-\noindent respectively where $N$, the Brunt-V\text{\"a}isala frequency is evaluated
+\noindent respectively where $N$, the Brunt-\text{V\"ais\"al\"a} frequency is evaluated
 *a priori* while the fluid is quiescent and $M$ is the characteristic size of the
 vortices.
 

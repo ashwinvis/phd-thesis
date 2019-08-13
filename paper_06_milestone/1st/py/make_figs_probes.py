@@ -33,6 +33,7 @@ save(fig, "fig_profiles_probe_averaged.png")
 
 signals.plot_energy_pot_vs_time()
 fig = plt.gcf()
+plt.gca().set_ylabel("normalized $E_P$")
 unset_title(fig)
 save(fig, "fig_energy_pot_vs_time.png")
 
