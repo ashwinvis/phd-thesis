@@ -48,6 +48,7 @@ H: vertical length scale
 \Im: imaginary part of a complex number
 \kappa: magnitude of wavenumber
 k: wavenumber
+k_d: dissipation wavenumber
 k_f: forcing wavenumber
 l: degree of spherical harmonics
 L_d: Rossby radius of deformation
