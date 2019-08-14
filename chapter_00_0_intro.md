@@ -9,13 +9,6 @@ general rule of thumb, as our capabilities of modelling of the small scales
 improve, so does the predictability, which has motivated researchers
 to advance our understanding of geophysical turbulence.
 
-<!-- TODO: Check or replace with correct figure -->
-![From left to right: power spectra of zonal and meridional winds, and
-potential temperature. The meridional wind and potential temperature power
-spectra are shifted by one and two decades to the right each along the horizontal
-axis.
-Source: @NastromGage1985](imgs/NastromGage.eps){#fig:nastromgage}
-
 The scaling laws for the energy distribution in the atmosphere were revealed
 through the wind and temperature measurements made in Global Atmospheric
 Sampling Program (GASP, see @nastrom_kinetic_1984 and @NastromGage1985). In
@@ -43,6 +36,15 @@ years which will be described in the forthcoming sections. In
 @sec:energy, we will also see why there is an emerging consensus that
 the mesoscale range is the result of a forward cascade of energy into
 smaller scales [@Lindborg1999;@ChoLindborg2001].
+
+![From left to right: power spectra of zonal and meridional winds, and
+potential temperature. The meridional wind and potential temperature power
+spectra are shifted by one and two decades to the right each along the horizontal
+axis[^nastromgage].
+](imgs/NastromGage.png){#fig:nastromgage width=70%}
+
+[^nastromgage]: \fullcite{NastromGage1985}. \textcopyright American
+  Meteorological Society. Used with permission.
 
 Of particular relevance for this thesis is the theoretical prediction,
 estimating the vertical resolution required for reproducing the mesoscale
@@ -167,7 +169,7 @@ speed of the frame of reference, $\tilde \rho$ is the potential density, $N$ is
 the Brunt-\text{V\"ais\"al\"a} frequency and $\beta \approx \p_y f$ is the beta
 parameter. This equation is valid when certain criteria are met:
 
-* Strong rotation, implying that the Rossby number, $Ro = UL/f_0$, is much
+* Strong rotation, implying that the Rossby number, $Ro = U/f_0L$, is much
   smaller than unity, where $U$ and $L$ are characteristic horizontal
   velocity and length scales, respectively.
 * Characteristic length scales of motion are of the same order as Rossby radius
@@ -190,7 +192,7 @@ $k^{-3}$ spectrum.
 
 ![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade
 might simultaneously occur in two-dimensional turbulence. Right: A schematic of
-observed energy spectra in the atmosphere [@NastromGage1985]
+observed energy spectra in the atmosphere.
 ](imgs/cascade.pdf){#fig:cascade}
 
 Nowadays, it is understood that the $k^{-3}$ spectrum at the _synoptic_ scales
