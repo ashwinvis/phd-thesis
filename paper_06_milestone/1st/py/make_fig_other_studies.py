@@ -56,7 +56,7 @@ ax.set_xlim(xlim)
 ax.set_ylim(ylim)
 
 ax.text(7e-4, 40, 'Strongly strat. turb.')
-ax.text(0.2, 2e1, 'Weakly strat. turb.', rotation=90)
+ax.text(0.2, 1.5e1, 'Weakly strat. turb.', rotation=90)
 ax.text(7e-4, 2, 'Viscous regime')
 
 # Fht = np.linspace(1, 8, 20) * 3e-3

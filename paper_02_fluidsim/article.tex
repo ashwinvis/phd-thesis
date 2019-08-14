@@ -144,7 +144,7 @@ known as the 80/20 rule\footnote{See \citet{behnel_cython2011},
 wiki.haskell.org/Why\_Haskell\_matters}}.
 %
 The goal is to optimize such that ``80 percent of the runtime is spent in
-20 percent of the code''~\cite[]{meyers2012effective}.
+20 percent of the code''~\citep[]{meyers2012effective}.
 %
 Here, \pack{Cython} \citep{behnel_cython2011} and \pack{Pythran}
 \citep{guelton2018pythran} compilers comes in handy.
@@ -868,7 +868,7 @@ $31.078$ to $2.175$ seconds for the $1024\times1024\times1024$ case.
 
 
 
-\subsection{pseudo-spectral code comparisons}
+\subsection{CFD pseudo-spectral code comparisons}
 
 %TODO-DONE: Compare profiling of Dedalus SpectralDNS, NS3D
 % See the file notes_compare_codes.md
@@ -943,12 +943,12 @@ It has been written in the laboratory
 \href{https://www.ladhyx.polytechnique.fr}{LadHyX} and used for several studies
 involving simulations (in 3D and in 2D) of the Navier-Stokes equations under the
 Boussinesq approximation with stratification and system
-rotation~\cite[][]{DeloncleBillantChomaz2008}.It is in particular specialized in
-stability studies~\cite[][]{BillantDeloncleChomazOtheguy2010}.
+rotation~\citep[][]{DeloncleBillantChomaz2008}.It is in particular specialized in
+stability studies~\citep[][]{BillantDeloncleChomazOtheguy2010}.
 %
 NS3D has been highly optimized and it is very efficient for sequential and
 parallel simulations (using MPI and OpenMP).  However, the parallelization is
-limited to 1D decomposition for the FFT~\cite[][]{fluidfft}.
+limited to 1D decomposition for the FFT~\citep[][]{fluidfft}.
 %
 Another weakness compared to \fluidpack{sim} is that NS3D uses simple binary files
 instead of HDF5 and NetCDF4 files for \fluidpack{sim}.  Therefore, visualization
@@ -1141,7 +1141,7 @@ $\simeq$ 20 \% slower). We did not find a performance issue in NS3D.
 %
 The linear operators are slightly faster in \fluidpack{sim} than in the Fortran
 code NS3D.  This is because this corresponds to Pythran functions written with
-explicit loops~\cite[see][]{fluidfft}.
+explicit loops~\citep[see][]{fluidfft}.
 
 Although the FFTs are a little bit faster for NS3D, the total time is slightly
 smaller (less than 1\% of the total time) for \fluidpack{sim} for this case.
@@ -1216,7 +1216,7 @@ Python 2.7, 3.4 or above. For the next versions, we will
 
 \begin{itemize}
 \item {\bf Minimum:} \fluidpack{dyn}, \Numpy, \pack{h5netcdf}, \fluidpack{fft}
-\cite[and FFT libraries, see][]{fluidfft}.
+\citep[and FFT libraries, see][]{fluidfft}.
 \item {\bf Optional:} \Scipy, \pack{mpi4py}, \pack{Cython} and
 \pack{Pythran}, \pack{pulp}.
 \end{itemize}
@@ -1292,7 +1292,7 @@ Its simplicity of use and its plotting capacities make it particularly adapted f
 teaching.
 %
 \fluidpack{sim} is used at LEGI and at KTH for studies on geophysical turbulence
-\cite[see for example][]{LindborgMohanan2017}.
+\citep[see for example][]{LindborgMohanan2017}.
 %
 Since it is easy to modify any characteristics of the existing solvers or to build
 new solvers, \fluidpack{sim} is a good tool to carry out other types of

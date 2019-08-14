@@ -58,7 +58,7 @@ for i, signals in enumerate(signals_exps):
     Ds[i] = signals.exp.Dc
     Rs[i] = C_eps * signals.exp.epsc / (nu * signals.exp.N**2)
 
-fig = plt.figure(figsize=(9, 5))
+fig = plt.figure(figsize=(7, 4))
 ax = fig.gca()
 
 plot = ax.scatter
@@ -81,7 +81,7 @@ ax.plot(xs, 3e-3 * xs**-2, "k")
 ax.text(0.12, 2.5e-1, r"${F_h}^{-2}$")
 
 ax.set_xlabel(r'$F_h$')
-ax.set_ylabel(r'dimensionless $\varepsilon_P$')
+ax.set_ylabel(r'normalized $\varepsilon_P$')
 
 fig.text(0.85, 0.05, r'$\mathcal{R}$', size=20)
 

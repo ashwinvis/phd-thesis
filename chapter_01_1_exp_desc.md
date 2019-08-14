@@ -6,6 +6,9 @@ view)](./paper_05_milestone_issf/Figures/scheme_exp_grid_MILESTONE_Euhit.pdf){
 #fig:scheme-coriolis width=52%}
 ![Top view of the setup](./imgs/MILESTONE/GOPR1465.JPG){#fig:exp-top width=45%}
 
+![Chronogram of the position of the
+carriage](./paper_05_milestone_issf/Figures/fig_movement_carriage.pdf){#fig:movement width=50%}
+
 Experimental setup
 </div>
 The Coriolis platform is an experimental facility at LEGI, Universit\text{\'e}
@@ -35,14 +38,15 @@ shown in @fig:eddies.  The wake of the comb has a characteristic
 length scale of the cylinder diameter.
 In contrast to @PraudFinchamSommeria2005, who carried out decaying
 turbulence studies, here we make measurements while the carriage oscillates
-back and forth along the rectangular enclosure as shown in @fig:movement.
+back and forth along the rectangular enclosure. A chronogram of the movement is
+shown in @fig:movement.
 Several experiments with different levels of stratification ($N$) and
 carriage velocity ($U_c$) were conducted. In order to characterize the
 experiments we define a Froude number and a buoyancy Reynolds number,
 $$
 F_{hc} = \frac{U_c}{NM},\quad \R_c = \frac{U_c^3}{\nu N^2M}
 $$
-\noindent respectively where $N$, the Brunt-V\text{\"a}isala frequency is evaluated
+\noindent respectively where $N$, the Brunt-\text{V\"ais\"al\"a} frequency is evaluated
 *a priori* while the fluid is quiescent and $M$ is the characteristic size of the
 vortices.
 
