@@ -44,9 +44,9 @@ happiness alongside this pursuit for knowledge. With them it became
 straightforward to take my mind off work. I thank you both for
 being understanding and staying close.
 
-Finally, thanks to \emph{Achen} for satisfying my curiosity as a child and
-for all the care sent this way while I was away. Thanks to \emph{Amma} whose
-words have stayed a constant guiding light. Thanks to Asha \emph{chechi} for
-being awesome and finding time for everyone. Thanks to Kalyan \emph{chettan}
-whose words of wisdom has been only limited by time and space. Thank you for
-all being patient and supportive, if only I can make up for all the lost time.
+Finally, thanks to \emph{Achen} for satisfying my curiosity as a child and for
+all the care sent this way while I was away. Thanks to \emph{Amma} whose words
+have stayed a constant guiding light. Thanks to Asha \emph{chechi} for being
+awesome and finding time for everyone. Thanks to Kalyan \emph{chettan} whose
+words of wisdom has been only limited by time and space. Thank you all for
+being patient and supportive, if only I can make up for lost time.
