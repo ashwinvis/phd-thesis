@@ -253,25 +253,25 @@ in the following subsection.
 \item \pack{Transonic}: a pure Python package to accelerate Python-Numpy code
 with Pythran and potentially other Python compilers.
 
-\item \fluidpack{fft}~\cite[see the companion paper][]{fluidfft}: a package which
+\item \fluidpack{fft}~\citep[see the companion paper][]{fluidfft}: a package which
 provides C++ and Python classes unifying various libraries to perform Fast Fourier
 Transform (FFT) in sequential and in parallel.
 
-\item \fluidpack{sim}~\cite[see the companion paper][]{fluidsim}: Numerically
+\item \fluidpack{sim}~\citep[see the companion paper][]{fluidsim}: Numerically
 oriented framework to run sequential and parallel Computational Fluid Dynamics
 (CFD) simulations and on-the-fly post-processing for a variety of problems
 (Navier-Stokes, Shallow Water, F\"oppl von K\'arm\'an equations, to name a few).
 A study using \fluidpack{sim} has just been published in Physics of Fluids
-\cite[]{LindborgMohanan2017}.
+\citep[]{LindborgMohanan2017}.
 
 \item \fluidpack{lab}: Package to handle laboratory experiments. Primarily used to
 communicate with various hardware devices such as motors and pumps, to handle I/O
 between sensors, and to store data.
 %
 Experiments using \fluidpack{lab} have been carried out in the DAMTP fluid
-laboratory \cite[Cambridge,
+laboratory \citep[Cambridge,
 UK. cf.][]{LeclercqPartridgeAugierDalzielKerswell2016}, in ENS Lyon laboratory
-\cite[Lyon, France,][]{salort2018} and at LEGI \cite[Grenoble,
+\citep[Lyon, France,][]{salort2018} and at LEGI \citep[Grenoble,
 France,][]{ISSF2016}.
 
 \item \fluidpack{image}: Scalable image processing package which implements
@@ -279,14 +279,14 @@ various algorithms to calibrate cameras, to preprocess images, to do Particle
 Image Velocimetry (PIV) and to postprocess data.
 %
 \fluidpack{image} is used to process images taken during experiments performed in the
-Coriolis platform at LEGI \cite[]{ISSF2016}.
+Coriolis platform at LEGI \citep[]{ISSF2016}.
 
 \item \fluidpack{foam}: Small package to load OpenFoam data and plot them.
 
 \item \fluidpack{coriolis}: Small package used to carry out experiments in the
 \href{http://www.legi.grenoble-inp.fr/web/spip.php?article757}{Coriolis platform}
 (a large rotating platform participating in the European consortiums Euhit and
-Hydralab) and open the data obtained \cite[see, for example,][]{ISSF2016}. One of
+Hydralab) and open the data obtained \citep[see, for example,][]{ISSF2016}. One of
 the motivations behind creating this package is to study how to use open-source to
 create and share open-data.
 
@@ -294,7 +294,7 @@ create and share open-data.
 
 A detailed presentation on the above packages can be found in their respective
 documentations on the web and for \fluidpack{fft} and \fluidpack{sim} in the
-two companion papers \cite[]{fluidfft, fluidsim}.
+two companion papers \citep[]{fluidfft, fluidsim}.
 %
 The code base was designed to follow Python 2.7 syntax during its genesis. Now,
 it has been made forward compatible with Python 3 through the use of external
@@ -304,7 +304,7 @@ We now tend to abandon Python 2.7 support for the next releases of the package.
 %
 This article will now focus on the base package \fluiddyn.
 
-\subsection{of the Python library \fluiddyn}
+\subsection{API of the Python library \fluiddyn}
 
 All functions and classes defined in \fluiddyn are pure Python elements, meaning
 that no extensions are implemented in \fluiddyn.  Thus the package \fluiddyn is
@@ -358,8 +358,8 @@ processing to understand how to organize a \textit{sequence} of files from
 filenames and formats. Typically, one has to form smaller sets of arrays
 contained in the files. For example, we may have a \textit{sequence} such as:
 
-\fbox{%
-\begin{minipage}{\textwidth}
+\noindent\fbox{%
+\begin{minipage}{0.97\textwidth}
   \codeinline{%
     (im1\_1.png, im1\_2.png, im1\_3.png, im2\_1.png, im2\_2.png, im2\_3.png)}
 \end{minipage}
@@ -367,14 +367,14 @@ contained in the files. For example, we may have a \textit{sequence} such as:
 
 from which we could create different subsets like,
 
-\fbox{%
-\begin{minipage}{0.5\textwidth}
+\noindent\fbox{%
+\begin{minipage}{0.55\textwidth}
 \codeinline{((im1\_1.png, im1\_2.png, im1\_3.png),\\
   (im2\_1.png, im2\_2.png, im2\_3.png))}\\
 \end{minipage}
 }
 \fbox{%
-\begin{minipage}{0.47\textwidth}
+\begin{minipage}{0.385\textwidth}
 \codeinline{((im1\_1.png, im2\_1.png),\\
   (im1\_2.png, im2\_2.png),\\
   (im1\_3.png, im2\_3.png))}

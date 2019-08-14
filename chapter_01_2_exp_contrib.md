@@ -148,23 +148,17 @@ algorithm[^tomo].
 
 ## Fluidcoriolis
 
-<div id="fig:software">
 ![GUI provided by
 `fluidcoriolis` for controlling
-carriage](./imgs/MILESTONE/fluidcoriolis22.png){#fig:fluidcoriolis width=50%}
-![Chronogram of the position of the
-carriage](./paper_05_milestone_issf/Figures/fig_movement_carriage.pdf){#fig:movement width=50%}
-
-Software controlling the carriage
-</div>
+carriage](./imgs/MILESTONE/fluidcoriolis22.png){#fig:fluidcoriolis width=70%}
 
 Since `fluidlab` was intended to be a library, several details specific to the
 requirements of MILESTONE were separately developed into a package called
 `fluidcoriolis`, named after the experimental facility.
 The package `fluidcoriolis` is composed of a graphical user interface shown in
-@fig:software to operate the carriage, calibrate the probes were constructed by
+@fig:fluidcoriolis to operate the carriage, calibrate the probes were constructed by
 utilizing the `fluidlab` API. Scripts to launch pre-processing, PIV and
 post-processing using `fluidimage` was also included in this package. To
-organize the processed data, a thin API using a class
+organize and interact with the processed data, a thin API using a class
 `fluidcoriolis.milestone.exp.Experiment` was also created.
 

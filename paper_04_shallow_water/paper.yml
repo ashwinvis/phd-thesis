@@ -15,21 +15,21 @@ pages: 1169-1196
 year: 2019
 dir: paper_04_shallow_water/Latex
 abstract: |
-  The dynamics of irrotational shallow water wave turbulence forced in large
+  The dynamics of irrotational shallow water wave turbulence forced at large
   scales and dissipated at small scales is investigated. First, we derive the
   shallow water analogue of the `four-fifths law' of Kolmogorov turbulence
-  for a third order structure function involving velocity and displacement
+  for a third-order structure function involving velocity and displacement
   increments. Using this relation and assuming that the flow is dominated by
   shocks we develop a simple model predicting that the shock amplitude scales as
   $ (\epsilon d)^{1/3} $, where $ \epsilon $ is the mean dissipation rate and $ d $
-  the mean distance between the shocks, and that the $ p $:th order displacement
+  the mean distance between the shocks, and that the $ p $-th order displacement
   and velocity structure functions scale as $ (\epsilon d)^{p/3} r/d $, where $ r $
   is the separation. Then we carry out a series of forced simulations with
   resolutions up to $7680^2$, varying the Froude number, $F_{f} = (\epsilon L_f)^{1/3}/
   c $, where $ L_f $ is the forcing length scale  and $c$ is the wave
   speed. In all simulations a stationary state is reached in which there is a
   constant spectral energy flux and equipartition between kinetic and potential
-  energy in the constant flux range. The third order structure function relation
+  energy in the constant flux range. The third-order structure function relation
   is satisfied with a high degree of accuracy. Mean energy is found to scale
   approximately as $
   E \sim \sqrt{\epsilon  L_f  c} $, and is also dependent on resolution, indicating

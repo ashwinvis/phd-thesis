@@ -3,9 +3,8 @@
 %\usepackage{listings}
 %\usepackage{fancyref}
 
-% TODO: set to finalizecache
-\usepackage[newfloat,draft=true]{minted}
-% \usepackage[newfloat,finalizecache=true]{minted}
+% \usepackage[newfloat,draft=true]{minted}
+\usepackage[newfloat,finalizecache=true]{minted}
 \usepackage{booktabs}
 \usepackage{outlines}
 
@@ -26,6 +25,11 @@
 %% Modify spacing
 % \usepackage{setspace}
 % \doublespacing
+
+% The footnote package can save any footnotes entered inside a float and spit
+% them out at the end (normally they are just thrown away, not sure why).
+\usepackage{footnote}
+\makesavenoteenv{figure}
 
 \usepackage{braket}
 

@@ -70,7 +70,7 @@ SRCS_PAPER = $(subst /,/paper.tex,$(wildcard $(paper)/))
 SRCS = packages.tex         \
        commands.tex         \
        frontmatter.tex      \
-       acknowledgements.tex \
+       acknowledgements.md  \
        $(kappa).tex         \
        $(main).tex          \
        $(SRCS_PAPER)
