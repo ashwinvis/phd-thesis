@@ -197,11 +197,13 @@ where we have introduced the notation $ \theta = c \eta $ for the scalar and als
 Although it is very difficult to prove, it is quite easily argued that no shocks will arise from equations (\ref{V2}) and (\ref{Theta}), even in the absence of diffusion terms.  Locally, shock formation can be viewed as a one-dimensional process in which a gradient along a specific direction, say the $ x $-direction,  is amplified through nonlinear interactions. In the case  when $ {\bf u} = u {\bf e}_x + v {\bf e}_y $  and $ \theta $ are only functions of $ x $, we find that $ {\bf u}_r = v {\bf e}_y $ and the nonlinear terms in (\ref{V2}) and (\ref{Theta}) are zero. Therefore, no shocks will form in the one-dimensional case and it is therefore arguable that no shocks will be formed in the general two-dimensional case.
 
 The toy model equations can be expressed as three coupled equations for $ \Psi $, $ \chi $ and $ \theta $. Unfortunately, we have found no elegant way in which they can be expressed in vector notation, why we write them as
-\begin{eqnarray} \label{PsiEq}
-\frac{\partial{\Psi_{ii}}}{\partial t} +\epsilon_{ijk}e_k \Psi_i \Psi_{jll} + \Psi_{ii} \chi_{jj} - \Psi_{ij} \chi_{ij} = -f \chi_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \Psi_{ii} \, , \\ \label{ChiEq}
-\frac{\partial{\chi_{ii}}}{\partial t} +\epsilon_{ijk}e_k (\Psi_i \chi_{jll} - \Psi_{jl} \chi_{il}) + \Psi_{ij} \Psi_{ij} - \Psi_{ii} \Psi_{jj} =  f \Psi_{ii} - c \theta_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \chi_{ii} \, , \\ \label{ThetaEq}
-\frac{\partial{\theta}}{\partial t} + \epsilon_{ijk}e_k \Psi_i \theta_{j} = - c \chi_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \theta \, ,
-\end{eqnarray}
+\begin{align} \label{PsiEq}
+&\frac{\partial{\Psi_{ii}}}{\partial t} +\epsilon_{ijk}e_k \Psi_i \Psi_{jll} + \Psi_{ii} \chi_{jj} - \Psi_{ij} \chi_{ij} = -f \chi_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \Psi_{ii} \, , \\ \label{ChiEq}
+&\frac{\partial{\chi_{ii}}}{\partial t} +\epsilon_{ijk}e_k (\Psi_i \chi_{jll} -
+\Psi_{jl} \chi_{il}) + \Psi_{ij} \Psi_{ij} - \Psi_{ii} \Psi_{jj} \nonumber\\
+&\quad=  f \Psi_{ii} - c \theta_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \chi_{ii} \, , \\ \label{ThetaEq}
+&\frac{\partial{\theta}}{\partial t} + \epsilon_{ijk}e_k \Psi_i \theta_{j} = - c \chi_{ii} + (-1)^{p+1} \nu_p \nabla^{2p} \theta \, ,
+\end{align}
 where $ e_k $ is the vertical unit vector expressed in three-dimensional Cartesian tensor notation,  subscript $ i $  has the same meaning as $ {\partial }/{\partial x_i }$ when used on $ \Psi $,  $ \chi $ or $ \theta $ and repeated indices means summation.
 
 
