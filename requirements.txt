@@ -28,13 +28,13 @@ markupsafe==1.1.1         # via jinja2
 matplotlib==3.0.3
 more-itertools==6.0.0     # via nxviz, pytest
 networkx==2.2
-numpy==1.16.2             # via imageio, matplotlib, nxviz, pandas, scipy, seaborn
+numpy==1.16.2             # via imageio, matplotlib, nxviz, pandas, scipy, seaborn, wordcloud
 nxviz==0.6.1
 palettable==3.1.1         # via nxviz
 pandas==0.24.2            # via nxviz, seaborn
 panflute==1.11.2
 pathtools==0.1.2          # via watchdog
-pillow==6.1.0             # via imageio
+pillow==6.1.0             # via imageio, wordcloud
 pluggy==0.12.0            # via pytest
 py==1.8.0                 # via pytest
 pycparser==2.19           # via cffi
@@ -56,4 +56,5 @@ six==1.12.0               # via cryptography, cycler, pytest, python-dateutil
 sphinxcontrib-fulltoc==1.2.0  # via nxviz
 urllib3==1.25.3           # via requests
 watchdog==0.9.0
+wordcloud==1.5.0
 zipp==0.5.2               # via importlib-metadata
