@@ -54,6 +54,10 @@ define pandoc_standalone =
 		$(1) -o $(2)
 endef
 
+define fix_toc =
+	@sed -i 's/\\000t\\000o\\000P\\000a\\000p\\000e\\000r/\\000P\\000a\\000p\\000e\\000r/g' thesis.out
+endef
+
 # ifndef CI
 REDIRECT := | tail -n 2
 # else
@@ -109,14 +113,15 @@ all: log
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(main).gls
 	$(call cprint,"building $@ with $(TEX)")
-	@sed -i -e 's/toPaper/Paper/g' thesis.out
 	$(TEX) $(FINAL_FLAGS) $(main) $(REDIRECT)
+	$(call fix_toc)
 
 $(AUXS): $(main).aux
 
 $(main).aux: $(SRCS) $(DEPS) $(MKDWN2TEX) $(IMGS)
 	$(call cprint,"building $@ with $(TEX)")
 	$(TEX) $(DRAFT_FLAGS) $(main) $(REDIRECT)
+	$(call fix_toc)
 
 $(main).gls: $(AUXS) $(BBLS) glossary.tex
 	$(call cprint,"building $@ with makeglossaries")
