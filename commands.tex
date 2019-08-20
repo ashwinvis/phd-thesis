@@ -165,8 +165,11 @@
 
 \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
 
-\newcommand{\red}[1]{{\color{red}{#1}}}
-\newcommand{\green}[1]{{\color{teal}{#1}}}
+% TODO: printing
+% \newcommand{\red}[1]{{\textcolor{red}{#1}}}
+% \newcommand{\green}[1]{{\textcolor{teal}{#1}}}
+\newcommand{\red}[1]{\colorbox{pink}{{$\displaystyle #1$}}}
+\newcommand{\green}[1]{\colorbox{Goldenrod}{{$\displaystyle #1$}}}
 
 % Change font size of tables
 \AtBeginEnvironment{tabular}{\small}

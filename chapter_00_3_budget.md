@@ -15,9 +15,9 @@ this calculation, one can distinguish interactions between different forms of
 energy.
 
 ![Spectral energy flux ($\Pi$) in two dimensions, computed numerically by a
-cumulative sum of the transfer function ($T$) at all scales outside (in red) of
-wavenumber shell $\kappa$ (in blue). Only one of the quadrants in the spectral
-plane is shown.
+cumulative sum of the transfer function ($T$) at all scales outside (in white)
+of wavenumber shell $\kappa = |\mathbf{k}|$ (in black). Only one of the quadrants in the
+spectral plane is shown.
 ](./imgs/spectral_flux.pdf){#fig:spectral_flux width=50%}
 
 ## Kinetic energy (KE)
