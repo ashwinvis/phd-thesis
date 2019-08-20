@@ -58,7 +58,8 @@ r^{2/3}$.
 \includegraphics[width=0.7\textwidth]{paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
 \vspace{-2mm}
 \caption{Normalized second-order structure $S_h$ function as a function of
-$r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
+$r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$. The arrow represents the
+progress of time as the total energy decays.}
 \label{fig:S2}
 \end{figure}
 
