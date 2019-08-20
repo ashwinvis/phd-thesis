@@ -8,7 +8,7 @@ from pathlib import Path
 
 root = Path(__file__).absolute().parent.parent
 
-plt.style.use("seaborn-paper")
+#  plt.style.use("seaborn-paper")
 
 matplotlib.rcParams['text.latex.preamble'] = [r"\usepackage{amsmath}"]
 plt.rc('text', usetex=True)
@@ -21,18 +21,20 @@ if SIDE_TEXT:
     fig.subplots_adjust(right=5/10)
     ax = fig.add_subplot(111)
 else:
-    fig, ax = plt.subplots(figsize=(5,5))
+    fig, ax = plt.subplots(figsize=(4,4))
 
-circle1 = Circle((0, 0), pi/2)
-circle2 = Circle((0, 0), pi/1.9)
-circle3 = Circle((0, 0), pi * 2)
+circle1 = Circle((0, 0), pi/2, facecolor="gray")
+circle2 = Circle((0, 0), pi/1.9, facecolor="black")
+circle3 = Circle((0, 0), pi * 2, facecolor="white")
 patches = [circle3, circle2, circle1]
 
-p = PatchCollection(patches, cmap="Pastel1")#, alpha=0.4)
+for circle in patches:
+    ax.add_patch(circle)
+#  p = PatchCollection(patches) # , cmap="gist_gray")  #,alpha=0.4)
 #  colors = np.array([54, 50, 20])
-p.set_array(np.array([0.1, 2, 9]))
+#  p.set_array(np.array([0.1, 2, 3]))
 #  p.set_cmap(cmap)
-ax.add_collection(p)
+#  ax.add_collection(p)
 
 arror_r = pi / 2**1.5
 ax.arrow(arror_r, arror_r, 0.3, 0.3, head_width=0.05, head_length=0.1, fc='k', ec='k')
