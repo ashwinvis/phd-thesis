@@ -74,14 +74,16 @@ def pdf_separate(pdf_name, output_dir, version, dry_run=True):
     print("Pages range:", pages_range)
 
     output_dir = Path.cwd() / output_dir / version
+    if not dry_run:
+        os.makedirs(output_dir, exist_ok=True)
     for part, prange in pages_range.items():
         prange = "-".join(prange)
         output = output_dir / ("_".join((version, part)) + ".pdf")
-        cmd = f"pdftk {pdf_name} cat {prange} {output}"
+        cmd = f"pdftk {pdf_name} cat {prange} output {output}"
         print(cmd)
         if not dry_run:
-            os.makedirs(output_dir)
+            subprocess.run(shlex.split(cmd))
 
 
 if __name__ == "__main__":
-    pdf_separate("thesis.pdf", "print", "v1")
+    pdf_separate("thesis.pdf", "print", "v3.0a", False)
