@@ -97,4 +97,4 @@ def pdf_separate(pdf_name, output_dir, version, dry_run=True):
 
 
 if __name__ == "__main__":
-    pdf_separate("thesis.pdf", "print", "v3.2a", False)
+    pdf_separate("thesis.pdf", "print", "v3.3a", False)
