@@ -150,7 +150,7 @@ algorithm[^tomo].
 
 ![GUI provided by
 `fluidcoriolis` for controlling
-carriage](./imgs/MILESTONE/fluidcoriolis22.png){#fig:fluidcoriolis width=70%}
+carriage](./imgs/MILESTONE/fluidcoriolis.jpg){#fig:fluidcoriolis width=80%}
 
 Since `fluidlab` was intended to be a library, several details specific to the
 requirements of MILESTONE were separately developed into a package called

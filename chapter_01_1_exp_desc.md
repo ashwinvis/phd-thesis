@@ -72,9 +72,10 @@ measure temporal evolution of the mixed layer.
 
 <div id="fig:eddies">
 ![Side view of the setup while the carriage is in
-motion](./imgs/MILESTONE/GOPR1456.JPG){#fig:exp-side width=47%}
+motion](./imgs/MILESTONE/GOPR1456.JPG){#fig:exp-side width=67%}
+
 ![Long exposure photograph of the eddies in the wake of the
-carriage](./imgs/MILESTONE/DSC_0203.JPG){#fig:eddies width=53%}
+carriage](./imgs/MILESTONE/DSC_0203.JPG){#fig:eddies width=73%}
 
 Visuals from a test experiment with the laser sheets illuminating the flow.
 </div>
