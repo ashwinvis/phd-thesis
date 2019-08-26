@@ -1,3 +1,6 @@
 [submodule "templates/mechthesis"]
 	path = templates/mechthesis
 	url = https://github.com/ashwinvis/mechthesis.git
+[submodule "templates/kthlatex"]
+	path = templates/kthlatex
+	url = https://source.coderefinery.org/ashwinvis/kthlatex.git
