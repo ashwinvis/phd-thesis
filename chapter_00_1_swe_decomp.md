@@ -18,10 +18,10 @@ of fluid are:
 where $\bf u$ is two-dimensional horizontal velocity vector, $c$ is the phase
 speed of gravity waves, $f$ is the system rotation, $h = (1 + \eta)$ is the
 non-dimensional scalar height field, and $\eta$ is surface displacement.  In
-this inviscid formulation, the system of equations [@Eq:dtu0] and [@eq:dth]
-conserves the sum of kinetic and potential energy, defined as $E_K = h|\bf
-u|^2$ and $E_P = c^2h^2 / 2$. Expanding the expression for $E_P$ in $\eta$ we
-get,
+this inviscid formulation, the system of equations [@Eq:dtu0;@eq:dth]
+conserves the sum of kinetic and potential energy, defined as $E = E_K + E_P$,
+where $E_K= h|\bf u|^2$ and $E_P = c^2h^2 / 2$. Expanding the expression for
+$E_P$ in $\eta$ we get,
 $$
 E_P = c^2(1/2 + \eta + \eta^2/2).
 $$

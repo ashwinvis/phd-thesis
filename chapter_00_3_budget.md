@@ -18,7 +18,7 @@ energy.
 cumulative sum of the transfer function ($T$) at all scales outside (in white)
 of wavenumber shell $\kappa = |\mathbf{k}|$ (in black). Only one of the quadrants in the
 spectral plane is shown.
-](./imgs/spectral_flux.pdf){#fig:spectral_flux width=50%}
+](./imgs/spectral_flux.pdf){#fig:spectral_flux width=70%}
 
 ## Kinetic energy (KE)
 
