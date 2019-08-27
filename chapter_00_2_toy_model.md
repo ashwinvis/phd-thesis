@@ -1,8 +1,8 @@
 # Toy-model equations
 
 The toy model was formulated as a modification of the SWE
-[@LindborgMohanan2017]. Below we write the SWE equations, with the terms that
-are modified highlighted in red:
+[@LindborgMohanan2017]. Below we write the SWE equations, highlighting the
+terms that are to be modified:
 $$
 \frac{\partial {\bf u}} {\partial t} + \red{{\bf u}\cdot \nabla} {\bf u} +
 f {\bf e}_z \times {\bf u} = -c^2 \nabla \eta,
@@ -22,7 +22,7 @@ $${#eq:swe_eta}
    contrast with QG where $|\zeta| >> |d|$.
 
 Applying these two modifications on the classical shallow water equations gives
-us the toy model equation, with the modifications highlighted in blue:
+us the toy model equation:
 \begin{align}
 \label{eq:toy}
 \frac{\partial {\bf u}} {\partial t} + \green{{\bf u}^r\cdot \nabla} {\bf u} + f {\bf e}_z\times {\bf u} = -c \nabla \theta, \\

@@ -24,8 +24,9 @@ from the tropics to higher latitudes, replenishing nutrients to the surface
 which are critical for sustenance of marine life, and melting of ice in high
 latitudes.
 
-![Schematic of the system of surface (red) and deep (blue) ocean currents
-](./imgs/thermohaline-nasa.jpg){#fig:thermohaline width=80%}
+![Schematic of the system of surface (red / light gray) and deep (blue / dark
+gray) ocean currents ](./imgs/thermohaline-nasa.jpg){#fig:thermohaline
+width=80%}
 
 This phenomenon, interchangeably known as _thermohaline circulation_ or the
 _meridional overturning circulation_ (MOC) shown in @fig:thermohaline, is driven by a
