@@ -1,6 +1,8 @@
 import os
 import shlex
 import subprocess
+# from concurrent.futures import ProcessPoolExecutor as Pool
+from multiprocessing import Pool
 from pathlib import Path
 
 import PyPDF2 as pypdf
@@ -56,6 +58,10 @@ def get_page_numbers(pdf_name):
     return pages, total_pages
 
 
+def run(cmd):
+    subprocess.run(shlex.split(cmd))
+
+
 def pdf_separate(pdf_name, output_dir, version, dry_run=True):
     pages, total_pages = get_page_numbers(pdf_name)
     #  print("Pages:", pages)
@@ -74,14 +80,21 @@ def pdf_separate(pdf_name, output_dir, version, dry_run=True):
     print("Pages range:", pages_range)
 
     output_dir = Path.cwd() / output_dir / version
+    if not dry_run:
+        os.makedirs(output_dir, exist_ok=True)
+
+    cmds = []
     for part, prange in pages_range.items():
         prange = "-".join(prange)
         output = output_dir / ("_".join((version, part)) + ".pdf")
-        cmd = f"pdftk {pdf_name} cat {prange} {output}"
+        cmd = f"pdftk {pdf_name} cat {prange} output {output}"
         print(cmd)
-        if not dry_run:
-            os.makedirs(output_dir)
+        cmds.append(cmd)
+
+    if not dry_run:
+        with Pool() as pool:
+            pool.map(run, cmds)
 
 
 if __name__ == "__main__":
-    pdf_separate("thesis.pdf", "print", "v1")
+    pdf_separate("thesis.pdf", "print", "v3.3a", False)

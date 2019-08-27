@@ -1,9 +1,5 @@
 # Research highlights
 
-![Spectral energy budget from a toy model simulation with two
-different forcing
-schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf){#fig:flux_decomp}
-
 @Fig:flux_decomp is an example which shows a normal mode decomposition of the
 spectral
 energy fluxes. The figure is plotted from two toy model simulations with
@@ -21,12 +17,17 @@ wave numbers, and by vortical-wave-wave interactions, $\Pi_{VWW}$ at large wave
 numbers. In both cases, vortical-wave-wave interactions make an important
 contribution to the downscale energy cascade.
 
-<div id="fig:sebgcmtoy">
-![](./paper_03_toy_model/fig1.eps){width=50% #fig:sebgcm}
-![](./paper_03_toy_model/fig10.eps){width=43% #fig:sebtoy}
+![Spectral energy budget from a toy model simulation with two
+different forcing
+schemes](./paper_03_toy_model/fig5-eps-converted-to.pdf){#fig:flux_decomp}
 
-Spectral energy budgets from a GCM simulation[^GCM] (left)
-and a toy model simulation (right). The total spectral energy flux $\Pi$
+<div id="fig:sebgcmtoy">
+![](./paper_03_toy_model/fig1.eps){width=65% #fig:sebgcm}
+
+![](./paper_03_toy_model/fig10.eps){width=60% #fig:sebtoy}
+
+Spectral energy budgets from a GCM simulation[^GCM] (top)
+and a toy model simulation (bottom). The total spectral energy flux $\Pi$
 has been decomposed into kinetic ($\Pi_K$) and available potential energy
 ($\Pi_A$) energy fluxes. The conversion from available potential energy to
 kinetic energy is represented by $C_{cum}$. The kinetic energy flux is further
@@ -85,7 +86,7 @@ Robles)
 left: linearised potential vorticity ($q$); on right: one of the
 ageostrophic mode ($a^+$) representing the wave field.
 ](./imgs/anticyclone-toy-model.jpg){#fig:anticyclone-toy-model
-width=95%}
+width=100%}
 
 Another interesting feature of the toy model is revealed in
 @fig:anticyclone-toy-model, a visualization of run 3 in @LindborgMohanan2017.
@@ -109,7 +110,7 @@ simulation run W7 in
 simulations plotted against the forcing Froude number $(F_f)$. The Froude
 number is inversely proportional to the wave phase-speed, $c$. The theoretical
 prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.
-](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=70%}
+](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=80%}
 
 Now we turn our attention to shallow water wave turbulence. Some interesting
 scaling relations were developed in @AugierMohananLindborg2017 providing
