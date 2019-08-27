@@ -190,20 +190,20 @@ $k^{-3}$ spectrum.
 
 ## Energy cascade in synoptic and mesoscale flows{#sec:energy}
 
-![Left: A depiction of Kraichnan's conjecture on how at the dual energy cascade
-might simultaneously occur in two-dimensional turbulence. Right: A schematic of
+![Top: A depiction of Kraichnan's conjecture on how at the dual energy cascade
+might simultaneously occur in two-dimensional turbulence. Bottom: A schematic of
 observed energy spectra in the atmosphere.
-](imgs/cascade.pdf){#fig:cascade}
+](imgs/cascade.pdf){#fig:cascade width=70%}
 
 Nowadays, it is understood that the $k^{-3}$ spectrum at the _synoptic_ scales
 (typically, for wavelengths over a thousand kilometres) is an example of a
 Kraichnan-Charney type of turbulence, with enstrophy cascading
-downscale. The left plot of @fig:cascade shows how @Kraichnan1967 anticipated
+downscale. The top plot of @fig:cascade shows how @Kraichnan1967 anticipated
 the two scaling laws would coexist -- a "stirring force" would inject
 energy at intermediate scales, which would then cascade towards
 small wavenumbers, while enstrophy would cascade in the opposite direction. In
 contrast to this picture, the study by @NastromGage1985
-revealed spectra that were similar to the sketch on the right plot of
+revealed spectra that were similar to the sketch on the bottom plot of
 @fig:cascade.
 Here, the synoptic scale $k^{-3}$-range is found at larger scales than the
 mesoscale $k^{-5/3}$-range, an observation that @Frisch found 'paradoxical'.
@@ -332,12 +332,13 @@ turbulence is of paramount importance to analyse the energy transport.
 
 <div id="fig:atmo">
 ![Layers of the atmosphere and typical temperature lapse with altitude (source:
-UCAR)](imgs/atmosphere_layers.jpg){#fig:atmo_layer width=60%}
+UCAR)](imgs/atmosphere_layers.jpg){#fig:atmo_layer width=75%}
 
 ![Annual zonal mean potential temperature - troposphere perspective (source:
-ERA-40 atlas)](imgs/pot_temp_tropo_mean.eps){#fig:atmo_tropo width=45%}
+ERA-40 atlas)](imgs/pot_temp_tropo_mean.eps){#fig:atmo_tropo width=75%}
+
 ![Annual zonal mean temperature - stratosphere perspective (source: ERA-40
-atlas)](imgs/temp_strato_mean.eps){#fig:atmo_strat width=45%}
+atlas)](imgs/temp_strato_mean.eps){#fig:atmo_strat width=75%}
 
 Stratification in the atmosphere
 </div>

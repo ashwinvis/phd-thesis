@@ -1099,7 +1099,7 @@ slower FFTs for SpectralDNS.
 \centering
 \includegraphics[width=\linewidth]{./tmp/fig_compare_with_ns3d}
 \caption{Comparison of the execution times for a 3D case (128$^3$, 10 time steps)
-between NS3D (blue bars) and \codeinline{fluidsim.solvers.ns3d} (yellow bars).
+between NS3D (blue / dark bars) and \codeinline{fluidsim.solvers.ns3d} (yellow / light bars).
 %
 The first two bars correspond to the total time and the others to the main tasks
 in terms of time consumption, namely FFT, Runge-Kutta 4, curl, vector product and
@@ -1108,7 +1108,7 @@ in terms of time consumption, namely FFT, Runge-Kutta 4, curl, vector product an
 \end{figure}
 
 Fig.~\ref{fig:compare:with:ns3d} presents a more detailed comparison between NS3D
-(blue bars) and \fluidpack{sim} (yellow bars).
+(blue / dark bars) and \fluidpack{sim} (yellow / light bars).
 %
 The total elapsed times is mainly spent in five tasks: FFTs, Runge-Kutta 4, curl,
 vector product and ``projection''. The times spent to perform these tasks are

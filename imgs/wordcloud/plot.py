@@ -14,7 +14,7 @@ root = cwd.parent.parent
 class args:
     width = 600 * 4
     height = 250 *4
-    max_words = 500
+    max_words = 250
     #  output = None
     #  output = "plot"
     output = cwd / 'wordcloud.png'
@@ -37,18 +37,20 @@ for filename in chain(
 
 
 blacklist = {
-    "code", "package", "language", "one", "use", "time", "tool",
-    "kappa", "using", "used", "Matlab", "emph", "many", "footnote",
+    # "code", "package", "language", "time", "tool", "kappa", "Result",
+    "Matlab", "Python", "github",
+    "one", "use", "i0", "i1", "using", "used", "many",
+    "footnote", "emph", "cm",
     "mathbf", "fnref", "eq", "https", "http", "href", "url", "hat", "theta",
     "will", "Thus", "found", "F_h", "u_c", "two", "end", "org", "cite",
     "item", "begin", "Bmatrix", "textbf", "label", "caption", "partial_t",
     "see", "delta", "figure", "equation", "sim", "run", "different", "value",
     "term", "itemize", "example", "may", "become", "three", "case", "eqnarray",
-    "now", "even", "function",
+    "now", "even", "function", "Therefore",
     "citep", "shown", "pack", "several", "make", "codeinline", "src", "fig",
     "raw", "html", "latex", "bf", "img", "div", "math", "png", "alt", "align",
     "green", "Ding", "link", "nbsp", "cdot", "nabla", "frac", "partial", "eta",
-    "style", "width", "right", "left", "center", "Result", "drawing",
+    "style", "width", "right", "left", "center", "drawing",
 }
 stopwords = set(STOPWORDS).union(blacklist)
 

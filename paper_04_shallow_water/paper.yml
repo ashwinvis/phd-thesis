@@ -22,7 +22,7 @@ abstract: |
   increments. Using this relation and assuming that the flow is dominated by
   shocks we develop a simple model predicting that the shock amplitude scales as
   $ (\epsilon d)^{1/3} $, where $ \epsilon $ is the mean dissipation rate and $ d $
-  the mean distance between the shocks, and that the $ p $-th order displacement
+  the mean distance between the shocks, and that the $ p $th order displacement
   and velocity structure functions scale as $ (\epsilon d)^{p/3} r/d $, where $ r $
   is the separation. Then we carry out a series of forced simulations with
   resolutions up to $7680^2$, varying the Froude number, $F_{f} = (\epsilon L_f)^{1/3}/

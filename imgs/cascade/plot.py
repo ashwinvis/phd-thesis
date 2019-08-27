@@ -9,7 +9,7 @@ root = Path(__file__).parent.parent
 plt.style.use("ggplot")
 plt.rc("text", usetex=True)
 
-fig, axes = plt.subplots(1, 2, dpi=200, figsize=(7, 3))
+fig, axes = plt.subplots(2, 1, dpi=200, figsize=(3.5, 6))
 ax1, ax2 = axes.ravel()
 
 km = 1.5

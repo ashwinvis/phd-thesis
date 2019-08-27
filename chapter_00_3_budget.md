@@ -15,10 +15,10 @@ this calculation, one can distinguish interactions between different forms of
 energy.
 
 ![Spectral energy flux ($\Pi$) in two dimensions, computed numerically by a
-cumulative sum of the transfer function ($T$) at all scales outside (in red) of
-wavenumber shell $\kappa$ (in blue). Only one of the quadrants in the spectral
-plane is shown.
-](./imgs/spectral_flux.pdf){#fig:spectral_flux width=50%}
+cumulative sum of the transfer function ($T$) at all scales outside (in white)
+of wavenumber shell $\kappa = |\mathbf{k}|$ (in black). Only one of the quadrants in the
+spectral plane is shown.
+](./imgs/spectral_flux.pdf){#fig:spectral_flux width=70%}
 
 ## Kinetic energy (KE)
 
@@ -36,15 +36,15 @@ the expression for energy is quadratic. To identify the transfer terms, we
 start from the governing equations for the toy model. The rate of
 change of kinetic energy can be calculated from [@eq:toy],
 \begin{align*}
-    \partial_t E_K(\mathbf{k},t)
-    = & \frac{1}{2}\pder{t}(\mathbf{\hat u}.\mathbf{\hat u^*})
-    = \frac{1}{2}\left[ \mathbf{\hat u} \cdot\pder[\mathbf{\hat u^*}]{t}
+    &\partial_t E_K(\mathbf{k},t) \\
+    &= \frac{1}{2}\pder{t}(\mathbf{\hat u}.\mathbf{\hat u^*})
+     = \frac{1}{2}\left[ \mathbf{\hat u} \cdot\pder[\mathbf{\hat u^*}]{t}
         + \mathbf{\hat u^*}\cdot \pder[\mathbf{\hat u}]{t}\right]          \\
-    = & \frac{1}{2}\left[ -\hat{u}_i (\widehat{ u_j^r\partial_j u_i })^*
+    &= \frac{1}{2}\left[ -\hat{u}_i (\widehat{ u_j^r\partial_j u_i })^*
         - c \hat{u}_i (ik_i \hat{\theta})^*
         - \hat{u}_i (\epsilon_{i3k} f \hat{u}_k)^*
         - ... \text{hermitian conjugate terms}  \right] \\
-    = & -\Re\left[ \hat{u}_i (\widehat{ u^r_j\partial_j u_i })^*
+    &= -\Re\left[ \hat{u}_i (\widehat{ u^r_j\partial_j u_i })^*
         + c \hat{u}_i (ik_i \hat{\theta})^*
         + \hat{u}_i (\epsilon_{i3k} f \hat{u}_k)^* \right],
 \end{align*}
