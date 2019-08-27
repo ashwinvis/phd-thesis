@@ -66,7 +66,7 @@
 % \usepackage{microtype} % Subliminal refinements towards typographical perfection
 % \usepackage{csquotes} % Recommended for biblatex
 % \usepackage[style=jfm,natbib=true]{biblatex}
-% \usepackage[hidelinks]{hyperref} % Extensive support for hypertext in LaTeX
+% \usepackage{hyperref} % Extensive support for hypertext in LaTeX
 % \usepackage{caption} % Correct figures and tables caption width
 %
 % The following packages are loaded by MechThesis.cls and need not to be loaded
@@ -79,6 +79,40 @@
 % - amsgen
 % - crop        (if [printA4] or [cropmarks] options are used)
 % - fp          (if [happyadvisor] option is used)
-\hypersetup{unicode=true}
+
+% Hyperref customizations
+
+% Note: disable cmyk option in MechThesis.cls:362 to get true color
+% \definecolor{hyperlinkcolor}{rgb}{0, 0, 1}  % blue
+\definecolor{hyperlinkcolor}{cmyk}{1, 1, 0, 0}  % blue
+% \definecolor{hyperlinkcolor}{rgb}{1, 0, 0}  % red
+% \definecolor{hyperlinkcolor}{cmyk}{98, 52, 0, 0}  % KTH blue
+% \definecolor{hyperlinkcolor}{HTML}{0645AD}  % Wikipedia blue
+% \definecolor{hyperlinkcolor}{HTML}{0072CF}  % JFM blue: web
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    % pdffitwindow=true,     % window fit to page when opened
+    % pdfstartview={FitH},   % fits the width of the page to the window
+    pdftitle={Thesis - Advancements in stratified flows},    % title
+    pdfauthor={Ashwin Vishnu Mohanan},     % author
+    pdfsubject={Engineering Mechanics},   % subject of the document
+    % pdfcreator={\author},   % creator of the document
+    pdfproducer={KTH Royal Institute of Technology}, % producer of the document
+    pdfkeywords={%
+        geophysical flows, shallow water wave turbulence, energy cascade,%
+        stratified turbulence, waves and vortices, open source software%
+    },                      % list of keywords
+    % pdfnewwindow=true,      % links in new PDF window
+    % hidelinks,
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=hyperlinkcolor,         % color of internal links (change box color with linkbordercolor)
+    citecolor=hyperlinkcolor,         % color of links to bibliography
+    filecolor=hyperlinkcolor,         % color of file links
+    urlcolor=hyperlinkcolor,          % color of external links
+}
 \usepackage{subfig}
 \usepackage{lmodern}
