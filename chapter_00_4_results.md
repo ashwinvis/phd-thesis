@@ -104,7 +104,7 @@ dominate over cyclones.
 
 ![Spectral energy flux and third-order structure functions from a SWE
 simulation run W7 in
-@AugierMohananLindborg2017](./paper_04_shallow_water/Pyfig/fig3.eps){#fig:flux-struct}
+@augier_shallow_2019](./paper_04_shallow_water/Pyfig/fig3.eps){#fig:flux-struct}
 
 ![Mean shock separation distance $(d)$ in a series of shallow water
 simulations plotted against the forcing Froude number $(F_f)$. The Froude
@@ -113,7 +113,7 @@ prediction $d \propto F_f^{1/2}$ is displayed as a dashed line.
 ](./paper_04_shallow_water/Pyfig/fig6.eps){#fig:shock-sep width=80%}
 
 Now we turn our attention to shallow water wave turbulence. Some interesting
-scaling relations were developed in @AugierMohananLindborg2017 providing
+scaling relations were developed in @augier_shallow_2019 providing
 insights into shock dominated turbulence. A Kolmogorov law for isotropic,
 irrotational shallow water wave turbulence was derived which gives the
 third-order structure functions,
