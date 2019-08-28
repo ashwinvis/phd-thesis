@@ -1,4 +1,11 @@
-# \<insert title\>
+# Advancements in stratified flows through simulation, experiment and open research software development
+
+|About |   |
+|------|---|
+| Date and time of defence | Friday, 27 September 2019 kl 10:00 |
+| Location | F3, KTH, Lindstedtsvägen 26, Stockholm |
+| Supervisor | Erik Lindborg, Pierre Augier |
+---
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
 alt="Creative Commons License" style="border-width:0"
