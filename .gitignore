@@ -11,6 +11,10 @@
 *.ac?
 *.ist
 
+# beamer
+*.nav
+*.snm
+
 *~
 *.swp
 .DS_Store
