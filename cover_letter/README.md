@@ -1,0 +1,1 @@
+../templates/mechthesis/cover_letter/README.md

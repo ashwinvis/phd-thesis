@@ -1,0 +1,71 @@
+\documentclass[a4paper]{letter}
+%
+% Template to generate cover letters and labels.
+%
+% part of MechThesis template: https://github.com/jcanton/mechthesis.git
+%
+\usepackage{mailing}
+\usepackage[nocapaddress]{envlab}
+
+%-------------------------------------------------------------------------------
+% Student's information
+%-------------------------------------------------------------------------------
+%
+% Address
+\address{Osquars Backe 18\\%
+         Department of Mechanics, KTH\\%
+         SE-100 44 Stockholm, Sweden}
+%
+% Signature
+\signature{Ashwin Vishnu Mohanan}
+
+%-------------------------------------------------------------------------------
+% Distribution list
+%-------------------------------------------------------------------------------
+%
+\addressfile{list.tex}
+
+%-------------------------------------------------------------------------------
+% Cover letter template
+%-------------------------------------------------------------------------------
+%
+% Date
+\date{Stockholm, 3 September 2019}
+%
+% Letter's body
+\mailingtext{%
+  Please find a copy of my doctoral thesis enclosed to this letter.
+  The oral defence will take place on %
+  Friday 27 September 2019 at 10:00 AM, % day
+  in room F3, % room
+  Lindstedtsvägen 26, % address
+  KTH Royal Institute of Technology, Stockholm, Sweden.
+
+  \closing{Yours sincerely,}
+}%
+
+%-------------------------------------------------------------------------------
+% Labels parameters
+%-------------------------------------------------------------------------------
+%
+% Settings for three columns of labels per page (A4)
+\SetLabel{70.0mm}% width
+         {36.6mm}% height
+         {5mm}%    top margin
+         {0mm}%    left margin
+         {0mm}%    right margin
+         {3}%      number of columns per page
+         {8}%      number of rows per page
+%
+\makelabels
+
+
+%===============================================================================
+%===============================================================================
+%                     GENERATE COVER LETTERS AND LABELS
+%===============================================================================
+%===============================================================================
+%
+\begin{document}
+	\makemailing
+\end{document}
