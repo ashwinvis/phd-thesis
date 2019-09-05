@@ -46,3 +46,12 @@ $(AUXS): $(SRCS)
 clean:
 	@echo cleaning thesis
 	@rm -f *.ps *.dvi *.aux *.toc *.log *.out *.bbl *.blg *~ *.syntex.gz
+
+%.pdf: %.tex
+	latexmk -pdf $<
+	latexmk -c $<
+
+
+return_labels.pdf: return.pdf
+	@pdftk $< cat 25 output $@
+	@rm -f return.pdf
