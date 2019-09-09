@@ -14,6 +14,10 @@
 # beamer
 *.nav
 *.snm
+*.vrb
+
+# libreoffice
+.~lock.*#
 
 *~
 *.swp
@@ -31,7 +35,8 @@ _minted*
 # compiled files
 *.pdf
 chapter*.latex
-chapter*.pandoc.*
+*.pandoc.tex
+
 
 # benchmarking files
 paper**/*.pstats
