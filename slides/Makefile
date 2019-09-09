@@ -1,11 +1,12 @@
-FRAMES:=latex/frames.pandoc.tex
+main:=slides
+frames:=latex/frames.pandoc.tex
 
 
-slides.pdf: latex/slides.tex $(FRAMES)
-	cd latex && latexmk slides.tex
-	cp -f latex/slides.pdf .
+$(main).pdf: latex/$(main).tex $(frames) latex/template_beamer.pandoc.tex
+	cd latex && latexmk $(main).tex
+	cp -f latex/$(main).pdf .
 
-$(FRAMES): $(sort $(wildcard sec*.md))
+$(frames): $(sort $(wildcard sec*.md))
 	pandoc \
 		--slide-level 2 \
 		-V classoption='notes' \
@@ -13,6 +14,6 @@ $(FRAMES): $(sort $(wildcard sec*.md))
 		$^ -o $@
 
 clean:
-	cd latex && latexmk -c slides.tex
-	rm -f $(FRAMES)
+	cd latex && latexmk -c $(main).tex
+	rm -f $(frames)
 
