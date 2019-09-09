@@ -1,3 +1,7 @@
+% Slides
+% Ashwin Vishnu Mohanan
+% September 27, 2019
+
 # Disputation i Teknisk Mekanik
 
 ::: notes
