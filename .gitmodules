@@ -4,3 +4,9 @@
 [submodule "templates/kthlatex"]
 	path = templates/kthlatex
 	url = https://source.coderefinery.org/ashwinvis/kthlatex.git
+[submodule "slides/reveal.js"]
+	path = slides/reveal.js
+	url = https://github.com/hakimel/reveal.js
+[submodule "slides/s5"]
+	path = slides/s5
+	url = https://github.com/ashwinvis/s5
