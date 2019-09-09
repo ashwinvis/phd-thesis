@@ -1,0 +1,138 @@
+%------------------------------------------------------------------------------
+%                                PREAMBLE
+%------------------------------------------------------------------------------
+\documentclass[usenames,dvipsnames,svgnames,9pt,aspectratio=1610]{beamer}
+%
+% This theme uses TIKZ: compile twice with PDFLaTeX or LuaLaTeX.
+%
+%  Options:
+%  - [clean]:    clean slides, i.e. logos and footbar are removed
+%  - [kth]:      footbar style inspierd to the official KTH template
+%  - [nicewave]: a different style of wave is used (not approved by FLOW)
+%
+\usetheme{KTH}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{hyperref,graphicx,lmodern}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage{MnSymbol,wasysym}
+\usepackage{pgfpages} % For making side notes.
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\input{template_beamer.pandoc.tex}
+
+\definecolor{ultramarine}{RGB}{30,86,183}
+\definecolor{ss}{RGB}{48,127,192}
+\definecolor{us}{RGB}{203,78,53}
+
+% Renew caption template and remove word "Figure" from figure captions.
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\DeclareRobustCommand\sampleline[1]{%
+  \tikz\draw[#1] (0,0) (0,\the\dimexpr\fontdimen22\textfont2\relax)
+  -- (1.25em,\the\dimexpr\fontdimen22\textfont2\relax);
+}
+
+% Add \vkappa symbol for Von K\'arm\'ans constant.
+\newcommand{\vkappa}{%
+  \text{\usefont{U}{solomos}{m}{n}\symbol{'153}}
+}
+
+%Additional line so that the math environment looks like standard LaTeX. If
+%anything ''fishy'' starts to happen just remove the line bellow...
+\usefonttheme{professionalfonts}
+
+% Compile .pdf with or without side notes.
+% \setbeameroption{hide notes} % Only slides
+%\setbeameroption{show only notes} % Only notes
+\setbeameroption{show notes on second screen=right} % Both
+
+
+%------------------------------------------------------------------------------
+%                                TITLE PAGE
+%------------------------------------------------------------------------------
+
+\title[Advancements in stratified flows] % Short title used in footline
+{%
+  Advancements in stratified flows through \\ simulation, experiment and \\ open
+  research software development%
+	% Long title
+}
+
+\author[A.V.~Mohanan] % Presenting author in short form used in footline
+{%
+  \vskip1cm Ashwin Vishnun Mohanan
+}
+% - Give the names in the same order as the appear in the paper.
+% - Underline the presenting author.
+
+\institute[KTH]
+{%
+  Department of Mechanics,
+  KTH Royal Institute of Technology, Stockholm, Sweden
+}
+% Keep it simple, no one is interested in your street address.
+
+% University logo(s):
+% Top logo
+%\logot{\includegraphics[width=.105\paperwidth]{./imgs/KTH-logo.pdf}}
+% Bottom logo
+%\logob{\includegraphics[width=.105\paperwidth]{./imgs/Flow-logo.pdf}}
+% Corner logo in headers (optional)
+%\logoc{{\includegraphics[width=.105\paperwidth]{./imgs/bolin.jpg}}}
+% Corner logo
+%      {%\includegraphics[width=.105\paperwidth]{PoliMi-logo}}
+%
+% Cover image: \cvrimg{x position}{y position}{cover image}
+%\cvrimg{.77}{.75}{%\includegraphics[width=.4\paperwidth]{cover-image}}
+
+\date[unused]
+{%
+  Dissertation, 27 Sept 2019
+}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+% Uncomment this if you want the table of contents to pop up at the
+% beginning of each section (you can do the same with subsections):
+\AtBeginSubsection[]
+{%
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame} \addtocounter{framenumber}{-1}
+}
+\AtBeginSection[]
+{%
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame} \addtocounter{framenumber}{-1}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+% \beamerdefaultoverlayspecification{<+->}
+
+% If you wish to compile only part of the presentation, uncomment the
+% following and specify here the labels of the frames you wish to
+% include specify. Labels should be specified in the beginning of each
+% frame as ``\begin{frame}[label=frame-name]{Frame title}''.
+% \includeonlyframes{title-frame}
+
+\begin{document} % \titleframe % Print the title as the first slide
+
+\startpage
+
+\normalpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------
+%                           PRESENTATION SLIDES
+%------------------------------------------------------------------------------
+
+\input{frames.pandoc.tex}
+
+\end{document}
