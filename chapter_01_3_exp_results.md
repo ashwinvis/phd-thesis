@@ -51,9 +51,9 @@ progress of time as kinetic energy decays.}
 
 \begin{figure}[hb!]
 \centerline{
-\includegraphics[width=0.65\textwidth]{paper_06_milestone/1st/tmp/fig_energy_pot_vs_time}}
+\includegraphics[width=0.65\textwidth]{_paper_06_milestone/1st/tmp/fig_energy_pot_vs_time}}
 \centerline{
-\includegraphics[width=0.75\textwidth]{paper_06_milestone/1st/tmp/fig_dt_pot_energy}
+\includegraphics[width=0.75\textwidth]{_paper_06_milestone/1st/tmp/fig_dt_pot_energy}
 }
 \caption{Evolution of potential energy normalized by linear stratification for
 experiment M17-21 (top) and normalized mixing coefficient $\eps_P /

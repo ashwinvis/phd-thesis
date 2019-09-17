@@ -88,7 +88,7 @@ the values attained by the MILESTONE experiment.
 
 ![In-situ measurements, experiments and numerical simulations classified by
 their regime according to stratified turbulence
-theory](./paper_06_milestone/1st/tmp/fig_R_vs_Fh_other_studies_with_milestone17.pdf){#fig:stratified-regime}
+theory](./_paper_06_milestone/1st/tmp/fig_R_vs_Fh_other_studies_with_milestone17.pdf){#fig:stratified-regime}
 
 Thus by testing the validity of the stratified turbulence theory, one can
 have a good picture of the vertical length scales, the direction of energy
