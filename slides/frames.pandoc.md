@@ -1,6 +1,8 @@
-% Slides
-% Ashwin Vishnu Mohanan
-% September 27, 2019
+---
+title: Slides
+author: Ashwin Vishnu Mohanan
+date: September 27, 2019
+---
 
 # Disputation i Teknisk Mekanik
 
@@ -9,7 +11,6 @@
   The chair describes the procedure
 
 :::
-
 
 
 **Fredag 2019-09-27, kl 10:00**
@@ -40,7 +41,7 @@
 
 ---
 
-# Procedure
+## Procedure
 
 
 -   **The respondent will present his thesis**
@@ -55,4 +56,27 @@
 
 -   **The result will be announced at Osquars Backe 18, floor 6**
 
+
+
+# Part 1: Two dimensional models of geophysical turbulence
+
+## Background
+
+### Background:
+
+A back and a ground
+
 ---
+
+## Shallow water equations
+
+
+---
+
+## Toy model equations
+
+
+---
+
+## Results
+
