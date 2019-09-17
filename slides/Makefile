@@ -9,7 +9,7 @@ content_tex:=$(subst .md,.tex,$(content))
 pandoc_filters:= $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 
 # Flags
-pandoc_flags:= --slide-level 2 $(pandoc_filters)
+pandoc_flags:= --slide-level 3 $(pandoc_filters)
 latexmk_flags:= -silent # -deps
 
 
