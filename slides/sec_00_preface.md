@@ -38,7 +38,9 @@
 
 -------------------------- ----------------------------------------------------------------
 
-## Procedure
+---
+
+# Procedure
 
 
 -   **The respondent will present his thesis**
@@ -52,3 +54,5 @@
 -   **Public part of the defence will be closed**
 
 -   **The result will be announced at Osquars Backe 18, floor 6**
+
+---
