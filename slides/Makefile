@@ -1,17 +1,29 @@
+# Files
 main:=slides
-frames:=latex/frames.pandoc.tex
+content:=frames.pandoc.md
+
+# Options
 # js:=s5
 js:=revealjs
-content:=$(sort $(wildcard sec*.md))
+content_tex:=$(subst .md,.tex,$(content))
+pandoc_filters:= $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 
-pandoc_flags:= # --slide-level 2
-latexmk_flags:= -silent -pvc -deps
+# Flags
+pandoc_flags:= --slide-level 2 $(pandoc_filters)
+latexmk_flags:= -silent # -deps
 
-$(main).pdf: latex/$(main).tex $(frames) latex/template_beamer.pandoc.tex
+
+watch: $(main).pdf
+	pgrep -af evince && evince $(main).pdf &
+	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex
+
+pres: $(main).pdf
+	pgrep -af pympress || pympress -t 30 $< &
+
+$(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
 	cd latex && latexmk $(latexmk_flags) $(main).tex
-	cp -f latex/$(main).pdf .
 
-$(main).html: $(content)
+%.pandoc.html: %.pandoc.md
 	pandoc \
 		$(pandoc_flags) \
 		--standalone \
@@ -19,14 +31,12 @@ $(main).html: $(content)
 		-t $(js) \
 		$^ -o $@
 
-$(frames): $(content)
+%.pandoc.tex: %.pandoc.md
 	pandoc \
 		$(pandoc_flags) \
-		-V classoption='notes' \
 		-t beamer \
 		$^ -o $@
 
 clean:
 	cd latex && latexmk -c $(main).tex
-	rm -f $(frames)
-
+	rm -f $(content_tex)
