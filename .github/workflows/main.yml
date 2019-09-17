@@ -9,8 +9,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-      submodules: true
-      lfs: true
+      with:
+        submodules: true
+        lfs: true
     - name: Build inside a docker container
       uses: docker://ashwinvis/latex-pandoc-python
       run: |
