@@ -15,6 +15,7 @@
 *.nav
 *.snm
 *.vrb
+slides/*.html
 
 # libreoffice
 .~lock.*#
