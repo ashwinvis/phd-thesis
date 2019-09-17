@@ -249,5 +249,10 @@ doit: openchapters watchchapters openmkdwn
 %.txt: %.in
 	pip-compile $<
 
-venv: requirements.txt dev-requirements.txt
-	pip-sync $^
+pyenv:
+	python -m venv $@
+
+pyrequirements: requirements.txt dev-requirements.txt pandoc-requirements.txt
+	bash -c 'source pyenv/bin/activate; pip install pip-tools; pip-sync $^'
+
+python: pyenv pyrequirements
