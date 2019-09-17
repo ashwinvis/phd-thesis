@@ -4,13 +4,16 @@ frames:=latex/frames.pandoc.tex
 js:=revealjs
 content:=$(sort $(wildcard sec*.md))
 
+pandoc_flags:= # --slide-level 2
+latexmk_flags:= -silent -pvc -deps
+
 $(main).pdf: latex/$(main).tex $(frames) latex/template_beamer.pandoc.tex
-	cd latex && latexmk $(main).tex
+	cd latex && latexmk $(latexmk_flags) $(main).tex
 	cp -f latex/$(main).pdf .
 
 $(main).html: $(content)
 	pandoc \
-		--slide-level 2 \
+		$(pandoc_flags) \
 		--standalone \
 		--self-contained \
 		-t $(js) \
@@ -18,7 +21,7 @@ $(main).html: $(content)
 
 $(frames): $(content)
 	pandoc \
-		--slide-level 2 \
+		$(pandoc_flags) \
 		-V classoption='notes' \
 		-t beamer \
 		$^ -o $@
