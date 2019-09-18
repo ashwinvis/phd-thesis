@@ -68,9 +68,6 @@ date: September 27, 2019
 ![Power spectrum of velocities and potential
 temperature](../imgs/NastromGage.png){width=80% height=60%}
 
-<!-- ![Power spectrum of wind speeds and potential temperature in the atmosphere -->
-<!-- [^nastromgage]](../imgs/NastromGage.png){width=0.5\textwidth wrap=true} -->
-
 
 :::
 ::: {.column width="50%"}
