@@ -62,9 +62,7 @@ date: September 27, 2019
 
 ## Background
 
-### Background:
-
-A back and a ground
+![](../../imgs/NastromGage.png){width=40%}
 
 ---
 

@@ -12,6 +12,9 @@ pandoc_filters:= $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 pandoc_flags:= --slide-level 3 $(pandoc_filters)
 latexmk_flags:= -silent # -deps
 
+# Env variables
+TEXINPUTS := ~/src/latex/phd-thesis/slides/
+export TEXINPUTS
 
 watch: $(main).pdf
 	pgrep -af evince && evince $(main).pdf &
@@ -22,6 +25,7 @@ pres: $(main).pdf
 
 $(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
 	cd latex && latexmk $(latexmk_flags) $(main).tex
+
 
 %.pandoc.html: %.pandoc.md
 	pandoc \
