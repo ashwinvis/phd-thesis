@@ -3,6 +3,8 @@ main:=slides
 content:=frames.pandoc.md
 pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
 
+deps:=latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
+
 # Options
 # js:=s5
 js:=revealjs
@@ -23,15 +25,24 @@ watch: $(main).pdf
 pres: $(main).pdf
 	pgrep -af pympress || pympress -t 30 $< &
 
-$(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
-	cd latex && latexmk $(latexmk_flags) -deps $(main).tex
+$(main).pdf: $(deps)
+	cd latex && latexmk -silent $(main).tex
 
+latex/$(main).aux: $(deps)
+	cd latex && latexmk -pdflatex='pdflatex -draftmode -interaction=nonstopmode' $(main).tex
+
+%.bbl: %.bcf %.aux $(BIB_FILE)
+	cd latex && biber $(main)
+
+log: $(deps)
+	cd latex && rubber-info $(main)
 
 %.pandoc.html: %.pandoc.md $(pandoc_filters)
 	pandoc \
 		$(pandoc_flags) \
 		--standalone \
 		--self-contained \
+		--natbib \
 		-t $(js) \
 		$< -o $@
 
@@ -39,6 +50,7 @@ $(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
 	pandoc \
 		$(pandoc_flags) \
 		-t beamer \
+		--natbib \
 		$< -o $@
 
 clean:
