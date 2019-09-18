@@ -19,10 +19,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{MnSymbol,wasysym}
 \usepackage{pgfpages} % For making side notes.
-\usepackage{tikz}
 \usepackage{xcolor}
 
 \input{template_beamer.pandoc.tex}
+
+\usepackage{csquotes} % Recommended for biblatex
+\usepackage[style=authoryear,natbib=true]{biblatex}
+\bibliography{../../thesis}
 
 \definecolor{ultramarine}{RGB}{30,86,183}
 \definecolor{ss}{RGB}{48,127,192}
@@ -37,19 +40,15 @@
   -- (1.25em,\the\dimexpr\fontdimen22\textfont2\relax);
 }
 
-% Add \vkappa symbol for Von K\'arm\'ans constant.
-\newcommand{\vkappa}{%
-  \text{\usefont{U}{solomos}{m}{n}\symbol{'153}}
-}
 
 %Additional line so that the math environment looks like standard LaTeX. If
 %anything ''fishy'' starts to happen just remove the line bellow...
 \usefonttheme{professionalfonts}
 
 % Compile .pdf with or without side notes.
-% \setbeameroption{hide notes} % Only slides
+\setbeameroption{hide notes} % Only slides
 %\setbeameroption{show only notes} % Only notes
-\setbeameroption{show notes on second screen=right} % Both
+% \setbeameroption{show notes on second screen=right} % Both
 
 
 %------------------------------------------------------------------------------
