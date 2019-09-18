@@ -1,20 +1,20 @@
 # Files
 main:=slides
 content:=frames.pandoc.md
+pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
 
 # Options
 # js:=s5
 js:=revealjs
 content_tex:=$(subst .md,.tex,$(content))
-pandoc_filters:= $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 
 # Flags
-pandoc_flags:= --slide-level 3 $(pandoc_filters)
-latexmk_flags:= -silent # -deps
+pandoc_flags:= --slide-level 3 $(subst ./,-F ./,$(pandoc_filters))
+latexmk_flags:= -silent
 
 # Env variables
-TEXINPUTS := ~/src/latex/phd-thesis/slides/
-export TEXINPUTS
+# TEXINPUTS := ~/src/latex/phd-thesis/slides/:
+# export TEXINPUTS
 
 watch: $(main).pdf
 	pgrep -af evince && evince $(main).pdf &
@@ -24,23 +24,26 @@ pres: $(main).pdf
 	pgrep -af pympress || pympress -t 30 $< &
 
 $(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
-	cd latex && latexmk $(latexmk_flags) $(main).tex
+	cd latex && latexmk $(latexmk_flags) -deps $(main).tex
 
 
-%.pandoc.html: %.pandoc.md
+%.pandoc.html: %.pandoc.md $(pandoc_filters)
 	pandoc \
 		$(pandoc_flags) \
 		--standalone \
 		--self-contained \
 		-t $(js) \
-		$^ -o $@
+		$< -o $@
 
-%.pandoc.tex: %.pandoc.md
+%.pandoc.tex: %.pandoc.md $(pandoc_filters)
 	pandoc \
 		$(pandoc_flags) \
 		-t beamer \
-		$^ -o $@
+		$< -o $@
 
 clean:
 	cd latex && latexmk -c $(main).tex
 	rm -f $(content_tex)
+
+cleanall: clean
+	cd latex && latexmk -C $(main).tex

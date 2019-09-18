@@ -62,7 +62,7 @@ date: September 27, 2019
 
 ## Background
 
-![](../../imgs/NastromGage.png){width=40%}
+![](../imgs/NastromGage.png){width=60%}
 
 ---
 

@@ -1,3 +1,6 @@
+from pathlib import Path
+import os
+
 import panflute as pf
 
 
@@ -14,9 +17,19 @@ def extract_image_from_pdf_page(xObject):
 
 
 def detect_height(elem):
-    url = elem.url
+    url = Path(elem.url)
+    if not url.exists() and not url.is_absolute():
+        # Try parent dir
+        new_url = url.parent.parent / url
+        if new_url.exists():
+            url = new_url
+        else:
+            raise
+            pf.debug(f"WARNING: {url} not found")
+            return "100%"
+
     width = int(elem.attributes["width"].rstrip('%'))
-    if url.endswith(".pdf"):
+    if url.suffix == ".pdf":
         from PyPDF2 import PdfFileReader
         with open(url, "rb") as fp:
             pdf = PdfFileReader(fp)
@@ -33,7 +46,7 @@ def detect_height(elem):
 
 def action(elem, doc):
     """Automatically determines height attribute for images."""
-    if doc.format == 'latex' and isinstance(elem, pf.Image):
+    if doc.format in ('latex', 'beamer') and isinstance(elem, pf.Image):
         # pf.debug(elem)
         if "width" in elem.attributes and "height" not in elem.attributes:
             elem.attributes["height"] = detect_height(elem)
