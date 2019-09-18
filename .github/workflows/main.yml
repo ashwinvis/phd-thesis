@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v1
       with:
@@ -14,5 +14,6 @@ jobs:
         lfs: true
     - name: Build inside a docker container
       uses: docker://ashwinvis/latex-pandoc-python
+    - name: Setup requirements
       run: |
         tlmgr update --self
