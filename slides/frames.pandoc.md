@@ -4,7 +4,7 @@ author: Ashwin Vishnu Mohanan
 date: September 27, 2019
 ---
 
-# Disputation i Teknisk Mekanik
+### Disputation i Teknisk Mekanik
 
 ::: notes
 
@@ -39,9 +39,8 @@ date: September 27, 2019
 
 -------------------------- ----------------------------------------------------------------
 
----
 
-## Procedure
+### Procedure
 
 
 -   **The respondent will present his thesis**
@@ -57,24 +56,75 @@ date: September 27, 2019
 -   **The result will be announced at Osquars Backe 18, floor 6**
 
 
-
 # Part 1: Two dimensional models of geophysical turbulence
 
 ## Background
 
-![](../imgs/NastromGage.png){width=60%}
+* Aircraft measurements[^nastromgage]
 
----
+:::::::::::::::: {.columns}
+::: {.column width="50%"}
+
+![Power spectrum of velocities and potential
+temperature](../imgs/NastromGage.png){width=80% height=60%}
+
+<!-- ![Power spectrum of wind speeds and potential temperature in the atmosphere -->
+<!-- [^nastromgage]](../imgs/NastromGage.png){width=0.5\textwidth wrap=true} -->
+
+
+:::
+::: {.column width="50%"}
+
+. . .
+
+\vspace{30pt}
+Energy spectra in atmosphere:
+
+&nbsp;
+&nbsp;
+
+* planetary / synoptic scales ~ $k^{-3}$
+
+&nbsp;
+
+* mesoscales ~ $k^{-5/3}$
+
+:::
+:::::::::::::::::::::::::::::
+
+[^nastromgage]: \tiny @NastromGage1985 \textcopyright AMS
+
+## Theoretical explanations
+
+
 
 ## Shallow water equations
 
 
----
+
 
 ## Toy model equations
 
 
----
 
 ## Results
+
+# Part 2: MILESTONE experiment
+
+## Experimental setup
+
+## Software systems
+
+## Preliminary results
+
+
+# Part 3: Open research software
+
+## Methods and tools for software development
+
+## Python programming language
+
+## FluidDyn project
+
+## Performance
 
