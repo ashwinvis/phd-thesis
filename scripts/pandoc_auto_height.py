@@ -1,5 +1,5 @@
 from pathlib import Path
-import os
+import re
 
 import panflute as pf
 
@@ -24,11 +24,14 @@ def detect_height(elem):
         if new_url.exists():
             url = new_url
         else:
-            raise
             pf.debug(f"WARNING: {url} not found")
-            return "100%"
+            return
 
-    width = int(elem.attributes["width"].rstrip('%'))
+    r = re.compile(r'([0-9]*[.])?[0-9]+')
+    w = elem.attributes["width"]
+    width = float(r.match(w).group(0))
+    unit = r.sub("", w)
+
     if url.suffix == ".pdf":
         from PyPDF2 import PdfFileReader
         with open(url, "rb") as fp:
@@ -40,16 +43,17 @@ def detect_height(elem):
         import imageio
         w, h, colors = imageio.imread(url).shape
 
-    height = f"{width*h/w}%"
+    height = f"{width*h/w} {unit}"
     return height
 
 
 def action(elem, doc):
     """Automatically determines height attribute for images."""
-    if doc.format in ('latex', 'beamer') and isinstance(elem, pf.Image):
-        # pf.debug(elem)
+    if doc.format in ('latex', 'beamer', 'native') and isinstance(elem, pf.Image):
         if "width" in elem.attributes and "height" not in elem.attributes:
-            elem.attributes["height"] = detect_height(elem)
+            height = detect_height(elem)
+            if height:
+                elem.attributes["height"] = height
 
         return elem
 
