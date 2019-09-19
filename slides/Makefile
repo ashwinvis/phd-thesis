@@ -2,16 +2,22 @@
 main:=slides
 content:=frames.pandoc.md
 pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
+pandoc_lua_filters:=$(wildcard ./scripts/pandoc_*.lua)
 
 deps:=latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
 
 # Options
+pdf_viewer:=okular
 # js:=s5
 js:=revealjs
 content_tex:=$(subst .md,.tex,$(content))
 
 # Flags
-pandoc_flags:= --slide-level 3 $(subst ./,-F ./,$(pandoc_filters))
+pandoc_flags:= --natbib \
+		--slide-level 3 \
+		--metadata-file=scripts/meta.yml \
+		$(subst ./,-F ./,$(pandoc_filters)) \
+		$(subst ./,--lua-filter ./,$(pandoc_lua_filters))
 latexmk_flags:= -silent
 
 # Env variables
@@ -19,7 +25,7 @@ latexmk_flags:= -silent
 # export TEXINPUTS
 
 watch: $(main).pdf
-	pgrep -af evince && evince $(main).pdf &
+	pgrep -af $(pdf_viewer) || $(pdf_viewer) $(main).pdf &
 	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex
 
 pres: $(main).pdf
@@ -32,7 +38,7 @@ latex/$(main).aux: $(deps)
 	cd latex && latexmk -pdflatex='pdflatex -draftmode -interaction=nonstopmode' $(main).tex
 
 %.bbl: %.bcf %.aux $(BIB_FILE)
-	cd latex && biber $(main)
+	cd latex && biber --quiet $(main)
 
 log: $(deps)
 	cd latex && rubber-info $(main)
@@ -42,7 +48,6 @@ log: $(deps)
 		$(pandoc_flags) \
 		--standalone \
 		--self-contained \
-		--natbib \
 		-t $(js) \
 		$< -o $@
 
@@ -50,7 +55,6 @@ log: $(deps)
 	pandoc \
 		$(pandoc_flags) \
 		-t beamer \
-		--natbib \
 		$< -o $@
 
 clean:

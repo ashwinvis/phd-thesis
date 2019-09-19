@@ -58,8 +58,16 @@ def action(elem, doc):
         return elem
 
 
+def prepare(doc):
+    pf.debug('Starting "pandoc_auto_height.py" ...')
+
+
+def finalize(doc):
+    pf.debug('Ending "pandoc_auto_height.py" ...')
+
+
 def main(doc=None):
-    return pf.run_filter(action, doc=doc)
+    return pf.run_filter(action, prepare, finalize, doc=doc)
 
 
 if __name__ == '__main__':
