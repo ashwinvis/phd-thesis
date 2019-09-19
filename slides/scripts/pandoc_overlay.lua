@@ -44,9 +44,21 @@ end
 
 
 function handleInline(inline)
-    if FORMAT == 'beamer' and inline.attr.attributes.slides then
-        table.insert(inline.content, 1, latex('\\onslide' .. inline.attr.attributes.slides .. '{'))
+    if FORMAT == 'beamer' or FORMAT == 'native' then
+      if inline.attr.attributes.onslide then
+        cmd = 'onslide'
+      elseif inline.attr.attributes.only then
+        cmd = 'only'
+      elseif inline.attr.attributes.alert then
+        cmd = 'alert'
+      elseif inline.attr.attributes.uncover then
+        cmd = 'uncover'
+      end
+      if cmd then
+        -- print(cmd)
+        table.insert(inline.content, 1, latex('\\' .. cmd .. inline.attr.attributes[cmd] .. '{'))
         table.insert(inline.content, latex('}'))
+      end
     end
     return inline.content
 end
