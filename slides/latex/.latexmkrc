@@ -1,6 +1,7 @@
 @default_files = ('slides.tex');
 
 $pdf_mode = 1;
+$bib_program = 'biber -quiet';
 
 $clean_ext = "bbl nav out snm";
 

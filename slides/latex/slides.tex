@@ -23,6 +23,8 @@
 
 \input{template_beamer.pandoc.tex}
 
+\input{../../commands.tex}
+
 \usepackage{csquotes} % Recommended for biblatex
 \usepackage[style=authoryear,natbib=true]{biblatex}
 \bibliography{../../thesis}
@@ -30,6 +32,16 @@
 \definecolor{ultramarine}{RGB}{30,86,183}
 \definecolor{ss}{RGB}{48,127,192}
 \definecolor{us}{RGB}{203,78,53}
+
+\newenvironment{mycolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[colback=blue!5,colframe=ultramarine!110!white,title=#1]
+    }{%
+    \end{tcolorbox}
+    }{}{}
+}{%
+\end{altenv}}
+
 
 % Renew caption template and remove word "Figure" from figure captions.
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}

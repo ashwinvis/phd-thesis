@@ -1,9 +1,3 @@
----
-title: Slides
-author: Ashwin Vishnu Mohanan
-date: September 27, 2019
----
-
 ### Disputation i Teknisk Mekanik
 
 ::: notes
@@ -55,18 +49,21 @@ date: September 27, 2019
 
 -   **The result will be announced at Osquars Backe 18, floor 6**
 
+### Outline
+
+\tableofcontents
 
 # Part 1: Two dimensional models of geophysical turbulence
 
 ## Background
 
-* Aircraft measurements[^nastromgage]
-
 :::::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-![Power spectrum of velocities and potential
-temperature](../imgs/NastromGage.png){width=80% height=60%}
+**Atmospheric energy spectrum**\footnote[frame]{\tiny \citet{NastromGage1985} \textcopyright AMS}
+
+![](../imgs/NastromGage.png){width=90% height=70%}
+<!-- ![Power spectrum of velocities and potential temperature](../imgs/NastromGage.png){width=80% height=60%} -->
 
 
 :::
@@ -74,25 +71,95 @@ temperature](../imgs/NastromGage.png){width=80% height=60%}
 
 . . .
 
-\vspace{30pt}
-Energy spectra in atmosphere:
 
-&nbsp;
-&nbsp;
+Two inertial ranges, separated by scales:
 
-* planetary / synoptic scales ~ $k^{-3}$
+\ 
 
-&nbsp;
+- planetary / synoptic scales $E(k) \sim k^{-3}$
+  ![](../imgs/synoptic.jpg){width=70% height=28%}
 
-* mesoscales ~ $k^{-5/3}$
+
+. . .
+
+- mesoscales $E(k) \sim k^{-5/3}$
+  ![](../imgs/mesoscale.jpg){width=70% height=28%}
+
 
 :::
 :::::::::::::::::::::::::::::
 
-[^nastromgage]: \tiny @NastromGage1985 \textcopyright AMS
+. . .
 
-## Theoretical explanations
+\centering{\alert{How do we theorize the mechanism behind these two inertial ranges?}}
 
+### Two-dimensional turbulence
+
+Kraichnan's theory of 2D turbulence[^kraichnan]
+
+- **Vorticity** and **enstrophy** conservation: a strong constraint on cascade
+
+- Dual cascade:
+$$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
+
+. . .
+
+- Directions of cascades:
+
+  - $k^{-5/3}$ range: constant energy flux[^kolmo] $\epsilon$, **inverse** cascade
+
+  - $k^{-3}$ range: constant enstrophy flux $\eta$, **forward** cascade
+
+. . .
+
+- Spatial scales of inertial ranges:
+  !["A paradox"[^frisch]](../imgs/cascade_horiz.png){width=70% height=40%}
+
+[^kraichnan]: \tiny @Kraichnan1967
+[^kolmo]: \tiny Similar to @Kolmogorov1941's theory
+[^frisch]: @Frisch
+
+### Quasi geostrophic equation
+
+- Quasi-geostrophic equation conserves an approximate *potential vorticity*:
+  $$\Dt{q} = 0,$$
+  $$ q = \nabla^2 \psi + \frac{\alert<2>{f_0}^2}{\tilde \rho}
+  \left(\frac{\tilde \rho}{\alert<3>{N}^2} \p_z \psi \right) + \alert<2>{\beta} y, $$
+
+. . .
+
+- Incorporates \alert<2>{rotation} and \alert<3>{stratification} in a 2D model
+
+- Bridging **ideal 2D turbulence** to **atmospheric turbulence**
+
+- Reproduces $k^{-3}$ spectrum^[\tiny @Charney1971]
+
+- <4-> Valid for **strong rotation**, lengths scales **smaller than
+  planetary** scales
+
+- <5-> No ageosophic motion, for example: **inertial gravity waves**
+
+<6-> \centering{{\alert{What about the $k^{-5/3}$ mesoscale spectrum?}}}
+
+
+### Possible theoretical explanations
+
+#### Propositions {.cbox}
+
+Here
+
+#### {.endblock}
+
+. . .
+
+#### Stratified turbulence {.cbox}
+
+
+#### {.endblock}
+
+\end{mycolorbox}
+
+Mamma mia
 
 
 ## Shallow water equations
