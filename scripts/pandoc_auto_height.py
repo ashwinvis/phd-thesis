@@ -20,12 +20,11 @@ def detect_height(elem):
     url = Path(elem.url)
     if not url.exists() and not url.is_absolute():
         # Try parent dir
-        new_url = url.parent.parent / url
+        new_url = Path("..") / url
         if new_url.exists():
             url = new_url
         else:
-            pf.debug(f"WARNING: {url} not found")
-            return
+            raise FileNotFoundError(f"Neither {url} nor {new_url} found")
 
     r = re.compile(r'([0-9]*[.])?[0-9]+')
     w = elem.attributes["width"]
@@ -43,7 +42,11 @@ def detect_height(elem):
         import imageio
         w, h, colors = imageio.imread(url).shape
 
-    height = f"{width*h/w} {unit}"
+    if url.suffix == ".eps":
+        height = f"{width*w/h}{unit}"  # TODO: wtf!
+    else:
+        height = f"{width*h/w}{unit}"
+
     return height
 
 
@@ -59,11 +62,11 @@ def action(elem, doc):
 
 
 def prepare(doc):
-    pf.debug('Starting "pandoc_auto_height.py" ...')
+    pf.debug(f'Starting {__file__} ...')
 
 
 def finalize(doc):
-    pf.debug('Ending "pandoc_auto_height.py" ...')
+    pf.debug(f'Ending {__file__} ...')
 
 
 def main(doc=None):
