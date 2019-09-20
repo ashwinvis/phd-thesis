@@ -35,7 +35,13 @@
 
 \newenvironment{mycolorbox}[1][ ]{%
 \begin{altenv}{%
-    \begin{tcolorbox}[colback=blue!5,colframe=ultramarine!110!white,title=#1]
+    \begin{tcolorbox}[%
+        colback=blue!5,
+        colframe=ultramarine!110!white,
+        size=title,
+        arc=1mm,
+        title=#1%
+    ]
     }{%
     \end{tcolorbox}
     }{}{}

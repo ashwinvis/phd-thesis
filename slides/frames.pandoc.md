@@ -196,31 +196,106 @@ General circulation models^[@Augier-Lindborg:2013] shows:
   + waves $\to$ shocks
   + cubic $E_K = h\mathbf{u.u} / 2$
 
-### Theoretical results in Paper 1^[ @augier_shallow_2019 ]
+### Results: Energy cascade 1^[ @augier_shallow_2019 ]
 
-- Analogue of @Kolmogorov1941's $\frac{4}{5}$ law for $3^{rd}$-order structure
-  function,
+
+#### SW analogue of @Kolmogorov1941's $\frac{4}{5}$ law for $3^{rd}$-order structure function {.cbox}
   \begin{equation*}
   \meane{ |\delta \uu|^2 \delta J_L }
   + c^2\meane{ (\delta h)^2 \delta u_L } = -4 \epsilon r,
   \end{equation*}
   where $J_L \equiv h \uu \cdot\rr / |\rr|$ and $u_L \equiv \uu\cdot\rr / |\rr|$
 
-![Spectral energy fluxes and $3^{rd}$-order structure
-functions](../paper_04_shallow_water/Pyfig/fig3-eps-converted-to.pdf){width=60%
-height=40%}
-
+#### {.endblock}
 
 . . .
 
+![Spectral energy fluxes $\Pi(k)$ and $3^{rd}$-order structure
+functions $\approx-4\epsilon r$](../paper_04_shallow_water/Pyfig/fig3-eps-converted-to.pdf){width=60%
+height=40%}
+
+
 - Positive flux $\Rightarrow$ **forward energy** cascade
+
+### Results: Shock waves^[ @augier_shallow_2019 ]
+
+![Visualization of shocks using divergence $\nabla.\uu$ and velocity component
+$u_y$](../paper_04_shallow_water/Pyfig/fig5-eps-converted-to.pdf){width=60%
+height=80%}
+
+### Results: Spectra and higher-order statistics^[ @augier_shallow_2019 ]
+
+#### Scaling laws for shock dominated turbulence {.cbox}
+
+- <+-> Shock amplitudes, $| \Delta u | \sim | c \Delta h | \sim (\epsilon d)^{1/3}$
+
+- <+-> $p^{th}$-order structure functions
+  $$\meane{|\delta u |^p}  \sim \meane{(c|\delta h |)^p} \sim  (\epsilon
+  d)^{p/3} \,  \frac{r}{d}$$
+
+- <+-> Energy spectra:\, $E_K(k)  \sim  E_A(k) \sim \epsilon ^{2/3} d^{-1/3} k^{-2}$
+
+#### {.endblock}
+
+. . .
+
+<div id="fig:scaling">
+
+![](../paper_04_shallow_water/Pyfig/fig6.eps){#fig:D width=48% height=40%}
+![](../paper_04_shallow_water/Pyfig/fig10.eps){#fig:E width=48% height=40%}
+
+Shock separation $d$ and energy spectra $E(k)$ scaling
+</div>
 
 ## Toy model equations
 
+### Properties of toy model equations
+
+::: notes
+
+with $\Psi$ and $\chi$ being the **stream function** and the **velocity potential** respectively.
+
+:::
+
+#### Helmoltz decomposition
+
+$${\bf u} = \bf{u}_r + \bf{u}_d$$
+
+ * ${\bf u}_r  = -\nabla \times ( {\bf e_z} \Psi)$ is the rotational component
+ * $\bf {u}_d = \nabla \chi$ is the divergent component
 
 
-## Results
 
+#### Governing equations
+
+\begin{align*}
+\frac{\partial {\bf u}} {\partial t} + {
+  \color<3>{purple}\only<1-3>{{\uu}\, \cdot\, \nabla}
+  \color<4->{teal}\only<4->{{\uu_r}\cdot \nabla}
+  }
+  {\bf u} +
+  f {\bf e}_z \times {\bf u} 
+  &= -c^2 \nabla \eta \\
+\frac{\partial \eta}{\partial t}+ {
+  \color<3>{purple}\only<1-3>{{\uu}\, \cdot\, \nabla}
+  \color<4->{teal}\only<4->{{\uu_r}\cdot \nabla}
+  }
+  \eta   &=
+  \color<1>{purple}\only<1>{(1+\eta) \nabla \cdot {\bf u}}
+  \color<2->{teal}\only<2->{\nabla \cdot {\bf u}}
+\end{align*}
+
+#### Assumptions {.cbox}
+
+- <+-> Surface displacement much **smaller** compared to the mean fluid layer
+  height, $\eta << 1$.
+
+\ 
+
+- <3->  Velocities in the large scale are **dominated by rotational part**,
+  $|\bf u_r| >> |\bf u_d|$. Use Helmoltz decomposition to make this distiction.
+
+#### {.endblock}
 # Part 2: MILESTONE experiment
 
 ## Experimental setup
