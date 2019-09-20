@@ -1,6 +1,6 @@
 # Files
 main:=slides
-content:=frames.pandoc.md
+content:=$(wildcard *.pandoc.md)
 pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
 pandoc_lua_filters:=$(wildcard ./scripts/pandoc_*.lua)
 
@@ -17,7 +17,8 @@ pandoc_flags:= --natbib \
 		--slide-level 3 \
 		--metadata-file=scripts/meta.yml \
 		$(subst ./,-F ./,$(pandoc_filters)) \
-		$(subst ./,--lua-filter ./,$(pandoc_lua_filters))
+		$(subst ./,--lua-filter ./,$(pandoc_lua_filters)) \
+		-F pandoc-crossref
 latexmk_flags:= -silent
 
 # Env variables

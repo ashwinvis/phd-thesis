@@ -1,58 +1,3 @@
-### Disputation i Teknisk Mekanik
-
-::: notes
-
-  The chair describes the procedure
-
-:::
-
-
-**Fredag 2019-09-27, kl 10:00**
-
--------------------------- ----------------------------------------------------------------
-           **Respondent:** Ashwin Vishnu Mohanan
-
-                **Titel:** Advancements in stratified flows through simulation,
-                           experiment and open research software development
-
-           **Handledare:** Dr. Erik Lindborg
-
-                           Dr. Pierre Augier
-
-    **Fakultetsopponent:** Prof. James J. Riley, University of Washington, U.S.A.
-
-          **Betygsnämnd:** Prof. Johan Nilsson, Stockholms Universitet, Sverige
-
-                           Dr. Thorsten Mauritsen, Stockholms Universitet, Sverige
-
-                           Dr. Clara Marika Velte, Danmarks Tekniske Universitet, Danmark
-
-           **Ordförande:** Prof. Nicholas Apazidis
-
-            **Sponsorer:** Vetenskapsrådet, SNIC
-
--------------------------- ----------------------------------------------------------------
-
-
-### Procedure
-
-
--   **The respondent will present his thesis**
-
--   **The opponent will discuss the thesis**
-
--   **The grading committee will ask questions**
-
--   **The audience will ask questions**
-
--   **Public part of the defence will be closed**
-
--   **The result will be announced at Osquars Backe 18, floor 6**
-
-### Outline
-
-\tableofcontents
-
 # Part 1: Two dimensional models of geophysical turbulence
 
 ## Background
@@ -202,8 +147,73 @@ General circulation models^[@Augier-Lindborg:2013] shows:
 
 ## Shallow water equations
 
+### Properties of shallow water equations
+
+#### Governing equations
+
+::: notes
+
+- Inviscid equations conserves in a periodic domain (no boundary fluxes)
+
+:::
+
+::::::::::{.columns}
+:::{.column width=50%}
+
+  \begin{align*}
+  \partial_t \alert<2>{\mathbf{u}} &= - (\alert<2>{\mathbf{u}}.\nabla) \alert<2>{\mathbf{u}}
+      - \alert<3>c^2 \nabla \alert<5>h - \alert<4>f\mathbf{e_z} \times \alert<2>{\mathbf{u}}, \\
+  \partial_t \alert<5>h &= - \nabla \cdot (\alert<5>h \alert<2>{\mathbf{u}}).
+  \end{align*}
+
+- where,
+
+  + <2-> $\alert<2>{\mathbf{u}}=$ horizontal velocity vector,
+  + <3-> $\alert<3>{c} =$ wave speed,
+  + <4-> $\alert<4>f$ = Coriolis parameter,
+  + <5-> $\alert<5>{h} = H + \eta$, height of fluid^[@vallis_atmospheric_2017].
+
+:::
+:::{.column width=50%}
+
+<5-> ![](../imgs/swe_eta_h.png){width=100% height=40%}
+:::
+:::::::::::::::::::
+
+\onslide<6->
+
+- with **good properties**:
+
+  + conserves **energy** $E = E_K + E_P$ 
+  + conserves **potential vorticity**, $Q = (\zeta + f)/h$
+  + equipartition of $E_K$ and $E_P$ over a wave period
+
+\ 
+\onslide<7->
+
+- and some **downsides**!
+
+  + waves $\to$ shocks
+  + cubic $E_K = h\mathbf{u.u} / 2$
+
+### Theoretical results in Paper 1^[ @augier_shallow_2019 ]
+
+- Analogue of @Kolmogorov1941's $\frac{4}{5}$ law for $3^{rd}$-order structure
+  function,
+  \begin{equation*}
+  \meane{ |\delta \uu|^2 \delta J_L }
+  + c^2\meane{ (\delta h)^2 \delta u_L } = -4 \epsilon r,
+  \end{equation*}
+  where $J_L \equiv h \uu \cdot\rr / |\rr|$ and $u_L \equiv \uu\cdot\rr / |\rr|$
+
+![Spectral energy fluxes and $3^{rd}$-order structure
+functions](../paper_04_shallow_water/Pyfig/fig3-eps-converted-to.pdf){width=60%
+height=40%}
 
 
+. . .
+
+- Positive flux $\Rightarrow$ **forward energy** cascade
 
 ## Toy model equations
 

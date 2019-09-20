@@ -29,8 +29,16 @@ def action(elem, doc):
     return elem
 
 
+def prepare(doc):
+    pf.debug(f'Starting {__file__} ...')
+
+
+def finalize(doc):
+    pf.debug(f'Ending {__file__} ...')
+
+
 def main(doc=None):
-    return pf.run_filter(action, doc=doc)
+    return pf.run_filter(action, prepare, finalize, doc=doc)
 
 
 if __name__ == "__main__":

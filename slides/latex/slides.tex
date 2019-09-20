@@ -116,15 +116,20 @@
 % beginning of each section (you can do the same with subsections):
 \AtBeginSubsection[]
 {%
-  \begin{frame}<beamer>{Outline}
+  % Do not increment frame number and hide it in the footline
+  % \begin{frame}<beamer>[noframenumbering,plain]{Outline}
+
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
     \tableofcontents[currentsection, currentsubsection]
-  \end{frame} \addtocounter{framenumber}{-1}
+  \end{frame}
 }
 \AtBeginSection[]
 {%
-  \begin{frame}<beamer>{Outline}
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
     \tableofcontents[currentsection, currentsubsection]
-  \end{frame} \addtocounter{framenumber}{-1}
+  \end{frame}
 }
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
@@ -139,9 +144,20 @@
 
 \begin{document} % \titleframe % Print the title as the first slide
 
+\normalpage
+
+\input{preface.pandoc.tex}
+
 \startpage
 
 \normalpage
+
+\begin{frame}[noframenumbering,plain]{Outline}
+
+\tableofcontents
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------------------------------------------------------------------------
 %                           PRESENTATION SLIDES
