@@ -112,7 +112,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 
 . . .
 
-- Spatial scales of inertial ranges:
+- Spatial scales of inertial ranges: "a paradox"[^frisch]
   !["A paradox"[^frisch]](../imgs/cascade_horiz.png){width=70% height=40%}
 
 [^kraichnan]: \tiny @Kraichnan1967
@@ -128,7 +128,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 
 . . .
 
-- Incorporates \alert<2>{rotation} and \alert<3>{stratification} in a 2D model
+- Incorporates [rotation]{alert="<2>"} and [stratification]{alert="<3>"} in a 2D model
 
 - Bridging **ideal 2D turbulence** to **atmospheric turbulence**
 
@@ -137,30 +137,68 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 - <4-> Valid for **strong rotation**, lengths scales **smaller than
   planetary** scales
 
-- <5-> No ageosophic motion, for example: **inertial gravity waves**
+- <5-> No ageostrophic motion, for example: **inertial gravity waves**
 
 <6-> \centering{{\alert{What about the $k^{-5/3}$ mesoscale spectrum?}}}
 
 
-### Possible theoretical explanations
+### Possible explanations of mesoscale spectrum
 
-#### Propositions {.cbox}
+#### Hypotheses for cascade directions {.cbox}
 
-Here
+- @Gage:1979 & @Lilly:1983: **inverse energy cascade** as in @Kraichnan1967
+
+- @Dewan:1979: **forward energy cascade** as in @Kolmogorov1941
 
 #### {.endblock}
 
 . . .
 
-#### Stratified turbulence {.cbox}
+#### Vertical resolutions {.cbox}
 
+* @Waite-Bartello:2004 and @Lindborg2006 : **stratified turbulence**. $l_v \sim u/N \approx 1 \text{km}$. 
+* @Buhler-Callies-Ferrari:2014 : **inertia gravity waves**. Frequency
+  $\omega \approx f$. i.e. $l_v \approx$ 100 metres.
 
 #### {.endblock}
 
-\end{mycolorbox}
+. . .
 
-Mamma mia
+\ 
 
+::::::::::::::::::::::::::::: {.columns}
+
+::: {.column width=40%}
+
+DNS of stratified turbulence supports:
+^[\tiny @Lindborg2006 ]
+
+
+* $k^{-5/3}$ spectrum
+
+- **forward cascade**
+
+- **fine vertical resolution** requirement
+
+:::
+::: {.column}
+
+. . .
+
+General circulation models^[\tiny @Augier-Lindborg:2013] shows:
+
+* $k^{-5/3}$ spectrum
+
+- **forward cascade** in mesoscales
+
+- with **coarse resolution**: 24 pressure levels along vertical
+
+:::
+:::::::::::::::::::::::::::::::::::::::::
+
+. . .
+
+\centering{{\alert{Minimum number of vertical levels? Is it possible with a single level model?}}}
 
 ## Shallow water equations
 
