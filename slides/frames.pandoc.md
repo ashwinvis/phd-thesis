@@ -60,7 +60,7 @@
 :::::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-**Atmospheric energy spectrum**\footnote[frame]{\tiny \citet{NastromGage1985} \textcopyright AMS}
+**Atmospheric energy spectrum**^[@NastromGage1985 © AMS]
 
 ![](../imgs/NastromGage.png){width=90% height=70%}
 <!-- ![Power spectrum of velocities and potential temperature](../imgs/NastromGage.png){width=80% height=60%} -->
@@ -115,8 +115,8 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 - Spatial scales of inertial ranges: "a paradox"[^frisch]
   !["A paradox"[^frisch]](../imgs/cascade_horiz.png){width=70% height=40%}
 
-[^kraichnan]: \tiny @Kraichnan1967
-[^kolmo]: \tiny Similar to @Kolmogorov1941's theory
+[^kraichnan]: @Kraichnan1967
+[^kolmo]: Similar to @Kolmogorov1941's theory
 [^frisch]: @Frisch
 
 ### Quasi geostrophic equation
@@ -132,7 +132,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 
 - Bridging **ideal 2D turbulence** to **atmospheric turbulence**
 
-- Reproduces $k^{-3}$ spectrum^[\tiny @Charney1971]
+- Reproduces $k^{-3}$ spectrum^[@Charney1971]
 
 - <4-> Valid for **strong rotation**, lengths scales **smaller than
   planetary** scales
@@ -171,7 +171,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 ::: {.column width=40%}
 
 DNS of stratified turbulence supports:
-^[\tiny @Lindborg2006 ]
+^[@Lindborg2006 ]
 
 
 * $k^{-5/3}$ spectrum
@@ -185,7 +185,7 @@ DNS of stratified turbulence supports:
 
 . . .
 
-General circulation models^[\tiny @Augier-Lindborg:2013] shows:
+General circulation models^[@Augier-Lindborg:2013] shows:
 
 * $k^{-5/3}$ spectrum
 

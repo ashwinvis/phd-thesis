@@ -26,7 +26,7 @@ latexmk_flags:= -silent
 
 watch: $(main).pdf
 	pgrep -af $(pdf_viewer) || $(pdf_viewer) $(main).pdf &
-	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex
+	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex | ccze -m ansi
 
 pres: $(main).pdf
 	pgrep -af pympress || pympress -t 30 $< &
