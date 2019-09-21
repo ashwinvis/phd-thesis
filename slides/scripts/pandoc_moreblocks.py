@@ -41,7 +41,9 @@ blockmap = {
     'facts':        'Fakten',
     'lemma':        'Lemma',
     'solution':     'Loesung',
-    'cbox':         'mycolorbox',
+    'cbox':         'bluecolorbox',
+    'rbox':         'redcolorbox',
+    'gbox':         'greencolorbox',
 }
 
 """

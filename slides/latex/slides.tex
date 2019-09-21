@@ -15,11 +15,11 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{hyperref,graphicx,lmodern}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 \usepackage[utf8]{inputenc}
-\usepackage{MnSymbol,wasysym}
 \usepackage{pgfpages} % For making side notes.
 \usepackage{xcolor}
+\usepackage{multimedia} % For movies
 
 \input{template_beamer.pandoc.tex}
 
@@ -33,21 +33,41 @@
 \definecolor{ss}{RGB}{48,127,192}
 \definecolor{us}{RGB}{203,78,53}
 
-\newenvironment{mycolorbox}[1][ ]{%
+% tcolorbox settings
+\tcbset{%
+    skin=enhanced,
+    size=title,
+    arc=1mm,
+}
+\newenvironment{bluecolorbox}[1][ ]{%
 \begin{altenv}{%
     \begin{tcolorbox}[%
-        colback=blue!5,
-        colframe=ultramarine!110!white,
-        size=title,
-        arc=1mm,
+        colback=blue!5,%
+        colframe=ultramarine!110!white,%
         title=#1%
     ]
-    }{%
-    \end{tcolorbox}
-    }{}{}
-}{%
+}{\end{tcolorbox}}{}{}}{%
 \end{altenv}}
 
+\newenvironment{redcolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=red!5!white,
+        colframe=red!75!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{greencolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=green!5!white,
+        colframe=green!65!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
 
 % Renew caption template and remove word "Figure" from figure captions.
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
@@ -158,7 +178,7 @@
 
 \normalpage
 
-\begin{frame}[noframenumbering,plain]{Outline}
+\begin{frame}[noframenumbering]{Outline}
 
 \tableofcontents
 
