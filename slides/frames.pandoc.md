@@ -182,19 +182,24 @@ General circulation models^[@Augier-Lindborg:2013] shows:
 
 \onslide<6->
 
-- with **good properties**:
 
-  + conserves **energy** $E = E_K + E_P$ 
-  + conserves **potential vorticity**, $Q = (\zeta + f)/h$
-  + equipartition of $E_K$ and $E_P$ over a wave period
+#### with **good properties** {.gbox}
+
+  + Conserves **energy** $E = E_K + E_P$ 
+  + Conserves **potential vorticity**, $Q = (\zeta + f)/h$
+  + Equipartition of $E_K$ and $E_P$ over a wave period
+  
+#### {.endblock}
 
 \ 
 \onslide<7->
 
-- and some **downsides**!
+#### and some **downsides** {.rbox}
 
-  + waves $\to$ shocks
-  + cubic $E_K = h\mathbf{u.u} / 2$
+  + Waves $\to$ shocks
+  + Cubic $E_K = h\mathbf{u.u} / 2$
+
+#### {.endblock}
 
 ### Results: Energy cascade 1^[ @augier_shallow_2019 ]
 
@@ -249,7 +254,7 @@ Shock separation $d$ and energy spectra $E(k)$ scaling
 
 ## Toy model equations
 
-### Properties of toy model equations
+### Derivation of toy model equations^[@LindborgMohanan2017]
 
 ::: notes
 
@@ -257,7 +262,7 @@ with $\Psi$ and $\chi$ being the **stream function** and the **velocity potentia
 
 :::
 
-#### Helmoltz decomposition
+#### Helmholtz decomposition
 
 $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
@@ -265,37 +270,86 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
  * $\bf {u}_d = \nabla \chi$ is the divergent component
 
 
+. . .
 
 #### Governing equations
 
-\begin{align*}
-\frac{\partial {\bf u}} {\partial t} + {
-  \color<3>{purple}\only<1-3>{{\uu}\, \cdot\, \nabla}
-  \color<4->{teal}\only<4->{{\uu_r}\cdot \nabla}
-  }
-  {\bf u} +
-  f {\bf e}_z \times {\bf u} 
-  &= -c^2 \nabla \eta \\
-\frac{\partial \eta}{\partial t}+ {
-  \color<3>{purple}\only<1-3>{{\uu}\, \cdot\, \nabla}
-  \color<4->{teal}\only<4->{{\uu_r}\cdot \nabla}
-  }
-  \eta   &=
-  \color<1>{purple}\only<1>{(1+\eta) \nabla \cdot {\bf u}}
-  \color<2->{teal}\only<2->{\nabla \cdot {\bf u}}
-\end{align*}
+- Starting from classical shallow water equations,
 
-#### Assumptions {.cbox}
+#### Assumptions & modifications {.cbox}
 
-- <+-> Surface displacement much **smaller** compared to the mean fluid layer
+- <2-> Surface displacement much **smaller** compared to the mean fluid layer
   height, $\eta << 1$.
 
-\ 
+- <4->  Velocities in the large scale are **dominated by rotational part**,
+  $|\bf u_r| >> |\bf u_d|$.
 
-- <3->  Velocities in the large scale are **dominated by rotational part**,
-  $|\bf u_r| >> |\bf u_d|$. Use Helmoltz decomposition to make this distiction.
+- <6-> Substitute $c\eta$ with $\theta$ (optional).
+
 
 #### {.endblock}
+
+\begin{align*}
+\frac{\partial {\bf u}} {\partial t} + {
+  \color<4>{purple}\only<-4>{{\uu}\, \cdot\, \nabla}
+  \color<5->{teal}\only<5->{{\uu_r}\cdot \nabla}
+  }
+  {\bf u} +
+  f {\bf e}_z \times {\bf u} &=
+  \color<6>{purple}\only<-6>{-c^2 \nabla \eta} %
+  \color<7->{teal}\only<7->{-c \nabla \theta} %
+  \\
+\frac{\partial 
+  \color<6>{purple}\only<-6>\eta
+  \color<7->{teal}\only<7->\theta
+}{\partial t}+ {
+  \color<4>{purple}\only<-4>{{\uu}\, \cdot\, \nabla}
+  \color<5->{teal}\only<5->{{\uu_r}\cdot \nabla}
+  }
+  \color<6>{purple}\only<-6>\eta
+  \color<7->{teal}\only<7->\theta
+  &= -
+  \color<7->{teal}\only<7->c
+  \color<2>{purple}\only<2>{(1+\eta) \nabla \cdot {\bf u}}
+  \color<3->{teal}\only<3->{\nabla \cdot {\bf u}}
+\end{align*}
+
+- <7-> Q.E.D.
+
+### A good compromise^[@LindborgMohanan2017]
+
+#### Pros {.gbox}
+
+- No shocks
+
+- KE and APE are **quadratic** and conserved
+
+- Linearised potential vorticity $q$ conserved in the limit $Ro \to 0$, where $q=\zeta−f$
+
+#### {.endblock}
+
+. . .
+
+#### Cons {.rbox}
+
+-  Full potential vorticity $Q$ is not exactly conserved
+
+#### {.endblock}
+
+
+. . .
+
+\centering{%
+  \movie[
+    width=9cm,
+    height=4cm,
+    showcontrols,
+    autostart
+  ]{}{./videos/toy_model_qa.mp4}
+
+Potential vorticity and wave fields in a toy model simulation}
+
+### Spectral energy budget
 # Part 2: MILESTONE experiment
 
 ## Experimental setup
