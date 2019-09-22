@@ -41,8 +41,13 @@ latex/$(main).aux: $(deps)
 %.bbl: %.bcf %.aux $(BIB_FILE)
 	cd latex && biber --quiet $(main)
 
-log: $(deps)
+check_log: $(deps)
 	cd latex && rubber-info $(main)
+
+check_fonts:
+	pdffonts $(main).pdf | grep -v 'Type 1'
+
+debug: check_log check_fonts
 
 %.pandoc.html: %.pandoc.md $(pandoc_filters)
 	pandoc \

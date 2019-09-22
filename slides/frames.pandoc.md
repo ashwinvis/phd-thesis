@@ -328,7 +328,6 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
 #### {.endblock}
 
-. . .
 
 #### Cons {.rbox}
 
@@ -337,25 +336,117 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 #### {.endblock}
 
 
-. . .
-
 \centering{%
+  {%
   \movie[
-    width=9cm,
-    height=4cm,
+    width=8.5cm,
+    height=4.3cm,
     showcontrols,
-    autostart
+    poster,
+    autostart, loop
   ]{}{./videos/toy_model_qa.mp4}
 
-Potential vorticity and wave fields in a toy model simulation}
+  Potential vorticity and wave fields in a toy model simulation}
+}
 
-### Spectral energy budget
+### Energy spectra
+
+<div id="fig:spectratoy">
+
+![](../paper_03_toy_model/fig3.eps){ width=33% height=80% #fig:speck6}
+![](../paper_03_toy_model/fig11.eps){width=33% height=80% #fig:speck30}
+
+Time averaged energy spectra from two simulations by forcing at
+(a) $k_f = 6\deltak$
+(b) $k_f = 30\deltak$
+
+</div>
+
+---
+
+::: notes
+
+The total spectral energy flux $\Pi$
+has been decomposed into kinetic ($\Pi_K$) and available potential energy
+($\Pi_A$) energy fluxes. The conversion from available potential energy to
+kinetic energy is represented by $C_{cum}$. The kinetic energy flux is further
+decomposed as $\Pi_{2D}$, the flux due to geostrophic modes and the difference
+$\Pi_K - \Pi_{2D}$.
+
+:::
+
+:::::::::::: {.columns}
+::: {.column width="55%"}
+
+#### Spectral energy budget
+
+- **Spectral energy flux**, 
+$\Pi(\mathbf{k},t) = \int_0^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
+
+. . .
+
+- $T=T_K + T_A$ are **transfer functions**,
+  \begin{align*}
+  \partial_t E_K(\mathbf{k},t) 
+    &= \text{\textonehalf} \partial_t (\hat{\uu}\hat{\uu}^*)
+    = T_K + C_K
+    ,\quad\\
+  \partial_t E_A(\mathbf{k},t) 
+    &= \text{\textonehalf} \partial_t (\hat{\theta}\hat {\theta}^*)
+    = T_A + C_A 
+  \end{align*}
+  which for the toy model equations
+  are derived as $T_K=  \Im\left[\hat{u}_i^* k_j \widehat{u^r_j u_i}\right],\quad
+  T_A  =  \Im\left[\hat{\theta}^* k_j \widehat{u^r_j \theta}\right]$.
+
+:::
+::: {.column}
+
+. . .
+
+#### Normal mode decomposition
+
+
+- Linearization and diagonalization of the toy model equations yields the
+  **normal modes**:
+  \begin{align*}
+      \mathbf{B}
+      = & \frac{1}{\sqrt{2}\sigma}
+      \begin{Bmatrix} \sqrt{2} c\left(-
+          \kappa^{2} \hat \psi +  f\hat\eta \right)               \\
+          \kappa \left(c^{2} \eta + f \hat{\psi} + i \hat{\chi} \sigma\right) \\
+          \kappa \left(c^{2} \eta + f \hat{\psi} - i \hat{\chi} \sigma\right)
+      \end{Bmatrix}.
+  \end{align*}
+  which can be transformed to $\mathbf{U} = \{\hat{u}_x,\hat{u}_y, \hat{\theta}\}^T$.
+
+:::
+:::::::::::::::::::::::::::::::::
+
+. . .
+
+![Spectral energy fluxes from two simulations with different forcing
+schemes](../paper_03_toy_model/fig5.eps){height=52%}
+
+### Comparison of a GCM^[@Augier-Lindborg:2013] with the toy model^[@LindborgMohanan2017] 
+<div id="fig:sebgcmtoy">
+
+![](../paper_03_toy_model/fig1.eps){width=50% height=60% #fig:sebgcm}
+![](../paper_03_toy_model/fig10.eps){width=50% height=55% #fig:sebtoy}
+
+Spectral energy budgets from (a) GCM and (b) toy model simulations. 
+
+</div>
+
+where, $\Pi_{2D} \equiv \Pi_{VVV}$.
+
+
 # Part 2: MILESTONE experiment
 
-## Experimental setup
-
-## Software systems
-
+## Motivation
+## Setup
+### Experimental setup
+### Software systems
 ## Preliminary results
 
 
