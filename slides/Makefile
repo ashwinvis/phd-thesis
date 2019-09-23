@@ -19,6 +19,7 @@ pandoc_flags:= --natbib \
 		$(subst ./,-F ./,$(pandoc_filters)) \
 		$(subst ./,--lua-filter ./,$(pandoc_lua_filters)) \
 		-F pandoc-crossref
+
 latexmk_flags:= -silent
 
 # Env variables

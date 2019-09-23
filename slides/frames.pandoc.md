@@ -357,8 +357,8 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 ![](../paper_03_toy_model/fig11.eps){width=33% height=80% #fig:speck30}
 
 Time averaged energy spectra from two simulations by forcing at
-(a) $k_f = 6\deltak$
-(b) $k_f = 30\deltak$
+(a) $k_f = 6\delta k$
+(b) $k_f = 30\delta k$
 
 </div>
 
@@ -450,13 +450,234 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 ## Preliminary results
 
 
-# Part 3: Open research software
+# Part 3: Reproducible open science through open source
 
-## Methods and tools for software development
 
-## Python programming language
+## Open science
+
+
+::::::::::: {.columns}
+::: {.column}
+
+![](../imgs/open_science.pdf){width=90%}
+
+:::
+::: {.column width="60%"}
+
+#### Path to reproducible research
+
+. . .
+
+- Accessible knowledge: **open access**
+
+. . .
+
+- Tracking workflow: **version control**
+
+
+- Accessible implementation: **license + source code**
+
+
+- Reliable: **documentation**, **continuous integration**
+
+. . .
+
+- Open data: **citable datasets**
+
+. . .
+
+- Publish: **manuscript + data + code + workflow**
+
+. . .
+
+
+#### Arguments for open source
+
+- Public money, public code^[https://publiccode.eu]
+
+- Peer review for both manuscript and code
+
+- Interoperable and sustainable
+
+. . .
+
+#### Arguments against open source
+
+- Comparative advantage
+
+- Lack of support
+
+- Curb industrial usage
+
+- Lack of documentation / not near production quality
+
+:::
+:::::::::::
+
+### Python programming language
+
+- One of the most popular languages^[Stack Overflow, GitHub, TIOBE index, IEEE
+  spectrum] in the world
+
+- General purpose
+
+- Thriving scientific community
+
+::::::::::: {.columns}
+::: {.column width="50%"}
+
+![](../imgs/python-sci-ecosystem.png){width=90%}
+
+:::
+::: {.column}
+
+![](../imgs/python-popularity.png){width=90%}
+
+:::
+::::::::::::
+
+### Why Python?
+
+#### Advantages {.gbox}
+
+- Elegant, expressive
+
+- Automatic memory management and dynamic typing
+
+- Extensible
+
+- Batteries included: powerful standard libraries
+
+#### {.endblock}
+
+#### Issues and solutions {.cbox}
+
+- CPU bounded performance
+  + native (C, C++ or Fortran),  compiled (AOT or JIT)
+    **extensions** for hotspots
+
+- Concurrent, but no parallel threading
+  + use **multiprocessing** / **MPI**
+
+#### {.endblock}
 
 ## FluidDyn project
 
-## Performance
+::::::::::: {.columns}
+::: {.column width="40%"}
+
+![Project to foster open-science and open-source in fluid
+mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
+
+. . .
+
+- `fluiddyn`: base package
+
+- `fluidfft`: API for Fast Fourier Transforms
+
+- `fluidsim`: CFD framework
+
+- `fluidimage`: asynchronously parallelized image processing, including PIV
+
+- `fluidlab`: laboratory experiments
+
+- `transonic`: front-end for generating Python extensions
+
+:::
+::: {.column}
+
+
+![Standing on the shoulders of giants](../imgs/dependency.pdf){width="90%"}
+
+:::
+:::::::::::
+
+
+---
+
+::::::::::: {.columns}
+::: {.column width="35%"}
+
+#### Package `fluidfft`^[@fluidfft]
+
+- FFT libraries: `FFTW`, `P3DFFT`, `PFFT`, `cuFFT`
+  interfaced using `C++` and `Cython`
+
+- "Operator" classes with `Pythran` methods
+
+:::
+::: {.column}
+
+
+![Class hierarchy (pink: *sequential*, magenta: *CUDA*, green:
+*MPI*)](../paper_01_fluidfft/Pyfig/fig_classes.pdf){width=100%}
+
+:::
+::::::::::: 
+
+. . .
+
+<div id="fig:">
+
+![Strong scaling of 3D FFT upto 10000
+cores](../paper_01_fluidfft/tmp/fig_beskow_1152x1152x1152.pdf){width=72%}
+![Microbenchmarks of projection
+function](../paper_01_fluidfft/tmp/fig_microbench.pdf){width=72%}
+
+Performance of `fluidfft`
+
+</div>
+
+---
+
+::::::::::: {.columns}
+::: {.column width="40%"}
+
+#### Package `fluidsim`^[@fluidsim]
+
+- Extensible, object-oriented CFD framework
+
+\small
+
+```python
+
+from fluidsim.solvers.ns3d.solver import Simul
+
+params = Simul.create_default_params()
+
+# Modify simulation parameters as needed
+
+sim = Simul(params)
+sim.time_stepping.start()
+
+```
+
+\normalsize
+
+- On-the-fly post-processing
+
+. . .
+
+![Strong scaling for
+`ns3d`](../paper_02_fluidsim/tmp/fig_bench_strong3d.pdf){width=110%}
+
+:::
+::: {.column}
+
+
+<div id="fig">
+
+. . .
+
+![Profiling `ns3d`](../paper_02_fluidsim/tmp/fig_profile3d.pdf)
+
+. . .
+
+![Comparison of `fluidsim`'s `ns3d` with a Fortran based code
+NS3D](../paper_02_fluidsim/tmp/fig_compare_with_ns3d.pdf)
+
+</div>
+
+:::
+::::::::::: 
 
