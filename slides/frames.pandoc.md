@@ -443,12 +443,139 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 
 # Part 2: MILESTONE experiment
 
+
 ## Motivation
+- Strongly stratified turbulence regime characterized  by
+  $$
+  F_h = \frac{\epsK}{NU^2} \ll 1,\text{ and } \R = ReF_h^2 \frac{\epsK}{\nu N^2} > 10.
+  $$
+- \pause Mixing efficiency ($\eta$) or mixing coefficient ($\Gamma$) are defined as:
+  $$
+  \eta = \epsP / (\epsK + \epsP),\quad \Gamma = \epsP / \epsK,
+  $$
+  and widely used to parametrize ocean eddy-diffusivity turbulence models.
+- \pause Verify results from stratified turbulence theories:
+
+. . .
+
+::::::::::: {.columns}
+::: {.column}
+
+![Visuals of "zig-zag instability" from Billant & Chomaz(2000)](../imgs/exp-zigzag.png)
+
+:::
+::: {.column width="50%"}
+
+
+1. **layered structures** with $l_v \sim u/N$^[@billant_experimental_2000]
+
+\ 
+
+. . .
+
+2. **forward energy cascade** with spectrum^[@Lindborg2006] $E(k) \sim \epsilon^{2/3}
+   k^{-5/3}$, or
+   $2^{nd}$-order structure function scaling^[@ChoLindborg2001] as
+   $\langle\delta \mathbf{u}.  \delta \mathbf{u}\rangle \sim \epsilon^{2/3}
+   r^{2/3}$, and
+
+\ 
+
+. . .
+
+3. measure the **mixing efficiency** in the strongly stratified
+   regime^[@maffioli_mixing_2016].
+
+:::
+::::::::::::
+
+
+
 ## Setup
-### Experimental setup
-### Software systems
+
+:::::::::::: {.columns}
+::: {.column width="50%"}
+
+<div id="fig:scheme">
+![Schematic of the Coriolis platform and mounted instruments (top
+view)](../paper_05_milestone_issf/Figures/scheme_exp_grid_MILESTONE_Euhit.pdf){
+#fig:scheme-coriolis height=40%}
+
+![Top view of the setup](../imgs/MILESTONE/GOPR1465.JPG){#fig:exp-top height=40%}
+
+Experimental setup
+</div>
+
+:::
+::: {.column}
+
+#### Equipment
+
+- 1 horizontal scanning (2D-2C) PIV
+- 1 vertical stereoscopic (2D-3C) PIV
+- 5 density probes
+
+\ 
+
+\centering{%
+  {%
+  \movie[
+    width=7cm,
+    height=4cm,
+    showcontrols,
+    poster,
+    autostart, loop
+  ]{}{./videos/moving_carriage.mp4}
+
+  Carriage in the Coriolis platform}
+}
+
+:::
+::::::::::::::::::::
+
 ## Preliminary results
 
+### Layered structures
+
+\begin{figure}
+\centerline{
+\includegraphics[width=4.14cm]{../paper_05_milestone_issf/Figures/exp21/vh_400.pdf}
+\includegraphics[width=3.44cm]{../paper_05_milestone_issf/Figures/exp21/vh_655.pdf}
+\includegraphics[width=4.72cm]{../paper_05_milestone_issf/Figures/exp21/vh_890.pdf}}
+\vspace{0mm}
+\centerline{
+\includegraphics[width=4.16cm]{../paper_05_milestone_issf/Figures/exp21/vv_890.pdf}
+\includegraphics[width=3.48cm]{../paper_05_milestone_issf/Figures/exp21/vv_655.pdf}
+\includegraphics[width=4.63cm]{../paper_05_milestone_issf/Figures/exp21/vv_400.pdf}
+}
+\vspace{-2mm}
+\caption{Instantaneous horizontal (top, $z=40$~cm) and vertical
+fields (bottom) for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
+\label{fig:field}
+\end{figure}
+
+### Structure function
+
+\begin{figure}[ht!]
+\centerline{
+\includegraphics[width=0.7\textwidth]{../paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
+\caption{Normalized second-order structure $S_h$ function as a function of
+$r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
+\label{fig:S2}
+\end{figure}
+
+### Potential energy $E_P$ and dissipation $\epsP$
+
+\begin{figure}[hb!]
+\centerline{
+\includegraphics[width=0.45\textwidth]{../_paper_06_milestone/1st/tmp/fig_energy_pot_vs_time}
+\includegraphics[width=0.55\textwidth]{../_paper_06_milestone/1st/tmp/fig_dt_pot_energy}
+}
+\caption{Evolution of potential energy normalized by linear stratification for
+experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
+(3\times10^{-3} {U_c}^3/D_c)$ for some MILESTONE 17 experiments (right).}%
+\label{fig:dt:pot:energy}
+\end{figure}
 
 # Part 3: Reproducible open science through open source
 
