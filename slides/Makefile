@@ -4,7 +4,7 @@ content:=$(wildcard *.pandoc.md)
 pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
 pandoc_lua_filters:=$(wildcard ./scripts/pandoc_*.lua)
 
-deps:=latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
+deps:=latex/$(main).tex $(content_tex) latex/pandoc_preamble.tex
 
 # Options
 pdf_viewer:=okular

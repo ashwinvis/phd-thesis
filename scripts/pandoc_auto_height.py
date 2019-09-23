@@ -42,6 +42,7 @@ def detect_height(elem):
         import imageio
         w, h, colors = imageio.imread(url).shape
 
+    w, h = (float(i) for i in (w, h))
     if url.suffix == ".eps":
         height = f"{width*w/h}{unit}"  # TODO: wtf!
     else:
