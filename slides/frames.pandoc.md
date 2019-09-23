@@ -637,24 +637,9 @@ Performance of `fluidfft`
 
 - Extensible, object-oriented CFD framework
 
-\small
-
-```python
-
-from fluidsim.solvers.ns3d.solver import Simul
-
-params = Simul.create_default_params()
-
-# Modify simulation parameters as needed
-
-sim = Simul(params)
-sim.time_stepping.start()
-
-```
-
-\normalsize
-
 - On-the-fly post-processing
+
+- Code reuse: `numpy`, `fluiddyn`, `fluidfft` etc.
 
 . . .
 
