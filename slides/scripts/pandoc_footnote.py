@@ -20,8 +20,16 @@ def str2cite(word):
     return word
 
 
+def inside_image(elem):
+    return isinstance(elem.ancestor(1), pf.Image)
+
+
 def action(elem, doc):
-    if doc.format in ("beamer", "native") and isinstance(elem, pf.Note):
+    if (
+        doc.format in ("beamer", "native")
+        and isinstance(elem, pf.Note)
+        and not inside_image(elem)
+    ):
         elem = elem.walk(elem2cite)
         txt = pf.stringify(elem, newlines=False)
         #  tex = rf"\footnote<.->[frame]{{\tiny {txt}}}"
@@ -31,11 +39,11 @@ def action(elem, doc):
 
 
 def prepare(doc):
-    pf.debug(f'Starting {__file__} ...')
+    pf.debug(f"Starting {__file__} ...")
 
 
 def finalize(doc):
-    pf.debug(f'Ending {__file__} ...')
+    pf.debug(f"Ending {__file__} ...")
 
 
 def main(doc=None):
