@@ -84,29 +84,6 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 [^kolmo]: Similar to scaling due to @Kolmogorov1941, @obukhov1941distribution and @obukhov1941spectral
 [^frisch]: @Frisch
 
-### Quasi geostrophic equation
-
-- Quasi-geostrophic equation conserves an approximate *potential vorticity*:
-  $$\Dt{q} = 0,$$
-  $$ q = \nabla^2 \psi + \frac{\alert<2>{f_0}^2}{\tilde \rho}
-  \left(\frac{\tilde \rho}{\alert<3>{N}^2} \p_z \psi \right) + \alert<2>{\beta} y, $$
-
-. . .
-
-- Incorporates [rotation]{alert="<2>"} and [stratification]{alert="<3>"} in a 2D model
-
-- Bridging **ideal 2D turbulence** to **atmospheric turbulence**
-
-- Reproduces $k^{-3}$ spectrum^[@Charney1971]
-
-- <4-> Valid for **strong rotation**, lengths scales **smaller than
-  planetary** scales
-
-- <5-> No ageostrophic motion, for example: **inertial gravity waves**
-
-<6-> \centering{{\alert{What about the $k^{-5/3}$ mesoscale spectrum?}}}
-
-
 ### Possible explanations of mesoscale spectrum
 
 #### Hypotheses for cascade directions {.cbox}
@@ -165,6 +142,30 @@ General circulation models^[@Augier-Lindborg:2013] shows:
 
 \centering{{\alert{Minimum number of vertical levels? Is it possible with a single level model?}}}
 
+### Quasi geostrophic equation
+
+Quasi-geostrophic equation^[@Charney1971] conserves an approximate *potential vorticity*:
+  $$\Dt{q} = 0,$$
+  $$ q = \nabla^2 \psi + \frac{\alert<2>{f_0}^2}{\tilde \rho}
+  \left(\frac{\tilde \rho}{\alert<3>{N^2}} \alert<3>{\p_z \psi} \right) + \alert<2>{\beta} y, $$
+
+. . .
+
+- Incorporates [rotation]{alert="<2>"} and [stratification]{alert="<3>"} in a 2D model
+
+- <4-> Bridging **ideal 2D turbulence** to **atmospheric turbulence**
+
+- <5-> Valid for **strong rotation**, lengths scales **smaller than
+  planetary** scales
+
+- <6-> No ageostrophic motion, for example: **inertial gravity waves**
+
+- <7-> Reproduces $k^{-3}$ spectrum
+
+\ 
+
+<7-> \centering{{\alert{What about the $k^{-5/3}$ mesoscale spectrum?}}}
+
 ## Shallow water equations
 
 ### Properties of shallow water equations
@@ -211,7 +212,6 @@ General circulation models^[@Augier-Lindborg:2013] shows:
   
 #### {.endblock}
 
-\ 
 \onslide<7->
 
 #### and some **downsides** {.rbox}
@@ -229,18 +229,18 @@ General circulation models^[@Augier-Lindborg:2013] shows:
   \meane{ |\delta \uu|^2 \delta J_L }
   + c^2\meane{ (\delta h)^2 \delta u_L } = -4 \epsilon r,
   \end{equation*}
-  where $J_L \equiv h \uu \cdot\rr / |\rr|$ and $u_L \equiv \uu\cdot\rr / |\rr|$
+
+- $\epsilon =$ energy flux or dissipation; $r =$ separation distance
+- $J_L \equiv h u_L$ and $u_L \equiv \uu\cdot\rr / |\rr|$ are longitudinal momentum and velocities
+- positive flux ($\epsilon > 0$) $\Rightarrow$ **forward energy** cascade
 
 #### {.endblock}
 
 . . .
 
 ![Spectral energy fluxes $\Pi(k)$ and $3^{rd}$-order structure
-functions $\approx-4\epsilon r$](../paper_04_shallow_water/Pyfig/fig3-eps-converted-to.pdf){width=60%
-height=40%}
+functions $\approx-4\epsilon r$](../paper_04_shallow_water/Pyfig/fig3-eps-converted-to.pdf){height=50%}
 
-
-- Positive flux $\Rightarrow$ **forward energy** cascade
 
 ### Results: Shock waves^[ @augier_shallow_2019 ]
 
@@ -258,7 +258,7 @@ height=80%}
   $$\meane{|\delta u |^p}  \sim \meane{(c|\delta h |)^p} \sim  (\epsilon
   d)^{p/3} \,  \frac{r}{d}$$
 
-- <+-> Energy spectra:\, $E_K(k)  \sim  E_A(k) \sim \epsilon ^{2/3} d^{-1/3} k^{-2}$
+- <+-> $p = 2 \Rightarrow$ energy spectra: $E_K(k) \sim  E_A(k) \sim \epsilon ^{2/3} d^{-1/3} k^{-2}$
 
 #### {.endblock}
 
@@ -298,13 +298,13 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
 #### Assumptions & modifications {.cbox}
 
-- <2-> Surface displacement much **smaller** compared to the mean fluid layer
+- <2-> [**Surface displacement much smaller**]{alert="<2>"} compared to the mean fluid layer
   height, $\eta << 1$.
 
-- <4->  Velocities in the large scale are **dominated by rotational part**,
+- <4-> Velocities in the large scale are [**dominated by rotational part**]{alert="<4>"},
   $|\bf u_r| >> |\bf u_d|$.
 
-- <6-> Substitute $c\eta$ with $\theta$ (optional).
+- <6-> [**Substitute**]{alert="<6>"} $c\eta$ with $\theta$ (optional).
 
 
 #### {.endblock}
@@ -334,27 +334,28 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
   \color<3->{teal}\only<3->{\nabla \cdot {\bf u}}
 \end{align*}
 
-- <7-> Q.E.D.
+- <7-> \color{teal}{Q.E.D.}
 
 ### A good compromise^[@LindborgMohanan2017]
 
 #### Pros {.gbox}
 
-- No shocks
+- **No shocks**
 
-- K.E. and A.P.E. are **quadratic** and conserved
+- Kinetic and available potential energies are **quadratic** and conserved
 
-- Linearised potential vorticity $q$ conserved in the limit $Ro \to 0$, where $q=\zeta - f \eta$
+- **Linearised potential vorticity** $q$ conserved in the limit of strong rotation $Ro \to 0$, where $q=\zeta - f \eta$
 
 #### {.endblock}
-
 
 #### Cons {.rbox}
 
--  Full potential vorticity $Q$ is not exactly conserved
+-  **Full potential vorticity** $Q$ is not exactly conserved
 
 #### {.endblock}
 
+::::::::::::::::::::::: {.columns}
+:::::::::: {.column width=58%}
 
 \centering{%
   {%
@@ -366,21 +367,50 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
     autostart, loop
   ]{}{./videos/toy_model_qa.mp4}
 
-  Potential vorticity and wave fields in a toy model simulation}
+  Video: Time lapse of potential vorticity ($q$) & wave field}
 }
+
+:::
+:::::::::: {.column}
+
+![Blown-up view of a strong anticyclonic vortex & the wave field](../paper_03_toy_model/fig13.eps){height=4.3cm}
+
+:::
+::::::::::::::::::::::::
 
 ### Energy spectra
 
+::::::::::::::::::::::: {.columns}
+:::::::::: {.column width=65%}
+
 <div id="fig:spectratoy">
 
-![](../paper_03_toy_model/fig3.eps){ width=33% height=80% #fig:speck6}
-![](../paper_03_toy_model/fig11.eps){width=33% height=80% #fig:speck30}
+![](../paper_03_toy_model/fig3.eps){height=75% #fig:speck6}
+![](../paper_03_toy_model/fig11.eps){height=75% #fig:speck30}
 
 Time averaged energy spectra from two simulations by forcing at
 (a) $k_f = 6\delta k$
 (b) $k_f = 30\delta k$
 
 </div>
+
+:::
+:::::::::: {.column}
+
+#### Highlights
+
+- Legend
+  + $E_K =$ `{\color{red}{kinetic energy}}`{=latex}
+  + $E_A =$ `{\color{blue}{available potential energy}}`{=latex}
+  + $E_V =$ `{\color{violet}{vortical energy}}`{=latex}
+  + $E_W =$ `{\color{teal}{wave energy}}`{=latex}
+
+- $E_W \sim k^{-5/3}$
+- $E_V \sim k^{-3}$
+- Equipartition between $E_K$ and $E_A$
+
+:::
+::::::::::::::::::::::::
 
 ---
 
@@ -445,8 +475,8 @@ $\Pi(\mathbf{k},t) = \int_0^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
 
 . . .
 
-![Spectral energy fluxes from two simulations with different forcing
-schemes](../paper_03_toy_model/fig5.eps){height=52%}
+![Spectral energy fluxes from two runs with different forcing
+schemes. $V:$ vortical mode; $W:$ wave mode](../paper_03_toy_model/fig5.eps){height=52%}
 
 ### Comparison of a GCM^[@Augier-Lindborg:2013] with the toy model^[@LindborgMohanan2017] 
 <div id="fig:sebgcmtoy">
@@ -549,7 +579,7 @@ Experimental setup
     autostart, loop
   ]{}{./videos/moving_carriage.mp4}
 
-  Carriage in the Coriolis platform}
+  Video: Carriage in the Coriolis platform}
 }
 
 :::
