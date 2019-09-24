@@ -185,9 +185,9 @@ General circulation models^[@Augier-Lindborg:2013] shows:
 
 #### with **good properties** {.gbox}
 
-  + Conserves **energy** $E = E_K + E_P$ 
+  + Conserves **energy** $E = E_K + E_P$ and the sum $E_K + E_A$, where $E_A =$ available potential energy (A.P.E.) 
   + Conserves **potential vorticity**, $Q = (\zeta + f)/h$
-  + Equipartition of $E_K$ and $E_P$ over a wave period
+  + Equipartition of $E_K$ and $E_A$ over a wave period
   
 #### {.endblock}
 
@@ -322,7 +322,7 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
 - No shocks
 
-- KE and APE are **quadratic** and conserved
+- K.E. and A.P.E. are **quadratic** and conserved
 
 - Linearised potential vorticity $q$ conserved in the limit $Ro \to 0$, where $q=\zeta−f$
 
@@ -447,7 +447,7 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 ## Motivation
 - Strongly stratified turbulence regime characterized  by
   $$
-  F_h = \frac{\epsK}{NU^2} \ll 1,\text{ and } \R = ReF_h^2 \frac{\epsK}{\nu N^2} > 10.
+  F_h = \frac{\epsK}{NU^2} \ll 1,\text{ and } \R = ReF_h^2 = \frac{\epsK}{\nu N^2} > 10.
   $$
 - \pause Mixing efficiency ($\eta$) or mixing coefficient ($\Gamma$) are defined as:
   $$
@@ -491,7 +491,7 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 
 
 
-## Setup
+## Experimental Setup
 
 :::::::::::: {.columns}
 ::: {.column width="50%"}
@@ -501,7 +501,7 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 view)](../paper_05_milestone_issf/Figures/scheme_exp_grid_MILESTONE_Euhit.pdf){
 #fig:scheme-coriolis height=40%}
 
-![Top view of the setup](../imgs/MILESTONE/GOPR1465.JPG){#fig:exp-top height=40%}
+![Top view of the setup](../imgs/MILESTONE/GOPR1465.JPG){#fig:exp-top height=30%}
 
 Experimental setup
 </div>
@@ -511,9 +511,11 @@ Experimental setup
 
 #### Equipment
 
-- 1 horizontal scanning (2D-2C) PIV
-- 1 vertical stereoscopic (2D-3C) PIV
-- 5 density probes
+- 1 **horizontal** scanning (2D-2C) PIV system
+- 1 **vertical** stereoscopic (2D-3C) PIV system
+- 5 conductometric / density **probes**
+- 1 oscillating **carriage** with 6 cylinders of diameter 0.25 m
+- open-source software for control, calibration, data acquisition etc.
 
 \ 
 
