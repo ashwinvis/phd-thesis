@@ -78,7 +78,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 . . .
 
 - Spatial scales of inertial ranges: "a paradox"[^frisch]
-  !["A paradox"[^frisch]](../imgs/cascade_horiz.png){width=70% height=40%}
+  !["A paradox"](../imgs/cascade_horiz.png){height=50%}
 
 [^kraichnan]: @Kraichnan1967
 [^kolmo]: Similar to @Kolmogorov1941's theory

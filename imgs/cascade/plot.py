@@ -4,12 +4,22 @@ import numpy as np
 from pathlib import Path
 
 
+BEAMER = True
+
+
 root = Path(__file__).parent.parent
 
 plt.style.use("ggplot")
-plt.rc("text", usetex=True)
 
-fig, axes = plt.subplots(2, 1, dpi=200, figsize=(3.5, 6))
+if BEAMER:
+    with plt.xkcd():
+        fig, axes = plt.subplots(1, 2, dpi=200, figsize=(9, 3.2))
+    font = {"size": 11}
+else:
+    plt.rc("text", usetex=True)
+    fig, axes = plt.subplots(2, 1, dpi=200, figsize=(3.5, 6))
+    font = {"size": 8}
+
 ax1, ax2 = axes.ravel()
 
 km = 1.5
@@ -20,11 +30,11 @@ km = 10 ** km
 coef = km ** (-6.7 / 5)
 
 print("coef =", coef)
-ax1.set_title("Energy spectra predicted by Kraichnan's theory", fontsize=9)
+ax1.set_title("Energy spectra predicted by Kraichnan's theory", fontsize=font["size"] + 1)
 ax1.loglog(k1, k1 ** -(5 / 3) * coef, c)
 ax1.loglog(k2, k2 ** (-3), c)
 
-ax2.set_title("Observed atmospheric energy spectra", fontsize=9)
+ax2.set_title("Observed atmospheric energy spectra", fontsize=font["size"] + 1)
 ax2.loglog(k2, k2 ** (-5 / 3) * coef, c)
 ax2.loglog(k1, k1 ** -3, c)
 
@@ -38,27 +48,27 @@ ax1.annotate(
         # posB=(km, km ** -1.5)
     ),
     ha="left",
-    fontsize=8,
+    fontsize=font["size"],
 )
 ax1.text(
     0.1*km, (0.8*km)**(-5/3),
     r"$\epsilon^{2/3}k^{-5/3}$",
-    fontdict=dict(size=8),
+    fontdict=font,
 )
 ax1.text(
     100*km, (80*km)**-3,
     r"$\eta^{2/3}k^{-3}$",
-    fontdict=dict(size=8),
+    fontdict=font,
 )
 ax2.text(
     0.1*km, (0.08*km)**(-3),
     r"$k^{-3}$",
-    fontdict=dict(size=8),
+    fontdict=font,
 )
 ax2.text(
     100*km, (800*km)**-(5/3),
     r"$k^{-5/3}$",
-    fontdict=dict(size=8),
+    fontdict=font,
 )
 
 
@@ -88,5 +98,10 @@ for ax in ax1, ax2:
     #  ax.get_yaxis().set_visible(False)
 
 fig.tight_layout()
-fig.savefig(root / "cascade.pdf")
 # plt.show()
+
+
+if BEAMER:
+    fig.savefig(root / "cascade_horiz.png")
+else:
+    fig.savefig(root / "cascade.pdf")
