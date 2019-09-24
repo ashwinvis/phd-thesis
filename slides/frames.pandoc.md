@@ -1,3 +1,23 @@
+### {.plain .noframenumbering}
+
+<div id="fig:">
+
+
+![Atmospheric turbulence $\rightarrow$ General circulation
+models](../imgs/gcm_gfs.jpg){height=35%}\hfill
+![Stratified turbulence $\rightarrow$ Ocean
+models](../imgs/gulf_stream.jpg){height=35%}
+
+```{=latex}
+\\[-2ex]
+```
+
+![Simulations and experiments supported by open source](../imgs/cover.jpg){width=42%}
+
+The big picture
+
+</div>
+
 # Part 1: Two dimensional models of geophysical turbulence
 
 ## Background
@@ -7,7 +27,7 @@
 
 **Atmospheric energy spectrum**^[@NastromGage1985 © AMS]
 
-![](../imgs/NastromGage.png){width=90% height=70%}
+![](../imgs/NastromGage.png){height=90%}
 <!-- ![Power spectrum of velocities and potential temperature](../imgs/NastromGage.png){width=80% height=60%} -->
 
 
