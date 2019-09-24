@@ -81,7 +81,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
   !["A paradox"](../imgs/cascade_horiz.png){height=50%}
 
 [^kraichnan]: @Kraichnan1967
-[^kolmo]: Similar to @Kolmogorov1941's theory
+[^kolmo]: Similar to scaling due to @Kolmogorov1941, @obukhov1941distribution and @obukhov1941spectral
 [^frisch]: @Frisch
 
 ### Quasi geostrophic equation
