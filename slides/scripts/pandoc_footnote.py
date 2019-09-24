@@ -24,7 +24,8 @@ def action(elem, doc):
     if doc.format in ("beamer", "native") and isinstance(elem, pf.Note):
         elem = elem.walk(elem2cite)
         txt = pf.stringify(elem, newlines=False)
-        tex = rf"\footnote<.->[frame]{{\tiny {txt}}}"
+        #  tex = rf"\footnote<.->[frame]{{\tiny {txt}}}"
+        tex = rf"\footnote<.->[frame]{{{txt}}}"
         elem = pf.RawInline(tex, format="latex")
     return elem
 

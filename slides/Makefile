@@ -30,8 +30,11 @@ watch: $(main).pdf
 	pgrep -af $(pdf_viewer) || $(pdf_viewer) $(main).pdf &
 	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex | ccze -m ansi
 
-pres: $(main).pdf
-	pgrep -af pympress || pympress -t 30 $< &
+pympress: $(main).pdf
+	pympress -t 30 $< &
+
+okular: $(main).pdf
+	okular --presentation --noraise $< &
 
 $(main).pdf: $(deps)
 	cd latex && latexmk -silent $(main).tex
