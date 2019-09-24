@@ -324,7 +324,7 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
 - K.E. and A.P.E. are **quadratic** and conserved
 
-- Linearised potential vorticity $q$ conserved in the limit $Ro \to 0$, where $q=\zeta−f$
+- Linearised potential vorticity $q$ conserved in the limit $Ro \to 0$, where $q=\zeta - f \eta$
 
 #### {.endblock}
 
