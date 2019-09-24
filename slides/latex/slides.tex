@@ -73,13 +73,6 @@
 % Renew caption template and remove word "Figure" from figure captions.
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
-\usetikzlibrary{decorations.pathreplacing,angles,quotes}
-\DeclareRobustCommand\sampleline[1]{%
-  \tikz\draw[#1] (0,0) (0,\the\dimexpr\fontdimen22\textfont2\relax)
-  -- (1.25em,\the\dimexpr\fontdimen22\textfont2\relax);
-}
-
-
 %Additional line so that the math environment looks like standard LaTeX. If
 %anything ''fishy'' starts to happen just remove the line bellow...
 \usefonttheme{professionalfonts}
