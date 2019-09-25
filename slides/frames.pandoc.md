@@ -1,22 +1,6 @@
-### {.plain .noframenumbering}
+### Outline {.noframenumbering}
 
-<div id="fig:">
-
-
-![Atmospheric turbulence $\rightarrow$ General circulation
-models](../imgs/gcm_gfs.jpg){height=35%}\hfill
-![Stratified turbulence $\rightarrow$ Ocean
-models](../imgs/gulf_stream.jpg){height=35%}
-
-```{=latex}
-\\[-2ex]
-```
-
-![Simulations and experiments supported by open source](../imgs/cover.jpg){width=42%}
-
-The big picture
-
-</div>
+\tableofcontents
 
 # Part 1: Two dimensional models of geophysical turbulence
 
@@ -767,7 +751,7 @@ experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 
 #### {.endblock}
 
-## FluidDyn project^[@fluiddyn]
+## FluidDyn project
 
 ::::::::::: {.columns}
 ::: {.column width="45%"}
@@ -777,7 +761,7 @@ mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
 
 . . .
 
-- [`fluiddyn`]{alert="<+->"}: base package
+- [`fluiddyn`]{alert="<+->"}: base package^[@fluiddyn]
 
 - [`fluidfft`]{alert="<+->"}: API for Fast Fourier Transforms
 
