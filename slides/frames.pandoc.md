@@ -835,7 +835,7 @@ mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
 ### Package `fluidfft`^[@fluidfft]
 
 ::::::::::: {.columns}
-::: {.column width="35%"}
+::: {.column width="40%"}
 
 
 - FFT libraries: `FFTW`, `P3DFFT`, `PFFT`, `cuFFT`
@@ -846,12 +846,14 @@ mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
 :::
 ::: {.column}
 
-```
+```python
 # An example for calculating gradient
 from fluidfft.fft2d.operators import OperatorsPseudoSpectral2D
 from numpy import sin, pi
 
-oper = OperatorsPseudoSpectral2D(nx=100, ny=100, lx=2*pi, ly=2*pi, fft="fft2d.with_fftw2d")
+oper = OperatorsPseudoSpectral2D(
+  nx=100, ny=100, lx=2*pi, ly=2*pi, fft="fft2d.with_fftw2d"
+)
 u = sin(oper.XX + oper.YY)
 u_fft = oper.fft(u)
 px_u_fft, py_u_fft = oper.gradfft_from_fft(u_fft)
@@ -863,7 +865,7 @@ px_u_fft, py_u_fft = oper.gradfft_from_fft(u_fft)
 
 ![Class hierarchy of [*sequential*]{color="{Salmon}"},
 [*CUDA*]{color="{magenta}"}, [*MPI*]{color="{SeaGreen}"} FFT libraries
-](../paper_01_fluidfft/Pyfig/fig_classes.pdf){height=55%}
+](../paper_01_fluidfft/Pyfig/fig_classes.pdf){height=50%}
 
 ### Performance of `fluidfft`^[@fluidfft]: scaling
 
@@ -893,7 +895,8 @@ function](../paper_01_fluidfft/tmp/fig_microbench.pdf){width=100%}
 :::
 ::: {.column}
 
-```
+```python
+# An example for running 3D Navier Stokes solver
 from fluidsim.solvers.ns3d.solver import Simul
 
 params = Simul.create_default_params()

@@ -18,7 +18,8 @@ pandoc_flags:= --natbib \
 		--metadata-file=scripts/meta.yml \
 		$(subst ./,-F ./,$(pandoc_filters)) \
 		$(subst ./,--lua-filter ./,$(pandoc_lua_filters)) \
-		-F pandoc-crossref
+		-F pandoc-crossref \
+		--highlight-style=kate \
 
 latexmk_flags:= -silent
 
@@ -67,9 +68,17 @@ debug: check_log check_fonts
 		-t beamer \
 		$< -o $@
 
+preamble.tex: $(content)
+	pandoc \
+		$(pandoc_flags) \
+		-t beamer \
+		--standalone \
+		$< -o $@
+
 clean:
 	cd latex && latexmk -c $(main).tex
 	rm -f $(content_tex)
+	rm -f preamble.tex
 
 cleanall: clean
 	cd latex && latexmk -C $(main).tex
