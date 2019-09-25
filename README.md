@@ -27,20 +27,22 @@
 * git-lfs
 * pandoc, pandoc-crossref (included in `pandoc-requirements.txt`)
 
-I shall also list a few applications / CLI tools which prove to be handy for
+I shall also list applications / CLI tools which prove to be handy for
 several miscalleanous uses. Not mandatory, but good to have:
 
-* zotero
-* zathura
-* neovim
-* vim-pandoc-syntax
-* ripgrep
-* rubber
-* vale
-* textidote
-* pandoc-citeproc
-* tllocalmgr
-* draw.io
+* zotero, better-bibtex (refrence management, deterministic BibTeX / BibLaTeX export)
+* fzf, fzf-bibtex (fuzzy search to cite as you type)
+* pandoc-citeproc (pandoc filter to process citations)
+* zathura (vim-like pdf viewer)
+* neovim / vim (needs no introduction)
+* vim-pandoc-syntax (conceal and beautify markdown & LaTeX elements)
+* ripgrep, sd (rust alternatives to grep and sed)
+* inkscape (PDF, EPS editing)
+* rubber (LaTeX error log parser)
+* vale (natural language style checker)
+* textidote (languagetool for LaTeX)
+* texlive-localmanager (install missing packages from CTAN in ArchLinux)
+* draw.io (create charts online / offline)
 
 ## Getting started
 

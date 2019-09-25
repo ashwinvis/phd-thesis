@@ -40,7 +40,10 @@ blockmap = {
     'fact':         'Fakt',
     'facts':        'Fakten',
     'lemma':        'Lemma',
-    'solution':     'Loesung'
+    'solution':     'Loesung',
+    'cbox':         'bluecolorbox',
+    'rbox':         'redcolorbox',
+    'gbox':         'greencolorbox',
 }
 
 """

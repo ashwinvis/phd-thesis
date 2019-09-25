@@ -1,3 +1,6 @@
+from pathlib import Path
+import re
+
 import panflute as pf
 
 
@@ -14,9 +17,21 @@ def extract_image_from_pdf_page(xObject):
 
 
 def detect_height(elem):
-    url = elem.url
-    width = int(elem.attributes["width"].rstrip('%'))
-    if url.endswith(".pdf"):
+    url = Path(elem.url)
+    if not url.exists() and not url.is_absolute():
+        # Try parent dir
+        new_url = Path("..") / url
+        if new_url.exists():
+            url = new_url
+        else:
+            raise FileNotFoundError(f"Neither {url} nor {new_url} found")
+
+    r = re.compile(r'([0-9]*[.])?[0-9]+')
+    w = elem.attributes["width"]
+    width = float(r.match(w).group(0))
+    unit = r.sub("", w)
+
+    if url.suffix == ".pdf":
         from PyPDF2 import PdfFileReader
         with open(url, "rb") as fp:
             pdf = PdfFileReader(fp)
@@ -27,22 +42,36 @@ def detect_height(elem):
         import imageio
         w, h, colors = imageio.imread(url).shape
 
-    height = f"{width*h/w}%"
+    w, h = (float(i) for i in (w, h))
+    if url.suffix == ".eps":
+        height = f"{width*w/h}{unit}"  # TODO: wtf!
+    else:
+        height = f"{width*h/w}{unit}"
+
     return height
 
 
 def action(elem, doc):
     """Automatically determines height attribute for images."""
-    if doc.format == 'latex' and isinstance(elem, pf.Image):
-        # pf.debug(elem)
+    if doc.format in ('latex', 'beamer', 'native') and isinstance(elem, pf.Image):
         if "width" in elem.attributes and "height" not in elem.attributes:
-            elem.attributes["height"] = detect_height(elem)
+            height = detect_height(elem)
+            if height:
+                elem.attributes["height"] = height
 
         return elem
 
 
+def prepare(doc):
+    pf.debug(f'Starting {__file__} ...')
+
+
+def finalize(doc):
+    pf.debug(f'Ending {__file__} ...')
+
+
 def main(doc=None):
-    return pf.run_filter(action, doc=doc)
+    return pf.run_filter(action, prepare, finalize, doc=doc)
 
 
 if __name__ == '__main__':

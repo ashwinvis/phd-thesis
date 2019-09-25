@@ -1,42 +1,84 @@
 # Files
 main:=slides
-content:=frames.pandoc.md
+content:=$(wildcard *.pandoc.md)
+pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
+pandoc_lua_filters:=$(wildcard ./scripts/pandoc_*.lua)
+
+deps:=latex/$(main).tex $(content_tex) latex/pandoc_preamble.tex
 
 # Options
+pdf_viewer:=okular
 # js:=s5
 js:=revealjs
 content_tex:=$(subst .md,.tex,$(content))
-pandoc_filters:= $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 
 # Flags
-pandoc_flags:= --slide-level 3 $(pandoc_filters)
-latexmk_flags:= -silent # -deps
+pandoc_flags:= --natbib \
+		--slide-level 3 \
+		--metadata-file=scripts/meta.yml \
+		$(subst ./,-F ./,$(pandoc_filters)) \
+		$(subst ./,--lua-filter ./,$(pandoc_lua_filters)) \
+		-F pandoc-crossref \
+		--highlight-style=kate \
 
+latexmk_flags:= -silent
+
+# Env variables
+# TEXINPUTS := ~/src/latex/phd-thesis/slides/:
+# export TEXINPUTS
 
 watch: $(main).pdf
-	pgrep -af evince && evince $(main).pdf &
-	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex
+	pgrep -af $(pdf_viewer) || $(pdf_viewer) $(main).pdf &
+	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex | ccze -m ansi
 
-pres: $(main).pdf
-	pgrep -af pympress || pympress -t 30 $< &
+pympress: $(main).pdf
+	pympress -t 30 $< &
 
-$(main).pdf: latex/$(main).tex $(content_tex) latex/template_beamer.pandoc.tex
-	cd latex && latexmk $(latexmk_flags) $(main).tex
+okular: $(main).pdf
+	okular --presentation --noraise $< &
 
-%.pandoc.html: %.pandoc.md
+$(main).pdf: $(deps)
+	cd latex && latexmk -silent $(main).tex
+
+latex/$(main).aux: $(deps)
+	cd latex && latexmk -pdflatex='pdflatex -draftmode -interaction=nonstopmode' $(main).tex
+
+%.bbl: %.bcf %.aux $(BIB_FILE)
+	cd latex && biber --quiet $(main)
+
+check_log: $(deps)
+	cd latex && rubber-info $(main)
+
+check_fonts:
+	pdffonts $(main).pdf | grep -v 'Type 1'
+
+debug: check_log check_fonts
+
+%.pandoc.html: %.pandoc.md $(pandoc_filters)
 	pandoc \
 		$(pandoc_flags) \
 		--standalone \
 		--self-contained \
 		-t $(js) \
-		$^ -o $@
+		$< -o $@
 
-%.pandoc.tex: %.pandoc.md
+%.pandoc.tex: %.pandoc.md $(pandoc_filters)
 	pandoc \
 		$(pandoc_flags) \
 		-t beamer \
-		$^ -o $@
+		$< -o $@
+
+preamble.tex: $(content)
+	pandoc \
+		$(pandoc_flags) \
+		-t beamer \
+		--standalone \
+		$< -o $@
 
 clean:
 	cd latex && latexmk -c $(main).tex
 	rm -f $(content_tex)
+	rm -f preamble.tex
+
+cleanall: clean
+	cd latex && latexmk -C $(main).tex

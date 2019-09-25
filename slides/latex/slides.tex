@@ -14,42 +14,80 @@
 
 \usepackage{tikz}
 \usepackage{amsmath}
-\usepackage{hyperref,graphicx,lmodern}
-\usepackage{tcolorbox}
+\usepackage{hyperref,graphicx}
+\usepackage[most]{tcolorbox}
 \usepackage[utf8]{inputenc}
-\usepackage{MnSymbol,wasysym}
 \usepackage{pgfpages} % For making side notes.
-\usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{multimedia} % For movies
 
-\input{template_beamer.pandoc.tex}
+\input{pandoc_preamble.tex}
+\usepackage{lmodern}
+
+\input{../../commands.tex}
+
+\usepackage{csquotes} % Recommended for biblatex
+\usepackage[style=authoryear,unique,natbib=true,uniquename=allinit]{biblatex}
+\bibliography{../../thesis}
 
 \definecolor{ultramarine}{RGB}{30,86,183}
 \definecolor{ss}{RGB}{48,127,192}
 \definecolor{us}{RGB}{203,78,53}
 
+% tcolorbox settings
+\tcbset{%
+    skin=enhanced,
+    size=title,
+    arc=1mm,
+}
+\newenvironment{bluecolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=blue!5,%
+        colframe=ultramarine!110!white,%
+        title=#1%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{redcolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=red!5!white,
+        colframe=red!75!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{greencolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=green!5!white,
+        colframe=green!65!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+% color commands
+% \def \redalert#1#2{\alt<#1>{\colorbox{red}{#2}}{#2}}
+% \newcommand<>{\redalert}[1]{{\color#2{purple}#1}}
+% \newcommand<>{\redalert}[1]{{%
+%   \alt#2{\colorbox{red}{#1}}{#1}
+% }}
+
 % Renew caption template and remove word "Figure" from figure captions.
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
-
-\usetikzlibrary{decorations.pathreplacing,angles,quotes}
-\DeclareRobustCommand\sampleline[1]{%
-  \tikz\draw[#1] (0,0) (0,\the\dimexpr\fontdimen22\textfont2\relax)
-  -- (1.25em,\the\dimexpr\fontdimen22\textfont2\relax);
-}
-
-% Add \vkappa symbol for Von K\'arm\'ans constant.
-\newcommand{\vkappa}{%
-  \text{\usefont{U}{solomos}{m}{n}\symbol{'153}}
-}
 
 %Additional line so that the math environment looks like standard LaTeX. If
 %anything ''fishy'' starts to happen just remove the line bellow...
 \usefonttheme{professionalfonts}
 
 % Compile .pdf with or without side notes.
-% \setbeameroption{hide notes} % Only slides
+\setbeameroption{hide notes} % Only slides
 %\setbeameroption{show only notes} % Only notes
-\setbeameroption{show notes on second screen=right} % Both
+% \setbeameroption{show notes on second screen=right} % Both
 
 
 %------------------------------------------------------------------------------
@@ -98,19 +136,27 @@
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
 
+% Graphics path relative to markdown file
+\graphicspath{{../}}
+
 % Uncomment this if you want the table of contents to pop up at the
 % beginning of each section (you can do the same with subsections):
 \AtBeginSubsection[]
 {%
-  \begin{frame}<beamer>{Outline}
+  % Do not increment frame number and hide it in the footline
+  % \begin{frame}<beamer>[noframenumbering,plain]{Outline}
+
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
     \tableofcontents[currentsection, currentsubsection]
-  \end{frame} \addtocounter{framenumber}{-1}
+  \end{frame}
 }
 \AtBeginSection[]
 {%
-  \begin{frame}<beamer>{Outline}
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
     \tableofcontents[currentsection, currentsubsection]
-  \end{frame} \addtocounter{framenumber}{-1}
+  \end{frame}
 }
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
@@ -125,14 +171,21 @@
 
 \begin{document} % \titleframe % Print the title as the first slide
 
+\normalpage
+
+\input{preface.pandoc.tex}
+
 \startpage
 
 \normalpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------------------------------------------------------------------------
 %                           PRESENTATION SLIDES
 %------------------------------------------------------------------------------
 
 \input{frames.pandoc.tex}
+
+\thankspage
 
 \end{document}
