@@ -124,6 +124,8 @@ General circulation models^[@Augier-Lindborg:2013] shows:
 
 . . .
 
+\vspace{20pt}
+
 \centering{{\alert{Minimum number of vertical levels? Is it possible with a single level model?}}}
 
 ### Quasi geostrophic equation
@@ -176,7 +178,7 @@ Quasi-geostrophic equation^[@Charney1971] conserves an approximate *potential vo
   + <2-> $\alert<2>{\mathbf{u}}=$ horizontal velocity vector,
   + <3-> $\alert<3>{c} =$ wave speed,
   + <4-> $\alert<4>f$ = Coriolis parameter,
-  + <5-> $\alert<5>{h} = H + \eta$, height of fluid^[@vallis_atmospheric_2017].
+  + <5-> $\alert<5>{h} = 1 + \eta$, non-dimensional height of fluid^[@vallis_atmospheric_2017].
 
 :::
 :::{.column width=50%}
@@ -205,7 +207,7 @@ Quasi-geostrophic equation^[@Charney1971] conserves an approximate *potential vo
 
 #### {.endblock}
 
-### Results: Energy cascade 1^[ @augier_shallow_2019 ]
+### Results: Energy cascade^[ @augier_shallow_2019 ]
 
 
 #### SW analogue of @Kolmogorov1941's $\frac{4}{5}$ law for $3^{rd}$-order structure function {.cbox}
@@ -228,9 +230,29 @@ functions $\approx-4\epsilon r$](../paper_04_shallow_water/Pyfig/fig3-eps-conver
 
 ### Results: Shock waves^[ @augier_shallow_2019 ]
 
+::::::::::::::::::::::: {.columns}
+:::::::::: {.column width=65%}
+
 ![Visualization of shocks using divergence $\nabla.\uu$ and velocity component
-$u_y$](../paper_04_shallow_water/Pyfig/fig5-eps-converted-to.pdf){width=60%
+$u_y$](../paper_04_shallow_water/Pyfig/fig5-eps-converted-to.pdf){
 height=80%}
+
+:::
+:::::::::: {.column}
+
+#### Highlights
+
+- Parameters
+
+  + Top: $n=1920$, $c=20$
+  + Bottom: $n=1920$, $c=400$
+
+- $F_f \propto 1 / c$
+
+- $\nabla. \uu < 0 \Rightarrow$ shock
+
+:::
+::::::::::::::::::::::::
 
 ### Results: Spectra and higher-order statistics^[ @augier_shallow_2019 ]
 
@@ -248,10 +270,12 @@ height=80%}
 
 . . .
 
+\vspace{-10pt}
+
 <div id="fig:scaling">
 
-![](../paper_04_shallow_water/Pyfig/fig6.eps){#fig:D width=48% height=40%}
-![](../paper_04_shallow_water/Pyfig/fig10.eps){#fig:E width=48% height=40%}
+![$d/L_f \sim F_f^{1/2}$](../paper_04_shallow_water/Pyfig/fig6.eps){#fig:D height=44%}
+![$E(k) \sim k ^{-2}$](../paper_04_shallow_water/Pyfig/fig10.eps){#fig:E height=44%}
 
 Shock separation $d$ and energy spectra $E(k)$ scaling
 </div>
@@ -369,12 +393,11 @@ $${\bf u} = \bf{u}_r + \bf{u}_d$$
 
 <div id="fig:spectratoy">
 
-![](../paper_03_toy_model/fig3.eps){height=75% #fig:speck6}
-![](../paper_03_toy_model/fig11.eps){height=75% #fig:speck30}
+![$k_f = 6\delta k$](../paper_03_toy_model/fig3.eps){height=75% #fig:speck6}
+![$k_f = 30\delta k$](../paper_03_toy_model/fig11.eps){height=75% #fig:speck30}
 
-Time averaged energy spectra from two simulations by forcing at
-(a) $k_f = 6\delta k$
-(b) $k_f = 30\delta k$
+Time averaged energy spectra from two simulations by forcing at different
+forcing wavenumbers ($k_f$)
 
 </div>
 
@@ -386,8 +409,8 @@ Time averaged energy spectra from two simulations by forcing at
 - Legend
   + $E_K =$ `{\color{red}{kinetic energy}}`{=latex}
   + $E_A =$ `{\color{blue}{available potential energy}}`{=latex}
-  + $E_V =$ `{\color{violet}{vortical energy}}`{=latex}
-  + $E_W =$ `{\color{teal}{wave energy}}`{=latex}
+  + $E_W =$ `{\color{violet}{wave energy}}`{=latex}
+  + $E_V =$ `{\color{teal}{vortical energy}}`{=latex}
 
 - $E_W \sim k^{-5/3}$
 - $E_V \sim k^{-3}$
@@ -415,7 +438,7 @@ $\Pi_K - \Pi_{2D}$.
 #### Spectral energy budget
 
 - **Spectral energy flux**, 
-$\Pi(\mathbf{k},t) = \int_0^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
+$\Pi(\mathbf{k},t) = \int_\mathbf{k}^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
 
 . . .
 
@@ -465,8 +488,31 @@ $\Pi(\mathbf{k},t) = \int_0^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
 
 . . .
 
+
+::::::::::::::::::::::: {.columns}
+:::::::::: {.column width=75%}
+
 ![Spectral energy fluxes from two runs with different forcing
-schemes. $V:$ vortical mode; $W:$ wave mode](../paper_03_toy_model/fig5.eps){height=52%}
+schemes](../paper_03_toy_model/fig5.eps){height=52%}
+
+:::
+:::::::::: {.column}
+
+\vspace{40pt} 
+
+#### Highlights
+
+- Forcing scheme differences:
+
+  + Left: waves
+  + Right: vortices & wave
+
+- $V:$ vortical mode
+
+- $W:$ wave mode
+
+:::
+::::::::::::::::::::::::
 
 ### Comparison of a GCM^[@Augier-Lindborg:2013] with the toy model^[@LindborgMohanan2017] 
 <div id="fig:sebgcmtoy">
@@ -730,9 +776,11 @@ experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 
 #### Advantages {.gbox}
 
-- Elegant, expressive
+- Simple learning curve
 
-- Automatic memory management and dynamic typing
+- Rapid prototyping
+
+- Expressive to communicate ideas
 
 - Extensible
 
