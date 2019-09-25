@@ -51,13 +51,17 @@ function handleInline(inline)
         cmd = 'only'
       elseif inline.attr.attributes.alert then
         cmd = 'alert'
+      elseif inline.attr.attributes.redalert then
+        cmd = 'redalert'
+      elseif inline.attr.attributes.color then
+        cmd = 'color'
       elseif inline.attr.attributes.uncover then
         cmd = 'uncover'
       end
       if cmd then
         -- print(cmd)
-        table.insert(inline.content, 1, latex('\\' .. cmd .. inline.attr.attributes[cmd] .. '{'))
-        table.insert(inline.content, latex('}'))
+        table.insert(inline.content, 1, latex('{\\' .. cmd .. inline.attr.attributes[cmd] .. '{'))
+        table.insert(inline.content, latex('}}'))
       end
     end
     return inline.content

@@ -466,7 +466,13 @@ $\Pi(\mathbf{k},t) = \int_0^{\infty} T(\mathbf{k}',t) d\mathbf{k}'$
           \kappa^{2} \hat \psi +  f\hat\eta \right)               \\
           \kappa \left(c^{2} \eta + f \hat{\psi} + i \hat{\chi} \sigma\right) \\
           \kappa \left(c^{2} \eta + f \hat{\psi} - i \hat{\chi} \sigma\right)
-      \end{Bmatrix}.
+      \end{Bmatrix}
+      \propto
+      \begin{Bmatrix}
+          q \\
+          a^+ \\
+          a^-
+      \end{Bmatrix}
   \end{align*}
   which can be transformed to $\mathbf{U} = \{\hat{u}_x,\hat{u}_y, \hat{\theta}\}^T$.
 
@@ -481,30 +487,37 @@ schemes. $V:$ vortical mode; $W:$ wave mode](../paper_03_toy_model/fig5.eps){hei
 ### Comparison of a GCM^[@Augier-Lindborg:2013] with the toy model^[@LindborgMohanan2017] 
 <div id="fig:sebgcmtoy">
 
-![](../paper_03_toy_model/fig1.eps){width=50% height=60% #fig:sebgcm}
-![](../paper_03_toy_model/fig10.eps){width=50% height=55% #fig:sebtoy}
+![](../paper_03_toy_model/fig1.eps){height=50% #fig:sebgcm}
+![](../paper_03_toy_model/fig10.eps){height=50% #fig:sebtoy}
 
 Spectral energy budgets from (a) GCM and (b) toy model simulations. 
 
 </div>
 
-where, $\Pi_{2D} \equiv \Pi_{VVV}$.
+- where, $\Pi_{2D} \equiv \Pi_{VVV}$; $C_{cum}=$ cumulative conversion
+function.
+- large-scale forcing in A.P.E. $\to$ baroclinic instability $\to$ conversion to K.E. $\to$ mesoscale turbulence
+
 
 
 # Part 2: MILESTONE experiment
 
 
+
 ## Motivation
-- Strongly stratified turbulence regime characterized  by
+- Strongly stratified turbulence regime characterized by
+  **horizontal Froude number** and **buoyancy Reynolds number**:
   $$
   F_h = \frac{\epsK}{NU^2} \ll 1,\text{ and } \R = ReF_h^2 = \frac{\epsK}{\nu N^2} > 10.
   $$
-- \pause Mixing efficiency ($\eta$) or mixing coefficient ($\Gamma$) are defined as:
+
+. . .
+
+- **Mixing efficiency** ($\eta$) or **mixing coefficient** ($\Gamma$) are defined as:
   $$
   \eta = \epsP / (\epsK + \epsP),\quad \Gamma = \epsP / \epsK,
   $$
   and widely used to parametrize ocean eddy-diffusivity turbulence models.
-- \pause Verify results from stratified turbulence theories:
 
 . . .
 
@@ -516,6 +529,8 @@ where, $\Pi_{2D} \equiv \Pi_{VVV}$.
 :::
 ::: {.column width="50%"}
 
+
+#### Verify results from stratified turbulence theories
 
 1. **layered structures** with $l_v \sim u/N$^[@billant_experimental_2000]
 
@@ -587,43 +602,52 @@ Experimental setup
 
 ## Preliminary results
 
-### Layered structures
+### Preliminary results: layered structures^[@ISSF2016]
+
+- Vertical length scale^[@Billant2001], $l_v = u / N$
 
 \begin{figure}
 \centerline{
-\includegraphics[width=4.14cm]{../paper_05_milestone_issf/Figures/exp21/vh_400.pdf}
-\includegraphics[width=3.44cm]{../paper_05_milestone_issf/Figures/exp21/vh_655.pdf}
-\includegraphics[width=4.72cm]{../paper_05_milestone_issf/Figures/exp21/vh_890.pdf}}
+\includegraphics[height=0.39\textheight]{../paper_05_milestone_issf/Figures/exp21/vh_400.pdf}
+\includegraphics[height=0.39\textheight]{../paper_05_milestone_issf/Figures/exp21/vh_655.pdf}
+\includegraphics[height=0.39\textheight]{../paper_05_milestone_issf/Figures/exp21/vh_890.pdf}}
 \vspace{0mm}
 \centerline{
-\includegraphics[width=4.16cm]{../paper_05_milestone_issf/Figures/exp21/vv_890.pdf}
-\includegraphics[width=3.48cm]{../paper_05_milestone_issf/Figures/exp21/vv_655.pdf}
-\includegraphics[width=4.63cm]{../paper_05_milestone_issf/Figures/exp21/vv_400.pdf}
+\includegraphics[height=0.37\textheight]{../paper_05_milestone_issf/Figures/exp21/vv_890.pdf}
+\includegraphics[height=0.37\textheight]{../paper_05_milestone_issf/Figures/exp21/vv_655.pdf}
+\includegraphics[height=0.37\textheight]{../paper_05_milestone_issf/Figures/exp21/vv_400.pdf}
 }
 \vspace{-2mm}
 \caption{Instantaneous horizontal (top, $z=40$~cm) and vertical
 fields (bottom) for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
 \label{fig:field}
 \end{figure}
+\vspace{-2mm}
 
-### Structure function
+### Preliminary results: horizontal structure function^[@ISSF2016]
+
+- Second-order structure function^[@ChoLindborg2001] $S_h \sim \epsilon^{2/3} r^{2/3}$
 
 \begin{figure}[ht!]
 \centerline{
-\includegraphics[width=0.7\textwidth]{../paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
-\caption{Normalized second-order structure $S_h$ function as a function of
+\includegraphics[height=0.7\textheight]{../paper_05_milestone_issf/Figures/exp28/normalized_S2_exp28.pdf}}
+\caption{Normalized $S_h$  as a function of
 $r/M$ for $F_{hc} = 0.1$ and $\mathcal{R}_c=450$.}
 \label{fig:S2}
 \end{figure}
 
-### Potential energy $E_P$ and dissipation $\epsP$
+### Preliminary results: mixing^[@ISSF2016]
+
+
+- **Mixing coefficient**^[@maffioli_mixing_2016] in strongly stratified regime $\Gamma \to 0.2 ?$ and in
+  weakly stratified regime $\Gamma \sim F_h^{-2}$.
 
 \begin{figure}[hb!]
 \centerline{
 \includegraphics[width=0.45\textwidth]{../_paper_06_milestone/1st/tmp/fig_energy_pot_vs_time}
 \includegraphics[width=0.55\textwidth]{../_paper_06_milestone/1st/tmp/fig_dt_pot_energy}
 }
-\caption{Evolution of potential energy normalized by linear stratification for
+\caption{Evolution of potential energy $E_P$ normalized by linear stratification for
 experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 (3\times10^{-3} {U_c}^3/D_c)$ for some MILESTONE 17 experiments (right).}%
 \label{fig:dt:pot:energy}
@@ -647,36 +671,39 @@ experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 
 . . .
 
-- Accessible knowledge: **open access**
+- Accessible knowledge: [open access]{color="{violet}"}
 
 . . .
 
-- Tracking workflow: **version control**
+
+- Accessible implementation: `{\color{Cerulean}{{license + open source code}}}`{=latex}
 
 
-- Accessible implementation: **license + source code**
-
-
-- Reliable: **documentation**, **continuous integration**
+- Reliability: [documentation, continuous integration]{color="{Cerulean}"}
 
 . . .
 
-- Open data: **citable datasets**
+- Open data: `{\color{SeaGreen}{citable datasets}}`{=latex}
+
+- Tracking workflow: [version control]{color="{SeaGreen}"}
 
 . . .
 
-- Publish: **manuscript + data + code + workflow**
+- Publish: [manuscript + data + code + workflow]{color="{DarkGoldenrod}"}
 
 . . .
 
 
 #### Arguments for open source
 
-- Public money, public code^[https://publiccode.eu]
+- Reproducibility
 
 - Peer review for both manuscript and code
 
 - Interoperable and sustainable
+
+- Public money, public code^[https://publiccode.eu]
+
 
 . . .
 
@@ -715,7 +742,7 @@ experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 :::
 ::::::::::::
 
-### Why Python?
+### Why Python in sciences?
 
 #### Advantages {.gbox}
 
@@ -740,21 +767,23 @@ experiment M17-21 (left) and normalized mixing coefficient $\eps_P /
 
 #### {.endblock}
 
-## FluidDyn project
+## FluidDyn project^[@fluiddyn]
 
 ::::::::::: {.columns}
-::: {.column width="40%"}
+::: {.column width="45%"}
 
 ![Project to foster open-science and open-source in fluid
 mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
 
 . . .
 
-- `fluiddyn`: base package
+- [`fluiddyn`]{alert="<+->"}: base package
 
-- `fluidfft`: API for Fast Fourier Transforms
+- [`fluidfft`]{alert="<+->"}: API for Fast Fourier Transforms
 
-- `fluidsim`: CFD framework
+- [`fluidsim`]{alert="<+->"}: CFD framework
+
+\onslide<+->
 
 - `fluidimage`: asynchronously parallelized image processing, including PIV
 
@@ -771,48 +800,56 @@ mechanics](../imgs/logo-fluiddyn.jpg){width="90%"}
 :::
 :::::::::::
 
-
----
+### Package `fluidfft`^[@fluidfft]
 
 ::::::::::: {.columns}
 ::: {.column width="35%"}
 
-#### Package `fluidfft`^[@fluidfft]
 
 - FFT libraries: `FFTW`, `P3DFFT`, `PFFT`, `cuFFT`
   interfaced using `C++` and `Cython`
 
-- "Operator" classes with `Pythran` methods
+- Pseudospectral "operator" classes with `Pythran` methods
 
 :::
 ::: {.column}
 
+```
+# An example for calculating gradient
+from fluidfft.fft2d.operators import OperatorsPseudoSpectral2D
+from numpy import sin, pi
 
-![Class hierarchy (pink: *sequential*, magenta: *CUDA*, green:
-*MPI*)](../paper_01_fluidfft/Pyfig/fig_classes.pdf){width=100%}
+oper = OperatorsPseudoSpectral2D(nx=100, ny=100, lx=2*pi, ly=2*pi, fft="fft2d.with_fftw2d")
+u = sin(oper.XX + oper.YY)
+u_fft = oper.fft(u)
+px_u_fft, py_u_fft = oper.gradfft_from_fft(u_fft)
+```
 
 :::
 ::::::::::: 
 
-. . .
 
-<div id="fig:">
+![Class hierarchy of [*sequential*]{color="{Salmon}"},
+[*CUDA*]{color="{magenta}"}, [*MPI*]{color="{SeaGreen}"} FFT libraries
+](../paper_01_fluidfft/Pyfig/fig_classes.pdf){height=55%}
+
+### Performance of `fluidfft`^[@fluidfft]: scaling
 
 ![Strong scaling of 3D FFT upto 10000
-cores](../paper_01_fluidfft/tmp/fig_beskow_1152x1152x1152.pdf){width=72%}
+cores](../paper_01_fluidfft/tmp/fig_beskow_1152x1152x1152.pdf){width=130%}
+
+### Performance of `fluidfft`^[@fluidfft]: microbenchmarks
+
+- `Pythran` extensions comparable compiled native languages
+- Memory allocation is expensive: **in-place** better than **out-of-place**
+
 ![Microbenchmarks of projection
-function](../paper_01_fluidfft/tmp/fig_microbench.pdf){width=72%}
+function](../paper_01_fluidfft/tmp/fig_microbench.pdf){width=100%}
 
-Performance of `fluidfft`
-
-</div>
-
----
+### Package `fluidsim`^[@fluidsim]
 
 ::::::::::: {.columns}
 ::: {.column width="40%"}
-
-#### Package `fluidsim`^[@fluidsim]
 
 - Extensible, object-oriented CFD framework
 
@@ -820,28 +857,63 @@ Performance of `fluidfft`
 
 - Code reuse: `numpy`, `fluiddyn`, `fluidfft` etc.
 
-. . .
-
-![Strong scaling for
-`ns3d`](../paper_02_fluidsim/tmp/fig_bench_strong3d.pdf){width=110%}
 
 :::
 ::: {.column}
 
+```
+from fluidsim.solvers.ns3d.solver import Simul
 
-<div id="fig">
-
-. . .
-
-![Profiling `ns3d`](../paper_02_fluidsim/tmp/fig_profile3d.pdf)
-
-. . .
-
-![Comparison of `fluidsim`'s `ns3d` with a Fortran based code
-NS3D](../paper_02_fluidsim/tmp/fig_compare_with_ns3d.pdf)
-
-</div>
+params = Simul.create_default_params()
+# Modify parameters as needed
+sim = Simul(params)
+sim.time_stepping.start()
+```
 
 :::
-::::::::::: 
+::::::::::::
+
+. . .
+
+![Profiling `fluidsim.solvers.ns3d.solver`](../paper_02_fluidsim/tmp/fig_profile3d.pdf){height=55%}
+
+### Performance of `fluidsim`^[@fluidsim]: profiling
+
+![Comparison of
+[Fortran code NS3D]{color="{blue}"} with 
+[`fluidsim.solvers.ns3d.solver`]{color="{DarkGoldenrod}"}
+](../paper_02_fluidsim/tmp/fig_compare_with_ns3d.pdf){width=130%}
+
+### Performance of `fluidsim`^[@fluidsim]: scaling
+
+![Strong scaling for `fluidsim.solvers.ns3d.solver` using
+[FFTW-MPI ]{color="{MidnightBlue}"} and
+[P3DFFT ]{color="{BurntOrange}"}
+via `fluidfft`](../paper_02_fluidsim/tmp/fig_bench_strong3d.pdf){width=130%}
+
+# Concluding remarks
+
+### Concluding remarks
+
+#### Part 1
+
+- Scaling relations for **shock** dominated turbulence
+
+- Developed a toy-model which exhibits **forward cascade** in "mesoscales" with a $k^{-5/3}$ spectrum
+
+. . .
+
+#### Part 2
+
+- Verified **vertical length scale** $l_v \sim u/N$ and **forward cascade** $S_h \sim \epsilon{2/3}r^{2/3}$
+
+- Mixing coefficient ($\Gamma$) estimates requires further investigations
+
+. . .
+
+#### Part 3
+
+- Python as primary language for building research software
+
+- Good **performance** by optimising bottlenecks
 
