@@ -83,7 +83,7 @@ $$E(k) \sim \epsilon^{2/3}k^{-5/3},\quad E(k) \sim \eta^{2/3}k^{-3}$$
 #### Vertical resolutions {.cbox}
 
 * @Waite-Bartello:2004 and @Lindborg2006 : **stratified turbulence**. $l_v \sim u/N \approx 1 \text{km}$. 
-* @Buhler-Callies-Ferrari:2014 : **inertia gravity waves**. Frequency
+* @Callies-Buhler-Ferrari:2016 : **inertia gravity waves**. Frequency
   $\omega \approx f$. i.e. $l_v \approx$ 100 metres.
 
 #### {.endblock}
@@ -889,7 +889,7 @@ via `fluidfft`](../paper_02_fluidsim/tmp/fig_bench_strong3d.pdf){width=130%}
 
 #### Part 2
 
-- Verified **vertical length scale** $l_v \sim u/N$ and **forward cascade** $S_h \sim \epsilon{2/3}r^{2/3}$
+- Verified **vertical length scale** $l_v \sim u/N$ and **forward cascade** $S_h \sim \epsilon^{2/3}r^{2/3}$
 
 - Mixing coefficient ($\Gamma$) estimates requires further investigations
 
