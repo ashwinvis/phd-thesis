@@ -52,6 +52,11 @@ Clone and setup a python virtual environment.
     cd phd-thesis
     make python
 
+Note: the `--recursive` option is important to clone the submodules. If you
+forget to do that, execute:
+
+    git submodule update --init --recursive
+
 ## Workflows
 
 Compile the whole thesis
