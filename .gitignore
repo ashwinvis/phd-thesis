@@ -52,6 +52,8 @@ paper**/old
 # generated from yml
 paper*/paper.tex
 
+# python
+pyenv/
 .mypy_cache
 **/__pycache__
 **/.ipynb_checkpoints/

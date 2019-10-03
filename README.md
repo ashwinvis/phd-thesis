@@ -59,6 +59,8 @@ forget to do that, execute:
 
 ## Workflows
 
+**Always start by activating the virtual environment** `source pyenv/bin/activate`
+
 Compile the whole thesis
 
     make -j
