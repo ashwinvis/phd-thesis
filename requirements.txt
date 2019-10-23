@@ -34,7 +34,7 @@ palettable==3.1.1         # via nxviz
 pandas==0.24.2            # via nxviz, seaborn
 panflute==1.11.2
 pathtools==0.1.2          # via watchdog
-pillow==6.1.0             # via imageio, wordcloud
+pillow==6.2.0             # via imageio, wordcloud
 pluggy==0.12.0            # via pytest
 py==1.8.0                 # via pytest
 pycparser==2.19           # via cffi
