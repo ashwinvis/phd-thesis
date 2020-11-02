@@ -109,7 +109,7 @@ PANDOC_FILTERS = $(subst ./,-F ./,$(wildcard ./scripts/pandoc_*.py))
 .PHONY: default all clean clean_papers clean_thesis clean_minted cleanall vimtex doit red end
 .NOPARALLEL: $(main).pdf $(main).bbl $(main).gls log watch
 
-all: log
+all: glossary.tex log
 #
 $(main).pdf: $(SRCS) $(DEPS) $(AUXS) $(BBLS) $(main).gls
 	$(call cprint,"building $@ with $(TEX)")
@@ -183,7 +183,7 @@ log: $(main).pdf
 ifndef RUBBER_INFO
 	cat $(main).log
 else
-	rubber-info $(main).tex # | ccze -m ansi
+	rubber-info $(main).tex
 endif
 
 clean: clean_papers clean_thesis

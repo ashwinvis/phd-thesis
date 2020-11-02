@@ -1,6 +1,7 @@
 @default_files = ('slides.tex');
 
 $pdf_mode = 1;
+$pdflatex = 'pdflatex  %O  --shell-escape %S';
 $biber_silent_switch = ('--onlylog -quiet');
 
 $clean_ext = "bbl nav out snm";

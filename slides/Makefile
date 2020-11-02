@@ -4,7 +4,8 @@ content:=$(wildcard *.pandoc.md)
 pandoc_filters:=$(wildcard ./scripts/pandoc_*.py)
 pandoc_lua_filters:=$(wildcard ./scripts/pandoc_*.lua)
 
-deps:=latex/$(main).tex $(content_tex) latex/pandoc_preamble.tex
+deps:=latex/$(main).tex $(content_tex) latex/pandoc_preamble.tex ../imgs/cascade_horiz.png
+
 
 # Options
 pdf_viewer:=okular
@@ -21,7 +22,7 @@ pandoc_flags:= --natbib \
 		-F pandoc-crossref \
 		--highlight-style=kate \
 
-latexmk_flags:= -silent
+latexmk_flags:= -shell-escape -silent
 
 # Env variables
 # TEXINPUTS := ~/src/latex/phd-thesis/slides/:
@@ -29,7 +30,7 @@ latexmk_flags:= -silent
 
 watch: $(main).pdf
 	pgrep -af $(pdf_viewer) || $(pdf_viewer) $(main).pdf &
-	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex | ccze -m ansi
+	cd latex && latexmk -pvc $(latexmk_flags) $(main).tex
 
 pympress: $(main).pdf
 	pympress -t 30 $< &
@@ -46,7 +47,11 @@ latex/$(main).aux: $(deps)
 %.bbl: %.bcf %.aux $(BIB_FILE)
 	cd latex && biber --quiet $(main)
 
+../imgs/cascade_horiz.png: ../imgs/cascade/plot.py
+	PYTHONSTARTUP=../scripts/pythonrc.py python $< horiz
+
 check_log: $(deps)
+	echo $(content)
 	cd latex && rubber-info $(main)
 
 check_fonts:
