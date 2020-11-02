@@ -1,10 +1,11 @@
 # coding: utf-8
+import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
 
 
-BEAMER = True
+BEAMER = "horiz" in sys.argv
 
 
 root = Path(__file__).parent.parent
