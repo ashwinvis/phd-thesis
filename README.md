@@ -59,11 +59,11 @@ forget to do that, execute:
 
 For texlive, I use:
 
-  # pacman -S texlive-bibtexextra texlive-core texlive-latexextra texlive-science biber
-  $ yay -S texlive-localmanager-git
-  $ tllocalmgr install mnsymbol ccicons
-  $ updmap -user --enable Map=ccicons.map
-  # texhash
+    # pacman -S texlive-bibtexextra texlive-core texlive-latexextra texlive-science biber
+    $ yay -S texlive-localmanager-git
+    $ tllocalmgr install mnsymbol ccicons
+    $ updmap -user --enable Map=ccicons.map
+    # texhash
 
 Use appropriate texlive packages suitable for your opertating system.
 
@@ -131,12 +131,13 @@ Clean generated pdfs also
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
 alt="Creative Commons License" style="border-width:0"
-src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This
-**chapters* in this work
+src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />
+The **chapters** in this work
 <span xmlns:cc="http://creativecommons.org/ns#"
 property="cc:attributionName">Ashwin Vishnu Mohanan</span> are licensed under a
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
 Commons Attribution 4.0 International License</a>.
 
-Figures and contents of accompanying **papers** fall under various licenses, which
-requires discretion. Feel free to contact me in case of any doubts.
+Figures and contents of accompanying **papers** fall under various licenses,
+which requires discretion. Feel free to [contact
+me](https://ashwinvis.github.io/pages/contact.html) in case of any doubts.
