@@ -31,7 +31,7 @@ I shall also list applications / CLI tools which prove to be handy for
 several miscalleanous uses. Not mandatory, but good to have:
 
 * zotero, better-bibtex (refrence management, deterministic BibTeX / BibLaTeX export)
-* fzf, fzf-bibtex (fuzzy search to cite as you type)
+* fzf, fzf-bibtex (fuzzy search to cite as you type, *note:* requires bibtool CLI tool)
 * pandoc-citeproc (pandoc filter to process citations)
 * zathura (vim-like pdf viewer)
 * neovim / vim (needs no introduction)
